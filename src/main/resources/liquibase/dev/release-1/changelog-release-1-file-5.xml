@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-40" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dm_doc_types </comment>
+		<createTable tableName="dm_doc_types" schemaName="apps" remarks="Таблица для хранения типов документов">
+			<column name="id" type="number" remarks="Ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="parent_type_id" type="number" remarks="Идентификатор на родительский тип документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="short_name" type="varchar2(150)" remarks="Краткое наименование">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="name" type="varchar2(1000)" remarks="Наименование">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_a_type" type="number" remarks="Является типом документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="prefix_for_number" type="varchar2(30)" remarks="Префикс для номера документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-41" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dm_doc_types</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dm_doc_types"
+				schemaName="apps"
+				tableName="dm_doc_types"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-42" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dm_doc_types</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dm_doc_types_s"
+				startValue="36"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-43" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dm_doc_types_tl</comment>
+		<createTable tableName="dm_doc_types_tl" schemaName="apps" remarks="Таблица для хранения типов документов (Первод)">
+			<column name="id" type="number" remarks="Ид" >
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_type_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="short_name" type="varchar2(150)" remarks="Краткое наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(1000)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="prefix_for_number" type="varchar2(30)" remarks="Префикс для номера документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-44" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dm_doc_types_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dm_doc_types_tl"
+				schemaName="apps"
+				tableName="dm_doc_types_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-45" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dm_doc_types_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dm_doc_types_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-46" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dm_doc_types_tl</comment>
+		<addUniqueConstraint
+				columnNames="doc_type_id, lang"
+				constraintName="uk_dm_doc_types_tl"
+				schemaName="apps"
+				tableName="dm_doc_types_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-47" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dm_doc_types_tl to dm_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dm_doc_types_tl"
+				baseColumnNames="doc_type_id"
+				constraintName="fk_dm_doc_types_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_doc_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-48" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="1"/>
+			<column name="code" type="varchar2" value="CONTRACTS"/>
+			<column name="short_name" type="varchar2" value="Договоры"/>
+			<column name="is_a_type" type="varchar2" value="0"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-49" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="2"/>
+			<column name="parent_type_id" type="number" value="1"/>
+			<column name="code" type="varchar2" value="KEG_SCSS"/>
+			<column name="short_name" type="varchar2" value="Типовые договора на оказание системных услуг"/>
+			<column name="name" type="varchar2" value="Типовые договора на оказание системных услуг"/>
+			<column name="is_a_type" type="varchar2" value="0"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-50" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="3"/>
+			<column name="parent_type_id" type="number" value="2"/>
+			<column name="code" type="varchar2" value="KEG_CTE"/>
+			<column name="short_name" type="varchar2" value="Договор на передачу"/>
+			<column name="name" type="varchar2" value="Договор на оказание услуг по передаче электрической энергии по национальной электрической сети"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+			<column name="prefix_for_number" type="varchar2" value="ТПП"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-51" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="16"/>
+			<column name="parent_type_id" type="number" value="3"/>
+			<column name="code" type="varchar2" value="KEG_CTE_A1"/>
+			<column name="short_name" type="varchar2" value="Приложение 1 к Договору на передачу"/>
+			<column name="name" type="varchar2" value="Приложение 1: Договорной объем на оказание услуг по передаче электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-52" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="17"/>
+			<column name="parent_type_id" type="number" value="4"/>
+			<column name="code" type="varchar2" value="KEG_CTE_A2"/>
+			<column name="short_name" type="varchar2" value="Приложение 2 к Договору на передачу"/>
+			<column name="name" type="varchar2" value="Приложение 2: Пункты приема и пункты доставки электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-53" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="18"/>
+			<column name="parent_type_id" type="number" value="5"/>
+			<column name="code" type="varchar2" value="KEG_CTE_A3"/>
+			<column name="short_name" type="varchar2" value="Приложение 3 к Договору на передачу"/>
+			<column name="name" type="varchar2" value="Приложение 3: Акт разграничения балансовой принадлежности и эксплуатационной ответственности электрических сетей"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-54" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="19"/>
+			<column name="parent_type_id" type="number" value="6"/>
+			<column name="code" type="varchar2" value="KEG_CTE_A4"/>
+			<column name="short_name" type="varchar2" value="Приложение 4 к Договору на передачу"/>
+			<column name="name" type="varchar2" value="Приложение 4: Список приборов коммерческого учета электрической энергии, их характеристики, места установки и Методика расчёта фактического объема оказанных услуг по передаче электрической энергии по сетям АО «KEGOC»"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-55" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="20"/>
+			<column name="parent_type_id" type="number" value="7"/>
+			<column name="code" type="varchar2" value="KEG_CTE_A5"/>
+			<column name="short_name" type="varchar2" value="Приложение 5 к Договору на передачу"/>
+			<column name="name" type="varchar2" value="Приложение 5: Форма счета на оплату услуг"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-56" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="21"/>
+			<column name="parent_type_id" type="number" value="8"/>
+			<column name="code" type="varchar2" value="KEG_CTE_A6"/>
+			<column name="short_name" type="varchar2" value="Приложение 6 к Договору на передачу"/>
+			<column name="name" type="varchar2" value="Приложение 6: Форма Акта сверки показаний приборов коммерческого учета электрической энергии (в договорах РЭК)"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-57" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="22"/>
+			<column name="parent_type_id" type="number" value="9"/>
+			<column name="code" type="varchar2" value="KEG_CTE_A7"/>
+			<column name="short_name" type="varchar2" value="Приложение 7 к Договору на передачу"/>
+			<column name="name" type="varchar2" value="Приложение 7: Форма Акта сверки объемов переданной электроэнергии"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-58" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="4"/>
+			<column name="parent_type_id" type="number" value="2"/>
+			<column name="code" type="varchar2" value="KEG_CTD"/>
+			<column name="short_name" type="varchar2" value="Договор на техническую диспетчеризацию"/>
+			<column name="name" type="varchar2" value="Договор на оказание услуг по технической диспетчеризации отпуска в сеть и потребления электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+			<column name="prefix_for_number" type="varchar2" value="ТТД"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-59" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="23"/>
+			<column name="parent_type_id" type="number" value="4"/>
+			<column name="code" type="varchar2" value="KEG_CTD_A1"/>
+			<column name="short_name" type="varchar2" value="Приложение 1 к Договору на техническую диспетчеризацию"/>
+			<column name="name" type="varchar2" value="Приложение 1: Договорной объем на оказание услуг по технической диспетчеризации отпуска в сеть и потребления электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-60" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="24"/>
+			<column name="parent_type_id" type="number" value="4"/>
+			<column name="code" type="varchar2" value="KEG_CTD_A2"/>
+			<column name="short_name" type="varchar2" value="Приложение 2 к Договору на техническую диспетчеризацию"/>
+			<column name="name" type="varchar2" value="Приложение 2: Список приборов коммерческого учета электрической энергии, их характеристики, места установки и Методика расчёта фактического объема оказанных услуг по технической диспетчеризации отпуска в сеть и потребления электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-61" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="25"/>
+			<column name="parent_type_id" type="number" value="4"/>
+			<column name="code" type="varchar2" value="KEG_CTD_A3"/>
+			<column name="short_name" type="varchar2" value="Приложение 3 к Договору на техническую диспетчеризацию"/>
+			<column name="name" type="varchar2" value="Приложение 3: Форма счета на оплату услуг"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-62" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="26"/>
+			<column name="parent_type_id" type="number" value="4"/>
+			<column name="code" type="varchar2" value="KEG_CTD_A4"/>
+			<column name="short_name" type="varchar2" value="Приложение 4 к Договору на техническую диспетчеризацию"/>
+			<column name="name" type="varchar2" value="Приложение 4: Форма акта сверки объемов оказанных услуг по технической диспетчеризации отпуска в сеть и потребления электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-63" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="5"/>
+			<column name="parent_type_id" type="number" value="2"/>
+			<column name="code" type="varchar2" value="KEG_CBEE"/>
+			<column name="short_name" type="varchar2" value="Договор на балансирование"/>
+			<column name="name" type="varchar2" value="Договор на оказание услуг по организации балансирования производства - потребления электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+			<column name="prefix_for_number" type="varchar2" value="ОБР"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-64" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="27"/>
+			<column name="parent_type_id" type="number" value="5"/>
+			<column name="code" type="varchar2" value="KEG_CBEE_A1"/>
+			<column name="short_name" type="varchar2" value="Приложение 1 к Договору на балансирование"/>
+			<column name="name" type="varchar2" value="Приложение 1: Договорной объем на оказание услуг по организации балансирования производства потребления электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="0"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-65" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="28"/>
+			<column name="parent_type_id" type="number" value="5"/>
+			<column name="code" type="varchar2" value="KEG_CBEE_A2"/>
+			<column name="short_name" type="varchar2" value="Приложение 2 к Договору на балансирование"/>
+			<column name="name" type="varchar2" value="Приложение 2: Список приборов коммерческого учета электрической энергии, их характеристики, места установки и Методика расчёта фактического объема оказанных услуг по организации балансирования производства-потребления электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="0"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-66" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="29"/>
+			<column name="parent_type_id" type="number" value="5"/>
+			<column name="code" type="varchar2" value="KEG_CBEE_A3"/>
+			<column name="short_name" type="varchar2" value="Приложение 3 к Договору на баансирование"/>
+			<column name="name" type="varchar2" value="Приложение 3: Профиль нагрузки"/>
+			<column name="is_a_type" type="varchar2" value="0"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-67" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="30"/>
+			<column name="parent_type_id" type="number" value="5"/>
+			<column name="code" type="varchar2" value="KEG_CBEE_A4"/>
+			<column name="short_name" type="varchar2" value="Приложение 4 к Договору на балансирование"/>
+			<column name="name" type="varchar2" value="Приложение 4: Форма акта сверки объемов оказанных услуг по организации производства-потребления электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="0"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-68" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="31"/>
+			<column name="parent_type_id" type="number" value="5"/>
+			<column name="code" type="varchar2" value="KEG_CBEE_A5"/>
+			<column name="short_name" type="varchar2" value="Приложение 5 к Договору на балансирование"/>
+			<column name="name" type="varchar2" value="Приложение 5: Форма счета на оплату услуг"/>
+			<column name="is_a_type" type="varchar2" value="0"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-69" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="6"/>
+			<column name="parent_type_id" type="number" value="1"/>
+			<column name="code" type="varchar2" value="KEG_SCSC"/>
+			<column name="short_name" type="varchar2" value="Типовые договора с особыми условиями"/>
+			<column name="name" type="varchar2" value="Типовые договора с особыми условиями"/>
+			<column name="is_a_type" type="varchar2" value="0"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-70" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="7"/>
+			<column name="parent_type_id" type="number" value="6"/>
+			<column name="code" type="varchar2" value="KEG_CSTRC"/>
+			<column name="short_name" type="varchar2" value="Договор на резервирование"/>
+			<column name="name" type="varchar2" value="Договор на оказание услуг по поставке и передаче резервной электрической мощности"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+			<column name="prefix_for_number" type="varchar2" value="Р"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-71" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="32"/>
+			<column name="parent_type_id" type="number" value="7"/>
+			<column name="code" type="varchar2" value="KEG_CSTRC_A1"/>
+			<column name="short_name" type="varchar2" value="Приложение 1 к Договору на резервирование"/>
+			<column name="name" type="varchar2" value="Приложение 1. Стоимость услуг Исполнителя по резервированию в режимах ожидания поставок и передачи МВт мощности."/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-72" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="33"/>
+			<column name="parent_type_id" type="number" value="7"/>
+			<column name="code" type="varchar2" value="KEG_CSTRC_A2"/>
+			<column name="short_name" type="varchar2" value="Приложение 2 к Договору на резервирование"/>
+			<column name="name" type="varchar2" value="Приложение 2. Расчет стоимости услуг Исполнителя по передаче и поставке электрической мощности, а также их резервирования у внешних электроисточников"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-73" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="8"/>
+			<column name="parent_type_id" type="number" value="6"/>
+			<column name="code" type="varchar2" value="KEG_CSDDR"/>
+			<column name="short_name" type="varchar2" value="Договор на передачу при ремонтах"/>
+			<column name="name" type="varchar2" value="Договор на покупку вспомогательных услуг по передаче электрической энергии по сетям третьих сторон при ремонте"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+			<column name="prefix_for_number" type="varchar2" value="ПУТ"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-74" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="34"/>
+			<column name="parent_type_id" type="number" value="8"/>
+			<column name="code" type="varchar2" value="KEG_CSDDR_A1"/>
+			<column name="short_name" type="varchar2" value="Приложение 1 к Договору на передачу при ремонтах"/>
+			<column name="name" type="varchar2" value="Приложение 1. Договорной объем на оказание услуг по передаче и/или распределению электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="0"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-75" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="35"/>
+			<column name="parent_type_id" type="number" value="8"/>
+			<column name="code" type="varchar2" value="KEG_CSDDR_A1"/>
+			<column name="short_name" type="varchar2" value="Приложение 2 к Договору на передачу при ремонтах"/>
+			<column name="name" type="varchar2" value="Приложение 2. Список приборов коммерческого учета электрической энергии, их характеристики и места установки"/>
+			<column name="is_a_type" type="varchar2" value="0"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-76" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="9"/>
+			<column name="parent_type_id" type="number" value="1"/>
+			<column name="code" type="varchar2" value="SFC"/>
+			<column name="short_name" type="varchar2" value="Типовые договора РФЦ по ВИЭ"/>
+			<column name="name" type="varchar2" value="Типовые договора РФЦ по ВИЭ"/>
+			<column name="is_a_type" type="varchar2" value="0"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-77" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="10"/>
+			<column name="parent_type_id" type="number" value="9"/>
+			<column name="code" type="varchar2" value="SFC_PFP"/>
+			<column name="short_name" type="varchar2" value="Договор покупки электроэнергии по фикс. тарифам"/>
+			<column name="name" type="varchar2" value="Типовой договор покупки расчетно-финансовым центром электрической энергии у энергопроизводящей организации, использующей возобновляемые источники энергии, по фиксированным тарифам"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+			<column name="prefix_for_number" type="varchar2" value="ДИ"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-78" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="11"/>
+			<column name="parent_type_id" type="number" value="9"/>
+			<column name="code" type="varchar2" value="SFC_PFS"/>
+			<column name="short_name" type="varchar2" value="Договор покупки электроэнергии по тарифам в ТЭО"/>
+			<column name="name" type="varchar2" value="Типовой договор покупки расчетно-финансовым цен-тром электрической энергии у энергопроизводящей организации, использующей возобновляемые источники энергии, по тарифам, не превышающим уровня
+													   отпускной цены, установленного в утвержденном и согласованном с уполномоченным или местным исполнительным органом технико-экономическом обосновании проекта строительства объекта по использованию возобновляемых источников энергии"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-79" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="12"/>
+			<column name="parent_type_id" type="number" value="9"/>
+			<column name="code" type="varchar2" value="SFC_SCC"/>
+			<column name="short_name" type="varchar2" value="Договор продажи электроэнергии условным потребителям"/>
+			<column name="name" type="varchar2" value="Типовой договор продажи расчетно-финансовым цен-тром условным потребителям электрической энергии, произведенной объектами по использованию возобновляемых источников энергии"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+			<column name="prefix_for_number" type="varchar2" value="ДУ"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-80" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="13"/>
+			<column name="parent_type_id" type="number" value="9"/>
+			<column name="code" type="varchar2" value="SFC_PAP"/>
+			<column name="short_name" type="varchar2" value="Договор покупки электроэнергии по аукционным ценам"/>
+			<column name="name" type="varchar2" value="Договор покупки расчетно-финансовым центром электрической энергии у энергопроизводящей организации, использующей возобновляемые источники энергии, по аукционным ценам"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-81" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="14"/>
+			<column name="parent_type_id" type="number" value="9"/>
+			<column name="code" type="varchar2" value="SFC_EPAMS"/>
+			<column name="short_name" type="varchar2" value="Договор по поддержанию готовности эл.мощности"/>
+			<column name="name" type="varchar2" value="Типовой договор о покупке услуги по поддержанию готовности электрической мощности"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-82" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="15"/>
+			<column name="parent_type_id" type="number" value="9"/>
+			<column name="code" type="varchar2" value="SFC_EPAMS"/>
+			<column name="short_name" type="varchar2" value="Договор по обеспечению готовности эл.мощности к несению нагрузки"/>
+			<column name="name" type="varchar2" value="Типовой договор на оказание услуги по обеспечению готовности электрической мощности к несению нагрузки"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-83" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO APPS.DM_DOC_TYPES_Tl (
+			ID,
+			DOC_TYPE_ID,
+			LANG,
+			NAME,
+			SHORT_NAME,
+			PREFIX_FOR_NUMBER,
+			CREATE_DATE,
+			LAST_UPDATE_DATE,
+			CREATE_BY,
+			LAST_UPDATE_BY)
+			SELECT APPS.DM_DOC_TYPES_Tl_S.nextval,
+			id,
+			'RU',
+			NAME,
+			SHORT_NAME,
+			CREATE_DATE,
+			PREFIX_FOR_NUMBER,
+			LAST_UPDATE_DATE,
+			CREATE_BY,
+			LAST_UPDATE_BY
+			FROM APPS.DM_DOC_TYPES_Tl;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-84" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO APPS.DM_DOC_TYPES_Tl (
+			ID,
+			DOC_TYPE_ID,
+			LANG,
+			NAME,
+			SHORT_NAME,
+			PREFIX_FOR_NUMBER,
+			CREATE_DATE,
+			LAST_UPDATE_DATE,
+			CREATE_BY,
+			LAST_UPDATE_BY)
+			SELECT  APPS.DM_DOC_TYPES_Tl_S.nextval,
+			DOC_TYPE_ID,
+			'KZ',
+			NAME,
+			SHORT_NAME,
+			PREFIX_FOR_NUMBER,
+			CREATE_DATE,
+			LAST_UPDATE_DATE,
+			CREATE_BY,
+			LAST_UPDATE_BY
+			FROM APPS.DM_DOC_TYPES_Tl
+			WHERE lang='RU' and not exists (select * FROM APPS.DM_DOC_TYPES_Tl t where t.lang = 'KZ');
+		</sql>
+		<rollback/>
+	</changeSet>
+
+
+</databaseChangeLog>

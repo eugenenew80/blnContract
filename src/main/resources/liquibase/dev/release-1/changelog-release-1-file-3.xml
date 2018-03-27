@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-24" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_taxcerts</comment>
+		<createTable tableName="cm_taxcerts" remarks="Свидетельства о постановке на регистрационный учет по НДС" schemaName="apps">
+			<column name="id" type="number" remarks="Ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_series" type="varchar2(12)" remarks="Серия">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_number" type="varchar2(12)" remarks="Номер">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_date" type="date" remarks="Дата выдачи">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bin" type="varchar2(12)" remarks="БИН юридического лица">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="legal_name" type="varchar2(500)" remarks="Наименование юридического лица">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="start_date" type="date" remarks="Действует с">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="tax_authority_name" type="varchar2(500)" remarks="Наименование налогового органа, осуществившего постановку на регистрационный учет по НДС">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tax_authority_bin" type="varchar2(500)" remarks="БИН налогового органа, осуществившего постановку на регистрационный учет по НДС">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-25" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_taxcerts</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_taxcerts"
+				schemaName="apps"
+				tableName="cm_taxcerts"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-26" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_taxcerts</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_taxcerts_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-27" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_taxcerts_tl</comment>
+		<createTable tableName="cm_taxcerts_tl"  schemaName="apps" remarks="Свидетельства о постановке на регистрационный учет по НДС (Перевод)">
+			<column name="id" type="number" remarks="Ид" >
+				<constraints nullable="false"/>
+			</column>
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="taxcerts_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="legal_name" type="varchar2(500)" remarks="Наименование юридического лица">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="tax_authority_name" type="varchar2(500)" remarks="Наименование налогового органа, осуществившего постановку на регистрационный учет по НДС">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-28" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_taxcerts_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_taxcerts_tl"
+				schemaName="apps"
+				tableName="cm_taxcerts_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-29" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_taxcerts_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_taxcerts_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-30" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_taxcerts_tl</comment>
+		<addUniqueConstraint
+				columnNames="taxcerts_id, lang"
+				constraintName="uk_cm_taxcerts_tl"
+				schemaName="apps"
+				tableName="cm_taxcerts_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-31" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_taxcerts_tl to cm_taxcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_taxcerts_tl"
+				baseColumnNames="taxcerts_id"
+				constraintName="fk_cm_taxcerts_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_taxcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>

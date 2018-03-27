@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-32" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dm_request_types</comment>
+		<createTable tableName="dm_request_types" schemaName="apps" remarks="Типы запросов пользователей">
+			<column name="id" type="number" remarks="Ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-33" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dm_request_types</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dm_request_types"
+				schemaName="apps"
+				tableName="dm_request_types"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-34" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dm_request_types</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dm_request_types_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-35" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dm_request_types_tl</comment>
+		<createTable tableName="dm_request_types_tl" schemaName="apps" remarks="Переводы типов запросов пользователей">
+			<column name="id" type="number" remarks="Ид" >
+				<constraints nullable="false"/>
+			</column>
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_type_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(500)" remarks="Наименование юридического лица">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-36" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dm_request_types_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dm_request_types_tl"
+				schemaName="apps"
+				tableName="dm_request_types_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-37" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dm_request_types_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dm_request_types_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-38" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dm_request_types_tl</comment>
+		<addUniqueConstraint
+				columnNames="request_type_id, lang"
+				constraintName="uk_dm_request_types_tl"
+				schemaName="apps"
+				tableName="dm_request_types_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-39" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dm_request_types_tl to dm_request_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dm_request_types_tl"
+				baseColumnNames="request_type_id"
+				constraintName="fk_dm_request_types_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_request_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+</databaseChangeLog>
