@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+
+	<changeSet id="cm-rus-85" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="id" type="number" value="1"/>
+			<column name="code" type="varchar2" value="CMFC"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-86" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="id" type="number" value="2"/>
+			<column name="code" type="varchar2" value="CMCD"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-87" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="id" type="number" value="3"/>
+			<column name="code" type="varchar2" value="CMCI"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-88" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="id" type="number" value="4"/>
+			<column name="code" type="varchar2" value="CMCV"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-89" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="id" type="number" value="5"/>
+			<column name="code" type="varchar2" value="CMAD"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-90" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="id" type="number" value="6"/>
+			<column name="code" type="varchar2" value="CMLD"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-91" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="id" type="number" value="7"/>
+			<column name="code" type="varchar2" value="CMTD"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-92" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="id" type="number" value="8"/>
+			<column name="code" type="varchar2" value="CMEA"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-93" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="id" type="number" value="9"/>
+			<column name="code" type="varchar2" value="CMCC"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-94" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="1"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="request_type_id" type="number" value="1"/>
+			<column name="short_name" type="varchar2" value="Запрос на заключение договора"/>
+			<column name="name" type="varchar2" value="Запрос на заключение договора"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-95" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="2"/>
+			<column name="request_type_id" type="number" value="2"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Запрос на изменение реквизитов компании"/>
+			<column name="name" type="varchar2" value="Запрос на изменение реквизитов компании"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-96" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="3"/>
+			<column name="request_type_id" type="number" value="3"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Запрос на изменение контактных данных"/>
+			<column name="name" type="varchar2" value="Запрос на изменение контактных данных или руководителя компании"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-97" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="4"/>
+			<column name="request_type_id" type="number" value="4"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Запрос на изменение договорных объемов"/>
+			<column name="name" type="varchar2" value="Запрос на изменение договорных объемов"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-98" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="5"/>
+			<column name="request_type_id" type="number" value="5"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Запрос на изменение акта разграничения балансовой принадлежности"/>
+			<column name="name" type="varchar2" value="Запрос на изменение акта разграничения балансовой принадлежности электрических сетей"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-99" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="6"/>
+			<column name="request_type_id" type="number" value="6"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Запрос на изменение списка ИКУЭ"/>
+			<column name="name" type="varchar2" value="Запрос на изменение списка приборов коммерческого учета электроэнергии, их характеристик и мест установки"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-100" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="7"/>
+			<column name="request_type_id" type="number" value="7"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Запрос на применение ВПК"/>
+			<column name="name" type="varchar2" value="Запрос на применение ВПК"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-101" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="8"/>
+			<column name="request_type_id" type="number" value="8"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Запрос на продление договора"/>
+			<column name="name" type="varchar2" value="Запрос на продление договора"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-102" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="9"/>
+			<column name="request_type_id" type="number" value="9"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Запрос на завершение договора"/>
+			<column name="name" type="varchar2" value="Запрос на завершение договора"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-103" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="10"/>
+			<column name="request_type_id" type="number" value="1"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Запрос на заключение договора"/>
+			<column name="name" type="varchar2" value="Запрос на заключение договора"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-104" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="11"/>
+			<column name="request_type_id" type="number" value="2"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Запрос на изменение реквизитов компании"/>
+			<column name="name" type="varchar2" value="Запрос на изменение реквизитов компании"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-105" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="12"/>
+			<column name="request_type_id" type="number" value="3"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Запрос на изменение контактных данных"/>
+			<column name="name" type="varchar2" value="Запрос на изменение контактных данных или руководителя компании"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-106" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="13"/>
+			<column name="request_type_id" type="number" value="4"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Запрос на изменение договорных объемов"/>
+			<column name="name" type="varchar2" value="Запрос на изменение договорных объемов"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-107" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="14"/>
+			<column name="request_type_id" type="number" value="5"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Запрос на изменение акта разграничения балансовой принадлежности"/>
+			<column name="name" type="varchar2" value="Запрос на изменение акта разграничения балансовой принадлежности электрических сетей"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-108" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="15"/>
+			<column name="request_type_id" type="number" value="6"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Запрос на изменение списка ИКУЭ"/>
+			<column name="name" type="varchar2" value="Запрос на изменение списка приборов коммерческого учета электроэнергии, их характеристик и мест установки"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-109" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="16"/>
+			<column name="request_type_id" type="number" value="7"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Запрос на применение ВПК"/>
+			<column name="name" type="varchar2" value="Запрос на применение ВПК"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-110" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="16"/>
+			<column name="request_type_id" type="number" value="8"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Запрос на продление договора"/>
+			<column name="name" type="varchar2" value="Запрос на продление договора"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-111" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="id" type="number" value="17"/>
+			<column name="request_type_id" type="number" value="9"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Запрос на завершение договора"/>
+			<column name="name" type="varchar2" value="Запрос на завершение договора"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+</databaseChangeLog>
