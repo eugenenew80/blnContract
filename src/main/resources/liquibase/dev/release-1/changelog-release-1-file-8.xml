@@ -6,7 +6,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-119" logicalFilePath="path-independent" author="ruslan">
+	<changeSet id="cm-rus-121" logicalFilePath="path-independent" author="ruslan">
 		<addColumn schemaName="apps"
 				   tableName="cm_taxcerts">
 			<column name="bp_id" type="number" remarks="Ид бизнес партнера"/>
@@ -14,7 +14,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-120" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-122" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_taxcerts to dict_business_partners</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -31,7 +31,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-121" logicalFilePath="path-independent" author="ruslan">
+	<changeSet id="cm-rus-123" logicalFilePath="path-independent" author="ruslan">
 		<addColumn schemaName="apps"
 				   tableName="cm_govregcerts">
 			<column name="bp_id" type="number" remarks="Ид бизнес партнера"/>
@@ -39,7 +39,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-122" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-124" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_govregcerts to dict_business_partners</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
