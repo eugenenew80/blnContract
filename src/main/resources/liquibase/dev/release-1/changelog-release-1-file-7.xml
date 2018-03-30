@@ -87,7 +87,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-112" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-112-1" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_state_license_at</comment>
 		<addPrimaryKey
 				columnNames="id"
