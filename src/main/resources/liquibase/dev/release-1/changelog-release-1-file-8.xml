@@ -39,7 +39,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-120" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-122" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_govregcerts to dict_business_partners</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
