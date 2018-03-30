@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-112" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_state_license_at</comment>
+		<createTable tableName="cm_state_license_at" schemaName="apps" remarks="Государственная лицензия на занятие видом деятельности">
+			<column name="id" type="number" remarks="Ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_id" type="number" remarks="Ид бизнес-партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_number" type="varchar2(30)" remarks="Номер">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_date" type="date" remarks="Дата выдачи">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="govregcerts_id" type="number" remarks="Выдана">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="activity_kind" type="varchar2(500)" remarks="На занятие">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="license_type" type="varchar2(300)" remarks="Вид лицензии">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="special _terms" type="varchar2(300)" remarks="Особые условия">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="licensing_authority" type="varchar2(500)" remarks="Орган, выдавший лицензию">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="authority_head" type="varchar2(150)" remarks="Руководитель">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="doc_city" type="varchar2(30)" remarks="Место выдачи">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="revocation_date" type="date" remarks="Дата приостановки ">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="revocation_authority" type="varchar2(500)" remarks="Орган, приостановивший лицензию">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="revocation_note" type="varchar2(500)" remarks="Примечание">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-112" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_state_license_at</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_state_license_at"
+				schemaName="apps"
+				tableName="cm_state_license_at"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-113" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_state_license_at</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_state_license_at_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-114" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_state_license_at_tl</comment>
+		<createTable tableName="cm_state_license_at_tl" schemaName="apps" remarks="Переводы Государственная лицензия на занятие видом деятельности">
+			<column name="id" type="number" remarks="Ид" >
+				<constraints nullable="false"/>
+			</column>
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="state_license_at_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="activity_kind" type="varchar2(500)" remarks="На занятие">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="license_type" type="varchar2(300)" remarks="Вид лицензии">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="special _terms" type="varchar2(300)" remarks="Особые условия">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="licensing_authority" type="varchar2(500)" remarks="Орган, выдавший лицензию">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="authority_head" type="varchar2(150)" remarks="Руководитель">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="doc_city" type="varchar2(30)" remarks="Место выдачи">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="revocation_authority" type="varchar2(500)" remarks="Орган, приостановивший лицензию">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="revocation_note" type="varchar2(500)" remarks="Примечание">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-115" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_state_license_at_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_state_license_at_tl"
+				schemaName="apps"
+				tableName="cm_state_license_at_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-116" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_state_license_at_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_state_license_at_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-117" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_state_license_at_tl</comment>
+		<addUniqueConstraint
+				columnNames="state_license_at_id, lang"
+				constraintName="uk_cm_state_license_at_tl"
+				schemaName="apps"
+				tableName="cm_state_license_at_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-118" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_state_license_at_tl to cm_state_license_at</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_state_license_at_tl"
+				baseColumnNames="state_license_at_id"
+				constraintName="fk_cm_state_license_at_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_state_license_at"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-119" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_state_license_at to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_state_license_at"
+				baseColumnNames="bp_id"
+				constraintName="fk_cm_state_license_at_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-120" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_state_license_at to cm_govregcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_state_license_at"
+				baseColumnNames="govregcerts_id"
+				constraintName="fk_cm_state_license_at_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_govregcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+</databaseChangeLog>

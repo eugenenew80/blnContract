@@ -283,7 +283,7 @@
 	<changeSet id="cm-rus-110" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
 		<insert schemaName="apps" tableName="dm_request_types_tl">
-			<column name="id" type="number" value="16"/>
+			<column name="id" type="number" value="17"/>
 			<column name="request_type_id" type="number" value="8"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="short_name" type="varchar2" value="Запрос на продление договора"/>
@@ -295,7 +295,7 @@
 	<changeSet id="cm-rus-111" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_request_types_tl</comment>
 		<insert schemaName="apps" tableName="dm_request_types_tl">
-			<column name="id" type="number" value="17"/>
+			<column name="id" type="number" value="18"/>
 			<column name="request_type_id" type="number" value="9"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="short_name" type="varchar2" value="Запрос на завершение договора"/>

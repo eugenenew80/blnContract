@@ -67,7 +67,7 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="short_name" type="varchar2(100)" remarks="Наименование юридического лица">
+			<column name="short_name" type="varchar2(150)" remarks="Наименование юридического лица">
 				<constraints nullable="false"/>
 			</column>
 
