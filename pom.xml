@@ -128,7 +128,7 @@
         </profile>
 
         <profile>
-            <id>dev</id>
+            <id>Prod</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
