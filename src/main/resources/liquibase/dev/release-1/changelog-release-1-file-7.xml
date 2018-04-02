@@ -41,7 +41,7 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="special _terms" type="varchar2(300)" remarks="Особые условия">
+			<column name="special_terms" type="varchar2(300)" remarks="Особые условия">
 				<constraints nullable="true"/>
 			</column>
 
@@ -127,7 +127,7 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="special _terms" type="varchar2(300)" remarks="Особые условия">
+			<column name="special_terms" type="varchar2(300)" remarks="Особые условия">
 				<constraints nullable="true"/>
 			</column>
 

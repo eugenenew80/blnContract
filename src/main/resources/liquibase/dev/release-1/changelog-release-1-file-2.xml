@@ -92,7 +92,7 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="issuer_post" type="varchar2(150)" remarks="Comments">
+			<column name="issuer_post" type="varchar2(150)" remarks="Должность выдавшего документ">
 				<constraints nullable="false"/>
 			</column>
 

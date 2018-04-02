@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-131" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_poa_types</comment>
+		<createTable tableName="cm_poa_types" schemaName="apps" remarks="Типы доверительных документов на заключение договора">
+			<column name="code" type="varchar2(10)" remarks="Код типа документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-132" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_poa_types</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_cm_poa_types"
+				schemaName="apps"
+				tableName="cm_poa_types"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-133" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_poa_types_tl</comment>
+		<createTable tableName="cm_poa_types_tl" schemaName="apps" remarks="Переводы типов доверительных документов на заключение договора">
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="code" type="varchar2(10)" remarks="Код типа документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(30)" remarks="Наименование документа (в родительном падеже)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-134" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_poa_types_tl</comment>
+		<addPrimaryKey
+				columnNames="code,lang"
+				constraintName="pk_cm_poa_types_tl"
+				schemaName="apps"
+				tableName="cm_poa_types_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-135" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_poa_types_tl to cm_poa_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_poa_types_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_poa_types_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_poa_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-136" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_poa_types</comment>
+		<insert schemaName="apps" tableName="cm_poa_types">
+			<column name="code" type="varchar2" value="POA"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-137" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_poa_types</comment>
+		<insert schemaName="apps" tableName="cm_poa_types">
+			<column name="code" type="varchar2" value="ORDER"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-138" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into cm_poa_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_poa_types_tl">
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="code" type="varchar2" value="POA"/>
+			<column name="name" type="varchar2" value="доверенности"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-139" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into cm_poa_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_poa_types_tl">
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="code" type="varchar2" value="ORDER"/>
+			<column name="name" type="varchar2" value="приказа"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-140" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into cm_poa_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_poa_types_tl">
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="code" type="varchar2" value="POA"/>
+			<column name="name" type="varchar2" value="доверенности"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-140" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into cm_poa_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_poa_types_tl">
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="code" type="varchar2" value="ORDER"/>
+			<column name="name" type="varchar2" value="приказа"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-140" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into cm_poa_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_poa_types_tl">
+			<column name="lang" type="varchar2" value="EN"/>
+			<column name="code" type="varchar2" value="POA"/>
+			<column name="name" type="varchar2" value="доверенности"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-140" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into cm_poa_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_poa_types_tl">
+			<column name="lang" type="varchar2" value="EN"/>
+			<column name="code" type="varchar2" value="ORDER"/>
+			<column name="name" type="varchar2" value="приказа"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-141" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to CM_DOC_KEG_CTE</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="parent_contract_id"
+				constraintName="fk_cm_doc_keg_cte_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-142" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to dm_requests</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="request_id"
+				constraintName="fk_cm_doc_keg_cte_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_requests"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-143" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to contract_record_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="record_type_id"
+				constraintName="fk_cm_doc_keg_cte_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="contract_record_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-144" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp1_id"
+				constraintName="fk_cm_doc_keg_cte_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-145" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp2_id"
+				constraintName="fk_cm_doc_keg_cte_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-146" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to dict_post_addresses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp1_legal_address_id"
+				constraintName="fk_cm_doc_keg_cte_6"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-147" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to dict_post_addresses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp2_legal_address_id"
+				constraintName="fk_cm_doc_keg_cte_7"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-148" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to cm_poa_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp1_poa_type_code"
+				constraintName="fk_cm_doc_keg_cte_8"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_poa_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-149" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to cm_poa_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp2_poa_type_code"
+				constraintName="fk_cm_doc_keg_cte_9"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_poa_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-150" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to cm_taxcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp1_taxcert_id"
+				constraintName="fk_cm_doc_keg_cte_10"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_taxcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-151" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to cm_taxcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp2_taxcert_id"
+				constraintName="fk_cm_doc_keg_cte_11"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_taxcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-152" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to cm_govregcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp1_grc_id"
+				constraintName="fk_cm_doc_keg_cte_12"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_govregcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-153" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to cm_govregcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp2_grc_id"
+				constraintName="fk_cm_doc_keg_cte_13"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_govregcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-154" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to cm_rle_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp1_grc_rle_code"
+				constraintName="fk_cm_doc_keg_cte_14"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_rle_doc_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-155" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to cm_rle_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp2_grc_rle_code"
+				constraintName="fk_cm_doc_keg_cte_15"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_rle_doc_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-156" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to dict_bank_accounts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp1_bank_account_id"
+				constraintName="fk_cm_doc_keg_cte_16"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_bank_accounts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-157" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to dict_bank_accounts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp2_bank_account_id"
+				constraintName="fk_cm_doc_keg_cte_17"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_bank_accounts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-158" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to dict_countries</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp2_country_id"
+				constraintName="fk_cm_doc_keg_cte_18"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_countries"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-159" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to dict_ubpn_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp2_ubpn_type_id"
+				constraintName="fk_cm_doc_keg_cte_19"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_ubpn_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-160" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_docs</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_docs_s"
+				startValue="1"/>
+	</changeSet>
+
+</databaseChangeLog>
