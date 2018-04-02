@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-167" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_tariffs </comment>
+		<createTable tableName="cm_tariffs " schemaName="apps" remarks="Справочник Тарифы">
+			<column name="id" type="number" remarks="Ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="tariff_plan_id" type="number" remarks="Тарифный план">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="service_id" type="number" remarks="Код услуги">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="tariff" type="number" remarks="Тариф" defaultValue="0">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="code" type="varchar2(3)" remarks="Код валюты" defaultValue="KZT">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="is_ndc" type="number" remarks="Включает НДС">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-168" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_tariffs</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_tariffs"
+				schemaName="apps"
+				tableName="cm_tariffs"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-169" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_tariffs</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_tariffs_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-170" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_tariffs to cm_tariff_plans</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_tariffs"
+				baseColumnNames="tariff_plan_id"
+				constraintName="fk_cm_tariffs_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_tariff_plans"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-171" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_tariffs_tl to dict_services</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_tariffs"
+				baseColumnNames="service_id"
+				constraintName="fk_cm_tariffs_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_services"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-172" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_tariffs_tl</comment>
+		<createTable tableName="cm_tariffs_tl" schemaName="apps" remarks="Справочник переводы Тарифный план">
+			<column name="tariff_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_reference" type="varchar2(500)" remarks="Документ об утверждении тарифа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-173" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_tariffs_tl</comment>
+		<addPrimaryKey
+				columnNames="tariff_id,lang"
+				constraintName="pk_cm_tariffs_tl"
+				schemaName="apps"
+				tableName="cm_tariffs_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-174" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_tariffs_tl to cm_tariffs</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_tariffs_tl"
+				baseColumnNames="tariff_id"
+				constraintName="fk_cm_tariffs_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_tariffs"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>
