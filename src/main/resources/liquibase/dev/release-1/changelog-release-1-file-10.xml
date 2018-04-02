@@ -95,7 +95,7 @@
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
 				referencedTableName="cm_poa_types"
-				referencedColumnNames="id"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
 
@@ -146,7 +146,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-140" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-140-1" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into cm_poa_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_poa_types_tl">
 			<column name="lang" type="varchar2" value="KZ"/>
@@ -156,7 +156,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-140" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-140-2" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into cm_poa_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_poa_types_tl">
 			<column name="lang" type="varchar2" value="EN"/>
@@ -166,7 +166,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-140" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-140-3" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into cm_poa_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_poa_types_tl">
 			<column name="lang" type="varchar2" value="EN"/>
@@ -189,23 +189,6 @@
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
 				referencedTableName="cm_doc_keg_cte"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="cm-rus-142" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to dm_requests</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="cm_doc_keg_cte"
-				baseColumnNames="request_id"
-				constraintName="fk_cm_doc_keg_cte_2"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dm_requests"
 				referencedColumnNames="id"
 		/>
 	</changeSet>
@@ -397,7 +380,90 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-154" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="cm-rus-153-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop Foreign Key Constraint in table: cm_rle_doc_types_tl</comment>
+        <dropForeignKeyConstraint baseTableName="cm_rle_doc_types_tl"  constraintName="fk_cm_rle_doc_types_tl_1" baseTableSchemaName="apps"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-153-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop Primary Key in table: cm_rle_doc_types_tl</comment>
+        <dropPrimaryKey constraintName="pk_cm_rle_doc_types_tl"
+                        schemaName="apps"
+                        tableName="cm_rle_doc_types_tl"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-153-3" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from cm_rle_doc_types_tl</comment>
+        <dropColumn columnName="id"
+                    schemaName="apps"
+                    tableName="cm_rle_doc_types_tl"/>
+    </changeSet>
+
+   <changeSet id="cm-rus-153-4" logicalFilePath="path-independent" author="ruslan" context="dev">
+       <comment>drop unique constraint in table: cm_rle_doc_types_tl</comment>
+       <dropUniqueConstraint constraintName="uk_cm_rle_doc_types_tl"
+                             schemaName="apps"
+                             tableName="cm_rle_doc_types_tl"
+                             uniqueColumns="RLE_DOC_TYPE_ID, LANG"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-153-4-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from cm_rle_doc_types_tl</comment>
+        <dropColumn columnName="rle_doc_type_id"
+                    schemaName="apps"
+                    tableName="cm_rle_doc_types_tl"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-153-5" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: cm_rle_doc_types_tl</comment>
+        <addPrimaryKey
+                columnNames="code,lang"
+                constraintName="pk_cm_rle_doc_types_tl"
+                schemaName="apps"
+                tableName="cm_rle_doc_types_tl"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-153-6" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop Primary Key in table: cm_rle_doc_types</comment>
+        <dropPrimaryKey constraintName="pk_cm_rle_doc_types"
+                        schemaName="apps"
+                        tableName="cm_rle_doc_types"/>
+    </changeSet>
+
+
+    <changeSet id="cm-rus-153-7" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column from cm_rle_doc_types</comment>
+        <dropColumn columnName="id"
+                    schemaName="apps"
+                    tableName="cm_rle_doc_types"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-153-8" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: cm_rle_doc_types</comment>
+        <addPrimaryKey
+                columnNames="code"
+                constraintName="pk_cm_rle_doc_types"
+                schemaName="apps"
+                tableName="cm_rle_doc_types"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-153-9" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint:cm_rle_doc_types_tl to cm_rle_doc_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="cm_rle_doc_types_tl"
+                baseColumnNames="code"
+                constraintName="fk_cm_rle_doc_types_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="cm_rle_doc_types"
+                referencedColumnNames="code"
+        />
+    </changeSet>
+    <changeSet id="cm-rus-154" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: CM_DOC_KEG_CTE to cm_rle_doc_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
