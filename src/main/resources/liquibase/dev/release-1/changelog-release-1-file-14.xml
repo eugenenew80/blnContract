@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-180" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_group_statuses </comment>
+		<createTable tableName="cm_group_statuses" schemaName="apps" remarks="Справочник Группы статусов">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-181" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_group_statuses</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_group_statuses"
+				schemaName="apps"
+				tableName="cm_group_statuses"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-182" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_group_statuses</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_group_statuses_s"
+				startValue="2"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-183" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_group_statuses_tl</comment>
+		<createTable tableName="cm_group_statuses_tl" schemaName="apps" remarks="Справочник  Группы статусов">
+			<column name="group_status_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(200)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-184" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_group_statuses_tl</comment>
+		<addPrimaryKey
+				columnNames="group_status_id,lang"
+				constraintName="pk_cm_group_statuses_tl"
+				schemaName="apps"
+				tableName="cm_group_statuses_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-185" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_group_statuses_tl to cm_group_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_group_statuses_tl"
+				baseColumnNames="group_status_id"
+				constraintName="fk_cm_group_statuses_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_group_statuses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-186" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_group_statuses</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses">
+			<column name="id" type="number" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-187" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_group_statuses</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses">
+			<column name="group_status_id" type="number" value="1"/>
+			<column name="name" type="varchar2" value="Договора"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+
+</databaseChangeLog>
