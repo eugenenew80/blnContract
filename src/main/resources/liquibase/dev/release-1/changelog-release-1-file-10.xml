@@ -383,6 +383,7 @@
     <changeSet id="cm-rus-153-1" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>drop Foreign Key Constraint in table: cm_rle_doc_types_tl</comment>
         <dropForeignKeyConstraint baseTableName="cm_rle_doc_types_tl"  constraintName="fk_cm_rle_doc_types_tl_1" baseTableSchemaName="apps"/>
+		<rollback/>
     </changeSet>
 
     <changeSet id="cm-rus-153-2" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -390,6 +391,7 @@
         <dropPrimaryKey constraintName="pk_cm_rle_doc_types_tl"
                         schemaName="apps"
                         tableName="cm_rle_doc_types_tl"/>
+		<rollback/>
     </changeSet>
 
     <changeSet id="cm-rus-153-3" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -397,6 +399,7 @@
         <dropColumn columnName="id"
                     schemaName="apps"
                     tableName="cm_rle_doc_types_tl"/>
+		<rollback/>
     </changeSet>
 
    <changeSet id="cm-rus-153-4" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -405,6 +408,7 @@
                              schemaName="apps"
                              tableName="cm_rle_doc_types_tl"
                              uniqueColumns="RLE_DOC_TYPE_ID, LANG"/>
+	   <rollback/>
     </changeSet>
 
     <changeSet id="cm-rus-153-4-1" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -412,6 +416,7 @@
         <dropColumn columnName="rle_doc_type_id"
                     schemaName="apps"
                     tableName="cm_rle_doc_types_tl"/>
+		<rollback/>
     </changeSet>
 
     <changeSet id="cm-rus-153-5" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -421,6 +426,7 @@
                 constraintName="pk_cm_rle_doc_types_tl"
                 schemaName="apps"
                 tableName="cm_rle_doc_types_tl"/>
+		<rollback/>
     </changeSet>
 
     <changeSet id="cm-rus-153-6" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -428,6 +434,7 @@
         <dropPrimaryKey constraintName="pk_cm_rle_doc_types"
                         schemaName="apps"
                         tableName="cm_rle_doc_types"/>
+		<rollback/>
     </changeSet>
 
 
@@ -436,6 +443,7 @@
         <dropColumn columnName="id"
                     schemaName="apps"
                     tableName="cm_rle_doc_types"/>
+		<rollback/>
     </changeSet>
 
     <changeSet id="cm-rus-153-8" logicalFilePath="path-independent" author="ruslan" context="dev">
