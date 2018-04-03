@@ -20,7 +20,7 @@
 			<column name="request_id" type="number" remarks="Идентификатор запроса">
 				<constraints nullable="true"/>
 			</column>
-			
+
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
 				<constraints nullable="true"/>
 			</column>
@@ -133,6 +133,7 @@
 				constraintName="pk_cm_govregcerts_tl"
 				schemaName="apps"
 				tableName="cm_govregcerts_tl"/>
+		<rollback/>
 	</changeSet>
 
 
@@ -143,6 +144,7 @@
 				schemaName="apps"
 				sequenceName="cm_govregcerts_tl_s"
 				startValue="1"/>
+		<rollback/>
 	</changeSet>
 
 

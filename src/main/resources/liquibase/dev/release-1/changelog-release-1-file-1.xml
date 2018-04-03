@@ -102,6 +102,7 @@
 				constraintName="pk_cm_rle_doc_types_tl"
 				schemaName="apps"
 				tableName="cm_rle_doc_types_tl"/>
+		<rollback/>
 	</changeSet>
 
 
@@ -122,6 +123,7 @@
 				constraintName="uk_cm_rle_doc_types_tl"
 				schemaName="apps"
 				tableName="cm_rle_doc_types_tl"/>
+		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-8" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -139,6 +141,7 @@
 				referencedTableName="cm_rle_doc_types"
 				referencedColumnNames="id"
 		/>
+		<rollback/>
 	</changeSet>
 
 

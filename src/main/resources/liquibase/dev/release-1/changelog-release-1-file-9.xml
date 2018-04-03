@@ -154,10 +154,6 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="bp2_country_id" type="number" remarks="Бизнес-партнер 2: Страна нерезидента">
-				<constraints nullable="true"/>
-			</column>
-
 			<column name="bp2_ubpn_type_id" type="number" remarks="Бизнес-партнер 2: ссылка на тип идентификатора типа номера нерезидента: БИН, ИНН, PVN, и т.д. ссылается на CM_RLE_DOC_TYPES">
 				<constraints nullable="true"/>
 			</column>
@@ -325,10 +321,6 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="bp1_poa_type_name" type="varchar2(30)" remarks="Бизнес-партнер 1: Наименование доверительного документа">
-				<constraints nullable="true"/>
-			</column>
-
 			<column name="bp1_taxcert_series" type="varchar2(30)" remarks="Бизнес-партнер 1: Св-во о постановке на учет по НДС: Серия">
 				<constraints nullable="true"/>
 			</column>
@@ -357,10 +349,6 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="bp2_country_name" type="varchar2(100)" remarks="Бизнес-партнер 2: Нерезидент: Страна">
-				<constraints nullable="true"/>
-			</column>
-
 			<column name="bp2_ubpn_short_name" type="varchar2(100)" remarks="Бизнес-партнер 2: Нерезидент: Тип идентификатора">
 				<constraints nullable="true"/>
 			</column>
@@ -378,10 +366,6 @@
 			</column>
 
 			<column name="bp2_contract_person_fio_rp" type="varchar2(50)" remarks="Бизнес-партнер 2: ФИО подписывающего в родительном падеже">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_poa_type_name" type="varchar2(30)" remarks="Бизнес-партнер 2: Доверительный документ: Наименование">
 				<constraints nullable="true"/>
 			</column>
 
