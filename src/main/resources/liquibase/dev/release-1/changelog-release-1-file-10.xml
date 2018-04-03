@@ -381,7 +381,7 @@
 	</changeSet>
 
     <changeSet id="cm-rus-153-4-1" logicalFilePath="path-independent" author="ruslan">
-		<preConditions onFail="MARK_RAN">
+		<preConditions onFail="WARN">
 			<columnExists schemaName="apps" tableName="cm_rle_doc_types_tl" columnName="rle_doc_type_id" />
 		</preConditions>
 
