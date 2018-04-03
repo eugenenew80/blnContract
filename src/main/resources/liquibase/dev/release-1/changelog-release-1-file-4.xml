@@ -56,9 +56,6 @@
 	<changeSet id="cm-rus-35" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dm_request_types_tl</comment>
 		<createTable tableName="dm_request_types_tl" schemaName="apps" remarks="Переводы типов запросов пользователей">
-			<column name="id" type="number" remarks="Ид" >
-				<constraints nullable="false"/>
-			</column>
 			<column name="lang" type="varchar2(10)" remarks="Язык">
 				<constraints nullable="false"/>
 			</column>
@@ -96,26 +93,8 @@
 	<changeSet id="cm-rus-36" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: dm_request_types_tl</comment>
 		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_dm_request_types_tl"
-				schemaName="apps"
-				tableName="dm_request_types_tl"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-37" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: dm_request_types_tl</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="dm_request_types_tl_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-38" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: dm_request_types_tl</comment>
-		<addUniqueConstraint
 				columnNames="request_type_id, lang"
-				constraintName="uk_dm_request_types_tl"
+				constraintName="pk_dm_request_types_tl"
 				schemaName="apps"
 				tableName="dm_request_types_tl"/>
 	</changeSet>

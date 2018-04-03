@@ -1,177 +1,160 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <databaseChangeLog
-		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-15" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_govregcerts</comment>
-		<createTable tableName="cm_govregcerts" remarks="Документы о государственной регистрации / перерегистрации юридического лица" schemaName="apps">
-			<column name="id" type="number" remarks="Ид">
-				<constraints nullable="false"/>
-			</column>
+    <changeSet id="cm-rus-15" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: cm_govregcerts</comment>
+        <createTable tableName="cm_govregcerts" remarks="Документы о государственной регистрации / перерегистрации юридического лица" schemaName="apps">
+            <column name="id" type="number" remarks="Ид">
+                <constraints nullable="false"/>
+            </column>
 
-			<column name="doc_date" type="DATE" remarks="Дата выдачи">
-				<constraints nullable="false"/>
-			</column>
+            <column name="doc_date" type="DATE" remarks="Дата выдачи">
+                <constraints nullable="false"/>
+            </column>
 
-			<column name="request_id" type="number" remarks="Идентификатор запроса">
-				<constraints nullable="true"/>
-			</column>
+            <column name="request_id" type="number" remarks="Идентификатор запроса">
+                <constraints nullable="true"/>
+            </column>
 
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
+            <column name="doc_regnum" type="varchar2(30)" remarks="Регистрационный номер">
+                <constraints nullable="false"/>
+            </column>
 
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
-			</column>
+            <column name="bin" type="varchar2(12)" remarks="БИН">
+                <constraints nullable="false"/>
+            </column>
 
-			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
-			</column>
+            <column name="doc_type_code" type="varchar2(30)" remarks="Тип документа">
+                <constraints nullable="false"/>
+            </column>
 
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
-			</column>
-		</createTable>
-	</changeSet>
+            <column name="doc_series" type="varchar2(10)" remarks="Серия документа">
+                <constraints nullable="false"/>
+            </column>
 
-	<changeSet id="cm-rus-16" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_govregcerts</comment>
-		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_govregcerts"
-				schemaName="apps"
-				tableName="cm_govregcerts"/>
-	</changeSet>
+            <column name="doc_number" type="varchar2(10)" remarks="Номер документа">
+                <constraints nullable="false"/>
+            </column>
 
-	<changeSet id="cm-rus-17" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_govregcerts</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_govregcerts_s"
-				startValue="1"/>
-	</changeSet>
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
 
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
 
-	<changeSet id="cm-rus-18" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_govregcerts_tl</comment>
-		<createTable tableName="cm_govregcerts_tl" remarks="Документы о государственной регистрации / перерегистрации юридического лица" schemaName="apps">
-			<column name="id" type="NUMBER" remarks="Ид">
-				<constraints nullable="false"/>
-			</column>
-			<column name="lang" type="varchar2(10)" remarks="Язык">
-				<constraints nullable="false"/>
-			</column>
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
 
-			<column name="doc_type_code" type="varchar2(30)" remarks="Тип документа">
-				<constraints nullable="false"/>
-			</column>
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
 
-			<column name="govregcert_id" type="number" remarks="Ссылка на родительскую запись">
-				<constraints nullable="false"/>
-			</column>
+    <changeSet id="cm-rus-16" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: cm_govregcerts</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_cm_govregcerts"
+                schemaName="apps"
+                tableName="cm_govregcerts"/>
+    </changeSet>
 
-			<column name="doc_city" type="varchar2(50)" remarks="Место выдачи">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="legal_address" type="varchar2(300)" remarks="Место нахождения">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="issuer_fio" type="varchar2(50)" remarks="ФИО, выдавшего документ">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="issuing_authority" type="varchar2(500)" remarks="Орган, выдавший документ">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="issuer_post" type="varchar2(150)" remarks="Должность выдавшего документ">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="doc_regnum" type="varchar2(30)" remarks="Регистрационный номер">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="bin" type="varchar2(12)" remarks="БИН">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="legal_name" type="varchar2(500)" remarks="Наименование юридического лица">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
-			</column>
-		</createTable>
-	</changeSet>
-
-	<changeSet id="cm-rus-19" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_govregcerts_tl</comment>
-		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_govregcerts_tl"
-				schemaName="apps"
-				tableName="cm_govregcerts_tl"/>
-		<rollback/>
-	</changeSet>
+    <changeSet id="cm-rus-17" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: cm_govregcerts</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="cm_govregcerts_s"
+                startValue="1"/>
+    </changeSet>
 
 
-	<changeSet id="cm-rus-20" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_govregcerts_tl</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_govregcerts_tl_s"
-				startValue="1"/>
-		<rollback/>
-	</changeSet>
+    <changeSet id="cm-rus-18" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: cm_govregcerts_tl</comment>
+        <createTable tableName="cm_govregcerts_tl" remarks="Документы о государственной регистрации / перерегистрации юридического лица" schemaName="apps">
+            <column name="lang" type="varchar2(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
 
+            <column name="govregcert_id" type="number" remarks="Ссылка на родительскую запись">
+                <constraints nullable="false"/>
+            </column>
 
-	<changeSet id="cm-rus-21" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: cm_govregcerts_tl</comment>
-		<addUniqueConstraint
-				columnNames="govregcert_id, lang"
-				constraintName="uk_cm_govregcerts_tl"
-				schemaName="apps"
-				tableName="cm_govregcerts_tl"/>
-	</changeSet>
+            <column name="doc_city" type="varchar2(50)" remarks="Место выдачи">
+                <constraints nullable="false"/>
+            </column>
 
-	<changeSet id="cm-rus-22" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_govregcerts_tl to cm_govregcerts</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="cm_govregcerts_tl"
-				baseColumnNames="govregcert_id"
-				constraintName="fk_cm_govregcerts_tl_1"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="CASCADE"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="cm_govregcerts"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
+            <column name="legal_address" type="varchar2(300)" remarks="Место нахождения">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="issuer_fio" type="varchar2(50)" remarks="ФИО, выдавшего документ">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="issuing_authority" type="varchar2(500)" remarks="Орган, выдавший документ">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="issuer_post" type="varchar2(150)" remarks="Должность выдавшего документ">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="legal_name" type="varchar2(500)" remarks="Наименование юридического лица">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="cm-rus-19" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: cm_govregcerts_tl</comment>
+        <addPrimaryKey
+                columnNames="govregcert_id,lang"
+                constraintName="pk_cm_govregcerts_tl"
+                schemaName="apps"
+                tableName="cm_govregcerts_tl"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-22" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: cm_govregcerts_tl to cm_govregcerts</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="cm_govregcerts_tl"
+                baseColumnNames="govregcert_id"
+                constraintName="fk_cm_govregcerts_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="cm_govregcerts"
+                referencedColumnNames="id"
+        />
+    </changeSet>
 
 </databaseChangeLog>

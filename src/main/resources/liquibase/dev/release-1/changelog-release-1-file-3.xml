@@ -84,9 +84,6 @@
 	<changeSet id="cm-rus-27" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_taxcerts_tl</comment>
 		<createTable tableName="cm_taxcerts_tl"  schemaName="apps" remarks="Свидетельства о постановке на регистрационный учет по НДС (Перевод)">
-			<column name="id" type="number" remarks="Ид" >
-				<constraints nullable="false"/>
-			</column>
 			<column name="lang" type="varchar2(10)" remarks="Язык">
 				<constraints nullable="false"/>
 			</column>
@@ -124,26 +121,8 @@
 	<changeSet id="cm-rus-28" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_taxcerts_tl</comment>
 		<addPrimaryKey
-				columnNames="id"
+				columnNames="taxcerts_id,lang"
 				constraintName="pk_cm_taxcerts_tl"
-				schemaName="apps"
-				tableName="cm_taxcerts_tl"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-29" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_taxcerts_tl</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_taxcerts_tl_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-30" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: cm_taxcerts_tl</comment>
-		<addUniqueConstraint
-				columnNames="taxcerts_id, lang"
-				constraintName="uk_cm_taxcerts_tl"
 				schemaName="apps"
 				tableName="cm_taxcerts_tl"/>
 	</changeSet>
