@@ -42,6 +42,7 @@
 				constraintName="pk_cm_rle_doc_types"
 				schemaName="apps"
 				tableName="cm_rle_doc_types"/>
+		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-3" logicalFilePath="path-independent" author="ruslan" context="dev">
@@ -101,29 +102,9 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-8" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_rle_doc_types_tl to cm_rle_doc_types</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="cm_rle_doc_types_tl"
-				baseColumnNames="rle_doc_type_id"
-				constraintName="fk_cm_rle_doc_types_tl_1"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="CASCADE"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="cm_rle_doc_types"
-				referencedColumnNames="id"
-		/>
-		<rollback/>
-	</changeSet>
-
-
 	<changeSet id="cm-rus-9" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into cm_rle_doc_types</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types">
-			<column name="id" type="number" value="1"/>
 			<column name="code" type="varchar2" value="CSRLE"/>
 		</insert>
 		<rollback/>
@@ -132,7 +113,6 @@
 	<changeSet id="cm-rus-10" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into cm_rle_doc_types</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types">
-			<column name="id" type="number" value="2"/>
 			<column name="code" type="varchar2" value="CSRRLE"/>
 		</insert>
 		<rollback/>
@@ -141,7 +121,6 @@
 	<changeSet id="cm-rus-11" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into cm_rle_doc_types</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types">
-			<column name="id" type="number" value="3"/>
 			<column name="code" type="varchar2" value="RSRRLE"/>
 		</insert>
 		<rollback/>
@@ -150,7 +129,6 @@
 	<changeSet id="cm-rus-11-1" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into cm_rle_doc_types</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types">
-			<column name="id" type="number" value="4"/>
 			<column name="code" type="varchar2" value="EFRCCI"/>
 		</insert>
 		<rollback/>

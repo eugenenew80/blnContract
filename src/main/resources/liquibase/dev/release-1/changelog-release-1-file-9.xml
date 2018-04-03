@@ -226,6 +226,10 @@
 				<constraints nullable="true"/>
 			</column>
 
+			<column name="bp2_country_id" type="NUMBER" remarks="Бизнес-партнер 2: Ид страны">
+				<constraints nullable="true"/>
+			</column>
+
 			<column name="bp2_bank_bic" type="VARCHAR2(11)" remarks="Бизнес-партнер 2: БИК">
 				<constraints nullable="true"/>
 			</column>

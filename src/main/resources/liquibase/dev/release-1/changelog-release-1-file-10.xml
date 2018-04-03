@@ -380,42 +380,13 @@
 		/>
 	</changeSet>
 
-    <changeSet id="cm-rus-153-1" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>drop Foreign Key Constraint in table: cm_rle_doc_types_tl</comment>
-        <dropForeignKeyConstraint baseTableName="cm_rle_doc_types_tl"  constraintName="fk_cm_rle_doc_types_tl_1" baseTableSchemaName="apps"/>
-		<rollback/>
-    </changeSet>
+    <changeSet id="cm-rus-153-4-1" logicalFilePath="path-independent" author="ruslan">
+		<preConditions onFail="MARK_RAN">
+			<columnExists schemaName="apps" tableName="cm_rle_doc_types_tl" columnName="rle_doc_type_id" />
+		</preConditions>
 
-    <changeSet id="cm-rus-153-2" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>drop Primary Key in table: cm_rle_doc_types_tl</comment>
-        <dropPrimaryKey constraintName="pk_cm_rle_doc_types_tl"
-                        schemaName="apps"
-                        tableName="cm_rle_doc_types_tl"/>
-		<rollback/>
-    </changeSet>
-
-    <changeSet id="cm-rus-153-3" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>drop column from cm_rle_doc_types_tl</comment>
-        <dropColumn columnName="id"
-                    schemaName="apps"
-                    tableName="cm_rle_doc_types_tl"/>
-		<rollback/>
-    </changeSet>
-
-   <changeSet id="cm-rus-153-4" logicalFilePath="path-independent" author="ruslan" context="dev">
-       <comment>drop unique constraint in table: cm_rle_doc_types_tl</comment>
-       <dropUniqueConstraint constraintName="uk_cm_rle_doc_types_tl"
-                             schemaName="apps"
-                             tableName="cm_rle_doc_types_tl"
-                             uniqueColumns="RLE_DOC_TYPE_ID, LANG"/>
-	   <rollback/>
-    </changeSet>
-
-    <changeSet id="cm-rus-153-4-1" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>drop column from cm_rle_doc_types_tl</comment>
-        <dropColumn columnName="rle_doc_type_id"
-                    schemaName="apps"
-                    tableName="cm_rle_doc_types_tl"/>
+		<comment>drop column from cm_rle_doc_types_tl</comment>
+		<dropColumn schemaName="apps" tableName="cm_rle_doc_types_tl" columnName="rle_doc_type_id" />
 		<rollback/>
     </changeSet>
 
@@ -430,6 +401,9 @@
     </changeSet>
 
     <changeSet id="cm-rus-153-6" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<primaryKeyExists schemaName="apps" tableName="cm_rle_doc_types_tl" primaryKeyName="pk_cm_rle_doc_types" />
+		</preConditions>
         <comment>drop Primary Key in table: cm_rle_doc_types</comment>
         <dropPrimaryKey constraintName="pk_cm_rle_doc_types"
                         schemaName="apps"
@@ -439,6 +413,9 @@
 
 
     <changeSet id="cm-rus-153-7" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<columnExists schemaName="apps" tableName="cm_rle_doc_types_tl" columnName="id" />
+		</preConditions>
         <comment>drop column from cm_rle_doc_types</comment>
         <dropColumn columnName="id"
                     schemaName="apps"
