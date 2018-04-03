@@ -138,6 +138,7 @@
 			<column name="code" type="varchar2" value="bp1adjustment"/>
 		</insert>
 		<rollback/>
+	</changeSet>
 
 	<changeSet id="cm-rus-185" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_statuses</comment>
@@ -210,7 +211,7 @@
 		<comment>insert into cm_doc_statuses_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
 			<column name="code" type="varchar2" value="project"/>
-			<column name="lang" type="varchar2" value="EN"/>
+			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Проект"/>
 		</insert>
 		<rollback/>
@@ -220,7 +221,7 @@
 		<comment>insert into cm_doc_statuses_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
 			<column name="code" type="varchar2" value="approved"/>
-			<column name="lang" type="varchar2" value="EN"/>
+			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Утвержден"/>
 		</insert>
 		<rollback/>
@@ -230,7 +231,7 @@
 		<comment>insert into cm_doc_statuses_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
 			<column name="code" type="varchar2" value="agreement"/>
-			<column name="lang" type="varchar2" value="EN"/>
+			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="На согласовании"/>
 		</insert>
 		<rollback/>
@@ -240,7 +241,7 @@
 		<comment>insert into cm_doc_statuses_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
 			<column name="code" type="varchar2" value="signed"/>
-			<column name="lang" type="varchar2" value="EN"/>
+			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Подписан"/>
 		</insert>
 		<rollback/>
@@ -250,7 +251,7 @@
 	<comment>insert into cm_doc_statuses_tl</comment>
 	<insert schemaName="apps" tableName="cm_doc_statuses_tl">
 		<column name="code" type="varchar2" value="bp1adjustment"/>
-		<column name="lang" type="varchar2" value="EN"/>
+		<column name="lang" type="varchar2" value="KZ"/>
 		<column name="name" type="varchar2" value="На корректировке (БП1)"/>
 	</insert>
 	<rollback/>
@@ -259,7 +260,7 @@
 		<comment>insert into cm_doc_statuses_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
 			<column name="code" type="varchar2" value="bp2adjustment"/>
-			<column name="lang" type="varchar2" value="EN"/>
+			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="На корректировке (БП2)"/>
 		</insert>
 		<rollback/>
