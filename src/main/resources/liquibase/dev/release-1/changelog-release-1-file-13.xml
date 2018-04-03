@@ -196,6 +196,7 @@
 		<column name="name" type="varchar2" value="На корректировке (БП1)"/>
 	</insert>
 	<rollback/>
+	</changeSet>
 
 	<changeSet id="cm-rus-191" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_statuses_tl</comment>
@@ -255,6 +256,7 @@
 		<column name="name" type="varchar2" value="На корректировке (БП1)"/>
 	</insert>
 	<rollback/>
+	</changeSet>
 
 	<changeSet id="cm-rus-197" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_statuses_tl</comment>
