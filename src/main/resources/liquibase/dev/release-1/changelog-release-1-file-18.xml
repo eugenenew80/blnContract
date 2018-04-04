@@ -94,4 +94,12 @@
 		</sql>
 	</changeSet>
 
+	<changeSet id="cm-rus-255" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: contract_types_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="contract_types_tl">
+			<column name="deviations_range" type="varchar2(30)" remarks="Диапазон отклонений в %"/>
+		</addColumn>
+	</changeSet>
+
 </databaseChangeLog>
