@@ -102,4 +102,55 @@
 		</addColumn>
 	</changeSet>
 
+	<changeSet id="cm-rus-256" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a3h to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a3h"
+				baseColumnNames="bp1_id"
+				constraintName="cm_doc_keg_cte_a3h_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-257" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a3h to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a3h"
+				baseColumnNames="bp2_id"
+				constraintName="cm_doc_keg_cte_a3h_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-258" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a3h to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a3h"
+				baseColumnNames="org_id"
+				constraintName="cm_doc_keg_cte_a3h_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
 </databaseChangeLog>
