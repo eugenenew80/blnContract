@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-223" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: currency_codes </comment>
+		<createTable tableName="currency_codes" schemaName="apps" remarks="Справочник Коды валют">
+			<column name="code" type="varchar2(10)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-224" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: currency_codes</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_currency_codes"
+				schemaName="apps"
+				tableName="currency_codes"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-225" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: currency_codes_tl</comment>
+		<createTable tableName="currency_codes_tl" schemaName="apps" remarks="Переводы коды валют">
+			<column name="code" type="varchar2(10)" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(200)" remarks="Наименование">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-226" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: currency_codes_tl</comment>
+		<addPrimaryKey
+				columnNames="code,lang"
+				constraintName="pk_currency_codes_tl"
+				schemaName="apps"
+				tableName="currency_codes_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-227" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: currency_codes_tl to currency_codes</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="currency_codes_tl"
+				baseColumnNames="code"
+				constraintName="fk_currency_codes_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="currency_codes"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-228" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes">
+			<column name="code" type="varchar2" value="KZT"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-229" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes_tl</comment>
+		<insert schemaName="apps" tableName="currency_codes_tl">
+			<column name="code" type="varchar2" value="KZT"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Тенге"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-230" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes_tl">
+			<column name="code" type="varchar2" value="KZT"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Тенге"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-231" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes">
+			<column name="code" type="varchar2" value="RUB"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-232" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes_tl">
+			<column name="code" type="varchar2" value="RUB"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Российский рубль"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-233" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes_tl">
+			<column name="code" type="varchar2" value="RUB"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Российский рубль"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-234" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes">
+			<column name="code" type="varchar2" value="KGS"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-235" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes_tl">
+			<column name="code" type="varchar2" value="KGS"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Сом"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-236" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes_tl">
+			<column name="code" type="varchar2" value="KGS"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Сом"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-237" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes">
+			<column name="code" type="varchar2" value="UZS"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-238" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes_tl">
+			<column name="code" type="varchar2" value="UZS"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Узбекский сум"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-239" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes_tl">
+			<column name="code" type="varchar2" value="UZS"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Узбекский сум"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-240" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes">
+			<column name="code" type="varchar2" value="USD"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-241" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes_tl">
+			<column name="code" type="varchar2" value="USD"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Доллар США"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-242" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into currency_codes</comment>
+		<insert schemaName="apps" tableName="currency_codes_tl">
+			<column name="code" type="varchar2" value="USD"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Доллар США"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+</databaseChangeLog>
