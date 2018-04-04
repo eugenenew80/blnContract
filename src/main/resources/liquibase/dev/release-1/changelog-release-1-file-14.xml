@@ -110,7 +110,7 @@
 
 	<changeSet id="cm-rus-186" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_group_statuses</comment>
-		<insert schemaName="apps" tableName="cm_doc_statuses">
+		<insert schemaName="apps" tableName="cm_group_statuses">
 			<column name="id" type="number" value="1"/>
 		</insert>
 		<rollback/>
@@ -118,12 +118,220 @@
 
 	<changeSet id="cm-rus-187" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_group_statuses</comment>
-		<insert schemaName="apps" tableName="cm_doc_statuses">
+		<insert schemaName="apps" tableName="cm_group_statuses_tl">
 			<column name="group_status_id" type="number" value="1"/>
+			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Договора"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-188" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_statuses to cm_group_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_statuses"
+				baseColumnNames="group_id"
+				constraintName="fk_cm_doc_statuses_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_group_statuses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-189" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses">
+			<column name="id" type="number" value="1"/>
+			<column name="group_id" type="number" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-190" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses">
+			<column name="id" type="number" value="2"/>
+			<column name="group_id" type="number" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-191" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses">
+			<column name="id" type="number" value="3"/>
+			<column name="group_id" type="number" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-192" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses">
+			<column name="id" type="number" value="4"/>
+			<column name="group_id" type="number" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-193" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses">
+			<column name="id" type="number" value="5"/>
+			<column name="group_id" type="number" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-194" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses">
+			<column name="id" type="number" value="6"/>
+			<column name="group_id" type="number" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-195" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="number" value="1"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Проект"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-196" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="number" value="2"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Утвержден"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-197" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="number" value="3"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="На согласовании"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-198" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="varchar2" value="4"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Подписан"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-199" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="number" value="5"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="На корректировке (БП1)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-200" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="number" value="6"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="На корректировке (БП2)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-201" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="number" value="1"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Проект"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-202" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="varchar2" value="2"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Утвержден"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-203" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="varchar2" value="3"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="На согласовании"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-204" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="varchar2" value="4"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Подписан"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-205" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="varchar2" value="5"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="На корректировке (БП1)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-206" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_statuses_tl">
+			<column name="status_id" type="varchar2" value="6"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="На корректировке (БП2)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-207" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_group_statuses_tl to cm_group_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="status_id"
+				constraintName="fk_cm_doc_keg_cte_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
 
 </databaseChangeLog>

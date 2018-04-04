@@ -18,7 +18,7 @@
 			</column>
 
 			<column name="is_active" type="number" remarks="Активен или нет">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
@@ -90,7 +90,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-178" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-178-1" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_doc_statuses_tl</comment>
 		<addPrimaryKey
 				columnNames="status_id,lang"
