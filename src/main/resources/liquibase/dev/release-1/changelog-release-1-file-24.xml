@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-305" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_payment_orders</comment>
+		<createTable tableName="cm_doc_payment_orders" schemaName="apps" remarks="Справочник порядок оплаты">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="doc_type_id" type="number" remarks="ID типа договора">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-306" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_payment_orders</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_payment_orders"
+				schemaName="apps"
+				tableName="cm_doc_payment_orders"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-307" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_payment_orders</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_payment_orders_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-308" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_payment_orders_tl</comment>
+		<createTable tableName="cm_doc_payment_orders_tl" schemaName="apps" remarks="Переводы Справочник порядок оплаты">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="payment_order_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(1000)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-309" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_payment_orders_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_payment_orders_tl"
+				schemaName="apps"
+				tableName="cm_doc_payment_orders_tl"/>
+	</changeSet>
+	
+	<changeSet id="cm-rus-310" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_payment_orders_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_payment_orders_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-311" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>creating unique constraint for table: cm_doc_payment_orders_tl</comment>
+        <addUniqueConstraint
+            constraintName="un_cm_doc_payment_orders_tl_1"
+            schemaName="apps"
+            tableName="cm_doc_payment_orders_tl"
+            columnNames="payment_order_id, lang"
+            deferrable="true"
+            initiallyDeferred="true"
+     />
+	</changeSet>
+
+	<changeSet id="cm-rus-312" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_payment_orders_tl to cm_doc_payment_orders</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_payment_orders_tl"
+				baseColumnNames="payment_order_id"
+				constraintName="fk_cm_doc_payment_orders_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_payment_orders"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-313" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_payment_orders to dm_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_payment_orders"
+				baseColumnNames="doc_type_id"
+				constraintName="fk_cm_doc_payment_orders_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_doc_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-314" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders">
+			<column name="id" type="number" value="1"/>
+			<column name="doc_type_id" type="number" value="3"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-315" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders">
+			<column name="id" type="number" value="2"/>
+			<column name="doc_type_id" type="number" value="3"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-316" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders">
+			<column name="id" type="number" value="3"/>
+			<column name="doc_type_id" type="number" value="3"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-317" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders">
+			<column name="id" type="number" value="4"/>
+			<column name="doc_type_id" type="number" value="4"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-318" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders">
+			<column name="id" type="number" value="5"/>
+			<column name="doc_type_id" type="number" value="4"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-319" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders">
+			<column name="id" type="number" value="6"/>
+			<column name="doc_type_id" type="number" value="4"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-320" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders">
+			<column name="id" type="number" value="7"/>
+			<column name="doc_type_id" type="number" value="4"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-321" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders">
+			<column name="id" type="number" value="8"/>
+			<column name="doc_type_id" type="number" value="5"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-322" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders">
+			<column name="id" type="number" value="9"/>
+			<column name="doc_type_id" type="number" value="5"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-323" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders">
+			<column name="id" type="number" value="10"/>
+			<column name="doc_type_id" type="number" value="5"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-324" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders">
+			<column name="id" type="number" value="11"/>
+			<column name="doc_type_id" type="number" value="5"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-325" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="1"/>
+			<column name="payment_order_id" type="number" value="1"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:-до 10 числа расчетного периода производится оплата за первую декаду,- до 20 числа расчетного периода – оплата за вторую декаду и,- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-326" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="2"/>
+			<column name="payment_order_id" type="number" value="2"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-327" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="3"/>
+			<column name="payment_order_id" type="number" value="3"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Оплата услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем 50% оплаты Договорного объема услуг, до 15 числа расчетного периода и оставшиеся 50% Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-328" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="4"/>
+			<column name="payment_order_id" type="number" value="4"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Оплата услуг Поставщика по технической диспетчеризации производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа деньгами, путем оплаты 50% договорного объема услуг (с Учетом оперативных данных), до предпоследнего рабочего банковского дня соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-329" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="5"/>
+			<column name="payment_order_id" type="number" value="5"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Оплата услуг Исполнителя по технической диспетчеризации производится    в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду;
+				- до 20 числа расчетного периода – оплата за вторую декаду;
+				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-330" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="6"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="payment_order_id" type="number" value="6"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика по технической диспетчеризации производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных)."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-331" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="7"/>
+			<column name="payment_order_id" type="number" value="7"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Оплата услуг Поставщика по технической диспетчеризации производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем 50% оплаты Договорного объема услуг, до 15 числа расчетного периода и оставшиеся 50% Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-332" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="8"/>
+			<column name="payment_order_id" type="number" value="8"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика по организации балансирования производства-потребления электрической энергии производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, путем оплаты договорного объема услуг (с учетом оперативных данных),"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-333" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="9"/>
+			<column name="payment_order_id" type="number" value="9"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика по организации балансирования производства-потребления электрической энергии производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных), в следующем порядке:
+			- до 15 числа расчётного периода производится оплата за первую половину,
+			- до последнего рабочего дня расчётного периода – оплата за вторую половину, соответствующего расчётного периода, с учетом оперативных данных."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-334" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="10"/>
+			<column name="payment_order_id" type="number" value="10"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Оплата услуг Поставщика на оказание услуг по организации балансирования производства-потребления электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
+			- до 10 числа расчетного периода производится оплата за первую декаду;
+			- до 20 числа расчетного периода – оплата за вторую декаду;
+			- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-335" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="11"/>
+			<column name="payment_order_id" type="number" value="11"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика по организации балансирования производства-потребления электрической энергии производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем 50% оплаты Договорного объема услуг, до 15 числа расчетного периода и оставшиеся 50% Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-336" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="12"/>
+			<column name="payment_order_id" type="number" value="1"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
+				-до 10 числа расчетного периода производится оплата за первую декаду,
+				- до 20 числа расчетного периода – оплата за вторую декаду и,
+				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-337" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="13"/>
+			<column name="payment_order_id" type="number" value="2"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-338" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="14"/>
+			<column name="payment_order_id" type="number" value="3"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Оплата услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем 50% оплаты Договорного объема услуг, до 15 числа расчетного периода и оставшиеся 50% Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-339" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="15"/>
+			<column name="payment_order_id" type="number" value="4"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Оплата услуг Поставщика по технической диспетчеризации производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа деньгами, путем оплаты 50% договорного объема услуг (с Учетом оперативных данных), до предпоследнего рабочего банковского дня соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-340" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="16"/>
+			<column name="payment_order_id" type="number" value="5"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Оплата услуг Исполнителя по технической диспетчеризации производится    в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду;
+				- до 20 числа расчетного периода – оплата за вторую декаду;
+				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-341" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="17"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="payment_order_id" type="number" value="6"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика по технической диспетчеризации производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных)."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-342" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="18"/>
+			<column name="payment_order_id" type="number" value="7"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Оплата услуг Поставщика по технической диспетчеризации производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем 50% оплаты Договорного объема услуг, до 15 числа расчетного периода и оставшиеся 50% Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-343" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="19"/>
+			<column name="payment_order_id" type="number" value="8"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика по организации балансирования производства-потребления электрической энергии производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, путем оплаты договорного объема услуг (с учетом оперативных данных),"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-344" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="20"/>
+			<column name="payment_order_id" type="number" value="9"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика по организации балансирования производства-потребления электрической энергии производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных), в следующем порядке:
+			- до 15 числа расчётного периода производится оплата за первую половину,
+			- до последнего рабочего дня расчётного периода – оплата за вторую половину, соответствующего расчётного периода, с учетом оперативных данных."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-345" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="21"/>
+			<column name="payment_order_id" type="number" value="10"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Оплата услуг Поставщика на оказание услуг по организации балансирования производства-потребления электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
+			- до 10 числа расчетного периода производится оплата за первую декаду;
+			- до 20 числа расчетного периода – оплата за вторую декаду;
+			- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-346" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_orders_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_orders_tl">
+			<column name="id" type="number" value="22"/>
+			<column name="payment_order_id" type="number" value="11"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика по организации балансирования производства-потребления электрической энергии производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа, деньгами, путем 50% оплаты Договорного объема услуг, до 15 числа расчетного периода и оставшиеся 50% Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+</databaseChangeLog>
