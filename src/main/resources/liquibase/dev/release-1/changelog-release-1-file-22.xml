@@ -68,4 +68,11 @@
 			<column name="bp2_grc_date" type="date" remarks="Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Дата выдачи"/>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="cm-rus-292" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_keg_cte_a2</comment>
+		<dropTable cascadeConstraints="true"
+					  schemaName="apps"
+					  tableName="cm_keg_cte_a2"/>
+	</changeSet>
 </databaseChangeLog>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-293" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cte_a2</comment>
+		<createTable tableName="cm_doc_keg_cte_a2" schemaName="apps" remarks="Приложение Пункты приема и пункты доставки электрической энергии">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="contract_id" type="number" remarks="ID контракта">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="receipt_and_delivery_code" type="varchar2(30)" remarks="Признак пункта приема/доставки">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="receipt_and_delivery_id" type="number" remarks="ID пункта приема/доставки">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="org_id" type="number" remarks="Филиал подготовивший приложение">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-294" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cte_a2</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cte_a2"
+				schemaName="apps"
+				tableName="cm_doc_keg_cte_a2"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-295" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_keg_cte_a2</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_keg_cte_a2_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-296" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cte_a2_tl</comment>
+		<createTable tableName="cm_doc_keg_cte_a2_tl" schemaName="apps" remarks="Переводы приложение Пункты приема и пункты доставки электрической энергии">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="cm_doc_keg_cte_a2_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(300)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-297" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cte_a2_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cte_a2_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cte_a2_tl"/>
+	</changeSet>
+	
+	<changeSet id="cm-rus-298" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_keg_cte_a2_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_keg_cte_a2_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-299" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>creating unique constraint for table: cm_doc_keg_cte_a2_tl</comment>
+        <addUniqueConstraint
+            constraintName="un_cm_doc_keg_cte_a2_tl_1"
+            schemaName="apps"
+            tableName="cm_doc_keg_cte_a2_tl"
+            columnNames="cm_doc_keg_cte_a2_id, lang"
+            deferrable="true"
+            initiallyDeferred="true"
+     />
+	</changeSet>
+
+	<changeSet id="cm-rus-300" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a2_tl to cm_doc_keg_cte_a2</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a2_tl"
+				baseColumnNames="cm_doc_keg_cte_a2_id"
+				constraintName="fk_cm_doc_keg_cte_a2_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte_a2"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+	
+	<changeSet id="cm-rus-301" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a2 to cm_doc_keg_cte</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a2"
+				baseColumnNames="contract_id"
+				constraintName="fk_cm_doc_keg_cte_a2_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+	
+	<changeSet id="cm-rus-302" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a2_id to cm_receipt_and_delivery</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a2"
+				baseColumnNames="receipt_and_delivery_code"
+				constraintName="fk_cm_doc_keg_cte_a2_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_receipt_and_delivery"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+	
+	<changeSet id="cm-rus-303" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a2_id to dict_receipt_and_delivery_points</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a2"
+				baseColumnNames="receipt_and_delivery_id"
+				constraintName="fk_cm_doc_keg_cte_a2_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_receipt_and_delivery_points"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+	
+	<changeSet id="cm-rus-304" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a2_id to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a2"
+				baseColumnNames="org_id"
+				constraintName="fk_cm_doc_keg_cte_a2_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+</databaseChangeLog>
