@@ -513,4 +513,12 @@
 		</insert>
 		<rollback/>
 	</changeSet>
+
+	<changeSet id="cm-rus-347" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_keg_cte_a2</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_keg_cte_a2"/>
+	</changeSet>
+
 </databaseChangeLog>

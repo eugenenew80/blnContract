@@ -40,6 +40,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-288" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<columnExists schemaName="apps" tableName="contract_types_tl" columnName="attribute" />
+		</preConditions>
 		<comment>drop column contract_types_tl</comment>
 		<dropColumn columnName="attribute"
 					schemaName="apps"
@@ -47,6 +50,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-289" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<columnExists schemaName="apps" tableName="contract_types_tl" columnName="deviations_range" />
+		</preConditions>
 		<comment>drop column contract_types_tl</comment>
 		<dropColumn columnName="deviations_range"
 					schemaName="apps"
