@@ -53,4 +53,19 @@
 					tableName="contract_types_tl"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-290" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="bp1_grc_date" type="date" remarks="Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: Дата выдачи"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-291" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="bp2_grc_date" type="date" remarks="Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Дата выдачи"/>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
