@@ -39,4 +39,18 @@
 		/>
 	</changeSet>
 
+	<changeSet id="cm-rus-288" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column contract_types_tl</comment>
+		<dropColumn columnName="attribute"
+					schemaName="apps"
+					tableName="contract_types_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-289" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column contract_types_tl</comment>
+		<dropColumn columnName="deviations_range"
+					schemaName="apps"
+					tableName="contract_types_tl"/>
+	</changeSet>
+
 </databaseChangeLog>
