@@ -7,102 +7,9 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 
-	<changeSet id="cm-rus-245" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column for table: contract_types_tl</comment>
-		<addColumn schemaName="apps"
-				   tableName="contract_types_tl">
-		<column name="attribute" type="varchar2(255)" remarks="Признак"/>
-		</addColumn>
-	</changeSet>
 
-	<changeSet id="cm-rus-246" logicalFilePath="path-independent" author="ruslan">
-		<comment>update comment on cm_doc_keg_cte</comment>
-		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			comment on table apps.cm_doc_keg_cte IS 'Договоры на оказание услуг'
-		</sql>
-	</changeSet>
 
-	<changeSet id="cm-rus-247" logicalFilePath="path-independent" author="ruslan">
-		<comment>update comment on contract_types_tl</comment>
-		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			UPDATE apps.contract_types_tl
-			SET attribute = 'KEGOC'
-			WHERE name = 'Передача эл.энергии';
-		</sql>
-	</changeSet>
-
-	<changeSet id="cm-rus-248" logicalFilePath="path-independent" author="ruslan">
-		<comment>update comment on contract_types_tl</comment>
-		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			UPDATE apps.contract_types_tl
-			SET attribute = 'KEGOC'
-			WHERE name = 'Техн.диспетчеризация';
-		</sql>
-	</changeSet>
-
-	<changeSet id="cm-rus-249" logicalFilePath="path-independent" author="ruslan">
-		<comment>update comment on contract_types_tl</comment>
-		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			UPDATE apps.contract_types_tl
-			SET attribute = 'KEGOC'
-			WHERE name = 'Балансирование';
-		</sql>
-	</changeSet>
-
-	<changeSet id="cm-rus-250" logicalFilePath="path-independent" author="ruslan">
-		<comment>update comment on contract_types_tl</comment>
-		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			UPDATE apps.contract_types_tl
-			SET attribute = 'KEGOC'
-			WHERE name = 'Резервирование мощности';
-		</sql>
-	</changeSet>
-
-	<changeSet id="cm-rus-251" logicalFilePath="path-independent" author="ruslan">
-		<comment>update comment on contract_types_tl</comment>
-		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			UPDATE apps.contract_types_tl
-			SET attribute = 'РФЦ'
-			WHERE name = 'Транзит по сетям РЭК';
-		</sql>
-	</changeSet>
-
-	<changeSet id="cm-rus-252" logicalFilePath="path-independent" author="ruslan">
-		<comment>update comment on contract_types_tl</comment>
-		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			UPDATE apps.contract_types_tl
-			SET attribute = 'РФЦ'
-			WHERE name = 'Покупка э/э по фикс.тарифам';
-		</sql>
-	</changeSet>
-
-	<changeSet id="cm-rus-253" logicalFilePath="path-independent" author="ruslan">
-		<comment>update comment on contract_types_tl</comment>
-		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			UPDATE apps.contract_types_tl
-			SET attribute = 'РФЦ'
-			WHERE name = 'Покупка э/э по тарифам в ТЭО';
-		</sql>
-	</changeSet>
-
-	<changeSet id="cm-rus-254" logicalFilePath="path-independent" author="ruslan">
-		<comment>update comment on contract_types_tl</comment>
-		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			UPDATE apps.contract_types_tl
-			SET attribute = 'РФЦ'
-			WHERE name = 'Продажа э/э УП';
-		</sql>
-	</changeSet>
-
-	<changeSet id="cm-rus-255" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column for table: contract_types_tl</comment>
-		<addColumn schemaName="apps"
-				   tableName="contract_types_tl">
-			<column name="deviations_range" type="varchar2(30)" remarks="Диапазон отклонений в %"/>
-		</addColumn>
-	</changeSet>
-
-	<changeSet id="cm-rus-256" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-243" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_doc_keg_cte_a3h to dict_business_partners</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -119,7 +26,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-257" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-244" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_doc_keg_cte_a3h to dict_business_partners</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -136,7 +43,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-258" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-245" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_doc_keg_cte_a3h to dict_organizations</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"

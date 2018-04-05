@@ -6,7 +6,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-40" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-42" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dm_doc_types </comment>
 		<createTable tableName="dm_doc_types" schemaName="apps" remarks="Таблица для хранения типов документов">
 			<column name="id" type="number" remarks="Ид">
@@ -55,7 +55,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-41" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-43" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: dm_doc_types</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -64,7 +64,7 @@
 				tableName="dm_doc_types"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-42" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-44" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: dm_doc_types</comment>
 		<createSequence
 				incrementBy="1"
@@ -73,7 +73,7 @@
 				startValue="36"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-43" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-45" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dm_doc_types_tl</comment>
 		<createTable tableName="dm_doc_types_tl" schemaName="apps" remarks="Таблица для хранения типов документов (Первод)">
 			<column name="id" type="number" remarks="Ид" >
@@ -118,7 +118,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-44" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-46" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: dm_doc_types_tl</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -127,7 +127,7 @@
 				tableName="dm_doc_types_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-45" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-47" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: dm_doc_types_tl</comment>
 		<createSequence
 				incrementBy="1"
@@ -136,7 +136,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-46" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-48" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating unique key for table: dm_doc_types_tl</comment>
 		<addUniqueConstraint
 				columnNames="doc_type_id, lang"
@@ -145,7 +145,7 @@
 				tableName="dm_doc_types_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-47" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-49" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: dm_doc_types_tl to dm_doc_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -163,7 +163,7 @@
 	</changeSet>
 
 
-	<changeSet id="cm-rus-48" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-50" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="1"/>
@@ -175,7 +175,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-49" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-51" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="2"/>
@@ -188,7 +188,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-50" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-52" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="3"/>
@@ -202,7 +202,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-51" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-53" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="16"/>
@@ -215,7 +215,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-52" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-54" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="17"/>
@@ -228,7 +228,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-53" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-55" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="18"/>
@@ -241,7 +241,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-54" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-56" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="19"/>
@@ -254,7 +254,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-55" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-57" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="20"/>
@@ -267,7 +267,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-56" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-58" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="21"/>
@@ -280,7 +280,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-57" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-59" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="22"/>
@@ -293,7 +293,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-58" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-60" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="4"/>
@@ -307,7 +307,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-59" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-61" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="23"/>
@@ -320,7 +320,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-60" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-62" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="24"/>
@@ -333,7 +333,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-61" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-63" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="25"/>
@@ -346,7 +346,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-62" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-64" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="26"/>
@@ -359,7 +359,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-63" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-65" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="5"/>
@@ -373,7 +373,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-64" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-66" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="27"/>
@@ -386,7 +386,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-65" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-67" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="28"/>
@@ -399,7 +399,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-66" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-68" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="29"/>
@@ -412,7 +412,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-67" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-69" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="30"/>
@@ -425,7 +425,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-68" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-70" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="31"/>
@@ -438,7 +438,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-69" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-71" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="6"/>
@@ -451,7 +451,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-70" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-70-1" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="7"/>
@@ -465,7 +465,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-71" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-71-1" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
 		<insert schemaName="apps" tableName="dm_doc_types">
 			<column name="id" type="number" value="32"/>

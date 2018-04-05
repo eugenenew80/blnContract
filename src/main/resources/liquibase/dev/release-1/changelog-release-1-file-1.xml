@@ -9,10 +9,6 @@
 	<changeSet id="cm-rus-1" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_rle_doc_types</comment>
 		<createTable tableName="cm_rle_doc_types" schemaName="apps" remarks="Справочник Типы документов о государственной регистрации / перерегистрации юридического лица">
-			<column name="id" type="number" remarks="Ид">
-				<constraints nullable="false"/>
-			</column>
-
 			<column name="code" type="varchar2(30)" remarks="Код типа документа">
 				<constraints nullable="false"/>
 			</column>
@@ -38,7 +34,7 @@
 	<changeSet id="cm-rus-2" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_rle_doc_types</comment>
 		<addPrimaryKey
-				columnNames="id"
+				columnNames="code"
 				constraintName="pk_cm_rle_doc_types"
 				schemaName="apps"
 				tableName="cm_rle_doc_types"/>
@@ -46,22 +42,8 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-3" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_rle_doc_types</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_rle_doc_types_s"
-				startValue="5"/>
-	</changeSet>
-
-
-	<changeSet id="cm-rus-4" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_rle_doc_types_tl</comment>
 		<createTable tableName="cm_rle_doc_types_tl" schemaName="apps" remarks="Справочник переводы Типов документов о государственной регистрации / перерегистрации юридического лица">
-			<column name="rle_doc_type_id" type="number" remarks="Ссылка на родительскую запись">
-				<constraints nullable="false"/>
-			</column>
-
 			<column name="lang" type="varchar2(10)" remarks="Язык">
 				<constraints nullable="false"/>
 			</column>
@@ -92,42 +74,42 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-5" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-4" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_rle_doc_types_tl</comment>
 		<addPrimaryKey
-				columnNames="rle_doc_type_id,lang"
+				columnNames="code,lang"
 				constraintName="pk_cm_rle_doc_types_tl"
 				schemaName="apps"
 				tableName="cm_rle_doc_types_tl"/>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-9" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: insert into cm_rle_doc_types</comment>
+	<changeSet id="cm-rus-5" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rle_doc_types</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types">
 			<column name="code" type="varchar2" value="CSRLE"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-10" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: insert into cm_rle_doc_types</comment>
+	<changeSet id="cm-rus-6" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rle_doc_types</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types">
 			<column name="code" type="varchar2" value="CSRRLE"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-11" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: insert into cm_rle_doc_types</comment>
+	<changeSet id="cm-rus-7" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rle_doc_types</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types">
 			<column name="code" type="varchar2" value="RSRRLE"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-11-1" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: insert into cm_rle_doc_types</comment>
+	<changeSet id="cm-rus-8" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rle_doc_types</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types">
 			<column name="code" type="varchar2" value="EFRCCI"/>
 		</insert>
@@ -135,10 +117,9 @@
 	</changeSet>
 
 
-	<changeSet id="cm-rus-12" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: insert into cm_rle_doc_types_tl</comment>
+	<changeSet id="cm-rus-9" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rle_doc_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types_tl">
-			<column name="rle_doc_type_id" type="number" value="1"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="code" type="varchar2" value="CSRLE"/>
 			<column name="name" type="varchar2" value="Свидетельство о государственной регистрации юридического лица"/>
@@ -146,10 +127,9 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-12-1" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: insert into cm_rle_doc_types_tl</comment>
+	<changeSet id="cm-rus-10" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rle_doc_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types_tl">
-			<column name="rle_doc_type_id" type="number" value="2"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="code" type="varchar2" value="CSRRLE"/>
 			<column name="name" type="varchar2" value="Свидетельство о государственной перерегистрации юридического лица"/>
@@ -157,10 +137,9 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-13" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: insert into cm_rle_doc_types_tl</comment>
+	<changeSet id="cm-rus-11" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rle_doc_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types_tl">
-			<column name="rle_doc_type_id" type="number" value="3"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="code" type="varchar2" value="RSRRLE"/>
 			<column name="name" type="varchar2" value="Справка о государственной перерегистрации юридического лица"/>
@@ -168,10 +147,9 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-14" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: insert into cm_rle_doc_types_tl</comment>
+	<changeSet id="cm-rus-12" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rle_doc_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types_tl">
-			<column name="rle_doc_type_id" type="number" value="4"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="code" type="varchar2" value="EFRCCI"/>
 			<column name="name" type="varchar2" value="Выписка из регистра Торгово-промышленной палаты Республики Казахстан"/>
@@ -179,10 +157,9 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-12-2" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: insert into cm_rle_doc_types_tl</comment>
+	<changeSet id="cm-rus-13" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rle_doc_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types_tl">
-			<column name="rle_doc_type_id" type="number" value="1"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="code" type="varchar2" value="CSRLE"/>
 			<column name="name" type="varchar2" value="Свидетельство о государственной регистрации юридического лица"/>
@@ -190,10 +167,9 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-12-3" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: insert into cm_rle_doc_types_tl</comment>
+	<changeSet id="cm-rus-14" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rle_doc_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types_tl">
-			<column name="rle_doc_type_id" type="number" value="2"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="code" type="varchar2" value="CSRRLE"/>
 			<column name="name" type="varchar2" value="Свидетельство о государственной перерегистрации юридического лица"/>
@@ -201,10 +177,9 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-13-1" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: insert into cm_rle_doc_types_tl</comment>
+	<changeSet id="cm-rus-15" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rle_doc_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types_tl">
-			<column name="rle_doc_type_id" type="number" value="3"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="code" type="varchar2" value="RSRRLE"/>
 			<column name="name" type="varchar2" value="Справка о государственной перерегистрации юридического лица"/>
@@ -212,10 +187,9 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-14-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-16" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: insert into cm_rle_doc_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_rle_doc_types_tl">
-			<column name="rle_doc_type_id" type="number" value="4"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="code" type="varchar2" value="EFRCCI"/>
 			<column name="name" type="varchar2" value="Выписка из регистра Торгово-промышленной палаты Республики Казахстан"/>

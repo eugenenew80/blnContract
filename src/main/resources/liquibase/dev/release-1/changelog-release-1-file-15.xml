@@ -88,6 +88,10 @@
 	<changeSet id="cm-rus-211" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_doc_keg_cte_a3h_tl</comment>
 		<createTable tableName="cm_doc_keg_cte_a3h_tl" schemaName="apps" remarks="Приложения 3 к договорам на передачу эл.энергии по сетям НЭС (заголовки) Перевод">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
 			<column name="keg_cte_a3h_id" type="number" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
@@ -129,8 +133,26 @@
 	<changeSet id="cm-rus-212" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_doc_keg_cte_a3h_tl</comment>
 		<addPrimaryKey
-				columnNames="keg_cte_a3h_id,lang"
+				columnNames="id"
 				constraintName="pk_cm_doc_keg_cte_a3h_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cte_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-213-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_keg_cte_a3h_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_keg_cte_a3h_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-213-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_keg_cte_a3h_tl</comment>
+		<addUniqueConstraint
+				columnNames="keg_cte_a3h_id,lang"
+				constraintName="uk_cm_doc_keg_cte_a3h_tl"
 				schemaName="apps"
 				tableName="cm_doc_keg_cte_a3h_tl"/>
 	</changeSet>

@@ -108,6 +108,10 @@
 	<changeSet id="cm-rus-114" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_state_license_at_tl</comment>
 		<createTable tableName="cm_state_license_at_tl" schemaName="apps" remarks="Переводы Государственная лицензия на занятие видом деятельности">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
 			<column name="lang" type="varchar2(10)" remarks="Язык">
 				<constraints nullable="false"/>
 			</column>
@@ -169,8 +173,26 @@
 	<changeSet id="cm-rus-115" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_state_license_at_tl</comment>
 		<addPrimaryKey
-				columnNames="state_license_at_id, lang"
+				columnNames="id"
 				constraintName="pk_cm_state_license_at_tl"
+				schemaName="apps"
+				tableName="cm_state_license_at_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-116" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_state_license_at_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_state_license_at_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-117" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_state_license_at_tl</comment>
+		<addUniqueConstraint
+				columnNames="state_license_at_id, lang"
+				constraintName="uk_cm_state_license_at_tl_tl"
 				schemaName="apps"
 				tableName="cm_state_license_at_tl"/>
 	</changeSet>

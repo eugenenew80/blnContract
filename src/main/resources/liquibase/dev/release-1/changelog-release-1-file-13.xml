@@ -60,6 +60,10 @@
 	<changeSet id="cm-rus-178" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_doc_statuses_tl</comment>
 		<createTable tableName="cm_doc_statuses_tl" schemaName="apps" remarks="Справочник Статусы договоров">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
 			<column name="status_id" type="number" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
@@ -93,8 +97,26 @@
 	<changeSet id="cm-rus-178-1" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_doc_statuses_tl</comment>
 		<addPrimaryKey
-				columnNames="status_id,lang"
+				columnNames="id"
 				constraintName="pk_cm_doc_statuses_tl"
+				schemaName="apps"
+				tableName="cm_doc_statuses_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-178-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_statuses_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_statuses_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-178-3" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_statuses_tl</comment>
+		<addUniqueConstraint
+				columnNames="status_id,lang"
+				constraintName="uk_cm_doc_statuses_tl"
 				schemaName="apps"
 				tableName="cm_doc_statuses_tl"/>
 	</changeSet>

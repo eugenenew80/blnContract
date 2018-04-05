@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-    <changeSet id="cm-rus-15" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="cm-rus-17" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating table: cm_govregcerts</comment>
         <createTable tableName="cm_govregcerts" remarks="Документы о государственной регистрации / перерегистрации юридического лица" schemaName="apps">
             <column name="id" type="number" remarks="Ид">
@@ -59,7 +59,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="cm-rus-16" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="cm-rus-18" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: cm_govregcerts</comment>
         <addPrimaryKey
                 columnNames="id"
@@ -68,7 +68,7 @@
                 tableName="cm_govregcerts"/>
     </changeSet>
 
-    <changeSet id="cm-rus-17" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="cm-rus-19" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating sequence for table: cm_govregcerts</comment>
         <createSequence
                 incrementBy="1"
@@ -78,9 +78,13 @@
     </changeSet>
 
 
-    <changeSet id="cm-rus-18" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="cm-rus-21" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating table: cm_govregcerts_tl</comment>
         <createTable tableName="cm_govregcerts_tl" remarks="Документы о государственной регистрации / перерегистрации юридического лица" schemaName="apps">
+            <column name="id" type="number" remarks="Ид">
+                <constraints nullable="false"/>
+            </column>
+
             <column name="lang" type="varchar2(10)" remarks="Язык">
                 <constraints nullable="false"/>
             </column>
@@ -131,16 +135,37 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="cm-rus-19" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="cm-rus-22" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating primary key for table: cm_govregcerts_tl</comment>
         <addPrimaryKey
-                columnNames="govregcert_id,lang"
+                columnNames="id"
                 constraintName="pk_cm_govregcerts_tl"
                 schemaName="apps"
                 tableName="cm_govregcerts_tl"/>
     </changeSet>
 
-    <changeSet id="cm-rus-22" logicalFilePath="path-independent" author="ruslan" context="dev">
+    <changeSet id="cm-rus-23" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: cm_govregcerts_tl</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="cm_govregcerts_tl_s"
+                startValue="1"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-24" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>creating unique constraint for table: cm_govregcerts_tl</comment>
+        <addUniqueConstraint
+                constraintName="un_cm_govregcerts_tl_1"
+                schemaName="apps"
+                tableName="cm_govregcerts_tl"
+                columnNames="govregcert_id, lang"
+                deferrable="true"
+                initiallyDeferred="true"
+        />
+    </changeSet>
+
+    <changeSet id="cm-rus-25" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint: cm_govregcerts_tl to cm_govregcerts</comment>
         <addForeignKeyConstraint
                 baseTableSchemaName="apps"

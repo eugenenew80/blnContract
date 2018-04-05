@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-262" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_receipt_and_delivery</comment>
+		<createTable tableName="cm_receipt_and_delivery" schemaName="apps" remarks="Признак пункт доставки/приема">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-263" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_receipt_and_delivery</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_cm_receipt_and_delivery"
+				schemaName="apps"
+				tableName="cm_receipt_and_delivery"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-264" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_receipt_and_delivery_tl</comment>
+		<createTable tableName="cm_receipt_and_delivery_tl" schemaName="apps" remarks="Переводы Признак пункт доставки/приема">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(50)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-265" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_receipt_and_delivery_tl</comment>
+		<addPrimaryKey
+				columnNames="code,lang"
+				constraintName="pk_cm_receipt_and_delivery_tl"
+				schemaName="apps"
+				tableName="cm_receipt_and_delivery_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-266" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_receipt_and_delivery_tl to cm_receipt_and_delivery</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_receipt_and_delivery_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_receipt_and_delivery_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_receipt_and_delivery"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-267" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_receipt_and_delivery</comment>
+		<insert schemaName="apps" tableName="cm_receipt_and_delivery">
+			<column name="code" type="varchar2" value="receipt"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-268" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_receipt_and_delivery</comment>
+		<insert schemaName="apps" tableName="cm_receipt_and_delivery">
+			<column name="code" type="varchar2" value="delivery"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-269" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_receipt_and_delivery</comment>
+		<insert schemaName="apps" tableName="cm_receipt_and_delivery_tl">
+			<column name="code" type="varchar2" value="receipt"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Пункты приема"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-270" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_receipt_and_delivery_tl</comment>
+		<insert schemaName="apps" tableName="cm_receipt_and_delivery_tl">
+			<column name="code" type="varchar2" value="delivery"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Пункты доставки"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-271" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_receipt_and_delivery_tl</comment>
+		<insert schemaName="apps" tableName="cm_receipt_and_delivery_tl">
+			<column name="code" type="varchar2" value="receipt"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Қабылдау пункттері"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-272" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_receipt_and_delivery_tl</comment>
+		<insert schemaName="apps" tableName="cm_receipt_and_delivery_tl">
+			<column name="code" type="varchar2" value="delivery"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Жеткізу пункттері"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+</databaseChangeLog>

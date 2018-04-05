@@ -61,6 +61,10 @@
 	<changeSet id="cm-rus-164" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_tariff_plans_tl</comment>
 		<createTable tableName="cm_tariff_plans_tl" schemaName="apps" remarks="Справочник переводы Тарифный план">
+			<column name="id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
 			<column name="tariff_plan_id" type="number" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
@@ -94,8 +98,26 @@
 	<changeSet id="cm-rus-165" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_tariff_plans_tl</comment>
 		<addPrimaryKey
-				columnNames="tariff_plan_id,lang"
+				columnNames="id"
 				constraintName="pk_cm_tariff_plans_tl"
+				schemaName="apps"
+				tableName="cm_tariff_plans_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-165-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_tariff_plans_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_tariff_plans_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-165-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_tariff_plans_tl</comment>
+		<addUniqueConstraint
+				columnNames="tariff_plan_id,lang"
+				constraintName="uk_cm_tariff_plans_tl"
 				schemaName="apps"
 				tableName="cm_tariff_plans_tl"/>
 	</changeSet>

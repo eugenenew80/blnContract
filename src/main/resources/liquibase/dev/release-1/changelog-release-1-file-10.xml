@@ -380,58 +380,6 @@
 		/>
 	</changeSet>
 
-    <changeSet id="cm-rus-153-4-1" logicalFilePath="path-independent" author="ruslan">
-		<preConditions onFail="MARK_RAN">
-			<columnExists schemaName="apps" tableName="cm_rle_doc_types_tl" columnName="rle_doc_type_id" />
-		</preConditions>
-
-		<comment>drop column from cm_rle_doc_types_tl</comment>
-		<dropColumn schemaName="apps" tableName="cm_rle_doc_types_tl" columnName="rle_doc_type_id" />
-		<rollback/>
-    </changeSet>
-
-    <changeSet id="cm-rus-153-5" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>Creating primary key for table: cm_rle_doc_types_tl</comment>
-        <addPrimaryKey
-                columnNames="code,lang"
-                constraintName="pk_cm_rle_doc_types_tl"
-                schemaName="apps"
-                tableName="cm_rle_doc_types_tl"/>
-		<rollback/>
-    </changeSet>
-
-    <changeSet id="cm-rus-153-6" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<preConditions onFail="MARK_RAN">
-			<primaryKeyExists schemaName="apps" tableName="cm_rle_doc_types_tl" primaryKeyName="pk_cm_rle_doc_types" />
-		</preConditions>
-        <comment>drop Primary Key in table: cm_rle_doc_types</comment>
-        <dropPrimaryKey constraintName="pk_cm_rle_doc_types"
-                        schemaName="apps"
-                        tableName="cm_rle_doc_types"/>
-		<rollback/>
-    </changeSet>
-
-
-    <changeSet id="cm-rus-153-7" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<preConditions onFail="MARK_RAN">
-			<columnExists schemaName="apps" tableName="cm_rle_doc_types_tl" columnName="id" />
-		</preConditions>
-        <comment>drop column from cm_rle_doc_types</comment>
-        <dropColumn columnName="id"
-                    schemaName="apps"
-                    tableName="cm_rle_doc_types"/>
-		<rollback/>
-    </changeSet>
-
-    <changeSet id="cm-rus-153-8" logicalFilePath="path-independent" author="ruslan" context="dev">
-        <comment>Creating primary key for table: cm_rle_doc_types</comment>
-        <addPrimaryKey
-                columnNames="code"
-                constraintName="pk_cm_rle_doc_types"
-                schemaName="apps"
-                tableName="cm_rle_doc_types"/>
-    </changeSet>
-
     <changeSet id="cm-rus-153-9" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating foreign constraint:cm_rle_doc_types_tl to cm_rle_doc_types</comment>
         <addForeignKeyConstraint
