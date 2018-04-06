@@ -590,7 +590,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-425" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-502q" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
 			<column name="code" type="varchar2" value="PC13"/>
