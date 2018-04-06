@@ -6,7 +6,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-419" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-428" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column for table: contract_types</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
@@ -14,7 +14,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-420" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-429" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column for table: contract_types</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
@@ -22,7 +22,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-421" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-430" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_doc_payment_condition_tl to cm_doc_payment_condition</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -39,7 +39,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-422" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-431" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column for table: contract_types</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
@@ -47,7 +47,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-423" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-432" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column for table: contract_types</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
@@ -55,7 +55,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-424" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-433" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column for table: contract_types</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
@@ -63,7 +63,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-425" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-434" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column for table: contract_types</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
@@ -71,7 +71,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-426" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-435" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column for table: contract_types</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
@@ -79,7 +79,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-427" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-436" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column for table: contract_types</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
@@ -87,7 +87,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-428" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-437" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column for table: contract_types</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">

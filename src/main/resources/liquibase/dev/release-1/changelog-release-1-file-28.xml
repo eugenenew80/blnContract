@@ -142,19 +142,10 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-384" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_payment_condition</comment>
-		<insert schemaName="apps" tableName="cm_doc_payment_condition">
-			<column name="code" type="varchar2" value="pc3"/>
-			<column name="doc_type_id" type="number" value="3"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
 	<changeSet id="cm-rus-385" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
-			<column name="code" type="varchar2" value="pc4"/>
+			<column name="code" type="varchar2" value="pc3"/>
 			<column name="doc_type_id" type="number" value="3"/>
 		</insert>
 		<rollback/>
@@ -163,7 +154,7 @@
 	<changeSet id="cm-rus-386" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
-			<column name="code" type="varchar2" value="pc5"/>
+			<column name="code" type="varchar2" value="pc4"/>
 			<column name="doc_type_id" type="number" value="3"/>
 		</insert>
 		<rollback/>
@@ -172,8 +163,8 @@
 	<changeSet id="cm-rus-387" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
-			<column name="code" type="varchar2" value="pc6"/>
-			<column name="doc_type_id" type="number" value="4"/>
+			<column name="code" type="varchar2" value="pc5"/>
+			<column name="doc_type_id" type="number" value="3"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -181,7 +172,7 @@
 	<changeSet id="cm-rus-388" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
-			<column name="code" type="varchar2" value="pc7"/>
+			<column name="code" type="varchar2" value="pc6"/>
 			<column name="doc_type_id" type="number" value="4"/>
 		</insert>
 		<rollback/>
@@ -190,13 +181,22 @@
 	<changeSet id="cm-rus-389" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
+			<column name="code" type="varchar2" value="pc7"/>
+			<column name="doc_type_id" type="number" value="4"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-390" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_condition</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_condition">
 			<column name="code" type="varchar2" value="pc8"/>
 			<column name="doc_type_id" type="number" value="4"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-900" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-391" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
 			<column name="code" type="varchar2" value="pc9"/>
@@ -205,7 +205,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-901" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-392" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
 			<column name="code" type="varchar2" value="pc10"/>
@@ -214,7 +214,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-902" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-393" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
 			<column name="code" type="varchar2" value="pc11"/>
@@ -223,7 +223,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-903" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-394" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
 			<column name="code" type="varchar2" value="pc12"/>
@@ -232,7 +232,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-904" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-395" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
 			<column name="code" type="varchar2" value="pc13"/>
@@ -241,7 +241,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-905" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-396" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
 			<column name="code" type="varchar2" value="pc14"/>
@@ -250,111 +250,11 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-901" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-397" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition">
 			<column name="code" type="varchar2" value="pc15"/>
 			<column name="doc_type_id" type="number" value="5"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-390" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_payment_condition_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc1"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Предоплата"/>
-			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-391" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_payment_condition_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc2"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Подекадно равномерно"/>
-			<column name="name" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
-				- до 10 числа расчетного периода производится оплата за первую декаду,
-				- до 20 числа расчетного периода – оплата за вторую декаду и,
-				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-392" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_payment_condition_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc3"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Подекадно с авансовыми платежами. Укажите проценты авансовых платежей % % %"/>
-			<column name="name" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
-				- до 10 числа расчетного периода производится оплата за первую декаду авансовым платежом в размере от стоимости услуг за месец;
-				- до 20 числа расчетного периода – оплата за вторую декаду  авансовым платежом в размере от стоимости услуг за месец;
-				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода авансовым платежом в размере от стоимости услуг за месец."/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-393" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_payment_condition_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc4"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
-			<column name="name" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-394" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_payment_condition_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc5"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Не позднее последнего банковского дня соответствующего расчетного периода"/>
-			<column name="name" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-395" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_payment_condition_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc6"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Предоплата"/>
-			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-396" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_payment_condition_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc7"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Подекадно равномерно"/>
-			<column name="name" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
-				- до 10 числа расчетного периода производится оплата за первую декаду,
-				- до 20 числа расчетного периода – оплата за вторую декаду и,
-				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-397" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_payment_condition_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc8"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Подекадно с авансовыми платежами. Укажите проценты авансовых платежей % % %"/>
-			<column name="name" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
-				- до 10 числа расчетного периода производится оплата за первую декаду авансовым платежом в размере от стоимости услуг за месец;
-				- до 20 числа расчетного периода – оплата за вторую декаду  авансовым платежом в размере от стоимости услуг за месец;
-				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода авансовым платежом в размере от стоимости услуг за месец."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -362,10 +262,10 @@
 	<changeSet id="cm-rus-398" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc9"/>
+			<column name="code" type="varchar2" value="pc1"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
-			<column name="name" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+			<column name="short_name" type="varchar2" value="Предоплата"/>
+			<column name="full_text" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -373,10 +273,13 @@
 	<changeSet id="cm-rus-399" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc10"/>
+			<column name="code" type="varchar2" value="pc2"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Не позднее последнего банковского дня соответствующего расчетного периода"/>
-			<column name="name" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
+			<column name="short_name" type="varchar2" value="Подекадно равномерно"/>
+			<column name="full_text" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду,
+				- до 20 числа расчетного периода – оплата за вторую декаду и,
+				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -384,10 +287,13 @@
 	<changeSet id="cm-rus-400" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc11"/>
+			<column name="code" type="varchar2" value="pc3"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Предоплата"/>
-			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
+			<column name="short_name" type="varchar2" value="Подекадно с авансовыми платежами. Укажите проценты авансовых платежей % % %"/>
+			<column name="full_text" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду авансовым платежом в размере от стоимости услуг за месец;
+				- до 20 числа расчетного периода – оплата за вторую декаду  авансовым платежом в размере от стоимости услуг за месец;
+				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода авансовым платежом в размере от стоимости услуг за месец."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -395,13 +301,10 @@
 	<changeSet id="cm-rus-401" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc12"/>
+			<column name="code" type="varchar2" value="pc4"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Подекадно равномерно"/>
-			<column name="name" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
-				- до 10 числа расчетного периода производится оплата за первую декаду,
-				- до 20 числа расчетного периода – оплата за вторую декаду и,
-				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
+			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -409,13 +312,10 @@
 	<changeSet id="cm-rus-402" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc13"/>
+			<column name="code" type="varchar2" value="pc5"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Подекадно с авансовыми платежами. Укажите проценты авансовых платежей % % %"/>
-			<column name="name" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
-				- до 10 числа расчетного периода производится оплата за первую декаду авансовым платежом в размере от стоимости услуг за месец;
-				- до 20 числа расчетного периода – оплата за вторую декаду  авансовым платежом в размере от стоимости услуг за месец;
-				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода авансовым платежом в размере от стоимости услуг за месец."/>
+			<column name="short_name" type="varchar2" value="Не позднее последнего банковского дня соответствующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -423,10 +323,10 @@
 	<changeSet id="cm-rus-403" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc14"/>
+			<column name="code" type="varchar2" value="pc6"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
-			<column name="name" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+			<column name="short_name" type="varchar2" value="Предоплата"/>
+			<column name="full_text" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -434,22 +334,27 @@
 	<changeSet id="cm-rus-404" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc15"/>
+			<column name="code" type="varchar2" value="pc7"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="short_name" type="varchar2" value="Не позднее последнего банковского дня соответствующего расчетного периода"/>
-			<column name="name" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
+			<column name="short_name" type="varchar2" value="Подекадно равномерно"/>
+			<column name="full_text" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду,
+				- до 20 числа расчетного периода – оплата за вторую декаду и,
+				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-
 	<changeSet id="cm-rus-405" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc1"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="Предоплата"/>
-			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
+			<column name="code" type="varchar2" value="pc8"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Подекадно с авансовыми платежами. Укажите проценты авансовых платежей % % %"/>
+			<column name="full_text" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду авансовым платежом в размере от стоимости услуг за месец;
+				- до 20 числа расчетного периода – оплата за вторую декаду  авансовым платежом в размере от стоимости услуг за месец;
+				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода авансовым платежом в размере от стоимости услуг за месец."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -457,27 +362,10 @@
 	<changeSet id="cm-rus-406" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc2"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="Подекадно равномерно"/>
-			<column name="name" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
-				- до 10 числа расчетного периода производится оплата за первую декаду,
-				- до 20 числа расчетного периода – оплата за вторую декаду и,
-				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-392" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_payment_condition_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc3"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="Подекадно с авансовыми платежами. Укажите проценты авансовых платежей % % %"/>
-			<column name="name" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
-				- до 10 числа расчетного периода производится оплата за первую декаду авансовым платежом в размере от стоимости услуг за месец;
-				- до 20 числа расчетного периода – оплата за вторую декаду  авансовым платежом в размере от стоимости услуг за месец;
-				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода авансовым платежом в размере от стоимости услуг за месец."/>
+			<column name="code" type="varchar2" value="pc9"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -485,10 +373,10 @@
 	<changeSet id="cm-rus-407" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc4"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
-			<column name="name" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+			<column name="code" type="varchar2" value="pc10"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Не позднее последнего банковского дня соответствующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -496,10 +384,10 @@
 	<changeSet id="cm-rus-408" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc5"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="Не позднее последнего банковского дня соответствующего расчетного периода"/>
-			<column name="name" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
+			<column name="code" type="varchar2" value="pc11"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Предоплата"/>
+			<column name="full_text" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -507,10 +395,13 @@
 	<changeSet id="cm-rus-409" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc6"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="Предоплата"/>
-			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
+			<column name="code" type="varchar2" value="pc12"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Подекадно равномерно"/>
+			<column name="full_text" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду,
+				- до 20 числа расчетного периода – оплата за вторую декаду и,
+				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -518,13 +409,13 @@
 	<changeSet id="cm-rus-410" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc7"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="Подекадно равномерно"/>
-			<column name="name" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
-				- до 10 числа расчетного периода производится оплата за первую декаду,
-				- до 20 числа расчетного периода – оплата за вторую декаду и,
-				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
+			<column name="code" type="varchar2" value="pc13"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Подекадно с авансовыми платежами. Укажите проценты авансовых платежей % % %"/>
+			<column name="full_text" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду авансовым платежом в размере от стоимости услуг за месец;
+				- до 20 числа расчетного периода – оплата за вторую декаду  авансовым платежом в размере от стоимости услуг за месец;
+				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода авансовым платежом в размере от стоимости услуг за месец."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -532,13 +423,10 @@
 	<changeSet id="cm-rus-411" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc8"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="Подекадно с авансовыми платежами. Укажите проценты авансовых платежей % % %"/>
-			<column name="name" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
-				- до 10 числа расчетного периода производится оплата за первую декаду авансовым платежом в размере от стоимости услуг за месец;
-				- до 20 числа расчетного периода – оплата за вторую декаду  авансовым платежом в размере от стоимости услуг за месец;
-				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода авансовым платежом в размере от стоимости услуг за месец."/>
+			<column name="code" type="varchar2" value="pc14"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -546,21 +434,22 @@
 	<changeSet id="cm-rus-412" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc9"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
-			<column name="name" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+			<column name="code" type="varchar2" value="pc15"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="short_name" type="varchar2" value="Не позднее последнего банковского дня соответствующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
+
 	<changeSet id="cm-rus-413" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc10"/>
+			<column name="code" type="varchar2" value="pc1"/>
 			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="Не позднее последнего банковского дня соответствующего расчетного периода"/>
-			<column name="name" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
+			<column name="short_name" type="varchar2" value="Предоплата"/>
+			<column name="full_text" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -568,21 +457,10 @@
 	<changeSet id="cm-rus-414" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc11"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="Предоплата"/>
-			<column name="name" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-415" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_payment_condition_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc12"/>
+			<column name="code" type="varchar2" value="pc2"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="short_name" type="varchar2" value="Подекадно равномерно"/>
-			<column name="name" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
+			<column name="full_text" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
 				- до 10 числа расчетного периода производится оплата за первую декаду,
 				- до 20 числа расчетного периода – оплата за вторую декаду и,
 				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
@@ -590,13 +468,13 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-416" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-415" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc13"/>
+			<column name="code" type="varchar2" value="pc3"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="short_name" type="varchar2" value="Подекадно с авансовыми платежами. Укажите проценты авансовых платежей % % %"/>
-			<column name="name" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
+			<column name="full_text" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
 				- до 10 числа расчетного периода производится оплата за первую декаду авансовым платежом в размере от стоимости услуг за месец;
 				- до 20 числа расчетного периода – оплата за вторую декаду  авансовым платежом в размере от стоимости услуг за месец;
 				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода авансовым платежом в размере от стоимости услуг за месец."/>
@@ -604,13 +482,24 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-416" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
+			<column name="code" type="varchar2" value="pc4"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
 	<changeSet id="cm-rus-417" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
-			<column name="code" type="varchar2" value="pc14"/>
+			<column name="code" type="varchar2" value="pc5"/>
 			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
-			<column name="name" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+			<column name="short_name" type="varchar2" value="Не позднее последнего банковского дня соответствующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -618,10 +507,121 @@
 	<changeSet id="cm-rus-418" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_payment_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
+			<column name="code" type="varchar2" value="pc6"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Предоплата"/>
+			<column name="full_text" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-419" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
+			<column name="code" type="varchar2" value="pc7"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Подекадно равномерно"/>
+			<column name="full_text" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду,
+				- до 20 числа расчетного периода – оплата за вторую декаду и,
+				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-420" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
+			<column name="code" type="varchar2" value="pc8"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Подекадно с авансовыми платежами. Укажите проценты авансовых платежей % % %"/>
+			<column name="full_text" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду авансовым платежом в размере от стоимости услуг за месец;
+				- до 20 числа расчетного периода – оплата за вторую декаду  авансовым платежом в размере от стоимости услуг за месец;
+				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода авансовым платежом в размере от стоимости услуг за месец."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-421" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
+			<column name="code" type="varchar2" value="pc9"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-422" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
+			<column name="code" type="varchar2" value="pc10"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Не позднее последнего банковского дня соответствующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-423" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
+			<column name="code" type="varchar2" value="pc11"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Предоплата"/>
+			<column name="full_text" type="varchar2" value="Оплата Потребителем услуг Поставщика на оказание услуг по передаче электрической энергии по национальной электрической сети производится в соответствии с тарифом, утвержденным ведомством уполномоченного органа."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-424" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
+			<column name="code" type="varchar2" value="pc12"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Подекадно равномерно"/>
+			<column name="full_text" type="varchar2" value="деньгами, путем оплаты договорного объема услуг (с учетом оперативных данных),   подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду,
+				- до 20 числа расчетного периода – оплата за вторую декаду и,
+				- до 30 числа расчетного периода до последнего рабочего банковского дня – оплата за третью декаду соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-425" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
+			<column name="code" type="varchar2" value="pc13"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="Подекадно с авансовыми платежами. Укажите проценты авансовых платежей % % %"/>
+			<column name="full_text" type="varchar2" value=" деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке:
+				- до 10 числа расчетного периода производится оплата за первую декаду авансовым платежом в размере от стоимости услуг за месец;
+				- до 20 числа расчетного периода – оплата за вторую декаду  авансовым платежом в размере от стоимости услуг за месец;
+				- до 30 числа расчетного периода – оплата за третью декаду соответствующего расчетного периода авансовым платежом в размере от стоимости услуг за месец."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-426" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
+			<column name="code" type="varchar2" value="pc14"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="short_name" type="varchar2" value="% оплаты договорного обьема услуг, до числа расчетного периода и оставшиеся % не позднее последнего рабочего дня месеца соответсвующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=" деньгами, путем % оплаты Договорного объема услуг, до  числа расчетного периода и оставшиеся % Договорного объема услуг, не позднее последнего рабочего дня месяца соответствующего расчетного периода."/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-427" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_payment_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_payment_condition_tl">
 			<column name="code" type="varchar2" value="pc15"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="short_name" type="varchar2" value="Не позднее последнего банковского дня соответствующего расчетного периода"/>
-			<column name="name" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
+			<column name="full_text" type="varchar2" value=", деньгами, путем оплаты договорного объема услуг, (с учетом оперативных данных), подекадно в следующем порядке, не позднее последнего банковского дня соответствующего расчетного периода"/>
 		</insert>
 		<rollback/>
 	</changeSet>
