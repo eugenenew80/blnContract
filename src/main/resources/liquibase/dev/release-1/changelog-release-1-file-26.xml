@@ -192,4 +192,17 @@
 				referencedColumnNames="id"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-372" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_keg_cte_a2_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_keg_cte_a2_tl"/>
+	</changeSet>
+	<changeSet id="cm-rus-373" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_keg_cte_a2_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_keg_cte_a2_tl"/>
+	</changeSet>
 </databaseChangeLog>
