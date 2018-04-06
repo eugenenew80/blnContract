@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-419" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: contract_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="control_range" type="varchar2(50)" remarks="Диапазон физического урегулирования дисбалансов"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-420" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: contract_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="payment_condition_code" type="varchar2(5)" remarks="код условия оплаты" defaultValue="pc1"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-421" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_payment_condition_tl to cm_doc_payment_condition</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="payment_condition_code"
+				constraintName="fk_cm_doc_keg_cte_22"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_payment_condition"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-422" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: contract_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="uo1" type="number" remarks="условие оплаты 1 поле"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-423" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: contract_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="uo2" type="number" remarks="условие оплаты 2 поле"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-424" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: contract_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="uo3" type="number" remarks="условие оплаты 3 поле"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-425" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: contract_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="uo4" type="number" remarks="условие оплаты 4 поле"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-426" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: contract_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="uo5" type="number" remarks="условие оплаты 5 поле"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-427" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: contract_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="uo6" type="number" remarks="условие оплаты 6 поле"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-428" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: contract_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="payment" type="number" remarks="оплата"/>
+		</addColumn>
+	</changeSet>
+
+
+</databaseChangeLog>

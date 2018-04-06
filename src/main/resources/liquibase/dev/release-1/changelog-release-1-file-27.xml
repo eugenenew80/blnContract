@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-374" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: DM_DOC_TYPES to DM_DOC_TYPES</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dm_doc_types"
+				baseColumnNames="parent_type_id"
+				constraintName="fk_dm_doc_types_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_doc_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-375" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_payment_orders</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_payment_orders"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-376" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_payment_orders_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_payment_orders_tl"/>
+	</changeSet>
+
+
+</databaseChangeLog>
