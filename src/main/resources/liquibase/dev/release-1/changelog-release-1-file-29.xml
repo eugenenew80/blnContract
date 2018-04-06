@@ -7,7 +7,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 	<changeSet id="cm-rus-428" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column for table: contract_types</comment>
+		<comment>add column for table: cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
 			<column name="control_range" type="varchar2(50)" remarks="Диапазон физического урегулирования дисбалансов"/>
@@ -15,7 +15,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-429" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column for table: contract_types</comment>
+		<comment>add column for table: cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
 			<column name="payment_condition_code" type="varchar2(5)" remarks="код условия оплаты" defaultValue="pc1"/>
@@ -23,7 +23,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-430" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_doc_payment_condition_tl to cm_doc_payment_condition</comment>
+		<comment>Creating foreign constraint: cm_doc_keg_cte to cm_doc_payment_condition</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="cm_doc_keg_cte"
@@ -40,7 +40,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-431" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column for table: contract_types</comment>
+		<comment>add column for table: cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
 			<column name="uo1" type="number" remarks="условие оплаты 1 поле"/>
@@ -48,7 +48,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-432" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column for table: contract_types</comment>
+		<comment>add column for table: cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
 			<column name="uo2" type="number" remarks="условие оплаты 2 поле"/>
@@ -56,7 +56,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-433" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column for table: contract_types</comment>
+		<comment>add column for table: cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
 			<column name="uo3" type="number" remarks="условие оплаты 3 поле"/>
@@ -64,7 +64,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-434" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column for table: contract_types</comment>
+		<comment>add column for table: cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
 			<column name="uo4" type="number" remarks="условие оплаты 4 поле"/>
@@ -72,7 +72,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-435" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column for table: contract_types</comment>
+		<comment>add column for table: cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
 			<column name="uo5" type="number" remarks="условие оплаты 5 поле"/>
@@ -80,7 +80,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-436" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column for table: contract_types</comment>
+		<comment>add column for table: cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
 			<column name="uo6" type="number" remarks="условие оплаты 6 поле"/>
@@ -88,11 +88,123 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-437" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column for table: contract_types</comment>
+		<comment>add column for table: cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
 			<column name="payment" type="number" remarks="оплата"/>
 		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-438" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop default value from cm_doc_keg_cte</comment>
+		<dropDefaultValue columnDataType="varchar2(5)"
+						  columnName="payment_condition_code"
+						  schemaName="apps"
+						  tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-439" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_doc_keg_cte</comment>
+		<dropColumn columnName="uo1"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-440" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_doc_keg_cte</comment>
+		<dropColumn columnName="uo2"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-441" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_doc_keg_cte</comment>
+		<dropColumn columnName="uo3"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-442" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_doc_keg_cte</comment>
+		<dropColumn columnName="uo4"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-443" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_doc_keg_cte</comment>
+		<dropColumn columnName="uo5"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-444" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_doc_keg_cte</comment>
+		<dropColumn columnName="uo6"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-445" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="f1" type="number" remarks="% от стоимости услуг за месец"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-446" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="f2" type="number" remarks="% от стоимости услуг за месец"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-447" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="f3" type="number" remarks="% от стоимости услуг за месец"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-448" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="f4" type="number" remarks="% оплаты договорного обьема"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-449" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="f5" type="number" remarks="числа"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-450" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="f6" type="number" remarks="оставшиеся %"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-451" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_payment_condition</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_payment_condition"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-452" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_payment_condition_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_payment_condition_tl"/>
 	</changeSet>
 
 
