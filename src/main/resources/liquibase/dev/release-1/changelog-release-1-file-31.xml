@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-503" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_payment_condition</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_payment_condition">
+			<column name="sap_code" type="varchar2(10)" remarks="Код условия платежа в SAP"/>
+	</addColumn>
+	</changeSet>
+
+
+
+</databaseChangeLog>
