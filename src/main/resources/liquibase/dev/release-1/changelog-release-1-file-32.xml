@@ -62,7 +62,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-525" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-527" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_tariffs</comment>
 		<insert schemaName="apps" tableName="dict_tariffs">
 			<column name="code" type="varchar2" value="T03"/>
@@ -71,7 +71,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-526" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-528" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T03"/>
