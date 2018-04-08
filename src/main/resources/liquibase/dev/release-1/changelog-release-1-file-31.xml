@@ -73,4 +73,239 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-505" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			(
+			id                    NUMBER not null,
+			cm_doc_keg_cte_a1h_id NUMBER,
+			line_number           NUMBER,
+			m01                   NUMBER,
+			m02                   NUMBER,
+			m03                   NUMBER,
+			m04                   NUMBER,
+			m05                   NUMBER,
+			m06                   NUMBER,
+			m07                   NUMBER,
+			m08                   NUMBER,
+			m09                   NUMBER,
+			m10                   NUMBER,
+			m11                   NUMBER,
+			m12                   NUMBER,
+			create_by             NUMBER,
+			create_date           DATE,
+			last_update_by        NUMBER,
+			last_update_date      DATE
+			);
+			-- Add comments to the table
+			comment on table APPS.CM_DOC_KEG_CTE_A1L
+			is 'Приложения 1 к договору на передачу эл.энергии по сетям НЭС (строки таблицы)';
+			-- Add comments to the columns
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.id
+			is 'ID записи';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.cm_doc_keg_cte_a1h_id
+			is 'ID договора';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.line_number
+			is 'Порядок вывода в документ';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m01
+			is 'Договорной объем за 1 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m02
+			is 'Договорной объем за 2 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m03
+			is 'Договорной объем за 3 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m04
+			is 'Договорной объем за 4 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m05
+			is 'Договорной объем за 5 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m06
+			is 'Договорной объем за 6 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m07
+			is 'Договорной объем за 7 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m08
+			is 'Договорной объем за 8 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m09
+			is 'Договорной объем за 9 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m10
+			is 'Договорной объем за 10 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m11
+			is 'Договорной объем за 11 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.m12
+			is 'Договорной объем за 12 месяц года';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.create_by
+			is 'Автор записи';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.create_date
+			is 'Дата и время создания записи';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.last_update_by
+			is 'Автор последнего изменения';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L.last_update_date
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-506" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			-- Create/Recreate indexes
+			create index  APPS.CM_DOC_KEG_CTE_A1L_N1 on  APPS.CM_DOC_KEG_CTE_A1L (CM_DOC_KEG_CTE_A1H_ID);
+			-- Create/Recreate primary, unique and foreign key constraints
+			alter table  APPS.CM_DOC_KEG_CTE_A1L add constraint CM_DOC_KEG_CTE_A1L_PK  primary key (ID);
+			alter table  APPS.CM_DOC_KEG_CTE_A1L add constraint CM_DOC_KEG_CTE_A1L_FK1 foreign key (CM_DOC_KEG_CTE_A1H_ID) references  APPS.CM_DOC_KEG_CTE_A1H (ID);
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-507" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			create table APPS.CM_DOC_KEG_CTE_A1L_TL
+			(
+			id                    NUMBER not null,
+			cm_doc_keg_cte_a1l_id NUMBER,
+			lang                  VARCHAR2(10),
+			sub_consumer_name     VARCHAR2(500),
+			create_by             NUMBER,
+			create_date           DATE,
+			last_update_by        NUMBER,
+			last_update_date      DATE
+			);
+			-- Add comments to the table
+			comment on table APPS.CM_DOC_KEG_CTE_A1L_TL
+			is 'Приложение 1 к договору на передачу эл.энергии (переводы строк таблицы)';
+			-- Add comments to the columns
+			comment on column APPS.CM_DOC_KEG_CTE_A1L_TL.id
+			is 'ID записи';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L_TL.cm_doc_keg_cte_a1l_id
+			is 'Id строки таблицы';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L_TL.lang
+			is 'Код языка';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L_TL.sub_consumer_name
+			is 'Наименование субабонента';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L_TL.create_by
+			is 'Автор записи';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L_TL.create_date
+			is 'Дата и время создания записи';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L_TL.last_update_by
+			is 'Автор последнего изменения';
+			comment on column APPS.CM_DOC_KEG_CTE_A1L_TL.last_update_date
+			is 'Дата и время последнего изменения';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-508" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			create unique index APPS.CM_DOC_KEG_CTE_A1L_TL_N1 on APPS.CM_DOC_KEG_CTE_A1L_TL (CM_DOC_KEG_CTE_A1L_ID, LANG);
+			-- Create/Recreate primary, unique and foreign key constraints
+			alter table APPS.CM_DOC_KEG_CTE_A1L_TL add constraint CM_DOC_KEG_CTE_A1L_TL_PK primary key (ID);
+			alter table APPS.CM_DOC_KEG_CTE_A1L_TL add constraint CM_DOC_KEG_CTE_A1L_TL_FK1 foreign key (CM_DOC_KEG_CTE_A1L_ID) references APPS.CM_DOC_KEG_CTE_A1L (ID);
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-509" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			create table APPS.CM_DOC_NOTES
+			(
+			id               NUMBER not null,
+			doc_id           NUMBER not null,
+			item_order       NUMBER not null,
+			item_text        VARCHAR2(10),
+			is_print         NUMBER,
+			create_by        NUMBER,
+			create_date      DATE,
+			last_update_by   NUMBER,
+			last_update_date DATE
+			);
+			-- Add comments to the table
+			comment on table APPS.CM_DOC_NOTES
+			is 'Примечания к документам';
+			-- Add comments to the columns
+			comment on column APPS.CM_DOC_NOTES.id
+			is 'ID записи';
+			comment on column APPS.CM_DOC_NOTES.doc_id
+			is 'ID документа';
+			comment on column APPS.CM_DOC_NOTES.item_order
+			is 'Порядок вывода';
+			comment on column APPS.CM_DOC_NOTES.item_text
+			is 'Обозначение пункта';
+			comment on column APPS.CM_DOC_NOTES.create_by
+			is 'Автор записи';
+			comment on column APPS.CM_DOC_NOTES.create_date
+			is 'Дата и время создания';
+			comment on column APPS.CM_DOC_NOTES.last_update_by
+			is 'Автор последнего изменения';
+			comment on column APPS.CM_DOC_NOTES.last_update_date
+			is 'Дата и время последнего изменения';
+			comment on column APPS.CM_DOC_NOTES.is_print
+			is 'Отображать в печатной форме (да/нет)';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-510" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			-- Create/Recreate indexes
+			create unique index APPS.CM_DOC_NOTES_U1 on APPS.CM_DOC_NOTES (DOC_ID, ITEM_ORDER);
+			-- Create/Recreate primary, unique and foreign key constraints
+			alter table APPS.CM_DOC_NOTES add constraint CM_DOC_NOTES_PK primary key (ID);
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-511" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			create table APPS.CM_DOC_NOTES_TL
+			(
+			id               NUMBER not null,
+			cm_doc_notes_id  NUMBER not null,
+			lang             VARCHAR2(10) not null,
+			note_text        CLOB,
+			create_by        NUMBER,
+			create_date      DATE,
+			last_update_by   NUMBER,
+			last_update_date DATE
+			);
+			-- Add comments to the table
+			comment on table APPS.CM_DOC_NOTES_TL
+			is 'Переводы примечаний к документам';
+			-- Add comments to the columns
+			comment on column APPS.CM_DOC_NOTES_TL.id
+			is 'ID записи';
+			comment on column APPS.CM_DOC_NOTES_TL.cm_doc_notes_id
+			is 'ID пункта примечания';
+			comment on column APPS.CM_DOC_NOTES_TL.lang
+			is 'Код языка';
+			comment on column APPS.CM_DOC_NOTES_TL.note_text
+			is 'Текст примечания';
+			comment on column APPS.CM_DOC_NOTES_TL.create_by
+			is 'Автор записи';
+			comment on column APPS.CM_DOC_NOTES_TL.create_date
+			is 'Дата и время создания записи';
+			comment on column APPS.CM_DOC_NOTES_TL.last_update_by
+			is 'Автор последнего изменения';
+			comment on column APPS.CM_DOC_NOTES_TL.last_update_date
+			is 'Дата и время последнего изменения';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-512" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			-- Create/Recreate indexes
+			create unique index APPS.CM_DOC_NOTES_TL_U1 on APPS.CM_DOC_NOTES_TL (CM_DOC_NOTES_ID, LANG);
+			-- Create/Recreate primary, unique and foreign key constraints
+			alter table APPS.CM_DOC_NOTES_TL
+			add constraint CM_DOC_NOTES_TL_PK primary key (ID);
+			alter table APPS.CM_DOC_NOTES_TL
+			add constraint CM_DOC_NOTES_TL_N1 foreign key (CM_DOC_NOTES_ID)
+			references CM_DOC_NOTES (ID);
+		</sql>
+		<rollback/>
+	</changeSet>
+
 </databaseChangeLog>
