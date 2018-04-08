@@ -68,7 +68,7 @@
 			-- Create/Recreate primary, unique and foreign key constraints
 			alter table CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_PK  primary key (ID);
 			alter table CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_FK1 foreign key (CONTRACT_ID) references CM_DOC_KEG_CTE (ID);
-			alter table CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_FK2 foreign key (ORG_ID) references Dict_Organizations (ID);
+			alter table CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_FK2 foreign key (ORG_ID) references DICT_ORGANIZATIONS (ID);
 		</sql>
 		<rollback/>
 	</changeSet>
