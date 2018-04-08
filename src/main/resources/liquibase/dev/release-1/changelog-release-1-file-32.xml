@@ -34,20 +34,20 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-524" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>modify data type: name in dict_tariffs</comment>
+		<comment>modify data type: name in dict_tariffs_tl</comment>
 		<modifyDataType columnName="name"
 						newDataType="varchar2(100)"
 						schemaName="apps"
-						tableName="dict_tariffs"/>
+						tableName="dict_tariffs_tl"/>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-525" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>modify data type: name in dict_tariffs</comment>
+		<comment>modify data type: name in dict_tariffs_tl</comment>
 		<modifyDataType columnName="description"
 						newDataType="varchar2(300)"
 						schemaName="apps"
-						tableName="dict_tariffs"/>
+						tableName="dict_tariffs_tl"/>
 		<rollback/>
 	</changeSet>
 
