@@ -139,6 +139,7 @@
 			comment on column APPS.CM_DOC_KEG_CTE_A1L.last_update_by
 			is 'Автор последнего изменения';
 			comment on column APPS.CM_DOC_KEG_CTE_A1L.last_update_date
+			is 'Дата и время последнего изменения';
 		</sql>
 		<rollback/>
 	</changeSet>
