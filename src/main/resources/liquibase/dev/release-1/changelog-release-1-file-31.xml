@@ -296,6 +296,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-512" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>create keys in table: CM_DOC_NOTES_TL_U1</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			-- Create/Recreate indexes
@@ -307,6 +310,16 @@
 			add constraint CM_DOC_NOTES_TL_N1 foreign key (CM_DOC_NOTES_ID)
 			references APPS.CM_DOC_NOTES (ID);
 		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-513" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>create keys in table: CM_DOC_NOTES_TL_U1</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_NOTES_TL
+			add constraint CM_DOC_NOTES_TL_N1 foreign key (CM_DOC_NOTES_ID)
+			references APPS.CM_DOC_NOTES (ID);
+	</sql>
 		<rollback/>
 	</changeSet>
 
