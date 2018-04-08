@@ -305,7 +305,7 @@
 			add constraint CM_DOC_NOTES_TL_PK primary key (ID);
 			alter table APPS.CM_DOC_NOTES_TL
 			add constraint CM_DOC_NOTES_TL_N1 foreign key (CM_DOC_NOTES_ID)
-			references CM_DOC_NOTES (ID);
+			references APPS.CM_DOC_NOTES (ID);
 		</sql>
 		<rollback/>
 	</changeSet>
