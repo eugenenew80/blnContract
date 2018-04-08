@@ -17,7 +17,218 @@
 	<changeSet id="cm-rus-504" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Insert ru in table: dm_doc_types_tl</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-
+			create table CM_DOC_KEG_CTE
+			(
+			id                     NUMBER not null,
+			doc_number             VARCHAR2(30),
+			doc_date               DATE,
+			doc_version            NUMBER default 0 not null,
+			status_id              NUMBER,
+			request_id             NUMBER,
+			record_type_id         NUMBER default 1 not null,
+			parent_contract_id     NUMBER,
+			start_date             DATE,
+			end_date               DATE,
+			bp1_id                 NUMBER,
+			bp1_bin                VARCHAR2(12),
+			bp1_kbe                VARCHAR2(2),
+			bp1_legal_address_id   NUMBER,
+			bp1_is_poa             NUMBER,
+			bp1_poa_type_code      VARCHAR2(10),
+			bp1_poa_number         VARCHAR2(30),
+			bp1_poa_date           DATE,
+			bp1_taxcert_id         NUMBER,
+			bp1_taxcert_date       DATE,
+			bp1_taxcert_start_date DATE,
+			bp1_grc_id             NUMBER,
+			bp1_grc_rle_code       VARCHAR2(30),
+			bp1_grc_series         VARCHAR2(30),
+			bp1_grc_number         VARCHAR2(30),
+			bp1_grc_regnum         VARCHAR2(30),
+			bp1_add_info           VARCHAR2(200),
+			bp1_bank_account_id    NUMBER,
+			bp1_bank_bic           VARCHAR2(11),
+			bp1_bank_account_num   VARCHAR2(40),
+			bp2_id                 NUMBER,
+			bp2_bin                VARCHAR2(12),
+			bp2_kbe                VARCHAR2(2),
+			bp2_legal_address_id   NUMBER,
+			bp2_from_rec           NUMBER,
+			bp2_is_resident        NUMBER,
+			bp2_country_id         NUMBER,
+			bp2_ubpn_type_id       NUMBER,
+			bp2_ubp_number         VARCHAR2(20),
+			bp2_is_poa             NUMBER,
+			bp2_poa_type_code      VARCHAR2(10),
+			bp2_poa_number         VARCHAR2(30),
+			bp2_poa_date           DATE,
+			bp2_taxcert_id         NUMBER,
+			bp2_taxcert_series     VARCHAR2(30),
+			bp2_taxcert_number     VARCHAR2(30),
+			bp2_taxcert_date       DATE,
+			bp2_taxcert_start_date DATE,
+			bp2_grc_id             NUMBER,
+			bp2_grc_rle_code       VARCHAR2(30),
+			bp2_grc_series         VARCHAR2(30),
+			bp2_grc_number         VARCHAR2(30),
+			bp2_grc_regnum         VARCHAR2(30),
+			bp2_add_info           VARCHAR2(200),
+			bp2_bank_account_id    NUMBER,
+			bp2_bank_bic           VARCHAR2(11),
+			bp2_bank_account_num   VARCHAR2(40),
+			tariff_plan_id         NUMBER,
+			payment_order_id       NUMBER,
+			curator_user_id        NUMBER,
+			create_by              NUMBER,
+			create_date            DATE,
+			last_update_by         NUMBER,
+			last_update_date       DATE
+			);
+			-- Add comments to the table
+			comment on table CM_DOC_KEG_CTE
+			is 'Договоры на передачу электроэнергии по сетям НЭС';
+			-- Add comments to the columns
+			comment on column CM_DOC_KEG_CTE.id
+			is 'Идентификатор';
+			comment on column CM_DOC_KEG_CTE.doc_number
+			is 'Номер договора';
+			comment on column CM_DOC_KEG_CTE.doc_date
+			is 'Дата заключения';
+			comment on column CM_DOC_KEG_CTE.doc_version
+			is 'Номер дополнительного соглашения';
+			comment on column CM_DOC_KEG_CTE.status_id
+			is 'Статус договора';
+			comment on column CM_DOC_KEG_CTE.request_id
+			is 'Ссылка на запрос пользователя, на основании которого был создан договор';
+			comment on column CM_DOC_KEG_CTE.record_type_id
+			is 'Тип записи: 1-договор/2-доп.соглашение';
+			comment on column CM_DOC_KEG_CTE.parent_contract_id
+			is 'Ссылка на первую версию договора';
+			comment on column CM_DOC_KEG_CTE.start_date
+			is 'Срок договора: начало';
+			comment on column CM_DOC_KEG_CTE.end_date
+			is 'Срок договора: окончание';
+			comment on column CM_DOC_KEG_CTE.bp1_id
+			is 'Бизнес-партнер 1: Идентификатор';
+			comment on column CM_DOC_KEG_CTE.bp1_bin
+			is 'Бизнес-партнер 1: БИН';
+			comment on column CM_DOC_KEG_CTE.bp1_kbe
+			is 'Бизнес-партнер 1: Код бенефициара (КБе)';
+			comment on column CM_DOC_KEG_CTE.bp1_legal_address_id
+			is 'Бизнес-партнер 1: Ссылка на почтовый адрес юр.лица';
+			comment on column CM_DOC_KEG_CTE.bp1_is_poa
+			is 'Бизнес-партнер 1: Доверительный документ: Действует на основании (да/нет)';
+			comment on column CM_DOC_KEG_CTE.bp1_poa_type_code
+			is 'Бизнес-партнер 1: Доверительный документ: Код вида доверительного документа';
+			comment on column CM_DOC_KEG_CTE.bp1_poa_number
+			is 'Бизнес-партнер 1: Доверительный документ: Номер документа';
+			comment on column CM_DOC_KEG_CTE.bp1_poa_date
+			is 'Бизнес-партнер 1: Доверительный документ: Дата выдачи';
+			comment on column CM_DOC_KEG_CTE.bp1_taxcert_id
+			is 'Бизнес-партнер 1: Св-во о постановке на регистрацию по учету НДС: Идентификатор ';
+			comment on column CM_DOC_KEG_CTE.bp1_taxcert_date
+			is 'Бизнес-партнер 1: Св-во о постановке на регистрацию по учету НДС: Дата выдачи';
+			comment on column CM_DOC_KEG_CTE.bp1_taxcert_start_date
+			is 'Бизнес-партнер 1: Св-во о постановке на регистрацию по учету НДС: Дата начала действия';
+			comment on column CM_DOC_KEG_CTE.bp1_grc_id
+			is 'Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: Идентификатор ';
+			comment on column CM_DOC_KEG_CTE.bp1_grc_rle_code
+			is 'Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: Код документа';
+			comment on column CM_DOC_KEG_CTE.bp1_grc_series
+			is 'Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: Серия';
+			comment on column CM_DOC_KEG_CTE.bp1_grc_number
+			is 'Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: Номер';
+			comment on column CM_DOC_KEG_CTE.bp1_grc_regnum
+			is 'Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: регистрационный номер';
+			comment on column CM_DOC_KEG_CTE.bp1_add_info
+			is 'Бизнес-партнер 1: Доп.контактная информация (телефон, факс, email, и т.д.)';
+			comment on column CM_DOC_KEG_CTE.bp1_bank_account_id
+			is 'Бизнес-партнер 1: Ссылка на ИИК (счет в банке)';
+			comment on column CM_DOC_KEG_CTE.bp1_bank_bic
+			is 'Бизнес-партнер 1: БИК банка';
+			comment on column CM_DOC_KEG_CTE.bp1_bank_account_num
+			is 'Бизнес-партнер 1: Номер счета';
+			comment on column CM_DOC_KEG_CTE.bp2_id
+			is 'Бизнес-партнер 2: Ссылка на бизнес-партнера';
+			comment on column CM_DOC_KEG_CTE.bp2_bin
+			is 'Бизнес-партнер 2: БИН';
+			comment on column CM_DOC_KEG_CTE.bp2_kbe
+			is 'Бизнес-партнер 2: КБе';
+			comment on column CM_DOC_KEG_CTE.bp2_legal_address_id
+			is 'Бизнес-партнер 2: Идентификатор адреса юр.лица';
+			comment on column CM_DOC_KEG_CTE.bp2_from_rec
+			is 'Бизнес-партнер 2: Потребляет через сети РЭК';
+			comment on column CM_DOC_KEG_CTE.bp2_is_resident
+			is 'Бизнес-партнер 2: Является резидентом (да/нет)';
+			comment on column CM_DOC_KEG_CTE.bp2_country_id
+			is 'Бизнес-партнер 2: Страна нерезидента';
+			comment on column CM_DOC_KEG_CTE.bp2_ubpn_type_id
+			is 'Бизнес-партнер 2: ссылка на тип идентификатора типа номера нерезидента: БИН, ИНН, PVN, и т.д. ссылается на CM_RLE_DOC_TYPES';
+			comment on column CM_DOC_KEG_CTE.bp2_ubp_number
+			is 'Бизнес-партнер 2: Номер ИИН';
+			comment on column CM_DOC_KEG_CTE.bp2_is_poa
+			is 'Бизнес-партнер 2: Доверительный документ: Действует на основании (да/нет)';
+			comment on column CM_DOC_KEG_CTE.bp2_poa_type_code
+			is 'Бизнес-партнер 2: Доверительный документ: Код';
+			comment on column CM_DOC_KEG_CTE.bp2_poa_number
+			is 'Бизнес-партнер 2: Доверительный документ: Номер';
+			comment on column CM_DOC_KEG_CTE.bp2_poa_date
+			is 'Бизнес-партнер 2: Доверительный документ: Дата выдачи';
+			comment on column CM_DOC_KEG_CTE.bp2_taxcert_id
+			is 'Бизнес-партнер 2: Св-во о постановке учет по НДС: Идентификатор';
+			comment on column CM_DOC_KEG_CTE.bp2_taxcert_series
+			is 'Бизнес-партнер 2: Св-во о постановке учет по НДС: Серия';
+			comment on column CM_DOC_KEG_CTE.bp2_taxcert_number
+			is 'Бизнес-партнер 2: Св-во о постановке учет по НДС: Номер';
+			comment on column CM_DOC_KEG_CTE.bp2_taxcert_date
+			is 'Бизнес-партнер 2: Св-во о постановке учет по НДС: Дата выдачи';
+			comment on column CM_DOC_KEG_CTE.bp2_taxcert_start_date
+			is 'Бизнес-партнер 2: Св-во о постановке учет по НДС: Действует с';
+			comment on column CM_DOC_KEG_CTE.bp2_grc_id
+			is 'Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Идентификатор';
+			comment on column CM_DOC_KEG_CTE.bp2_grc_rle_code
+			is 'Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Код';
+			comment on column CM_DOC_KEG_CTE.bp2_grc_series
+			is 'Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Серия';
+			comment on column CM_DOC_KEG_CTE.bp2_grc_number
+			is 'Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Номер';
+			comment on column CM_DOC_KEG_CTE.bp2_grc_regnum
+			is 'Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Регистрационный номер';
+			comment on column CM_DOC_KEG_CTE.bp2_add_info
+			is 'Бизнес-партнер 2: Доп.контактная информация';
+			comment on column CM_DOC_KEG_CTE.bp2_bank_account_id
+			is 'Бизнес-партнер 2: Номер счета: Идентификатор';
+			comment on column CM_DOC_KEG_CTE.bp2_bank_bic
+			is 'Бизнес-партнер 2: БИК';
+			comment on column CM_DOC_KEG_CTE.bp2_bank_account_num
+			is 'Бизнес-партнер 2: Номер счета';
+			comment on column CM_DOC_KEG_CTE.tariff_plan_id
+			is 'Ссылка на тарифный план';
+			comment on column CM_DOC_KEG_CTE.payment_order_id
+			is 'Ссылка на порядок оплаты';
+			comment on column CM_DOC_KEG_CTE.curator_user_id
+			is 'Куратор документа: Идентификатор пользователя (user_id)';
+			-- Create/Recreate primary, unique and foreign key constraints
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_PK primary key (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK1 foreign key (PARENT_CONTRACT_ID) references CM_DOC_KEG_CTE (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK2 foreign key (REQUEST_ID)         references DM_REQUESTS (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK3 foreign key (RECORD_TYPE_ID)     references CONTRACT_RECORD_TYPES (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK4 foreign key (BP1_ID)             references DICT_BUSINESS_PARTNERS (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK5 foreign key (BP2_ID)             references DICT_BUSINESS_PARTNERS (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK6 foreign key (BP1_LEGAL_ADDRESS_ID) references DICT_POST_ADDRESSES (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK7 foreign key (BP2_LEGAL_ADDRESS_ID) references DICT_POST_ADDRESSES (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK8 foreign key (BP1_POA_TYPE_CODE) references CM_POA_TYPES (CODE);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK9 foreign key (BP2_POA_TYPE_CODE) references CM_POA_TYPES (CODE);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK10 foreign key (BP1_TAXCERT_ID) references CM_TAXCERTS (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK11 foreign key (BP2_TAXCERT_ID) references CM_TAXCERTS (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK12 foreign key (BP1_GRC_ID) references CM_GOVREGCERTS (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK13 foreign key (BP2_GRC_ID) references CM_GOVREGCERTS (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK14 foreign key (BP1_GRC_RLE_CODE) references CM_RLE_DOC_TYPES (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK15 foreign key (BP2_GRC_RLE_CODE) references CM_RLE_DOC_TYPES (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK16 foreign key (BP1_BANK_ACCOUNT_ID) references DICT_BANK_ACCOUNTS (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK17 foreign key (BP2_BANK_ACCOUNT_ID) references DICT_BANK_ACCOUNTS (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK18 foreign key (BP2_COUNTRY_ID) references DICT_COUNTRIES (ID);
+			alter table CM_DOC_KEG_CTE add constraint CM_DOC_KEG_CTE_FK19 foreign key (BP2_UBPN_TYPE_ID) references DICT_UBPN_TYPES (ID);
 		</sql>
 		<rollback/>
 	</changeSet>
