@@ -113,7 +113,31 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-531" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column in dict_tariffs</comment>
+		<renameColumn columnDataType="varchar2(30)"
+					  newColumnName="code"
+					  oldColumnName="tariff_code"
+					  remarks="Код тарифа"
+					  schemaName="apps"
+					  tableName="dict_tariffs"/>
+		<rollback/>
+	</changeSet>
+
+
 	<changeSet id="cm-rus-532" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column in dict_tariff_values</comment>
+		<renameColumn columnDataType="varchar2(30)"
+					  newColumnName="tariff_code"
+					  oldColumnName="code"
+					  remarks="Код тарифа"
+					  schemaName="apps"
+					  tableName="dict_tariff_values"/>
+		<rollback/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-533" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: dict_tariff_values to dict_tariffs</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -130,7 +154,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-533" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-534" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T01"/>
@@ -142,7 +166,7 @@
 	</changeSet>
 
 
-	<changeSet id="cm-rus-534" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-535" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T02"/>
@@ -154,7 +178,7 @@
 	</changeSet>
 
 
-	<changeSet id="cm-rus-535" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-536" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T03"/>
