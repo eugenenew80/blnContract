@@ -28,7 +28,7 @@
 		<comment>insert into dict_tariffs</comment>
 		<insert schemaName="apps" tableName="dict_tariffs">
 			<column name="code" type="varchar2" value="T01"/>
-			<column name="start_date" type="date" value="to_timestamp('2000-01-01 00:00:00', 'yyyy-mm-dd hh24:mi:ss')"/>
+			<column name="start_date" type="date" valueComputed="to_timestamp('2000-01-01 00:00:00', 'yyyy-mm-dd hh24:mi:ss')"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -99,6 +99,33 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-531" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column in dict_tariffs</comment>
+		<renameColumn columnDataType="varchar2(30)"
+					  newColumnName="tariff_code"
+					  oldColumnName="code"
+					  remarks="Код тарифа"
+					  schemaName="apps"
+					  tableName="dict_tariffs"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-532" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_tariff_values to dict_tariffs</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_tariff_values"
+				baseColumnNames="code"
+				constraintName="fk_dict_tariff_values_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_tariffs"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
 
 </databaseChangeLog>
 
