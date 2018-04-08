@@ -14,6 +14,11 @@
 	</addColumn>
 	</changeSet>
 
+	<changeSet id="cm-rus-504" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 
-
+		</sql>
+		<rollback/>
+	</changeSet>
 </databaseChangeLog>
