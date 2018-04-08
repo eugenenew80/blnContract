@@ -66,9 +66,9 @@
 			-- Create/Recreate indexes
 			create index APPS.CM_DOC_KEG_CTE_A1H_N1 on APPS.CM_DOC_KEG_CTE_A1H (CONTRACT_ID);
 			-- Create/Recreate primary, unique and foreign key constraints
-			alter table APPS.CM_DOC_KEG_CTE_A1H add constraint APPS.CM_DOC_KEG_CTE_A1H_PK  primary key (ID);
-			alter table APPS.CM_DOC_KEG_CTE_A1H add constraint APPS.CM_DOC_KEG_CTE_A1H_FK1 foreign key (CONTRACT_ID) references APPS.CM_DOC_KEG_CTE (ID);
-			alter table APPS.CM_DOC_KEG_CTE_A1H add constraint APPS.CM_DOC_KEG_CTE_A1H_FK2 foreign key (ORG_ID) references APPS.DICT_ORGANIZATIONS (ID);
+			alter table APPS.CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_PK  primary key (ID);
+			alter table APPS.CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_FK1 foreign key (CONTRACT_ID) references APPS.CM_DOC_KEG_CTE (ID);
+			alter table APPS.CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_FK2 foreign key (ORG_ID) references APPS.DICT_ORGANIZATIONS (ID);
 		</sql>
 		<rollback/>
 	</changeSet>
