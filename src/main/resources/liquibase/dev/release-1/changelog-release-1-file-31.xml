@@ -323,4 +323,16 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-514" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>create keys in table: CM_DOC_NOTES_TL_U1</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_KEG_CTE
+			drop constraint FK_CM_DOC_KEG_CTE_21;
+			alter table APPS.CM_DOC_KEG_CTE
+			add constraint FK_CM_DOC_KEG_CTE_21 foreign key (CONTRACT_TYPE_ID)
+			references APPS.dm_doc_types (ID)
+			deferrable initially deferred;
+		</sql>
+		<rollback/>
+	</changeSet>
 </databaseChangeLog>
