@@ -55,6 +55,7 @@
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T01"/>
+			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Тариф на оказание услуги по передаче электрической энергии по НЭС РК"/>
 			<column name="description" type="varchar2" value="Тариф на оказание услуги по передаче электрической энергии по Национальным электрическим сетям РК"/>
 		</insert>
@@ -74,6 +75,7 @@
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T02"/>
+			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Тариф на оказание услуги по техн.диспетчеризации отпуска в сеть и потребления электрической энергии"/>
 			<column name="description" type="varchar2" value="Тариф на оказание услуги по технической диспетчеризации отпуска в сеть электрической энергии"/>
 		</insert>
@@ -93,6 +95,7 @@
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T03"/>
+			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Тариф на оказание услуги по организации балансирования производства-потребления эл.энергии"/>
 			<column name="description" type="varchar2" value="Тариф на оказание услуги по организации балансирования производства-потребления электрической энергии"/>
 		</insert>
@@ -125,6 +128,41 @@
 				referencedTableName="dict_tariffs"
 				referencedColumnNames="code"
 		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-533" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_tariffs_tl</comment>
+		<insert schemaName="apps" tableName="dict_tariffs_tl">
+			<column name="code" type="varchar2" value="T01"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Тариф на оказание услуги по передаче электрической энергии по НЭС РК"/>
+			<column name="description" type="varchar2" value="Тариф на оказание услуги по передаче электрической энергии по Национальным электрическим сетям РК"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-534" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_tariffs_tl</comment>
+		<insert schemaName="apps" tableName="dict_tariffs_tl">
+			<column name="code" type="varchar2" value="T02"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Тариф на оказание услуги по техн.диспетчеризации отпуска в сеть и потребления электрической энергии"/>
+			<column name="description" type="varchar2" value="Тариф на оказание услуги по технической диспетчеризации отпуска в сеть электрической энергии"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-530" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_tariffs_tl</comment>
+		<insert schemaName="apps" tableName="dict_tariffs_tl">
+			<column name="code" type="varchar2" value="T03"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Тариф на оказание услуги по организации балансирования производства-потребления эл.энергии"/>
+			<column name="description" type="varchar2" value="Тариф на оказание услуги по организации балансирования производства-потребления электрической энергии"/>
+		</insert>
+		<rollback/>
 	</changeSet>
 
 </databaseChangeLog>
