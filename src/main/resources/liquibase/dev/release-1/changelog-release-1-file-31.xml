@@ -335,4 +335,79 @@
 		</sql>
 		<rollback/>
 	</changeSet>
+
+	<changeSet id="cm-rus-515" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_keg_cte_a1h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a1h">
+			<column name="doc_type_id" type="number" remarks="Тип договора"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-516" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a1h to dm_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a1h"
+				baseColumnNames="doc_type_id"
+				constraintName="fk_cm_doc_keg_cte_a1h_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_doc_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-517" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_keg_cte_a2h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a2h">
+			<column name="doc_type_id" type="number" remarks="Тип договора"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-518" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a2h to dm_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a2h"
+				baseColumnNames="doc_type_id"
+				constraintName="fk_cm_doc_keg_cte_a2h_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_doc_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-519" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column for table: cm_doc_keg_cte_a3h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a3h">
+			<column name="doc_type_id" type="number" remarks="Тип договора"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-520" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a3h to dm_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a3h"
+				baseColumnNames="doc_type_id"
+				constraintName="fk_cm_doc_keg_cte_a3h_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_doc_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
 </databaseChangeLog>
