@@ -74,8 +74,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-505" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<comment>create table APPS.CM_DOC_KEG_CTE_A1L</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			create table APPS.CM_DOC_KEG_CTE_A1L
 			(
 			id                    NUMBER not null,
 			cm_doc_keg_cte_a1h_id NUMBER,
@@ -143,7 +144,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-506" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<comment>Create/Recreate indexes: APPS.CM_DOC_KEG_CTE_A1L</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			-- Create/Recreate indexes
 			create index  APPS.CM_DOC_KEG_CTE_A1L_N1 on  APPS.CM_DOC_KEG_CTE_A1L (CM_DOC_KEG_CTE_A1H_ID);
@@ -155,7 +156,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-507" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<comment>create table APPS.CM_DOC_KEG_CTE_A1L_TL</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			create table APPS.CM_DOC_KEG_CTE_A1L_TL
 			(
@@ -193,7 +194,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-508" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<comment>create keys in table: CM_DOC_KEG_CTE_A1L_TL_N1</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			create unique index APPS.CM_DOC_KEG_CTE_A1L_TL_N1 on APPS.CM_DOC_KEG_CTE_A1L_TL (CM_DOC_KEG_CTE_A1L_ID, LANG);
 			-- Create/Recreate primary, unique and foreign key constraints
@@ -204,7 +205,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-509" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<comment>create table APPS.CM_DOC_NOTES</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			create table APPS.CM_DOC_NOTES
 			(
@@ -245,7 +246,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-510" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<comment>create key in table: CM_DOC_NOTES_U1</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			-- Create/Recreate indexes
 			create unique index APPS.CM_DOC_NOTES_U1 on APPS.CM_DOC_NOTES (DOC_ID, ITEM_ORDER);
@@ -256,7 +257,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-511" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<comment>create table APPS.CM_DOC_NOTES_TL</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			create table APPS.CM_DOC_NOTES_TL
 			(
@@ -294,7 +295,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-512" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<comment>create keys in table: CM_DOC_NOTES_TL_U1</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			-- Create/Recreate indexes
 			create unique index APPS.CM_DOC_NOTES_TL_U1 on APPS.CM_DOC_NOTES_TL (CM_DOC_NOTES_ID, LANG);
