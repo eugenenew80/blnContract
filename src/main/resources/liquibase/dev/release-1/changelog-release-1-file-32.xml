@@ -115,7 +115,7 @@
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="dict_tariff_values"
-				baseColumnNames="code"
+				baseColumnNames="tariff_code"
 				constraintName="fk_dict_tariff_values_3"
 				deferrable="true"
 				initiallyDeferred="true"
