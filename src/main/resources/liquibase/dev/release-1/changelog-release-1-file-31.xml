@@ -17,7 +17,7 @@
 	<changeSet id="cm-rus-504" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Insert ru in table: dm_doc_types_tl</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			create table CM_DOC_KEG_CTE_A1H
+			create table APPS.CM_DOC_KEG_CTE_A1H
 			(
 			id               NUMBER not null,
 			contract_id      NUMBER not null,
@@ -34,53 +34,43 @@
 			last_update_date DATE
 			);
 			-- Add comments to the table
-			comment on table CM_DOC_KEG_CTE_A1H
+			comment on table APPS.CM_DOC_KEG_CTE_A1H
 			is 'Приложения 1 к договору на передачу эл.энергии по сетям НЭС (заголовки)';
 			-- Add comments to the columns
-			comment on column CM_DOC_KEG_CTE_A1H.id
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.id
 			is 'ID записи';
-			comment on column CM_DOC_KEG_CTE_A1H.contract_id
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.contract_id
 			is 'Ссылка на договор';
-			comment on column CM_DOC_KEG_CTE_A1H.doc_number
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.doc_number
 			is 'Номер документа';
-			comment on column CM_DOC_KEG_CTE_A1H.doc_date
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.doc_date
 			is 'Дата документа';
-			comment on column CM_DOC_KEG_CTE_A1H.doc_version
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.doc_version
 			is 'Версия';
-			comment on column CM_DOC_KEG_CTE_A1H.status_id
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.status_id
 			is 'Статус';
-			comment on column CM_DOC_KEG_CTE_A1H.request_id
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.request_id
 			is 'Сформирован на основании запроса';
-			comment on column CM_DOC_KEG_CTE_A1H.planning_year
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.planning_year
 			is 'Год';
-			comment on column CM_DOC_KEG_CTE_A1H.org_id
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.org_id
 			is 'Филиал, составивший приложение';
-			comment on column CM_DOC_KEG_CTE_A1H.create_by
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.create_by
 			is 'Автор запроса';
-			comment on column CM_DOC_KEG_CTE_A1H.create_date
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.create_date
 			is 'Дата и время создания записи';
-			comment on column CM_DOC_KEG_CTE_A1H.last_update_by
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.last_update_by
 			is 'Автор последнего изменения';
-			comment on column CM_DOC_KEG_CTE_A1H.last_update_date
+			comment on column APPS.CM_DOC_KEG_CTE_A1H.last_update_date
 			is 'Дата и время последнего изменения';
 			-- Create/Recreate indexes
-			create index CM_DOC_KEG_CTE_A1H_N1 on CM_DOC_KEG_CTE_A1H (CONTRACT_ID);
+			create index APPS.CM_DOC_KEG_CTE_A1H_N1 on APPS.CM_DOC_KEG_CTE_A1H (CONTRACT_ID);
 			-- Create/Recreate primary, unique and foreign key constraints
-			alter table CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_PK  primary key (ID);
-			alter table CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_FK1 foreign key (CONTRACT_ID) references CM_DOC_KEG_CTE (ID);
-			alter table CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_FK2 foreign key (ORG_ID) references DICT_ORGANIZATIONS (ID);
+			alter table APPS.CM_DOC_KEG_CTE_A1H add constraint APPS.CM_DOC_KEG_CTE_A1H_PK  primary key (ID);
+			alter table APPS.CM_DOC_KEG_CTE_A1H add constraint APPS.CM_DOC_KEG_CTE_A1H_FK1 foreign key (CONTRACT_ID) references APPS.CM_DOC_KEG_CTE (ID);
+			alter table APPS.CM_DOC_KEG_CTE_A1H add constraint APPS.CM_DOC_KEG_CTE_A1H_FK2 foreign key (ORG_ID) references APPS.DICT_ORGANIZATIONS (ID);
 		</sql>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-505" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Insert ru in table: dm_doc_types_tl</comment>
-		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			-- Create/Recreate primary, unique and foreign key constraints
-			alter table CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_PK  primary key (ID);
-			alter table CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_FK1 foreign key (CONTRACT_ID) references CM_DOC_KEG_CTE (ID);
-			alter table CM_DOC_KEG_CTE_A1H add constraint CM_DOC_KEG_CTE_A1H_FK2 foreign key (ORG_ID) references DICT_ORGANIZATIONS (ID);
-		</sql>
-		<rollback/>
-	</changeSet>
 </databaseChangeLog>
