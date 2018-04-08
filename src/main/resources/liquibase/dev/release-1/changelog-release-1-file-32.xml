@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-521" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_tariffs</comment>
+		<insert schemaName="apps" tableName="dict_tariffs">
+			<column name="code" type="varchar2" value="T01"/>
+			<column name="start_date" type="date" value="TO_DATE('2000.01.01','yyyy,mm,dd')"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-522" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data type: name in dict_tariffs</comment>
+		<modifyDataType columnName="name"
+						newDataType="varchar2(100)"
+						schemaName="apps"
+						tableName="dict_tariffs"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-523" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data type: name in dict_tariffs</comment>
+		<modifyDataType columnName="description"
+						newDataType="varchar2(300)"
+						schemaName="apps"
+						tableName="dict_tariffs"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-524" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_tariffs_tl</comment>
+		<insert schemaName="apps" tableName="dict_tariffs_tl">
+			<column name="code" type="varchar2" value="T01"/>
+			<column name="name" type="varchar2" value="Тариф на оказание услуги по передаче электрической энергии по НЭС РК"/>
+			<column name="description" type="varchar2" value="Тариф на оказание услуги по передаче электрической энергии по Национальным электрическим сетям РК"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-525" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_tariffs</comment>
+		<insert schemaName="apps" tableName="dict_tariffs">
+			<column name="code" type="varchar2" value="T02"/>
+			<column name="start_date" type="date" value="TO_DATE('2000.01.01','yyyy,mm,dd')"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-526" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_tariffs_tl</comment>
+		<insert schemaName="apps" tableName="dict_tariffs_tl">
+			<column name="code" type="varchar2" value="T02"/>
+			<column name="name" type="varchar2" value="Тариф на оказание услуги по техн.диспетчеризации отпуска в сеть и потребления электрической энергии"/>
+			<column name="description" type="varchar2" value="Тариф на оказание услуги по технической диспетчеризации отпуска в сеть электрической энергии"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-525" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_tariffs</comment>
+		<insert schemaName="apps" tableName="dict_tariffs">
+			<column name="code" type="varchar2" value="T03"/>
+			<column name="start_date" type="date" value="TO_DATE('2000.01.01','yyyy,mm,dd')"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-526" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_tariffs_tl</comment>
+		<insert schemaName="apps" tableName="dict_tariffs_tl">
+			<column name="code" type="varchar2" value="T03"/>
+			<column name="name" type="varchar2" value="Тариф на оказание услуги по организации балансирования производства-потребления эл.энергии"/>
+			<column name="description" type="varchar2" value="Тариф на оказание услуги по организации балансирования производства-потребления электрической энергии"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+
+</databaseChangeLog>
+
