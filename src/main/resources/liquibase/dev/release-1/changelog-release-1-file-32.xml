@@ -7,15 +7,33 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 	<changeSet id="cm-rus-521" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dict_tariffs</comment>
-		<insert schemaName="apps" tableName="dict_tariffs">
-			<column name="code" type="varchar2" value="T01"/>
-			<column name="start_date" type="date" value="TO_DATE('2000.01.01','yyyy,mm,dd')"/>
-		</insert>
+		<comment>modify data type: name in dict_tariffs</comment>
+		<modifyDataType columnName="start_date"
+						newDataType="TIMESTAMP"
+						schemaName="apps"
+						tableName="dict_tariffs"/>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-522" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data type: name in dict_tariffs</comment>
+		<modifyDataType columnName="end_date"
+						newDataType="TIMESTAMP"
+						schemaName="apps"
+						tableName="dict_tariffs"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-523" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_tariffs</comment>
+		<insert schemaName="apps" tableName="dict_tariffs">
+			<column name="code" type="varchar2" value="T01"/>
+			<column name="start_date" type="date" value="01-01"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-524" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>modify data type: name in dict_tariffs</comment>
 		<modifyDataType columnName="name"
 						newDataType="varchar2(100)"
@@ -24,7 +42,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-523" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-525" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>modify data type: name in dict_tariffs</comment>
 		<modifyDataType columnName="description"
 						newDataType="varchar2(300)"
@@ -33,7 +51,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-524" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-526" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T01"/>
@@ -43,7 +61,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-525" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-527" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_tariffs</comment>
 		<insert schemaName="apps" tableName="dict_tariffs">
 			<column name="code" type="varchar2" value="T02"/>
@@ -52,7 +70,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-526" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-528" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T02"/>
@@ -62,7 +80,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-527" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-529" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_tariffs</comment>
 		<insert schemaName="apps" tableName="dict_tariffs">
 			<column name="code" type="varchar2" value="T03"/>
@@ -71,7 +89,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-528" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-530" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T03"/>
