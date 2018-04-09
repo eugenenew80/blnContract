@@ -407,5 +407,21 @@
 				   tableName="cm_tariff_plans_tl"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-555" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to cm_doc_payment_condition</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="payment_condition_code"
+				constraintName="fk_cm_doc_keg_cte_22"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_payment_condition"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
 </databaseChangeLog>
 
