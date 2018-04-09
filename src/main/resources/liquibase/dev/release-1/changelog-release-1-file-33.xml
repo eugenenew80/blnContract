@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-558" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_formation_ways</comment>
+		<createTable tableName="cm_doc_formation_ways" schemaName="apps" remarks="Справочник способ формирования">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-559" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_formation_ways</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_cm_doc_formation_ways"
+				schemaName="apps"
+				tableName="cm_doc_formation_ways"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-560" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_formation_ways_tl</comment>
+		<createTable tableName="cm_doc_formation_ways_tl" schemaName="apps" remarks="Переводы Справочник способ формирования">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(50)" remarks="Краткое наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-561" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_formation_ways_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_cm_doc_formation_ways_tl"
+				schemaName="apps"
+				tableName="cm_doc_formation_ways_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-562" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_formation_ways_tl to cm_doc_formation_ways</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_formation_ways_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_doc_formation_ways_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_formation_ways"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-563" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_formation_ways</comment>
+		<insert schemaName="apps" tableName="cm_doc_formation_ways">
+			<column name="code" type="varchar2" value="AUTO"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-564" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_formation_ways</comment>
+		<insert schemaName="apps" tableName="cm_doc_formation_ways">
+			<column name="code" type="varchar2" value="MANUAL"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-565" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_formation_ways_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_formation_ways_tl">
+			<column name="code" type="varchar2" value="AUTO"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Автоматически"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-566" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_formation_ways_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_formation_ways_tl">
+			<column name="code" type="varchar2" value="MANUAL"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Вручную"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-567" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_formation_ways_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_formation_ways_tl">
+			<column name="code" type="varchar2" value="AUTO"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Автоматически"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-568" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_formation_ways_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_formation_ways_tl">
+			<column name="code" type="varchar2" value="MANUAL"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Вручную"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+</databaseChangeLog>

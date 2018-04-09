@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-580" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_files </comment>
+		<createTable tableName="cm_doc_files" schemaName="apps" remarks="Файлы к договорам">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_id" type="number" remarks="ID документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_version" type="number" remarks="версия документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="версия документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="comments" type="varchar2(100)" remarks="Комментарий">
+			<constraints nullable="true"/>
+			</column>
+
+			<column name="formation_way_code" type="varchar2(10)" remarks="Способ загрузки">
+			<constraints nullable="false"/>
+			</column>
+
+			<column name="file_name" type="varchar2(100)" remarks="Имя файла">
+			<constraints nullable="false"/>
+			</column>
+
+			<column name="file_type" type="varchar2(10)" remarks="Тип файла">
+			<constraints nullable="false"/>
+			</column>
+
+			<column name="file_size" type="number" remarks="Размер файла, байт">
+			<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_type_id" type="number" remarks="Тип документа">
+			<constraints nullable="false"/>
+			</column>
+
+			<column name="File_content" type="blob" remarks="Содержимое файла">
+			<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-581" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_files</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_files"
+				schemaName="apps"
+				tableName="cm_doc_files"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-582" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_files</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_files_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-583" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_files</comment>
+		<addUniqueConstraint
+				columnNames="doc_id,doc_version,lang"
+				constraintName="uk_cm_doc_files"
+				schemaName="apps"
+				tableName="cm_doc_files"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-584" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_files to cm_doc_keg_ste</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_files"
+				baseColumnNames="doc_id"
+				constraintName="fk_cm_doc_files_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-585" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_files to cm_doc_formation_ways</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_files"
+				baseColumnNames="formation_way_code"
+				constraintName="fk_cm_doc_files_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_formation_ways"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-586" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_files to dm_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_files"
+				baseColumnNames="Doc_type_id"
+				constraintName="fk_cm_doc_files_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_doc_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+</databaseChangeLog>

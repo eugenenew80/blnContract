@@ -38,4 +38,9 @@
     <include file="release-1/changelog-release-1-file-30.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-31.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-32.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-33.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-34.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-35.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-36.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-37.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-587" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_signatories  </comment>
+		<createTable tableName="cm_doc_signatories" schemaName="apps" remarks="Подписи к документам">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_id" type="number" remarks="ID докумнта">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_version" type="number" remarks="Версия докумнта">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="signer_group" type="varchar2(30)" remarks="Группа подписантов">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_id" type="number" remarks="ID бизнес партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="is_arbitrary" type="number" remarks="Имя подписанта вводится произвольно">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="signer_user_id" type="number" remarks="ID пользователя(взять из списка зарегестрированных пользователей и у которых есть доступ к системе)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="role_code" type="varchar2(30)" remarks="Код роли подписанта">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-588" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_signatories </comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_signatories"
+				schemaName="apps"
+				tableName="cm_doc_signatories"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-589" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_signatories </comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_signatories_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-590" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_signatories</comment>
+		<addUniqueConstraint
+				columnNames="doc_id,doc_version"
+				constraintName="uk_cm_doc_signatories_1"
+				schemaName="apps"
+				tableName="cm_doc_signatories"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-591" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_signatories_tl</comment>
+		<createTable tableName="cm_doc_signatories_tl" schemaName="apps" remarks="Переводы Подписи к документам">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_signatories_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="signer_post" type="varchar2(150)" remarks="Должность">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="signer_last_name" type="varchar2(30)" remarks="Фамилия">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="signer_first_name" type="varchar2(30)" remarks="Имя">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="signer_middle_name" type="varchar2(30)" remarks="Отчество">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-592" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_signatories_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_signatories_tl"
+				schemaName="apps"
+				tableName="cm_doc_signatories_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-593" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_signatories_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_signatories_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-594" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_signatories _tl</comment>
+		<addUniqueConstraint
+				columnNames="doc_signatories_id,lang"
+				constraintName="uk_cm_doc_signatories_tl"
+				schemaName="apps"
+				tableName="cm_doc_signatories_tl"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-595" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_signatories_tl to cm_doc_signatories </comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_signatories_tl"
+				baseColumnNames="doc_signatories_id"
+				constraintName="fk_cm_doc_signatories_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_signatories"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-596" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_signatories to cm_doc_keg_cte</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_signatories "
+				baseColumnNames="doc_id"
+				constraintName="fk_cm_doc_signatories_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-597" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_signatories to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_signatories "
+				baseColumnNames="bp_id"
+				constraintName="fk_cm_doc_signatories_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-598" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_signatories  to cm_doc_role</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_signatories "
+				baseColumnNames="role_code"
+				constraintName="fk_cm_doc_signatories_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_role"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+
+
+</databaseChangeLog>

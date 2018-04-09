@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-599" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_signatories_and_files  </comment>
+		<createTable tableName="cm_doc_signatories_and_files" schemaName="apps" remarks="Связь подписей и файлов">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_signatories_id" type="number" remarks="ID подписанта">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_file_id" type="number" remarks="ID файла">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="formation_way_code" type="varchar2(30)" remarks="Способ подписания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="signed_date" type="TIMESTAMP" remarks="Дата и время подписания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="signet_signature" type="clob" remarks="Хэш подписи">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-600" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_signatories_and_files </comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_signatories_and_files"
+				schemaName="apps"
+				tableName="cm_doc_signatories_and_files"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-601" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_signatories_and_files </comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_signatories_and_files_s"
+				startValue="1"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-602" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_signatories_and_files to cm_doc_signatories</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_signatories_and_files "
+				baseColumnNames="doc_signatories_id"
+				constraintName="fk_cm_doc_signatories_and_files_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_signatories"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-603" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_signatories_and_files to cm_doc_files</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_signatories_and_files "
+				baseColumnNames="doc_file_id"
+				constraintName="fk_cm_doc_signatories_and_files_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_files"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-604" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_signatories_and_files  to cm_doc_formation_ways</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_signatories_and_files "
+				baseColumnNames="formation_way_code"
+				constraintName="fk_cm_doc_signatories_and_files_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_formation_ways"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+
+
+</databaseChangeLog>
