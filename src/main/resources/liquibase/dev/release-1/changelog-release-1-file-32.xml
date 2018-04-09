@@ -423,5 +423,18 @@
 				referencedColumnNames="code"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-556" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column in cm_doc_keg_cte_a3h</comment>
+		<renameColumn columnDataType="number"
+					  newColumnName="doc_id"
+					  oldColumnName="contract_id"
+					  remarks="ID контракта, с которым связан документ"
+					  schemaName="apps"
+					  tableName="cm_doc_keg_cte_a3h"/>
+		<rollback/>
+	</changeSet>
+
+
 </databaseChangeLog>
 
