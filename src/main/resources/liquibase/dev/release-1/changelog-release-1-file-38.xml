@@ -59,7 +59,7 @@
 	<changeSet id="cm-rus-610" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>update table: dm_doc_types</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			update DM_DOC_TYPES d
+			update APPS.DM_DOC_TYPES d
 			set d.parent_type_id=3
 			WHERE ID=21;
 		</sql>
@@ -67,9 +67,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-611" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>create key in table: CM_DOC_NOTES_U1</comment>
+		<comment>update table: dm_doc_types</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			update DM_DOC_TYPES d
+			update APPS.DM_DOC_TYPES d
 			set d.parent_type_id=3
 			WHERE ID=22;
 		</sql>
