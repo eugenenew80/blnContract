@@ -111,7 +111,7 @@
 				baseTableSchemaName="apps"
 				baseTableName="cm_doc_keg_cte_a3h"
 				baseColumnNames="status_id"
-				constraintName="fk_cm_doc_keg_cte_a2h_2"
+				constraintName="fk_cm_doc_keg_cte_a3h_2"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
