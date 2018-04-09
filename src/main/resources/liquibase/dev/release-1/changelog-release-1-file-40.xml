@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	потребление, производство, всего, отпуск в сеть, импорт электроэнергии
+	consumption, production, total, release
+
+	<changeSet id="cm-rus-624" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_role</comment>
+		<createTable tableName="cm_doc_role" schemaName="apps" remarks="Справочник Роли для подписантов">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-570" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_role</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_cm_doc_role"
+				schemaName="apps"
+				tableName="cm_doc_role"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-571" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_role_tl</comment>
+		<createTable tableName="cm_doc_role_tl" schemaName="apps" remarks="Переводы Роли для подписантов">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(50)" remarks="Краткое наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-572" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_role_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_cm_doc_role_tl"
+				schemaName="apps"
+				tableName="cm_doc_role_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-573" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_role_tl to cm_doc_role</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_role_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_doc_role_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_role"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-574" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_role</comment>
+		<insert schemaName="apps" tableName="cm_doc_role">
+			<column name="code" type="varchar2" value="APPROVER"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-575" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_role</comment>
+		<insert schemaName="apps" tableName="cm_doc_role">
+			<column name="code" type="varchar2" value="CONFORM"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-576" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_role_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_role_tl">
+			<column name="code" type="varchar2" value="APPROVER"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Утверждающий"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-577" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_role_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_role_tl">
+			<column name="code" type="varchar2" value="CONFORM"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Согласующий"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-578" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_role_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_role_tl">
+			<column name="code" type="varchar2" value="APPROVER"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Утверждающий"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-579" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_role_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_role_tl">
+			<column name="code" type="varchar2" value="CONFORM"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Согласующий"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+</databaseChangeLog>

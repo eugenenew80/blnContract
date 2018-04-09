@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-618" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_ctd_a1h  </comment>
+		<createTable tableName="cm_doc_keg_ctd_a1h" schemaName="apps" remarks="Приложение 1 к Договору на техническую диспетчеризацию">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="Ссылка на договор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_number" type="number" remarks="Номер документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="doc_date" type="date" remarks="Дата документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="doc_version" type="number" remarks="Версия">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="status_id" type="number" remarks="Статус">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_id" type="number" remarks="Сформирован на основании запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="planning_year" type="number" remarks="Год">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="org_id" type="number" remarks="Филиал, составивший приложение">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-619" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_ctd_a1h </comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_ctd_a1h"
+				schemaName="apps"
+				tableName="cm_doc_keg_ctd_a1h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-620" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_keg_ctd_a1h </comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_keg_ctd_a1h_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-621" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: cm_doc_keg_ctd_a1h </comment>
+		<createIndex indexName="cm_doc_keg_ctd_a1h_n1"
+					 schemaName="apps"
+					 tableName="cm_doc_keg_ctd_a1h">
+			<column name="contract_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="cm-rus-622" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_ctd_a1h to cm_doc_keg_cte</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_ctd_a1h "
+				baseColumnNames="contract_id"
+				constraintName="fk_cm_doc_keg_ctd_a1h_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-623" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_ctd_a1h to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_ctd_a1h "
+				baseColumnNames="org_id"
+				constraintName="fk_cm_doc_keg_ctd_a1h_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>

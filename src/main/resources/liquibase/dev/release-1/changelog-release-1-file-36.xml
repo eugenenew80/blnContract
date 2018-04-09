@@ -13,11 +13,11 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="doc_id" type="number" remarks="ID докумнта">
+			<column name="doc_id" type="number" remarks="ID документа">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="doc_version" type="number" remarks="Версия докумнта">
+			<column name="doc_version" type="number" remarks="Версия документа">
 				<constraints nullable="false"/>
 			</column>
 
