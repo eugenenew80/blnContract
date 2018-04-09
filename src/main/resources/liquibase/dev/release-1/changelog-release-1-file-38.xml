@@ -7,9 +7,9 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 	<changeSet id="cm-rus-605" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Insert ru in table: dm_doc_types_tl</comment>
+		<comment>update table: dm_doc_types</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			update DM_DOC_TYPES d
+			update APPS.DM_DOC_TYPES d
 			set d.parent_type_id=3
 			WHERE ID=16;
 		</sql>
@@ -17,9 +17,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-606" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>create table APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<comment>update table: dm_doc_types</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			update DM_DOC_TYPES d
+			update APPS.DM_DOC_TYPES d
 			set d.parent_type_id=3
 			WHERE ID=17;
 		</sql>
@@ -27,9 +27,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-607" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Create/Recreate indexes: APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<comment>update table: dm_doc_types</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			update DM_DOC_TYPES d
+			update APPS.DM_DOC_TYPES d
 			set d.parent_type_id=3
 			WHERE ID=18;
 		</sql>
@@ -37,9 +37,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-608" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>create table APPS.CM_DOC_KEG_CTE_A1L_TL</comment>
+		<comment>update table: dm_doc_types</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			update DM_DOC_TYPES d
+			update APPS.DM_DOC_TYPES d
 			set d.parent_type_id=3
 			WHERE ID=19;
 		</sql>
@@ -49,7 +49,7 @@
 	<changeSet id="cm-rus-609" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>create keys in table: CM_DOC_KEG_CTE_A1L_TL_N1</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
-			update DM_DOC_TYPES d
+			update APPS.DM_DOC_TYPES d
 			set d.parent_type_id=3
 			WHERE ID=20;
 		</sql>
@@ -57,7 +57,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-610" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>create table APPS.CM_DOC_NOTES</comment>
+		<comment>update table: dm_doc_types</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update DM_DOC_TYPES d
 			set d.parent_type_id=3
