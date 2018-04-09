@@ -100,7 +100,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-614" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>drop foreign key in table: cm_doc_keg_cte_a2h</comment>
+		<comment>drop foreign key in table: cm_doc_keg_cte_a3h</comment>
 			<dropForeignKeyConstraint baseTableName="cm_doc_keg_cte_a3h" constraintName="FK_CM_DOC_KEG_CTE_A3H_2" baseTableSchemaName="apps"/>
 		<rollback/>
 	</changeSet>
@@ -123,26 +123,10 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-616" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>drop foreign key in table: cm_doc_keg_cte_a2h</comment>
-			<dropForeignKeyConstraint baseTableName="cm_doc_keg_cte_a3h" constraintName="FK_CM_DOC_KEG_CTE_A3H_2" baseTableSchemaName="apps"/>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-617" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_doc_keg_cte_a3h  to cm_doc_statuses</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="cm_doc_keg_cte_a3h"
-				baseColumnNames="status_id"
-				constraintName="fk_cm_doc_keg_cte_a2h_2"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="cm_doc_statuses"
-				referencedColumnNames="id"
-		/>
+		<comment>rename Table contract_record_type to cm_contract_record_type</comment>
+		<renameTable newTableName="cm_contract_record_type"
+					 oldTableName="contract_record_type"
+					 schemaName="apps"/>
 	</changeSet>
 
 </databaseChangeLog>
