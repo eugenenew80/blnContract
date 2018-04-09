@@ -7,6 +7,9 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 	<changeSet id="cm-rus-521" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>modify data type: name in dict_tariffs</comment>
 		<modifyDataType columnName="start_date"
 						newDataType="TIMESTAMP"
@@ -16,6 +19,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-522" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>modify data type: name in dict_tariffs</comment>
 		<modifyDataType columnName="end_date"
 						newDataType="TIMESTAMP"
@@ -25,6 +31,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-523" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_tariffs</comment>
 		<insert schemaName="apps" tableName="dict_tariffs">
 			<column name="code" type="varchar2" value="T01"/>
@@ -34,6 +43,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-524" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>modify data type: name in dict_tariffs_tl</comment>
 		<modifyDataType columnName="name"
 						newDataType="varchar2(100)"
@@ -43,6 +55,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-525" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>modify data type: name in dict_tariffs_tl</comment>
 		<modifyDataType columnName="description"
 						newDataType="varchar2(300)"
@@ -52,6 +67,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-526" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T01"/>
@@ -63,6 +81,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-527" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_tariffs</comment>
 		<insert schemaName="apps" tableName="dict_tariffs">
 			<column name="code" type="varchar2" value="T02"/>
@@ -72,6 +93,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-528" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T02"/>
@@ -83,6 +107,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-529" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_tariffs</comment>
 		<insert schemaName="apps" tableName="dict_tariffs">
 			<column name="code" type="varchar2" value="T03"/>
@@ -92,6 +119,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-530" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T03"/>
@@ -103,6 +133,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-531" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>rename column in dict_tariffs</comment>
 		<renameColumn columnDataType="varchar2(30)"
 					  newColumnName="tariff_code"
@@ -114,6 +147,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-532" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>rename column in dict_tariffs</comment>
 		<renameColumn columnDataType="varchar2(30)"
 					  newColumnName="code"
@@ -126,6 +162,9 @@
 
 
 	<changeSet id="cm-rus-533" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>rename column in dict_tariff_values</comment>
 		<renameColumn columnDataType="varchar2(30)"
 					  newColumnName="tariff_code"
@@ -138,6 +177,9 @@
 
 
 	<changeSet id="cm-rus-534" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>Creating foreign constraint: dict_tariff_values to dict_tariffs</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -155,6 +197,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-535" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T01"/>
@@ -167,6 +212,9 @@
 
 
 	<changeSet id="cm-rus-536" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T02"/>
@@ -179,6 +227,9 @@
 
 
 	<changeSet id="cm-rus-537" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_tariffs_tl</comment>
 		<insert schemaName="apps" tableName="dict_tariffs_tl">
 			<column name="code" type="varchar2" value="T03"/>
@@ -190,6 +241,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-538" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_gjs_type</comment>
 		<insert schemaName="apps" tableName="dict_gjs_type">
 			<column name="code" type="varchar2" value="GOODS"/>
@@ -198,6 +252,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-539" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_gjs_type_tl</comment>
 		<insert schemaName="apps" tableName="dict_gjs_type_tl">
 			<column name="code" type="varchar2" value="GOODS"/>
@@ -208,6 +265,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-540" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_gjs_type_tl</comment>
 		<insert schemaName="apps" tableName="dict_gjs_type_tl">
 			<column name="code" type="varchar2" value="GOODS"/>
@@ -218,6 +278,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-541" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_gjs_type</comment>
 		<insert schemaName="apps" tableName="dict_gjs_type">
 			<column name="code" type="varchar2" value="JOBS"/>
@@ -226,6 +289,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-542" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_gjs_type_tl</comment>
 		<insert schemaName="apps" tableName="dict_gjs_type_tl">
 			<column name="code" type="varchar2" value="JOBS"/>
@@ -236,6 +302,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-543" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_gjs_type_tl</comment>
 		<insert schemaName="apps" tableName="dict_gjs_type_tl">
 			<column name="code" type="varchar2" value="JOBS"/>
@@ -246,6 +315,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-544" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_gjs_type</comment>
 		<insert schemaName="apps" tableName="dict_gjs_type">
 			<column name="code" type="varchar2" value="SERVICES"/>
@@ -254,6 +326,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-545" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_gjs_type_tl</comment>
 		<insert schemaName="apps" tableName="dict_gjs_type_tl">
 			<column name="code" type="varchar2" value="SERVICES"/>
@@ -264,6 +339,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-546" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
 		<comment>insert into dict_gjs_type_tl</comment>
 		<insert schemaName="apps" tableName="dict_gjs_type_tl">
 			<column name="code" type="varchar2" value="SERVICES"/>
@@ -271,6 +349,62 @@
 			<column name="name" type="varchar2" value="Услуги"/>
 		</insert>
 		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-547" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_tariffs</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_tariffs"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-548" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_tariffs_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_tariffs_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-549" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: dict_tariffs_header</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="dict_tariffs_header"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-550" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: dict_tariffs_header_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="dict_tariffs_header_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-551" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: dict_tariffs_values</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="dict_tariffs_values"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-552" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: dict_tariffs_values_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="dict_tariffs_values_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-553" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_tariff_plans</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_tariff_plans"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-554" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_tariff_plans_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_tariff_plans_tl"/>
 	</changeSet>
 
 </databaseChangeLog>
