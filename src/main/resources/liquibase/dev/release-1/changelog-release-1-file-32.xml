@@ -434,6 +434,16 @@
 					  tableName="cm_doc_keg_cte_a3h"/>
 		<rollback/>
 	</changeSet>
+	<changeSet id="cm-rus-557" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column in cm_doc_keg_cte_a3h</comment>
+		<renameColumn columnDataType="number"
+					  newColumnName="contract_id"
+					  oldColumnName="doc_id"
+					  remarks="ID контракта, с которым связан документ"
+					  schemaName="apps"
+					  tableName="cm_doc_keg_cte_a3h"/>
+		<rollback/>
+	</changeSet>
 
 
 </databaseChangeLog>
