@@ -123,9 +123,16 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-616" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>rename Table contract_record_type to cm_contract_record_type</comment>
+		<comment>rename Table contract_record_type to cm_contract_record_types</comment>
 		<renameTable newTableName="cm_contract_record_types"
 					 oldTableName="contract_record_types"
+					 schemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-617" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename Table contract_record_type_tl to cm_contract_record_types_tl</comment>
+		<renameTable newTableName="cm_contract_record_types_tl"
+					 oldTableName="contract_record_types_tl"
 					 schemaName="apps"/>
 	</changeSet>
 
