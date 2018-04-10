@@ -51,7 +51,7 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="name" type="varchar2(50)" remarks="Краткое наименование">
+			<column name="name" type="varchar2(50)" remarks="Наименование">
 				<constraints nullable="false"/>
 			</column>
 

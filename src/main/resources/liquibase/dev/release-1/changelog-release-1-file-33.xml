@@ -8,7 +8,7 @@
 
 	<changeSet id="cm-rus-558" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_doc_formation_ways</comment>
-		<createTable tableName="cm_doc_formation_ways" schemaName="apps" remarks="Справочник способ формирования">
+		<createTable tableName="cm_doc_formation_ways" schemaName="apps" remarks="Справочник способ формирования файла">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
@@ -42,7 +42,7 @@
 
 	<changeSet id="cm-rus-560" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_doc_formation_ways_tl</comment>
-		<createTable tableName="cm_doc_formation_ways_tl" schemaName="apps" remarks="Переводы Справочник способ формирования">
+		<createTable tableName="cm_doc_formation_ways_tl" schemaName="apps" remarks="Переводы Справочник способ формирования файла">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>

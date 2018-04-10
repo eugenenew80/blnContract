@@ -7,8 +7,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 	<changeSet id="cm-rus-655" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: dm_req_request_types</comment>
-		<createTable tableName="dm_req_request_types" schemaName="apps" remarks="Справочник Типы запросов">
+		<comment>Creating table: dm_request_types</comment>
+		<createTable tableName="dm_request_types" schemaName="apps" remarks="Справочник Типы запросов">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
@@ -32,17 +32,17 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-656" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: dm_req_request_types</comment>
+		<comment>Creating primary key for table: dm_request_types</comment>
 		<addPrimaryKey
 				columnNames="code"
-				constraintName="pk_dm_req_request_types"
+				constraintName="pk_dm_request_types"
 				schemaName="apps"
-				tableName="dm_req_request_types"/>
+				tableName="dm_request_types"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-657" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: dm_req_request_types_tl</comment>
-		<createTable tableName="dm_req_request_types_tl" schemaName="apps" remarks="Переводы Типы запросов">
+		<comment>Creating table: dm_request_types_tl</comment>
+		<createTable tableName="dm_request_types_tl" schemaName="apps" remarks="Переводы Типы запросов">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
@@ -51,9 +51,13 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="name" type="varchar2(300)" remarks="наименование">
+			<column name="name" type="varchar2(100)" remarks="Наименование">
 				<constraints nullable="false"/>
 			</column> 
+
+			<column name="description" type="varchar2(300)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
 
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
 				<constraints nullable="true"/>
@@ -74,280 +78,294 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-658" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: dm_req_request_types_tl</comment>
+		<comment>Creating primary key for table: dm_request_types_tl</comment>
 		<addPrimaryKey
 				columnNames="code, lang"
-				constraintName="pk_dm_req_request_types_tl"
+				constraintName="pk_dm_request_types_tl"
 				schemaName="apps"
-				tableName="dm_req_request_types_tl"/>
+				tableName="dm_request_types_tl"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-659" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: dm_req_request_types_tl to dm_req_request_types</comment>
+		<comment>Creating foreign constraint: dm_request_types_tl to dm_request_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="dm_req_request_types_tl"
+				baseTableName="dm_request_types_tl"
 				baseColumnNames="code"
-				constraintName="fk_dm_req_request_types_tl_1"
+				constraintName="fk_dm_request_types_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="CASCADE"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="dm_req_request_types"
+				referencedTableName="dm_request_types"
 				referencedColumnNames="code"
 		/>
 	</changeSet>
 
 	<changeSet id="cm-rus-660" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types">
-			<column name="code" type="varchar2" value="EOC01"/>
+		<comment>insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="code" type="varchar2" value="CMFC"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-661" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types">
-			<column name="code" type="varchar2" value="MCR02"/>
+		<comment>insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="code" type="varchar2" value="CMCD"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-662" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types">
-			<column name="code" type="varchar2" value="MCC03"/>
+		<comment>insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="code" type="varchar2" value="CMCI"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-663" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types">
-			<column name="code" type="varchar2" value="MCV04"/>
+		<comment>insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="code" type="varchar2" value="CMCV"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-664" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types">
-			<column name="code" type="varchar2" value="MAD05"/>
+		<comment>insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="code" type="varchar2" value="CMAD"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-665" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types">
-			<column name="code" type="varchar2" value="MLD06"/>
+		<comment>insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="code" type="varchar2" value="CMLD"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-666" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types">
-			<column name="code" type="varchar2" value="AVP07"/>
+		<comment>insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="code" type="varchar2" value="CMTD"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-667" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types">
-			<column name="code" type="varchar2" value="MTC08"/>
+		<comment>insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="code" type="varchar2" value="CMEA"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-668" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types">
-			<column name="code" type="varchar2" value="COA09"/>
+		<comment>insert into dm_request_types</comment>
+		<insert schemaName="apps" tableName="dm_request_types">
+			<column name="code" type="varchar2" value="CMCC"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-669" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="EOC01"/>
+		<comment>insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="code" type="varchar2" value="CMFC"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Запрос на заключение договора"/>
+			<column name="description" type="varchar2" value="Запрос на заключение договора"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-670" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MCR02"/>
+		<comment>insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="code" type="varchar2" value="CMCD"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Запрос на изменение реквизитов компании"/>
+			<column name="description" type="varchar2" value="Запрос на изменение реквизитов компании"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-671" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MCC03"/>
+		<comment>insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="code" type="varchar2" value="CMCI"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Запрос на изменение контактных данных или руководителя компании"/>
+			<column name="name" type="varchar2" value="Запрос на изменение контактных данных"/>
+			<column name="description" type="varchar2" value="Запрос на изменение контактных данных или руководителя компании"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-672" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MCV04"/>
+		<comment>insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="code" type="varchar2" value="CMCV"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Запрос на изменение договорных объемов"/>
+			<column name="description" type="varchar2" value="Запрос на изменение договорных объемов"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-673" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MAD05"/>
+		<comment>insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="code" type="varchar2" value="CMAD"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Запрос на изменение акта разграничения балансовой принадлежности электрических сетей"/>
+			<column name="name" type="varchar2" value="Запрос на изменение акта разграничения балансовой принадлежности"/>
+			<column name="description" type="varchar2" value="Запрос на изменение акта разграничения балансовой принадлежности электрических сетей"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-674" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MLD06"/>
+		<comment>insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="code" type="varchar2" value="CMLD"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Запрос на изменение списка приборов коммерческого учета электроэнергии, их характеристик и мест установки"/>
+			<column name="name" type="varchar2" value="Запрос на изменение списка ИКУЭ"/>
+			<column name="description" type="varchar2" value="Запрос на изменение списка приборов коммерческого учета электроэнергии, их характеристик и мест установки"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-675" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="AVP07"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Запрос на изменение списка приборов коммерческого учета электроэнергии, их характеристик и мест установки"/>
+		<comment>insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="code" 	   type="varchar2" value="CMTD"/>
+			<column name="lang" 	   type="varchar2" value="RU"/>
+			<column name="name" 	   type="varchar2" value="Запрос на применение ВПК"/>
+			<column name="description" type="varchar2" value="Запрос на применение ВПК"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-676" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MTC08"/>
+		<comment>insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="code" type="varchar2" value="CMEA"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Запрос на изменение сроков договора"/>
+			<column name="name" type="varchar2" value="Запрос на продление договора"/>
+			<column name="description" type="varchar2" value="Запрос на изменение сроков договора"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-677" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="COA09"/>
+		<comment>insert into dm_request_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_request_types_tl">
+			<column name="code" type="varchar2" value="CMCC"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Запрос на завершение договора"/>
+			<column name="description" type="varchar2" value="Запрос на завершение договора"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-678" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="EOC01"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Запрос на заключение договора"/>
-		</insert>
-		<rollback/>
+		<comment>rename Table dict_tariff_plan_configuration to dict_tariff_plan_config</comment>
+		<renameTable newTableName="dict_tariff_plan_config"
+					 oldTableName="dict_tariff_plan_configuration"
+					 schemaName="apps"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-679" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MCR02"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Запрос на изменение реквизитов компании"/>
-		</insert>
-		<rollback/>
+		<comment>rename Table dict_tariff_plan_configuration to dict_tariff_plan_config</comment>
+		<renameTable newTableName="dict_tariff_plan_config_tl"
+					 oldTableName="dict_tariff_plan_configuration_tl"
+					 schemaName="apps"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-680" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MCC03"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Запрос на изменение контактных данных или руководителя компании"/>
-		</insert>
+		<comment>Create/Recreate indexes: APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table dict_gjs_tl
+			is 'Перевод Товары, работа, услуга';
+		</sql>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-681" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MCV04"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Запрос на изменение договорных объемов"/>
-		</insert>
+		<comment>Create/Recreate indexes: APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table dict_tariff_plan_config_tl
+			is 'Перевод Настройка Тарифного плана';
+		</sql>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-682" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MAD05"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Запрос на изменение акта разграничения балансовой принадлежности электрических сетей"/>
-		</insert>
+		<comment>Create/Recreate indexes: APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table dict_tariff_plan_config
+			is 'Настройка Тарифного плана';
+		</sql>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-683" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MLD06"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Запрос на изменение списка приборов коммерческого учета электроэнергии, их характеристик и мест установки"/>
-		</insert>
+		<comment>Create/Recreate indexes: APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table dict_tariff_plans_tl
+			is 'Перевод Тарифный план';
+		</sql>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-684" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="AVP07"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Запрос на изменение списка приборов коммерческого учета электроэнергии, их характеристик и мест установки"/>
-		</insert>
+		<comment>Create/Recreate indexes: APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table dict_tariffs
+			is 'Справочник Тарифов';
+		</sql>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-685" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="MTC08"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Запрос на изменение сроков договора"/>
-		</insert>
+		<comment>Create/Recreate indexes: APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table dict_tariffs_tl
+			is 'Справочник Тарифов перевод';
+		</sql>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-686" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dm_req_request_types_tl</comment>
-		<insert schemaName="apps" tableName="dm_req_request_types_tl">
-			<column name="code" type="varchar2" value="COA09"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Запрос на завершение договора"/>
-		</insert>
+		<comment>Create/Recreate indexes: APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table dict_tariff_values
+			is 'Справочник Значение тарифов';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-687" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Create/Recreate indexes: APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table dict_tariff_values_tl
+			is 'Справочник значение тарифов перевод';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-687" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Create/Recreate indexes: APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table dict_gjs_type_tl
+			is 'Справочник видов ТРУ перевод';
+		</sql>
 		<rollback/>
 	</changeSet>
 

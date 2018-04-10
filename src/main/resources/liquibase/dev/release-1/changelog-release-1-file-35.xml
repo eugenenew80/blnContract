@@ -8,7 +8,7 @@
 
 	<changeSet id="cm-rus-580" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_doc_files </comment>
-		<createTable tableName="cm_doc_files" schemaName="apps" remarks="Файлы к договорам">
+		<createTable tableName="cm_doc_files" schemaName="apps" remarks="Таблица для хранения печатных форм и сканов документа">
 			<column name="id" type="number" remarks="ид">
 				<constraints nullable="false"/>
 			</column>
@@ -17,11 +17,11 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="doc_version" type="number" remarks="версия документа">
+			<column name="doc_version" type="number" remarks="Версия документа">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="lang" type="varchar2(10)" remarks="язык документа">
+			<column name="lang" type="varchar2(10)" remarks="Язык документа">
 				<constraints nullable="false"/>
 			</column>
 
