@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-644" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cbee_a1l  </comment>
+		<createTable tableName="cm_doc_keg_cbee_a1l" schemaName="apps" remarks="Приложение 1(Строки) к Договору на техническую диспетчеризацию">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="cm_doc_keg_ctd_a1h_id" type="number" remarks="ID договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="line_number" type="number" remarks="Порядок вывода в документ">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="cptri_type_code" type="varchar2(30)" remarks="Код для определения(потребление, производство и т.д)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="m01" type="number" remarks="Договорной объем за 1 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m02" type="number" remarks="Договорной объем за 2 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m03" type="number" remarks="Договорной объем за 3 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m04" type="number" remarks="Договорной объем за 4 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m05" type="number" remarks="Договорной объем за 5 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m06" type="number" remarks="Договорной объем за 6 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m07" type="number" remarks="Договорной объем за 7 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m08" type="number" remarks="Договорной объем за 8 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m09" type="number" remarks="Договорной объем за 9 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m10" type="number" remarks="Договорной объем за 10 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m11" type="number" remarks="Договорной объем за 11 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m12" type="number" remarks="Договорной объем за 12 месяц года">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-645" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cbee_a1l </comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cbee_a1l"
+				schemaName="apps"
+				tableName="cm_doc_keg_cbee_a1l"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-646" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_keg_cbee_a1l </comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_keg_cbee_a1l_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-647" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: cm_doc_keg_cbee_a1l </comment>
+		<createIndex indexName="cm_doc_keg_cbee_a1l_n1"
+					 schemaName="apps"
+					 tableName="cm_doc_keg_cbee_a1l">
+			<column name="cm_doc_keg_ctd_a1h_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="cm-rus-648" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a1l to cm_doc_keg_ctd_a1h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a1l "
+				baseColumnNames="cm_doc_keg_ctd_a1h_id"
+				constraintName="fk_cm_doc_keg_cbee_a1l_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-649" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a1l to cm_doc_cptri_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a1l "
+				baseColumnNames="cptri_type_code"
+				constraintName="fk_cm_doc_keg_cbee_a1l_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_cptri_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-650" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cbee_a1l_tl</comment>
+		<createTable tableName="cm_doc_keg_cbee_a1l_tl" schemaName="apps" remarks="Переводы Приложение 1(Строки) к Договору на техническую диспетчеризацию">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_keg_ctd_a1l_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="sub_consumer_name" type="varchar2(500)" remarks="Наименование субабонента">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-651" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cbee_a1l_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cbee_a1l_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cbee_a1l_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-652" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_keg_cbee_a1l_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_keg_cbee_a1l_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-653" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_keg_cbee_a1l_tl</comment>
+		<addUniqueConstraint
+				columnNames="doc_keg_ctd_a1l_id,lang"
+				constraintName="uk_cm_doc_keg_cbee_a1l"
+				schemaName="apps"
+				tableName="cm_doc_keg_cbee_a1l_tl"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-654" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a1l_tl to cm_doc_keg_cbee_a1l </comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a1l_tl"
+				baseColumnNames="doc_keg_ctd_a1l_id"
+				constraintName="fk_cm_doc_keg_cbee_a1l_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cbee_a1l_tl"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>

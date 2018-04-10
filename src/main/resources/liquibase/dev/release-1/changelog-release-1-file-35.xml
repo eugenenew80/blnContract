@@ -21,7 +21,7 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="lang" type="varchar2(10)" remarks="версия документа">
+			<column name="lang" type="varchar2(10)" remarks="язык документа">
 				<constraints nullable="false"/>
 			</column>
 

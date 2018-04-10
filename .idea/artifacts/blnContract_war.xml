@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="blnContract:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="blnContractManagement.war">
-      <element id="artifact" artifact-name="blnContract:war exploded" />
-    </root>
-  </artifact>
-</component>

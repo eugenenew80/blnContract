@@ -7,8 +7,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 	<changeSet id="cm-rus-618" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_doc_keg_ctd_a1h  </comment>
-		<createTable tableName="cm_doc_keg_ctd_a1h" schemaName="apps" remarks="Приложение 1 к Договору на техническую диспетчеризацию">
+		<comment>Creating table: cm_doc_keg_cbee_a1h  </comment>
+		<createTable tableName="cm_doc_keg_cbee_a1h" schemaName="apps" remarks="Приложение 1 (Заголовок) к Договору на техническую диспетчеризацию">
 			<column name="id" type="number" remarks="ид">
 				<constraints nullable="false"/>
 			</column>
@@ -64,39 +64,39 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-619" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_doc_keg_ctd_a1h </comment>
+		<comment>Creating primary key for table: cm_doc_keg_cbee_a1h </comment>
 		<addPrimaryKey
 				columnNames="id"
-				constraintName="pk_cm_doc_keg_ctd_a1h"
+				constraintName="pk_cm_doc_keg_cbee_a1h"
 				schemaName="apps"
-				tableName="cm_doc_keg_ctd_a1h"/>
+				tableName="cm_doc_keg_cbee_a1h"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-620" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_doc_keg_ctd_a1h </comment>
+		<comment>Creating sequence for table: cm_doc_keg_cbee_a1h </comment>
 		<createSequence
 				incrementBy="1"
 				schemaName="apps"
-				sequenceName="cm_doc_keg_ctd_a1h_s"
+				sequenceName="cm_doc_keg_cbee_a1h_s"
 				startValue="1"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-621" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: cm_doc_keg_ctd_a1h </comment>
-		<createIndex indexName="cm_doc_keg_ctd_a1h_n1"
+		<comment>Creating index for table: cm_doc_keg_cbee_a1h </comment>
+		<createIndex indexName="cm_doc_keg_cbee_a1h_n1"
 					 schemaName="apps"
-					 tableName="cm_doc_keg_ctd_a1h">
+					 tableName="cm_doc_keg_cbee_a1h">
 			<column name="contract_id" type="number"/>
 		</createIndex>
 	</changeSet>
 
 	<changeSet id="cm-rus-622" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_doc_keg_ctd_a1h to cm_doc_keg_cte</comment>
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a1h to cm_doc_keg_cte</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_doc_keg_ctd_a1h "
+				baseTableName="cm_doc_keg_cbee_a1h "
 				baseColumnNames="contract_id"
-				constraintName="fk_cm_doc_keg_ctd_a1h_1"
+				constraintName="fk_cm_doc_keg_cbee_a1h_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
@@ -108,12 +108,12 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-623" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_doc_keg_ctd_a1h to dict_organizations</comment>
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a1h to dict_organizations</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_doc_keg_ctd_a1h "
+				baseTableName="cm_doc_keg_cbee_a1h "
 				baseColumnNames="org_id"
-				constraintName="fk_cm_doc_keg_ctd_a1h_2"
+				constraintName="fk_cm_doc_keg_cbee_a1h_2"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"

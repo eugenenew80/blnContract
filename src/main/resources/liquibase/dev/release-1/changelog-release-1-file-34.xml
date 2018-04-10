@@ -102,7 +102,7 @@
 	<changeSet id="cm-rus-574" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_role</comment>
 		<insert schemaName="apps" tableName="cm_doc_role">
-			<column name="code" type="varchar2" value="APPROVER"/>
+			<column name="code" type="varchar2" value="APPROVE"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -110,7 +110,7 @@
 	<changeSet id="cm-rus-575" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_role</comment>
 		<insert schemaName="apps" tableName="cm_doc_role">
-			<column name="code" type="varchar2" value="CONFORM"/>
+			<column name="code" type="varchar2" value="CONSENT"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -118,7 +118,7 @@
 	<changeSet id="cm-rus-576" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_role_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_role_tl">
-			<column name="code" type="varchar2" value="APPROVER"/>
+			<column name="code" type="varchar2" value="APPROVE"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Утверждающий"/>
 		</insert>
@@ -128,7 +128,7 @@
 	<changeSet id="cm-rus-577" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_role_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_role_tl">
-			<column name="code" type="varchar2" value="CONFORM"/>
+			<column name="code" type="varchar2" value="CONSENT"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Согласующий"/>
 		</insert>
@@ -138,7 +138,7 @@
 	<changeSet id="cm-rus-578" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_role_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_role_tl">
-			<column name="code" type="varchar2" value="APPROVER"/>
+			<column name="code" type="varchar2" value="APPROVE"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Утверждающий"/>
 		</insert>
@@ -148,7 +148,7 @@
 	<changeSet id="cm-rus-579" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_doc_role_tl</comment>
 		<insert schemaName="apps" tableName="cm_doc_role_tl">
-			<column name="code" type="varchar2" value="CONFORM"/>
+			<column name="code" type="varchar2" value="CONSENT"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Согласующий"/>
 		</insert>
