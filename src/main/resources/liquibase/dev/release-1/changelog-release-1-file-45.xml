@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-719" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cbee_a3d  </comment>
+		<createTable tableName="cm_doc_keg_cbee_a3d" schemaName="apps" remarks="Приложение 3(Даты) к Договору на балансирование">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="cm_doc_keg_cbee_a3h_id" type="number" remarks="ID приложения">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="start_date" type="TIMESTAMP" remarks="Дата с">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="end_date" type="TIMESTAMP" remarks="Дата по">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_id" type="number" remarks="Сформирован на основании запроса">
+				<constraints nullable="true"/>
+			</column>
+			
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-720" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cbee_a3d </comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cbee_a3d"
+				schemaName="apps"
+				tableName="cm_doc_keg_cbee_a3d"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-721" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_keg_cbee_a3d </comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_keg_cbee_a3d_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-722" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a3d to cm_doc_keg_cbee_a3h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a3d"
+				baseColumnNames="cm_doc_keg_cbee_a3h_id"
+				constraintName="fk_cm_doc_keg_cbee_a3d_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cbee_a3h"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+</databaseChangeLog>

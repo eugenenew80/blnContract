@@ -470,5 +470,116 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-698" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_poa_types</comment>
+		<insert schemaName="apps" tableName="cm_poa_types">
+			<column name="code" type="varchar2" value="CHARTER"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-699" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into cm_poa_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_poa_types_tl">
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="code" type="varchar2" value="CHARTER"/>
+			<column name="name" type="varchar2" value="Устав"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-700" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into cm_poa_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_poa_types_tl">
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="code" type="varchar2" value="CHARTER"/>
+			<column name="name" type="varchar2" value="Устав"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-700-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign key in table: cm_doc_keg_cbee_a1l</comment>
+		<dropForeignKeyConstraint baseTableName="cm_doc_keg_cbee_a1l" constraintName="fk_cm_doc_keg_cbee_a1l_1" baseTableSchemaName="apps"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-700-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>renameColumn</comment>
+		<renameColumn columnDataType="number"
+					  newColumnName="cm_doc_keg_cbee_a1h_id"
+					  oldColumnName="cm_doc_keg_ctd_a1h_id"
+					  remarks="ID приложения"
+					  schemaName="apps"
+					  tableName="cm_doc_keg_cbee_a1l"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-700-3" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a1l to cm_doc_keg_cbee_a1h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a1l "
+				baseColumnNames="cm_doc_keg_cbee_a1h_id"
+				constraintName="fk_cm_doc_keg_cbee_a1l_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cbee_a1h"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-700-4" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>comment on table APPS.dict_tariffs</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table APPS.cm_doc_keg_cbee_a1h
+			is 'Приложение 1 (Заголовок) к Договору на на балансирование';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-700-5" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>comment on table APPS.dict_tariffs</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table APPS.cm_doc_keg_cbee_a1l
+			is 'Приложение 1 (Строки) к Договору на на балансирование';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-700-6" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign key in table: fk_cm_doc_keg_cbee_a1l_tl_1</comment>
+		<dropForeignKeyConstraint baseTableName="cm_doc_keg_cbee_a1l_tl" constraintName="fk_cm_doc_keg_cbee_a1l_tl_1" baseTableSchemaName="apps"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-700-7" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>renameColumn</comment>
+		<renameColumn columnDataType="number"
+					  newColumnName="doc_keg_cbee_a1l_id"
+					  oldColumnName="doc_keg_ctd_a1l_id"
+					  remarks="Ссылка на родительскую запись"
+					  schemaName="apps"
+					  tableName="cm_doc_keg_cbee_a1l_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-700-8" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a1l_tl to cm_doc_keg_cbee_a1l </comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a1l_tl"
+				baseColumnNames="doc_keg_cbee_a1l_id"
+				constraintName="fk_cm_doc_keg_cbee_a1l_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cbee_a1l"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
 
 </databaseChangeLog>
