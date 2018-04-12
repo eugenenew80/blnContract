@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-742" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cbee_a3d  </comment>
+		<createTable tableName="cm_doc_keg_cbee_a3d" schemaName="apps" remarks="Приложение 3(Даты) к Договору на балансирование">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="cm_doc_keg_cbee_a3l_id" type="number" remarks="ID приложения(Строки)">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="start_date" type="TIMESTAMP" remarks="Действует с">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="end_date" type="TIMESTAMP" remarks="Действует по">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_id" type="number" remarks="Сформирован на основании запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-743" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cbee_a3d </comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cbee_a3d"
+				schemaName="apps"
+				tableName="cm_doc_keg_cbee_a3d"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-745" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a3d to cm_doc_keg_cbee_a3h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a3d"
+				baseColumnNames="cm_doc_keg_cbee_a3l_id"
+				constraintName="fk_cm_doc_keg_cbee_a3d_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cbee_a3l"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-746" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Drop column on  APPS.cm_doc_keg_cte</comment>
+		<dropColumn columnName="payment_order_id"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-747" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>comment on table APPS.dict_tariffs</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on column APPS.cm_doc_keg_cte.payment_condition_code
+			is 'Порядок оплаты';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+</databaseChangeLog>

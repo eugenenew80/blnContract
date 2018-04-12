@@ -123,5 +123,30 @@
 		<rollback/>
 	</changeSet>
 
+    <changeSet id="cm-rus-728" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
+		<comment>Drop column on  APPS.cm_doc_keg_cbee_a3h</comment>
+        <dropColumn columnName="bp_id"
+                    schemaName="apps"
+                    tableName="cm_doc_keg_cbee_a3h"/>
+        <rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-729" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_keg_cbee_a3l</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-730" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_keg_cbee_a3l_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l_tl"/>
+	</changeSet>
+
 
 </databaseChangeLog>

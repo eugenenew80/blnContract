@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-731" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cbee_a3l  </comment>
+		<createTable tableName="cm_doc_keg_cbee_a3l" schemaName="apps" remarks="Приложение 3(Строки) к Договору на балансирование">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="cm_doc_keg_cbee_a3h_id" type="number" remarks="ID приложения">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="line_number" type="number" remarks="Порядок вывода в документ">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="text" type="varchar2(500)" remarks="Заголовок профиля">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h01" type="number" remarks="График нагрузки за 1 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h02" type="number" remarks="График нагрузки за 2 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h03" type="number" remarks="График нагрузки за 3 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h04" type="number" remarks="График нагрузки за 4 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h05" type="number" remarks="График нагрузки за 5 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h06" type="number" remarks="График нагрузки за 6 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h07" type="number" remarks="График нагрузки за 7 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h08" type="number" remarks="График нагрузки за 8 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h09" type="number" remarks="График нагрузки за 9 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h10" type="number" remarks="График нагрузки за 10 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h11" type="number" remarks="График нагрузки за 11 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h12" type="number" remarks="График нагрузки за 12 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h13" type="number" remarks="График нагрузки за 13 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h14" type="number" remarks="График нагрузки за 14 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h15" type="number" remarks="График нагрузки за 15 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h16" type="number" remarks="График нагрузки за 16 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h17" type="number" remarks="График нагрузки за 17 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h18" type="number" remarks="График нагрузки за 18 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h19" type="number" remarks="График нагрузки за 19 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h20" type="number" remarks="График нагрузки за 20 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h21" type="number" remarks="График нагрузки за 21 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h22" type="number" remarks="График нагрузки за 22 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h23" type="number" remarks="График нагрузки за 23 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="h24" type="number" remarks="График нагрузки за 24 час(тыс. кВтч)">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="is_apply_by_weak_day" type="number" remarks="Понедельная нагрузка(да\нет)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_wd01" type="number" remarks="Применить Понедельник">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_wd02" type="number" remarks="Применить Вторник">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_wd03" type="number" remarks="Применить Среду">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_wd04" type="number" remarks="Применить Четверг">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_wd05" type="number" remarks="Применить Пятницу">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_wd06" type="number" remarks="Применить Субботу">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_wd07" type="number" remarks="Применить Воскресенье">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_apply_by_month" type="number" remarks="По месячная нагрузка(да\нет)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m01" type="number" remarks="Применить Январь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m02" type="number" remarks="Применить Февраль">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m03" type="number" remarks="Применить Март">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m04" type="number" remarks="Применить Апрель">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m05" type="number" remarks="Применить Май">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m06" type="number" remarks="Применить Июнь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m07" type="number" remarks="Применить Июль">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m08" type="number" remarks="Применить Август">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m09" type="number" remarks="Применить Сентябрь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m10" type="number" remarks="Применить Октябрь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m11" type="number" remarks="Применить Ноябрь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_m12" type="number" remarks="Применить Декабрь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-732" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cbee_a3l </comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cbee_a3l"
+				schemaName="apps"
+				tableName="cm_doc_keg_cbee_a3l"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-734" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: cm_doc_keg_cbee_a3l </comment>
+		<createIndex indexName="cm_doc_keg_cbee_a3l_n1"
+					 schemaName="apps"
+					 tableName="cm_doc_keg_cbee_a3l">
+			<column name="cm_doc_keg_cbee_a3h_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="cm-rus-735" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a3l to cm_doc_keg_cbee_a3h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a3l "
+				baseColumnNames="cm_doc_keg_cbee_a3h_id"
+				constraintName="fk_cm_doc_keg_cbee_a3l_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cbee_a3h"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-736" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cbee_a3l_tl</comment>
+		<createTable tableName="cm_doc_keg_cbee_a3l_tl" schemaName="apps" remarks="Переводы Приложение 3(Строки) к Договору на балансирование">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_keg_cbee_a3l_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="text" type="varchar2(500)" remarks="Заголовок профиля">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-737" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cbee_a3l_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cbee_a3l_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cbee_a3l_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-739" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_keg_cbee_a3l_tl</comment>
+		<addUniqueConstraint
+				columnNames="doc_keg_cbee_a3l_id,lang"
+				constraintName="uk_cm_doc_keg_cbee_a3l"
+				schemaName="apps"
+				tableName="cm_doc_keg_cbee_a3l_tl"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-740" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a3l_tl to cm_doc_keg_cbee_a3l </comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a3l_tl"
+				baseColumnNames="doc_keg_cbee_a3l_id"
+				constraintName="fk_cm_doc_keg_cbee_a3l_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cbee_a3l"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-741" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_keg_cbee_a3d</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3d"/>
+	</changeSet>
+</databaseChangeLog>
