@@ -82,4 +82,53 @@
 		/>
 	</changeSet>
 
+	<changeSet id="cm-rus-723" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>comment on table APPS.dict_tariffs</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.DICT_TARIFF_PLAN_CONFIG_TL rename column tariff_plan_configuration_id to TARIFF_PLAN_CONFIG_ID;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-724" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>comment on table APPS.dict_tariffs</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			create sequence apps.Dict_Tariff_Plan_Config_s
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-725" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>comment on table APPS.dict_tariffs</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			create sequence apps.Dict_Tariff_Plan_Config_TL_s
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-726" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>comment on table APPS.dict_tariffs</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			create sequence apps.DICT_TARIFFs_TL_s
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-727" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modifyDataType on  APPS.DICT_GJS.CODE</comment>
+		<modifyDataType columnName="code"
+						newDataType="varchar2(30)"
+						schemaName="apps"
+						tableName="dict_gjs"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-728" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_tariff_values</comment>
+		<insert schemaName="apps" tableName="dict_tariff_values">
+			<column name="id" type="number" value=""/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
 </databaseChangeLog>
