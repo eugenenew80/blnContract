@@ -123,12 +123,5 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-728" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dict_tariff_values</comment>
-		<insert schemaName="apps" tableName="dict_tariff_values">
-			<column name="id" type="number" value=""/>
-		</insert>
-		<rollback/>
-	</changeSet>
 
 </databaseChangeLog>
