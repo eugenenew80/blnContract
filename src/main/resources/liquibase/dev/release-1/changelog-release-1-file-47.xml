@@ -90,4 +90,29 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-748" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Drop column on  APPS.cm_state_license_at</comment>
+		<dropColumn columnName="code"
+					schemaName="apps"
+					tableName="cm_state_license_at"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-749" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Drop column on  APPS.cm_state_license_at</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_KEG_CTE_A1H modify doc_number VARCHAR2(30 CHAR);
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-750" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+		</preConditions>
+		<comment>Drop column on  APPS.DICT_TARIFF_PLAN_CONFIG</comment>
+		<dropColumn columnName="code"
+					schemaName="apps"
+					tableName="DICT_TARIFF_PLAN_CONFIG"/>
+		<rollback/>
+	</changeSet>
 </databaseChangeLog>
