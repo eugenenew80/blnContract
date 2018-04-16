@@ -107,12 +107,145 @@
 
 	<changeSet id="cm-rus-750" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<preConditions onFail="MARK_RAN">
-			<foreignKeyConstraintExists schemaName="apps" foreignKeyTableName="media_at_time_values" foreignKeyName="fk_media_at_time_values_1" />
+			<columnExists tableName="DICT_TARIFF_PLAN_CONFIG" columnName="code" schemaName="apps"/>
 		</preConditions>
 		<comment>Drop column on  APPS.DICT_TARIFF_PLAN_CONFIG</comment>
 		<dropColumn columnName="code"
 					schemaName="apps"
 					tableName="DICT_TARIFF_PLAN_CONFIG"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-751" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_predoplata" type="number"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-752-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column on  APPS.cm_doc_keg_cte</comment>
+		<renameColumn columnDataType="number"
+					  newColumnName="payment_day"
+					  oldColumnName="payment"
+					  remarks="Оплата, количество дней со дня фактического предоставления счета-фактуры"
+					  schemaName="apps"
+					  tableName="cm_doc_keg_cte"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-753" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>comment on table APPS.CM_DOC_KEG_CBEE_A1L_TL</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on table APPS.CM_DOC_KEG_CBEE_A1L_TL
+			is 'Переводы Приложение 1(Строки) к Договору на балансирование';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-754" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.CM_DOC_KEG_cte</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="RECORD_TYPE_ID"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-755" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data APPS.cm_doc_keg_cte_a1h</comment>
+		<modifyDataType columnName="doc_number"
+						newDataType="varchar2(30)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a1h"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-756" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a2h</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="doc_version"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a2h"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-758" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.dict_post_addresses</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="region_id"
+							   schemaName="apps"
+							   tableName="dict_post_addresses"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-759" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<columnExists tableName="dict_tariff_plan_config" columnName="code" schemaName="apps"/>
+		</preConditions>
+		<comment>Drop column on  APPS.DICT_TARIFF_PLAN_CONFIG</comment>
+		<dropColumn columnName="code"
+					schemaName="apps"
+					tableName="dict_tariff_plan_config"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-760" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data APPS.dict_tariff_values</comment>
+		<modifyDataType columnName="rate"
+						newDataType="number"
+						schemaName="apps"
+						tableName="dict_tariff_values"/>
+		<rollback/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-761" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column on  APPS.ECM_CONTENTS</comment>
+		<renameColumn columnDataType="varchar2(10)"
+					  newColumnName="file_type"
+					  oldColumnName="file_ext"
+					  remarks="Расширение"
+					  schemaName="apps"
+					  tableName="ECM_CONTENTS"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-762" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign key in table: ECM_CONTENTS</comment>
+		<dropForeignKeyConstraint baseTableName="ecm_contents" constraintName=" fk_ecm_content_1" baseTableSchemaName="apps"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-763" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign key in table: mdfem_device_replacement_acts</comment>
+		<dropForeignKeyConstraint baseTableName="mdfem_device_replacement_acts" constraintName=" fk_mdfem_device_replacement_acts_4" baseTableSchemaName="apps"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-764" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign key in table: mdfem_devices_replacement</comment>
+		<dropForeignKeyConstraint baseTableName="mdfem_devices_replacement" constraintName=" fk_mdfem_devices_replacement_3" baseTableSchemaName="apps"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-765" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dict_tariffs </comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dict_tariffs_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-766" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data APPS.ecm_contents</comment>
+		<modifyDataType columnName="file_type"
+						newDataType="varchar2(200)"
+						schemaName="apps"
+						tableName="ecm_contents"/>
 		<rollback/>
 	</changeSet>
 </databaseChangeLog>
