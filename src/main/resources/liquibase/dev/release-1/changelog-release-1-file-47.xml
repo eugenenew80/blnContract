@@ -335,7 +335,7 @@
 		<comment>add column on  APPS.dm_doc_types</comment>
 		<addColumn schemaName="apps"
 				   tableName="dm_doc_types">
-			<column name="porder_number" type="number"/>
+			<column name="porder_number" type="number" remarks="Порядковый номер"/>
 		</addColumn>
 		<rollback/>
 	</changeSet>
