@@ -322,4 +322,13 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-775" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_business_partners_tl">
+			<column name="contact_info" type="varchar2(300)"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
 </databaseChangeLog>
