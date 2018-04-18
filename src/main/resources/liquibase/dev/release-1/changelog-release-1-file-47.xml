@@ -331,4 +331,53 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-776" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.dm_doc_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_doc_types">
+			<column name="porder_number" type="number"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-777" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="36"/>
+			<column name="parent_type_id" type="number" value="2"/>
+			<column name="code" type="varchar2" value="KEG_CBD"/>
+			<column name="short_name" type="varchar2" value="Договор по передаче и/или распределению электрической энергии"/>
+			<column name="name" type="varchar2" value="Договор на оказание услуг по передаче и/или распределению электрической энергии"/>
+			<column name="is_a_type" type="varchar2" value="1"/>
+			<column name="porder_number" type="number" value="10"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-778" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="71"/>
+			<column name="lang" type="varchar2(10)" value="RU"/>
+			<column name="doc_type_id" type="number" value="36"/>
+			<column name="short_name" type="varchar2" value="Договор по передаче и/или распределению электрической энергии"/>
+			<column name="name" type="varchar2" value="Договор на оказание услуг по передаче и/или распределению электрической энергии"/>
+			<column name="prefix_for_number" type="varchar2" value="РЭК"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-779" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="71"/>
+			<column name="lang" type="varchar2(10)" value="KZ"/>
+			<column name="doc_type_id" type="number" value="36"/>
+			<column name="short_name" type="varchar2" value="Договор по передаче и/или распределению электрической энергии"/>
+			<column name="name" type="varchar2" value="Договор на оказание услуг по передаче и/или распределению электрической энергии"/>
+			<column name="prefix_for_number" type="varchar2" value="РЭК"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
 </databaseChangeLog>
