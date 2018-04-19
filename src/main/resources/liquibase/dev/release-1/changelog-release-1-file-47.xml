@@ -415,4 +415,14 @@
 		</addColumn>
 		<rollback/>
 	</changeSet>
+
+	<changeSet id="cm-rus-784" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.CM_DOC_KEG_cte</comment>
+		<dropNotNullConstraint columnDataType="varchar2(100)"
+							   columnName="description"
+							   schemaName="apps"
+							   tableName="dict_contact_emails_tl"/>
+		<rollback/>
+	</changeSet>
+
 </databaseChangeLog>
