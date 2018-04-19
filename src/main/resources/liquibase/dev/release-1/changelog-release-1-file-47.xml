@@ -406,4 +406,13 @@
 						tableName="ecm_contents"/>
 		<rollback/>
 	</changeSet>
+
+	<changeSet id="cm-rus-783" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_govregcerts</comment>
+		<addColumn schemaName="apps"
+				   tableName="ecm_content_types">
+			<column name="code" type="varchar2(30)" remarks="Код"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
 </databaseChangeLog>
