@@ -380,4 +380,30 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-780" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>comment on table APPS.CM_GOVREGCERTS</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on column APPS.CM_GOVREGCERTS.doc_date
+			is 'Дата регистрации/перерегистрации';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-781" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_govregcerts</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_govregcerts">
+			<column name="issued_date" type="date" remarks="Дата выдачи"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-782" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data APPS.ecm_contents</comment>
+		<modifyDataType columnName="file_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="ecm_contents"/>
+		<rollback/>
+	</changeSet>
 </databaseChangeLog>
