@@ -425,4 +425,53 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-785" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>create sequence on table APPS.CALC_METERING_DATA_SOURCE_LINES_s</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			create sequence apps.CALC_METERING_DATA_SOURCE_LINES_s
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-786" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify on table APPS.CM_DOC_SIGNATORIES</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			create  sequence apps.Mdfem_Devices_Replacement_s
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-787" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify on table APPS.CM_DOC_SIGNATORIES</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_SIGNATORIES modify is_arbitrary varchar2(200);
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-788" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>create fk on table cm_doc_keg_cbee_a1h to cm_doc_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a1h"
+				baseColumnNames="statud_id"
+				constraintName="fk_cm_doc_keg_cbee_a1h_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="id"
+		/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-789" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Drop column on  APPS.cm_doc_keg_cbee_a3l</comment>
+		<dropColumn columnName="text"
+					schemaName="apps"
+					tableName="cm_doc_keg_cbee_a3l"/>
+		<rollback/>
+	</changeSet>
 </databaseChangeLog>
