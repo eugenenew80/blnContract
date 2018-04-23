@@ -454,7 +454,7 @@
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="cm_doc_keg_cbee_a1h"
-				baseColumnNames="statud_id"
+				baseColumnNames="status_id"
 				constraintName="fk_cm_doc_keg_cbee_a1h_3"
 				deferrable="true"
 				initiallyDeferred="true"
@@ -472,6 +472,88 @@
 		<dropColumn columnName="text"
 					schemaName="apps"
 					tableName="cm_doc_keg_cbee_a3l"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-790" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>alter on table APPS.CALC_METERING_DATA_SOURCE_LINES</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_KEG_CBEE_A1H modify status_id null;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-791" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>alter on table APPS.CALC_METERING_DATA_SOURCE_LINES</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_KEG_CBEE_A3H modify status_id null;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-792" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>alter on table APPS.CALC_METERING_DATA_SOURCE_LINES</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h01 null;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-793" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>alter on table APPS.CALC_METERING_DATA_SOURCE_LINES</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h02 null;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-794" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>alter on table APPS.CALC_METERING_DATA_SOURCE_LINES</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h03 null;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-795" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>alter on table APPS.CALC_METERING_DATA_SOURCE_LINES</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h04 null;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-796" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>alter on table APPS.CALC_METERING_DATA_SOURCE_LINES</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h05 null;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-797" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>alter on table APPS.CALC_METERING_DATA_SOURCE_LINES</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h06 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h07 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h08 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h09 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h10 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h11 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h12 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h13 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h14 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h15 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h16 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h17 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h18 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h19 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h20 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h21 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h22 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h23 null;
+			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h24 null;
+		</sql>
 		<rollback/>
 	</changeSet>
 </databaseChangeLog>
