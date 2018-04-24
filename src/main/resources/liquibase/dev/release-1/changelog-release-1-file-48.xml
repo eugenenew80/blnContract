@@ -7,219 +7,10 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 	<changeSet id="cm-rus-798" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_sfc_pfp</comment>
-		<createTable tableName="cm_sfc_pfp" schemaName="apps" remarks="Договор покупки РФЦ электрической энергии у энергопроизводящей организации, использующей ВИЭ, по фиксированным тарифам.">
-			<column name="id" type="number" remarks="Идентификатор">
+		<comment>Creating table: cm_rfc_tariff_types</comment>
+		<createTable tableName="cm_rfc_tariff_types" schemaName="apps" remarks="Справочник Типов тарифоф для РФЦ">
+			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
-			</column>
-
-			<column name="doc_number" type="varchar2(30)" remarks="Номер договора">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="doc_date" type="date" remarks="Дата заключения">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="status_id" type="NUMBER" remarks="Статус договора">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="request_id" type="NUMBER" remarks="Ссылка на запрос пользователя, на основании которого был создан договор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="start_date" type="DATE" remarks="Срок договора: начало">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="end_date" type="DATE" remarks="Срок договора: окончание">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_id" type="NUMBER" remarks="Бизнес-партнер 1: Идентификатор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_bin" type="VARCHAR2(12)" remarks="Бизнес-партнер 1: БИН">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_legal_address_id" type="number" remarks="Бизнес-партнер 1: Ссылка на почтовый адрес юр.лица">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_taxcert_id" type="number" remarks="Бизнес-партнер 1: Св-во о постановке на регистрацию по учету НДС: Идентификатор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_taxcert_date" type="date" remarks="Бизнес-партнер 1: Св-во о постановке на регистрацию по учету НДС: Дата выдачи">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_taxcert_start_date" type="date" remarks="Бизнес-партнер 1: Св-во о постановке на регистрацию по учету НДС: Дата начала действия">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_grc_id" type="NUMBER" remarks="Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: Идентификатор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_grc_rle_code" type="VARCHAR2(30)" remarks="Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: Код документа">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_grc_series" type="VARCHAR2(30)" remarks="Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: Серия">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_grc_number" type="VARCHAR2(30)" remarks="Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: Номер">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_grc_regnum" type="VARCHAR2(30)" remarks="Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: регистрационный номер">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_add_info" type="VARCHAR2(200)" remarks="Бизнес-партнер 1: Доп.контактная информация (телефон, факс, email, и т.д.)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_bank_account_id" type="NUMBER" remarks="Бизнес-партнер 1: Ссылка на ИИК (счет в банке)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_bank_bic" type="VARCHAR2(11)" remarks="Бизнес-партнер 1: БИК банка">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_bank_account_num" type="VARCHAR2(40)" remarks="Бизнес-партнер 1: Номер счета">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_id" type="NUMBER" remarks="Бизнес-партнер 2: Ссылка на бизнес-партнера">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_bin" type="VARCHAR2(12)" remarks="Бизнес-партнер 2: БИН">
-				<constraints nullable="true"/>
-			</column>
-
-
-			<column name="bp2_kbe" type="varchar2(2)" remarks="Бизнес-партнер 2: КБе">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_legal_address_id" type="number" remarks="Бизнес-партнер 2: Идентификатор адреса юр.лица">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_from_rec" type="number" remarks="Бизнес-партнер 2: Потребляет через сети РЭК">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_is_resident" type="number" remarks="Бизнес-партнер 2: Является резидентом (да/нет)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_ubpn_type_id" type="number" remarks="Бизнес-партнер 2: ссылка на тип идентификатора типа номера нерезидента: БИН, ИНН, PVN, и т.д. ссылается на CM_RLE_DOC_TYPES">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_ubp_number" type="varchar2(20)" remarks="Бизнес-партнер 2: Номер ИИН">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_is_poa" type="number" remarks="Бизнес-партнер 2: Доверительный документ: Действует на основании (да/нет)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_poa_type_code" type="varchar2(10)" remarks="Бизнес-партнер 2: Доверительный документ: Код">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_poa_number" type="varchar2(30)" remarks="Бизнес-партнер 2: Доверительный документ: Номер">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_poa_date" type="date" remarks="Бизнес-партнер 2: Доверительный документ: Дата выдачи">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_taxcert_id" type="number" remarks="Бизнес-партнер 2: Св-во о постановке учет по НДС: Идентификатор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_taxcert_series" type="varchar2(30)" remarks="Бизнес-партнер 2: Св-во о постановке учет по НДС: Серия">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_taxcert_number" type="varchar2(30)" remarks="Бизнес-партнер 2: Св-во о постановке учет по НДС: Номер">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_taxcert_date" type="date" remarks="Бизнес-партнер 2: Св-во о постановке учет по НДС: Дата выдачи">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_taxcert_start_date" type="date" remarks="Бизнес-партнер 2: Св-во о постановке учет по НДС: Действует с">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_grc_id" type="NUMBER" remarks="Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Идентификатор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_grc_rle_code" type="VARCHAR2(30)" remarks="Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Код">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_grc_series" type="VARCHAR2(30)" remarks="Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Серия">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_grc_number" type="VARCHAR2(30)" remarks="Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Номер">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_grc_regnum" type="VARCHAR2(30)" remarks="Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Регистрационный номер">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_add_info" type="VARCHAR2(200)" remarks="Бизнес-партнер 2: Доп.контактная информация">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_bank_account_id" type="NUMBER" remarks="Бизнес-партнер 2: Номер счета: Идентификатор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_country_id" type="NUMBER" remarks="Бизнес-партнер 2: Ид страны">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_bank_bic" type="VARCHAR2(11)" remarks="Бизнес-партнер 2: БИК">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_bank_account_num" type="VARCHAR2(40)" remarks="Бизнес-партнер 2: Номер счета">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="tariff_plan_id" type="NUMBER" remarks="Ссылка на тарифный план">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="payment_order_id" type="NUMBER" remarks="Ссылка на порядок оплаты">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="curator_user_id" type="NUMBER" remarks="Куратор документа: Идентификатор пользователя (user_id)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="contract_type_id" type="NUMBER" remarks="Ид типа контракта">
-				<constraints nullable="true"/>
 			</column>
 
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
@@ -240,122 +31,29 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-126" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_sfc_pfp</comment>
+	<changeSet id="cm-rus-799" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_rfc_tariff_types</comment>
 		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_sfc_pfp"
+				columnNames="code"
+				constraintName="pk_cm_rfc_tariff_types"
 				schemaName="apps"
-				tableName="cm_sfc_pfp"/>
+				tableName="cm_rfc_tariff_types"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-127" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_sfc_pfp</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_sfc_pfp_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-128" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_sfc_pfp_tl</comment>
-		<createTable tableName="cm_sfc_pfp_tl" schemaName="apps" remarks="Переводы Договор покупки РФЦ электрической энергии у энергопроизводящей организации, использующей ВИЭ, по фиксированным тарифам.">
-			<column name="id" type="number" remarks="Идентификатор">
+	<changeSet id="cm-rus-800" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_rfc_tariff_types_tl</comment>
+		<createTable tableName="cm_rfc_tariff_types_tl" schemaName="apps" remarks="Переводы Справочник Типов тарифоф для РФЦ">
+			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
-
+			
 			<column name="lang" type="varchar2(10)" remarks="Язык">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="contract_id" type="number" remarks="Ссылка на родительскую запись">
+			<column name="name" type="varchar2(100)" remarks="Наименование">
 				<constraints nullable="false"/>
-			</column>
-
-			<column name="conclusion_place" type="varchar2(30)" remarks="Место заключения">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_name" type="varchar2(500)" remarks="Бизнес-партнер 1: Наименование">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_legal_address" type="varchar2(300)" remarks="Бизнес-партнер 1: Юридический адрес">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_contract_person_post" type="varchar2(100)" remarks="Бизнес-партнер 1: Должность подписывающего">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_contract_person_post_rp" type="varchar2(100)" remarks="Бизнес-партнер 1: Должность подписывающего в родительном падеже">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_contract_person_fio" type="varchar2(50)" remarks="Бизнес-партнер 1: ФИО подписывающего">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_contract_person_fio_rp" type="varchar2(50)" remarks="Бизнес-партнер 1: ФИО подписывающего в родительном падеже">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_taxcert_series" type="varchar2(30)" remarks="Бизнес-партнер 1: Св-во о постановке на учет по НДС: Серия">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_taxcert_number" type="varchar2(30)" remarks="Бизнес-партнер 1: Св-во о постановке на учет по НДС: Номер">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_grc_issuing_authority" type="varchar2(500)" remarks="Бизнес-партнер 1: Св-во о гос.регистрации юр.лица:  Орган выдавший св-во">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_grc_rle_name" type="varchar2(150)" remarks="Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: Наименование вида документа">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_bank_name" type="varchar2(500)" remarks="Бизнес-партнер 1: Наименование банка">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_name" type="varchar2(500)" remarks="Бизнес-партнер 2: Наименование юр.лица">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_legal_address" type="varchar2(300)" remarks="Бизнес-партнер 2: Юридический адрес">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_ubpn_short_name" type="varchar2(100)" remarks="Бизнес-партнер 2: Нерезидент: Тип идентификатора">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_contract_person_post" type="varchar2(100)" remarks="Бизнес-партнер 2: Должность подписывающего">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_contract_person_post_rp" type="varchar2(100)" remarks="Бизнес-партнер 2: Должность подписывающего в родительном падеже">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_contract_person_fio" type="varchar2(50)" remarks="Бизнес-партнер 2: ФИО подписывающего">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_contract_person_fio_rp" type="varchar2(50)" remarks="Бизнес-партнер 2: ФИО подписывающего в родительном падеже">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_grc_issuing_authority" type="varchar2(500)" remarks="Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Орган, выдавший св-во">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_bank_name" type="varchar2(500)" remarks="Бизнес-партнер 2: Наименование банка">
-				<constraints nullable="true"/>
-			</column>
+			</column> 
 
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
 				<constraints nullable="true"/>
@@ -375,47 +73,113 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-129" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_sfc_pfp_tl</comment>
+	<changeSet id="cm-rus-801" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_rfc_tariff_types_tl</comment>
 		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_sfc_pfp_tl"
+				columnNames="code, lang"
+				constraintName="pk_cm_rfc_tariff_types_tl"
 				schemaName="apps"
-				tableName="cm_sfc_pfp_tl"/>
+				tableName="cm_rfc_tariff_types_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-129-1" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_sfc_pfp_tl</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_sfc_pfp_tl_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-129-2" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: cm_sfc_pfp_tl</comment>
-		<addUniqueConstraint
-				columnNames="contract_id,lang"
-				constraintName="uk_cm_sfc_pfp_tl"
-				schemaName="apps"
-				tableName="cm_sfc_pfp_tl"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-130" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_sfc_pfp_tl to cm_sfc_pfp</comment>
+	<changeSet id="cm-rus-802" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_rfc_tariff_types_tl to cm_rfc_tariff_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_sfc_pfp_tl"
-				baseColumnNames="contract_id"
-				constraintName="fk_cm_sfc_pfp_tl_1"
+				baseTableName="cm_rfc_tariff_types_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_rfc_tariff_types_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="CASCADE"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_sfc_pfp"
-				referencedColumnNames="id"
+				referencedTableName="cm_rfc_tariff_types"
+				referencedColumnNames="code"
 		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-803" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rfc_tariff_types</comment>
+		<insert schemaName="apps" tableName="cm_rfc_tariff_types">
+			<column name="code" type="varchar2" value="FR"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-804" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rfc_tariff_types</comment>
+		<insert schemaName="apps" tableName="cm_rfc_tariff_types">
+			<column name="code" type="varchar2" value="TFS"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-805" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rfc_tariff_types</comment>
+		<insert schemaName="apps" tableName="cm_rfc_tariff_types">
+			<column name="code" type="varchar2" value="ST"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-806" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rfc_tariff_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_rfc_tariff_types_tl">
+			<column name="code" type="varchar2" value="FR"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Фиксированный тариф"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-807" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rfc_tariff_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_rfc_tariff_types_tl">
+			<column name="code" type="varchar2" value="TFS"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Тариф по технико экономическому обоснованию"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-808" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rfc_tariff_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_rfc_tariff_types_tl">
+			<column name="code" type="varchar2" value="ST"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Тариф на поддержку"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-809" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rfc_tariff_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_rfc_tariff_types_tl">
+			<column name="code" type="varchar2" value="FR"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Фиксированный тариф"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-810" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rfc_tariff_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_rfc_tariff_types_tl">
+			<column name="code" type="varchar2" value="TFS"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Тариф по технико экономическому обоснованию"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-811" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_rfc_tariff_types_tl</comment>
+		<insert schemaName="apps" tableName="cm_rfc_tariff_types_tl">
+			<column name="code" type="varchar2" value="ST"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Тариф на поддержку"/>
+		</insert>
+		<rollback/>
 	</changeSet>
 </databaseChangeLog>
