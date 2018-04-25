@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-859" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_cross_tables</comment>
+		<createTable tableName="cm_doc_cross_tables" schemaName="apps" remarks="Справочник кросс таблица для объединения типов договоров и типов для приложений">
+			<column name="id" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_type_id" type="number" remarks="Ид типа договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_cptri_code" type="varchar2(30)" remarks="Код Типов для приложений">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-860" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_cross_tables</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_cross_tables"
+				schemaName="apps"
+				tableName="cm_doc_cross_tables"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-861" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_cross_tables to dm_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_cross_tables"
+				baseColumnNames="doc_type_id"
+				constraintName="fk_cm_doc_cross_tables_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_doc_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-862" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_cross_tables to currency_codes</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_cross_tables"
+				baseColumnNames="doc_cptri_code"
+				constraintName="fk_cm_doc_cross_tables_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_cptri_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-863" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_cross_tables</comment>
+		<addUniqueConstraint
+				columnNames="doc_type_id,doc_cptri_code"
+				constraintName="uk_cm_doc_cross_tables"
+				schemaName="apps"
+				tableName="cm_doc_cross_tables"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-864" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cross_tables</comment>
+		<insert schemaName="apps" tableName="cm_doc_cross_tables">
+			<column name="id" type="varchar2" value="1"/>
+			<column name="doc_type_id" type="varchar2" value="16"/>
+			<column name="doc_cptri_code" type="varchar2" value="CONSUMPTION"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-866" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cross_tables</comment>
+		<insert schemaName="apps" tableName="cm_doc_cross_tables">
+			<column name="id" type="varchar2" value="2"/>
+			<column name="doc_type_id" type="varchar2" value="23"/>
+			<column name="doc_cptri_code" type="varchar2" value="RELEASE"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-867" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cross_tables</comment>
+		<insert schemaName="apps" tableName="cm_doc_cross_tables">
+			<column name="id" type="varchar2" value="3"/>
+			<column name="doc_type_id" type="varchar2" value="23"/>
+			<column name="doc_cptri_code" type="varchar2" value="IMPORT"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-868" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cross_tables</comment>
+		<insert schemaName="apps" tableName="cm_doc_cross_tables">
+			<column name="id" type="varchar2" value="4"/>
+			<column name="doc_type_id" type="varchar2" value="27"/>
+			<column name="doc_cptri_code" type="varchar2" value="CONSUMPTION"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-869" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cross_tables</comment>
+		<insert schemaName="apps" tableName="cm_doc_cross_tables">
+			<column name="id" type="varchar2" value="5"/>
+			<column name="doc_type_id" type="varchar2" value="27"/>
+			<column name="doc_cptri_code" type="varchar2" value="IMPORT"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-870" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cross_tables</comment>
+		<insert schemaName="apps" tableName="cm_doc_cross_tables">
+			<column name="id" type="varchar2" value="6"/>
+			<column name="doc_type_id" type="varchar2" value="27"/>
+			<column name="doc_cptri_code" type="varchar2" value="PRODUCTION"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-871" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cbee_a3l</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="is_weekend" type="number" remarks="Применить выходной день"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-872" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cbee_a3l</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="is_holiday" type="number" remarks="Применить выходные"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+
+</databaseChangeLog>

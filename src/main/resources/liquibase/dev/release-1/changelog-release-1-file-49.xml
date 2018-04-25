@@ -6,9 +6,9 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-812" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_sfc_pfp</comment>
-		<createTable tableName="cm_sfc_pfp" schemaName="apps" remarks="Договор покупки РФЦ электрической энергии у энергопроизводящей организации, использующей ВИЭ, по фиксированным тарифам.">
+	<changeSet id="cm-rus-829" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_sfc_scc</comment>
+		<createTable tableName="cm_doc_sfc_scc" schemaName="apps" remarks="Договор продажи РФЦ условным потребителям электрической энергии, произведенной объектами по использованию возобновляемых источников энергии">
 			<column name="id" type="number" remarks="Идентификатор">
 				<constraints nullable="false"/>
 			</column>
@@ -205,10 +205,6 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="bp1_grc_date" type="date" remarks="Бизнес-партнер 1: Св-во о гос.регистрации юр.лица: Дата выдачи">
-				<constraints nullable="true"/>
-			</column>
-
 			<column name="bp2_add_info" type="VARCHAR2(200)" remarks="Бизнес-партнер 2: Доп.контактная информация">
 				<constraints nullable="true"/>
 			</column>
@@ -241,43 +237,31 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="energy_sources_id" type="number" remarks="Ид электростанции(Выбирать только ВИЭ)">
+			<column name="tariff_code" type="varchar2(30)" remarks="Код тарифа">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="tariff_rfc_code" type="varchar2(30)" remarks="Код тарифа РФЦ">
+			<column name="currency_code" type="varchar2(30)" remarks="Код валюты">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="tariff_rfc_pay" type="number" remarks="цена тарифа">
+			<column name="unit_id" type="number" remarks="Ид еденицы измерения">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="payment_work_days" type="number" remarks="Порядок оплаты: Покупатель обязан оплатить Продавцу за весь объем поставленной в месяце поставки электрической энергии, указанный в соответствующем акте сверки объемов, в течение Количество рабочих дней">
+			<column name="tariff_value" type="number" remarks="значение">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="payment_calendar_days" type="number" remarks="Порядок оплаты: После истечения с момента окончания месяца поставки: Количество календарных дней">
+			<column name="payment_calendar_days" type="number" remarks="Условия оплаты: В течение календарных дней с момента окончания поставки">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="payment_calendar_days" type="number" remarks="Порядок оплаты: После истечения с момента окончания месяца поставки: Количество календарных дней">
+			<column name="payment_forfeit" type="number(3,2)" remarks="Неустойка от просроченной cуммы за каждый календарный день просрочки (в процентах)">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="payment_forfeit" type="number" remarks="Неустойка от просроченной cуммы за каждый календарный день просрочки (в процентах)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="payment_forfeit_percent" type="number" remarks="Не более от просроченной суммы (в процентах)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+			<column name="payment_forfeit_percent(3,2)" type="number" remarks="Не более от просроченной суммы (в процентах)">
 				<constraints nullable="true"/>
 			</column>
 
@@ -285,24 +269,33 @@
 				<constraints nullable="true"/>
 			</column>
 
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
 			<column name="last_update_by" type="number" remarks="Автор обновления">
 				<constraints nullable="true"/>
 			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-813" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_sfc_pfp</comment>
+	<changeSet id="cm-rus-830" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_sfc_scc</comment>
 		<addPrimaryKey
 				columnNames="id"
-				constraintName="pk_cm_sfc_pfp"
+				constraintName="pk_cm_doc_sfc_scc"
 				schemaName="apps"
-				tableName="cm_sfc_pfp"/>
+				tableName="cm_doc_sfc_scc"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-814" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_sfc_pfp_tl</comment>
-		<createTable tableName="cm_sfc_pfp_tl" schemaName="apps" remarks="Переводы Договор покупки РФЦ электрической энергии у энергопроизводящей организации, использующей ВИЭ, по фиксированным тарифам.">
+	<changeSet id="cm-rus-831" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_sfc_scc_tl</comment>
+		<createTable tableName="cm_doc_sfc_scc_tl" schemaName="apps" remarks="Переводы Договор продажи РФЦ условным потребителям электрической энергии, произведенной объектами по использованию возобновляемых источников энергии">
 			<column name="id" type="number" remarks="Идентификатор">
 				<constraints nullable="false"/>
 			</column>
@@ -311,7 +304,7 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="sfc_pfp_id" type="number" remarks="Ссылка на родительскую запись">
+			<column name="sfc_pfs_id" type="number" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
 
@@ -395,46 +388,6 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="energy_sources_name" type="VARCHAR2(100)" remarks="Наименование электростанции (вставить автоматически)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="energy_sources_type" type="VARCHAR2(100)" remarks="Тип электростанции (вставить автоматически)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="energy_sources_address" type="VARCHAR2(300)" remarks="Адресс электростанции (вставить автоматически)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="energy_sources_address_text" type="VARCHAR2(200)" remarks="Адресс электростанции, произвольный текст (вставить автоматически)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="photoelectric_type" type="VARCHAR2(300)" remarks="Тип фотоэлектрического модуля(Если указана солнечная электростанция)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="photoelectric_country_made" type="VARCHAR2(100)" remarks="Страна производитель фотоэлектрического модуля (Если указана солнечная электростанция)">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="area_cadastral_number" type="VARCHAR2(100)" remarks="Плошадка: кадастровый номер">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="area_total_area" type="VARCHAR2(100)" remarks="Плошадка: общая плошадь">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="area_sum_power" type="VARCHAR2(100)" remarks="Плошадка: Суммарная установленная мощность, генерирующего оборудования электростанции с разбивкой по видам используемых ВИЭ">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="area_power_factor" type="VARCHAR2(100)" remarks="Плошадка: Прогнозный коэффициент использования установленной мощности электростанции">
-				<constraints nullable="true"/>
-			</column>
-
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
 				<constraints nullable="true"/>
 			</column>
@@ -453,74 +406,74 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-815" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_sfc_pfp_tl</comment>
+	<changeSet id="cm-rus-832" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_sfc_scc_tl</comment>
 		<addPrimaryKey
 				columnNames="id"
-				constraintName="pk_cm_sfc_pfp_tl"
+				constraintName="pk_cm_doc_sfc_scc_tl"
 				schemaName="apps"
-				tableName="cm_sfc_pfp_tl"/>
+				tableName="cm_doc_sfc_scc_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-816" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_sfc_pfp_tl</comment>
+	<changeSet id="cm-rus-833" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_sfc_scc_tl</comment>
 		<createSequence
 				incrementBy="1"
 				schemaName="apps"
-				sequenceName="cm_sfc_pfp_tl_s"
+				sequenceName="cm_doc_sfc_scc_tl_s"
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-817" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: cm_sfc_pfp_tl</comment>
+	<changeSet id="cm-rus-834" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_sfc_scc_tl</comment>
 		<addUniqueConstraint
-				columnNames="sfc_pfp_id,lang"
-				constraintName="uk_cm_sfc_pfp_tl"
+				columnNames="sfc_pfs_id,lang"
+				constraintName="uk_cm_doc_sfc_scc_tl"
 				schemaName="apps"
-				tableName="cm_sfc_pfp_tl"/>
+				tableName="cm_doc_sfc_scc_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-818" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_sfc_pfp_tl to cm_sfc_pfp</comment>
+	<changeSet id="cm-rus-835" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc_tl to cm_doc_sfc_scc</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_sfc_pfp_tl"
-				baseColumnNames="sfc_pfp_id"
-				constraintName="fk_cm_sfc_pfp_tl_1"
+				baseTableName="cm_doc_sfc_scc_tl"
+				baseColumnNames="sfc_pfs_id"
+				constraintName="fk_cm_doc_sfc_scc_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="CASCADE"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_sfc_pfp"
+				referencedTableName="cm_doc_sfc_scc"
 				referencedColumnNames="id"
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-819" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_sfc_pfp to cm_sfc_pfp</comment>
+	<changeSet id="cm-rus-836" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to cm_doc_sfc_scc</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_sfc_pfp"
+				baseTableName="cm_doc_sfc_scc"
 				baseColumnNames="parent_contract_id"
-				constraintName="fk_cm_sfc_pfp_2"
+				constraintName="fk_cm_doc_sfc_scc_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_sfc_pfp"
+				referencedTableName="cm_doc_sfc_scc"
 				referencedColumnNames="id"
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-820" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_sfc_pfp to cm_contract_record_types</comment>
+	<changeSet id="cm-rus-837" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to cm_contract_record_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_sfc_pfp"
+				baseTableName="cm_doc_sfc_scc"
 				baseColumnNames="record_type_id"
-				constraintName="fk_cm_sfc_pfp_3"
+				constraintName="fk_cm_doc_sfc_scc_2"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
@@ -531,13 +484,13 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-821" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_sfc_pfp to dm_doc_types</comment>
+	<changeSet id="cm-rus-838" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to dm_doc_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_sfc_pfp"
+				baseTableName="cm_doc_sfc_scc"
 				baseColumnNames="doc_type_id"
-				constraintName="fk_cm_sfc_pfp_4"
+				constraintName="fk_cm_doc_sfc_scc_3"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
@@ -548,13 +501,13 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-822" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_sfc_pfp to cm_doc_statuses</comment>
+	<changeSet id="cm-rus-839" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to cm_doc_statuses</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_sfc_pfp"
+				baseTableName="cm_doc_sfc_scc"
 				baseColumnNames="status_id"
-				constraintName="fk_cm_sfc_pfp_5"
+				constraintName="fk_cm_doc_sfc_scc_4"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
@@ -565,13 +518,13 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-823" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_sfc_pfp to dict_business_partners</comment>
+	<changeSet id="cm-rus-840" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to dict_business_partners</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_sfc_pfp"
+				baseTableName="cm_doc_sfc_scc"
 				baseColumnNames="bp1_id"
-				constraintName="fk_cm_sfc_pfp_6"
+				constraintName="fk_cm_doc_sfc_scc_5"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
@@ -582,13 +535,13 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-824" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_sfc_pfp to dict_business_partners</comment>
+	<changeSet id="cm-rus-841" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to dict_business_partners</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_sfc_pfp"
+				baseTableName="cm_doc_sfc_scc"
 				baseColumnNames="bp2_id"
-				constraintName="fk_cm_sfc_pfp_7"
+				constraintName="fk_cm_doc_sfc_scc_6"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
@@ -598,4 +551,295 @@
 				referencedColumnNames="id"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-842" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp1_legal_address_id"
+				constraintName="fk_cm_doc_sfc_scc_7"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-843" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp1_actual_address_id"
+				constraintName="fk_cm_doc_sfc_scc_8"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-844" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp2_legal_address_id"
+				constraintName="fk_cm_doc_sfc_scc_9"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-845" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp2_actual_address_id"
+				constraintName="fk_cm_doc_sfc_scc_10"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-846" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to cm_taxcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp1_taxcert_id"
+				constraintName="fk_cm_doc_sfc_scc_11"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_taxcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-847" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to cm_taxcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp2_taxcert_id"
+				constraintName="fk_cm_doc_sfc_scc_12"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_taxcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-848" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to cm_govregcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp1_grc_id"
+				constraintName="fk_cm_doc_sfc_scc_13"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_govregcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-849" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to cm_govregcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp2_grc_id"
+				constraintName="fk_cm_doc_sfc_scc_14"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_govregcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-850" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to cm_rle_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp1_grc_rle_code"
+				constraintName="fk_cm_doc_sfc_scc_15"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_rle_doc_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-851" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to cm_rle_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp2_grc_rle_code"
+				constraintName="fk_cm_doc_sfc_scc_16"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_rle_doc_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-852" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to dict_bank_accounts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp1_bank_account_id"
+				constraintName="fk_cm_doc_sfc_scc_17"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_bank_accounts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-853" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to dict_bank_accounts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp2_bank_account_id"
+				constraintName="fk_cm_doc_sfc_scc_18"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_bank_accounts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-854" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to cm_poa_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp1_poa_type_code"
+				constraintName="fk_cm_doc_sfc_scc_19"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_poa_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-855" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to cm_poa_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="bp2_poa_type_code"
+				constraintName="fk_cm_doc_sfc_scc_20"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_poa_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-856" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to dict_tariffs</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="tariff_code"
+				constraintName="fk_cm_doc_sfc_scc_21"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_tariffs"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-857" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to currency_codes</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="currency_code"
+				constraintName="fk_cm_doc_sfc_scc_22"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="currency_codes"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-858" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_scc to currency_codes</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_scc"
+				baseColumnNames="unit_id"
+				constraintName="fk_cm_doc_sfc_scc_23"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
 </databaseChangeLog>
