@@ -285,11 +285,11 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="payment_forfeit" type="number(3,2)" remarks="Неустойка от просроченной cуммы за каждый календарный день просрочки, %">
+			<column name="forfeit_day_delay" type="number(3,2)" remarks="ставка за день просрочки, %">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="payment_forfeit_percent" type="number(3,2)" remarks="Но не более от просроченной суммы,%">
+			<column name="forfeit_max_percent" type="number(3,2)" remarks="Но не более от просроченной суммы, %">
 				<constraints nullable="true"/>
 			</column>
 
@@ -432,11 +432,11 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="photoelectric_type" type="VARCHAR2(300)" remarks="Тип фотоэлектрического модуля(Если указана солнечная электростанция)">
+			<column name="photo_element_type" type="VARCHAR2(300)" remarks="Тип фотоэлектрического модуля (Если указана солнечная электростанция)">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="photoelectric_country_made" type="VARCHAR2(100)" remarks="Страна производитель фотоэлектрического модуля (Если указана солнечная электростанция)">
+			<column name="photo_element_made_in_country" type="VARCHAR2(100)" remarks="Страна производитель фотоэлектрического модуля (Если указана солнечная электростанция)">
 				<constraints nullable="true"/>
 			</column>
 

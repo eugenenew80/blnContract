@@ -241,27 +241,15 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="currency_code" type="varchar2(30)" remarks="Код валюты">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="unit_id" type="number" remarks="Ид еденицы измерения">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="tariff_value" type="number" remarks="значение">
-				<constraints nullable="true"/>
-			</column>
-
 			<column name="payment_calendar_days" type="number" remarks="Условия оплаты: В течение календарных дней с момента окончания поставки">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="payment_forfeit" type="number(3,2)" remarks="Неустойка от просроченной cуммы за каждый календарный день просрочки (в процентах)">
+			<column name="forfeit_day_delay" type="number(3,2)" remarks="ставка за день просрочки, %">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="payment_forfeit_percent(3,2)" type="number" remarks="Не более от просроченной суммы (в процентах)">
+			<column name="forfeit_max_percent" type="number(3,2)" remarks="Но не более от просроченной суммы, %">
 				<constraints nullable="true"/>
 			</column>
 
@@ -807,39 +795,6 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-857" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_doc_sfc_scc to currency_codes</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="cm_doc_sfc_scc"
-				baseColumnNames="currency_code"
-				constraintName="fk_cm_doc_sfc_scc_22"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="currency_codes"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
-
-	<changeSet id="cm-rus-858" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_doc_sfc_scc to currency_codes</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="cm_doc_sfc_scc"
-				baseColumnNames="unit_id"
-				constraintName="fk_cm_doc_sfc_scc_23"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_units"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
 
 
 </databaseChangeLog>
