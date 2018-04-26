@@ -58,4 +58,5 @@
     <include file="release-1/changelog-release-1-file-50.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-51.xml" relativeToChangelogFile="true"/>
     <include file="release-1/changelog-release-1-file-52.xml" relativeToChangelogFile="true"/>
+    <include file="release-1/changelog-release-1-file-53.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
