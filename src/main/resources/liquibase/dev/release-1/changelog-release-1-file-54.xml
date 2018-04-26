@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-950" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_end  </comment>
+		<createTable tableName="cm_doc_end" schemaName="apps" remarks="Завершение договора">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_id" type="number" remarks="Ид договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_end" type="date" remarks="Дата завершения договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="is_bp1" type="number" remarks="Поставщик завершил договора">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_bp2" type="number" remarks="Потребитель завершил договора">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_id" type="number" remarks="Ид бизнес партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-951" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_end </comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_end"
+				schemaName="apps"
+				tableName="cm_doc_end"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-952" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_end </comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_end_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-953" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_end_tl</comment>
+		<createTable tableName="cm_doc_end_tl" schemaName="apps" remarks="Переводы Завершение договора">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_end_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_post" type="varchar2(100)" remarks="Должность бизнес партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_name" type="varchar2(100)" remarks="Наименование бизнес партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_fio" type="varchar2(50)" remarks="ФИО бизнес партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="text" type="clob" remarks="Текст причины завершения договора">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-954" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_end_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_end_tl"
+				schemaName="apps"
+				tableName="cm_doc_end_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-955" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_end_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_end_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-956" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_end_tl</comment>
+		<addUniqueConstraint
+				columnNames="doc_end_id,lang"
+				constraintName="uk_cm_doc_end"
+				schemaName="apps"
+				tableName="cm_doc_end_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-957" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_end_tl to cm_doc_end </comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_end_tl"
+				baseColumnNames="doc_end_id"
+				constraintName="fk_cm_doc_end_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_end"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-958" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_end to cm_doc_keg_cte </comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_end"
+				baseColumnNames="doc_id"
+				constraintName="fk_cm_doc_end_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-959" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_end to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_end"
+				baseColumnNames="bp_id"
+				constraintName="fk_cm_doc_end_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>

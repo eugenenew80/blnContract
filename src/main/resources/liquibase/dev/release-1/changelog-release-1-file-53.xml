@@ -187,4 +187,370 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-911" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column cm_doc_sfc_pfp</comment>
+		<dropColumn columnName="is_sale"
+					schemaName="apps"
+					tableName="cm_doc_sfc_pfp"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-912" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_sfc_pfp</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_sfc_pfp">
+			<column name="is_sale_code" type="varchar2(30)" remarks="код покупки или продажи"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-913" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_sfc_pfp to cm_doc_rfc_is_sales</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_sfc_pfp"
+				baseColumnNames="is_sale_code"
+				constraintName="fk_cm_doc_sfc_pfp_26"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_rfc_is_sales"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-914" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_sfc_scc_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_sfc_scc_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-915" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="vpk_start_date" type="date" remarks="ВПК: Дата действия с"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-916" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="vpk_end_date" type="date" remarks="ВПК: Дата действия по"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-917" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="vpk_temporary_factor" type="number" remarks="ВПК: Временный понижающий коэффициент"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-918" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="vpk_complete_conditions" type="number" remarks="ВПК: Условие выполнения объема не менее"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-919" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="vpk_unit_id" type="number" remarks="ВПК: Ид еденицы измерения"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-920" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="vpk_current_percent_rate" type="number" remarks="ВПК: Процент текущей оплаты, %"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-921" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="vpk_text_reference" type="varchar2(300)" remarks="ВПК: ссылка на документ"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-922" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to dict_units</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="vpk_unit_id"
+				constraintName="fk_cm_doc_keg_cte_23"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-923" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cptri_types_cross</comment>
+		<insert schemaName="apps" tableName="cm_doc_cptri_types_cross">
+			<column name="id" type="varchar2" value="7"/>
+			<column name="doc_type_id" type="varchar2" value="34"/>
+			<column name="doc_cptri_code" type="varchar2" value="CONSUMPTION"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-924" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p01" type="number" remarks="Коэф за 1 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-925" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p02" type="number" remarks="Коэф за 2 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-926" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p03" type="number" remarks="Коэф за 3 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-927" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p04" type="number" remarks="Коэф за 4 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-928" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p05" type="number" remarks="Коэф за 5 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-929" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p06" type="number" remarks="Коэф за 6 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-930" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p07" type="number" remarks="Коэф за 7 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-931" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p08" type="number" remarks="Коэф за 8 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-932" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p09" type="number" remarks="Коэф за 9 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-933" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p10" type="number" remarks="Коэф за 10 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-934" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p11" type="number" remarks="Коэф за 11 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-935" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p12" type="number" remarks="Коэф за 12 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-936" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p13" type="number" remarks="Коэф за 13 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-937" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p14" type="number" remarks="Коэф за 14 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-938" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p15" type="number" remarks="Коэф за 15 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-939" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p16" type="number" remarks="Коэф за 16 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-940" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p17" type="number" remarks="Коэф за 17 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-941" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p18" type="number" remarks="Коэф за 18 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-942" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p19" type="number" remarks="Коэф за 19 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-943" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p20" type="number" remarks="Коэф за 20 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-944" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p21" type="number" remarks="Коэф за 21 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-945" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p22" type="number" remarks="Коэф за 22 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-946" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p23" type="number" remarks="Коэф за 23 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-947" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p24" type="number" remarks="Коэф за 24 ч"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-948" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="h_summa" type="number" remarks="Итого"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-949" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CBEE_A3L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3l">
+			<column name="p_summa" type="number" remarks="Итого, Коэффициенты"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+
 </databaseChangeLog>
