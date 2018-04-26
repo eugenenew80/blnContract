@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-873" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.CM_DOC_KEG_CTE_A1L</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a1l">
+			<column name="cptri_type_code" type="varchar2(30)"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-874" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE_A1L to currency_codes</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a1l"
+				baseColumnNames="cptri_type_code"
+				constraintName="fk_cm_doc_keg_cte_a1l_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_cptri_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-875" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<sequenceExists sequenceName="cm_doc_keg_cbee_a1h_s" schemaName="apps"/>
+		</preConditions>
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE_A1L to currency_codes</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cbee_a1h_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-876" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<sequenceExists sequenceName="cm_doc_keg_cbee_a1l_s" schemaName="apps"/>
+		</preConditions>
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE_A1L to currency_codes</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cbee_a1l_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-877" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<sequenceExists sequenceName="cm_doc_keg_cbee_a1l_tl_s" schemaName="apps"/>
+		</preConditions>
+		<comment>Creating foreign constraint: CM_DOC_KEG_CTE_A1L to currency_codes</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cbee_a1l_tl_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-878" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_cross_tables</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_cross_tables"/>
+	</changeSet>
+
+
+</databaseChangeLog>

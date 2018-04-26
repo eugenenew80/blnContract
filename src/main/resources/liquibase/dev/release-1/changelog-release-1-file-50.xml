@@ -153,6 +153,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-871" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="CONTINUE">
+			<columnExists tableName="cm_doc_keg_cbee_a3l" columnName="is_weekend" schemaName="apps"/>
+		</preConditions>
 		<comment>add column on  APPS.cm_doc_keg_cbee_a3l</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cbee_a3l">
@@ -162,6 +165,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-872" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<columnExists tableName="cm_doc_keg_cbee_a3l" columnName="is_holiday" schemaName="apps"/>
+		</preConditions>
 		<comment>add column on  APPS.cm_doc_keg_cbee_a3l</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cbee_a3l">

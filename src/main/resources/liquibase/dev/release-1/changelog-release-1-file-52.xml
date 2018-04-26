@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-879" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_cptri_types_cross</comment>
+		<createTable tableName="cm_doc_cptri_types_cross" schemaName="apps" remarks="Справочник кросс таблица для объединения типов договоров и типов для приложений">
+			<column name="id" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_type_id" type="number" remarks="Ид типа договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_cptri_code" type="varchar2(30)" remarks="Код Типов для приложений">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-880" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_cptri_types_cross</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_cptri_types_cross"
+				schemaName="apps"
+				tableName="cm_doc_cptri_types_cross"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-881" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_cptri_types_cross to dm_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_cptri_types_cross"
+				baseColumnNames="doc_type_id"
+				constraintName="fk_cm_doc_cptri_types_cross_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_doc_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-882" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_cptri_types_cross to currency_codes</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_cptri_types_cross"
+				baseColumnNames="doc_cptri_code"
+				constraintName="fk_cm_doc_cptri_types_cross_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_cptri_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-883" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_cptri_types_cross</comment>
+		<addUniqueConstraint
+				columnNames="doc_type_id,doc_cptri_code"
+				constraintName="uk_cm_doc_cptri_types_cross"
+				schemaName="apps"
+				tableName="cm_doc_cptri_types_cross"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-884" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cptri_types_cross</comment>
+		<insert schemaName="apps" tableName="cm_doc_cptri_types_cross">
+			<column name="id" type="varchar2" value="1"/>
+			<column name="doc_type_id" type="varchar2" value="16"/>
+			<column name="doc_cptri_code" type="varchar2" value="CONSUMPTION"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-885" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cptri_types_cross</comment>
+		<insert schemaName="apps" tableName="cm_doc_cptri_types_cross">
+			<column name="id" type="varchar2" value="2"/>
+			<column name="doc_type_id" type="varchar2" value="23"/>
+			<column name="doc_cptri_code" type="varchar2" value="RELEASE"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-889" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cptri_types_cross</comment>
+		<insert schemaName="apps" tableName="cm_doc_cptri_types_cross">
+			<column name="id" type="varchar2" value="3"/>
+			<column name="doc_type_id" type="varchar2" value="23"/>
+			<column name="doc_cptri_code" type="varchar2" value="IMPORT"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-890" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cptri_types_cross</comment>
+		<insert schemaName="apps" tableName="cm_doc_cptri_types_cross">
+			<column name="id" type="varchar2" value="4"/>
+			<column name="doc_type_id" type="varchar2" value="27"/>
+			<column name="doc_cptri_code" type="varchar2" value="CONSUMPTION"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-891" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cptri_types_cross</comment>
+		<insert schemaName="apps" tableName="cm_doc_cptri_types_cross">
+			<column name="id" type="varchar2" value="5"/>
+			<column name="doc_type_id" type="varchar2" value="27"/>
+			<column name="doc_cptri_code" type="varchar2" value="IMPORT"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-892" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_cptri_types_cross</comment>
+		<insert schemaName="apps" tableName="cm_doc_cptri_types_cross">
+			<column name="id" type="varchar2" value="6"/>
+			<column name="doc_type_id" type="varchar2" value="27"/>
+			<column name="doc_cptri_code" type="varchar2" value="PRODUCTION"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+</databaseChangeLog>

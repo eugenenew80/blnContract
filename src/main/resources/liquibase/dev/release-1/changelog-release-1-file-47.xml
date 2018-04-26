@@ -516,6 +516,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-795" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<columnExists tableName="DICT_TARIFF_PLAN_CONFIG" columnName="code" schemaName="apps"/>
+		</preConditions>
 		<comment>alter on table APPS.CALC_METERING_DATA_SOURCE_LINES</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h04 null;
@@ -524,6 +527,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-796" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<columnExists tableName="DICT_TARIFF_PLAN_CONFIG" columnName="code" schemaName="apps"/>
+		</preConditions>
 		<comment>alter on table APPS.CALC_METERING_DATA_SOURCE_LINES</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h05 null;
@@ -532,6 +538,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-797" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<columnExists tableName="DICT_TARIFF_PLAN_CONFIG" columnName="code" schemaName="apps"/>
+		</preConditions>
 		<comment>alter on table APPS.CALC_METERING_DATA_SOURCE_LINES</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			alter table APPS.CM_DOC_KEG_CBEE_A3L modify h06 null;
