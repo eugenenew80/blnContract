@@ -152,4 +152,29 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-893" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_sfc_scc</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_sfc_scc"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-894" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on  APPS.cm_doc_keg_cbee_a3l</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_sfc_pfp">
+			<column name="is_sale" type="number" remarks="покупка/продажа (0/1)"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-895" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_sfc_scc_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_notes_s"
+				startValue="1"/>
+	</changeSet>
+
 </databaseChangeLog>
