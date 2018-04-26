@@ -177,4 +177,13 @@
 				startValue="1"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-896" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_sfc_scc_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_notes_tl_s"
+				startValue="1"/>
+	</changeSet>
+
 </databaseChangeLog>
