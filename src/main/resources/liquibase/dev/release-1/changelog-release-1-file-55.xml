@@ -7,8 +7,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 	<changeSet id="cm-rus-960" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_doc_rfc_is_sales</comment>
-		<createTable tableName="cm_doc_rfc_is_sales" schemaName="apps" remarks="Справочник для договора РФЦ">
+		<comment>Creating table: cm_doc_data_sources_in_metering_points</comment>
+		<createTable tableName="cm_doc_data_sources_in_metering_points" schemaName="apps" remarks="Справочник источников данных в точках учета для приложений в договорах">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
@@ -32,17 +32,17 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-961" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_doc_rfc_is_sales</comment>
+		<comment>Creating primary key for table: cm_doc_data_sources_in_metering_points</comment>
 		<addPrimaryKey
 				columnNames="code"
-				constraintName="pk_cm_doc_rfc_is_sales"
+				constraintName="pk_cm_doc_data_sources_in_metering_points"
 				schemaName="apps"
-				tableName="cm_doc_rfc_is_sales"/>
+				tableName="cm_doc_data_sources_in_metering_points"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-962" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_doc_rfc_is_sales_tl</comment>
-		<createTable tableName="cm_doc_rfc_is_sales_tl" schemaName="apps" remarks="Переводы Справочник для договора РФЦ">
+		<comment>Creating table: cm_doc_data_sources_in_metering_points_tl</comment>
+		<createTable tableName="cm_doc_data_sources_in_metering_points_tl" schemaName="apps" remarks="Переводы Справочник источников данных в точках учета для приложений в договорах">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
@@ -78,67 +78,67 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-963" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_doc_rfc_is_sales_tl</comment>
+		<comment>Creating primary key for table: cm_doc_data_sources_in_metering_points_tl</comment>
 		<addPrimaryKey
 				columnNames="code, lang"
-				constraintName="pk_cm_doc_rfc_is_sales_tl"
+				constraintName="pk_cm_doc_data_sources_in_metering_points_tl"
 				schemaName="apps"
-				tableName="cm_doc_rfc_is_sales_tl"/>
+				tableName="cm_doc_data_sources_in_metering_points_tl"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-964" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_doc_rfc_is_sales_tl to cm_doc_rfc_is_sales</comment>
+		<comment>Creating foreign constraint: cm_doc_data_sources_in_metering_points_tl to cm_doc_data_sources_in_metering_points</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_doc_rfc_is_sales_tl"
+				baseTableName="cm_doc_data_sources_in_metering_points_tl"
 				baseColumnNames="code"
-				constraintName="fk_cm_doc_rfc_is_sales_tl_1"
+				constraintName="fk_cm_doc_data_sources_in_metering_points_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="CASCADE"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_doc_rfc_is_sales"
+				referencedTableName="cm_doc_data_sources_in_metering_points"
 				referencedColumnNames="code"
 		/>
 	</changeSet>
 
 	<changeSet id="cm-rus-965" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales">
-			<column name="code" type="varchar2" value="SALE"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points">
+			<column name="code" type="varchar2" value="A"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-966" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales">
-			<column name="code" type="varchar2" value="BAY"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points">
+			<column name="code" type="varchar2" value="TI"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-967" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales">
-			<column name="code" type="varchar2" value="BAY"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points">
+			<column name="code" type="varchar2" value="LP"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-968" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales">
-			<column name="code" type="varchar2" value="BAY"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points">
+			<column name="code" type="varchar2" value="C"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-969" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales_tl">
-			<column name="code" type="varchar2" value="BAY"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="A"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="АСКУЭ СО"/>
 			<column name="symbol" type="varchar2" value="А"/>
@@ -147,9 +147,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-970" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales_tl">
-			<column name="code" type="varchar2" value="BAY"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="TI"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Данные телеметрии СО"/>
 			<column name="symbol" type="varchar2" value="Т"/>
@@ -158,9 +158,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-971" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales_tl">
-			<column name="code" type="varchar2" value="BAY"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="LP"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Профиль нагрузки"/>
 			<column name="symbol" type="varchar2" value="П"/>
@@ -169,9 +169,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-972" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales_tl">
-			<column name="code" type="varchar2" value="BAY"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="C"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Константа"/>
 			<column name="symbol" type="varchar2" value="К"/>
@@ -180,9 +180,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-973" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales_tl">
-			<column name="code" type="varchar2" value="BAY"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="A"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="АСКУЭ СО"/>
 			<column name="symbol" type="varchar2" value="А"/>
@@ -191,33 +191,76 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-974" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales_tl">
-			<column name="code" type="varchar2" value="BAY"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="TI"/>
 			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Данные телеметрии СО"/>
+			<column name="name" type="varchar2" value="СО телеметриясы"/>
 			<column name="symbol" type="varchar2" value="Т"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-975" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales_tl">
-			<column name="code" type="varchar2" value="BAY"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="LP"/>
 			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Профиль нагрузки"/>
+			<column name="name" type="varchar2" value="Профильді жүктеңіз"/>
 			<column name="symbol" type="varchar2" value="П"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-976" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_doc_rfc_is_sales_tl</comment>
-		<insert schemaName="apps" tableName="cm_doc_rfc_is_sales_tl">
-			<column name="code" type="varchar2" value="BAY"/>
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="C"/>
 			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Константа"/>
+			<column name="name" type="varchar2" value="Тұрақты"/>
+			<column name="symbol" type="varchar2" value="К"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+	<changeSet id="cm-rus-977" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="A"/>
+			<column name="lang" type="varchar2" value="EN"/>
+			<column name="name" type="varchar2" value="АСКУЭ СО"/>
+			<column name="symbol" type="varchar2" value="А"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-978" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="TI"/>
+			<column name="lang" type="varchar2" value="EN"/>
+			<column name="name" type="varchar2" value="Telemetry of SO"/>
+			<column name="symbol" type="varchar2" value="Т"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-979" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="LP"/>
+			<column name="lang" type="varchar2" value="EN"/>
+			<column name="name" type="varchar2" value="Load profile"/>
+			<column name="symbol" type="varchar2" value="П"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-980" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_data_sources_in_metering_points_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_data_sources_in_metering_points_tl">
+			<column name="code" type="varchar2" value="C"/>
+			<column name="lang" type="varchar2" value="EN"/>
+			<column name="name" type="varchar2" value="Constant"/>
 			<column name="symbol" type="varchar2" value="К"/>
 		</insert>
 		<rollback/>
