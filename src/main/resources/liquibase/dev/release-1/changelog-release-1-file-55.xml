@@ -266,5 +266,14 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-981" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data APPS.ecm_contents</comment>
+		<modifyDataType columnName="short_name"
+						newDataType="varchar2(15)"
+						schemaName="apps"
+						tableName="dict_ubpn_types_tl"/>
+		<rollback/>
+	</changeSet>
+
 
 </databaseChangeLog>
