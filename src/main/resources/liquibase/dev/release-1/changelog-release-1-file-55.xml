@@ -298,11 +298,11 @@
 
 
 	<changeSet id="cm-rus-985" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add not null constraint on dict_business_partners.bin</comment>
-		<addNotNullConstraint columnDataType="varchar2(12)"
-							  columnName="bin"
-							  schemaName="apps"
-							  tableName="dict_business_partners"/>
+		<comment>drop not null constraint on dict_business_partners.bin</comment>
+		<dropNotNullConstraint columnDataType="varchar2(12)"
+							   columnName="bin"
+							   schemaName="apps"
+							   tableName="dict_business_partners"/>
 	</changeSet>
 
 
