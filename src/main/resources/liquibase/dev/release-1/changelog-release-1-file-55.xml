@@ -275,5 +275,35 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-982" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column mdfem_eem_types_tl</comment>
+		<dropColumn columnName="name"
+					schemaName="apps"
+					tableName="mdfem_eem_types_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-983" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column mdfem_tn_types_tl</comment>
+		<dropColumn columnName="name"
+					schemaName="apps"
+					tableName="mdfem_tn_types_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-984" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column mdfem_tt_types_tl</comment>
+		<dropColumn columnName="name"
+					schemaName="apps"
+					tableName="mdfem_tt_types_tl"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-985" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint on dict_business_partners.bin</comment>
+		<addNotNullConstraint columnDataType="varchar2(12)"
+							  columnName="bin"
+							  schemaName="apps"
+							  tableName="dict_business_partners"/>
+	</changeSet>
+
 
 </databaseChangeLog>
