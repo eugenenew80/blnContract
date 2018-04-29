@@ -267,7 +267,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-981" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>modify data APPS.ecm_contents</comment>
+		<comment>modify data APPS.dict_ubpn_types_tl</comment>
 		<modifyDataType columnName="short_name"
 						newDataType="varchar2(15)"
 						schemaName="apps"
