@@ -340,5 +340,672 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-989" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename table APPS.CM_DOC_SFC_PFP into  APPS.CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC_PFP
+			RENAME TO CM_DOC_SFC;
+		</sql>
+		<rollback/>
+	</changeSet>
 
+	<changeSet id="cm-rus-990" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename table APPS.CM_DOC_SFC_PFP_TL into  APPS.CM_DOC_SFC_TL</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC_PFP_TL
+			RENAME TO CM_DOC_SFC_TL;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-991" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT PK_CM_DOC_SFC_PFP to PK_CM_DOC_SFC;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-991" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT PK_CM_DOC_SFC_PFP to PK_CM_DOC_SFC;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-992" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_22 to FK_CM_DOC_SFC_22;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-993" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_1 to FK_CM_DOC_SFC_1;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-994" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_2 to FK_CM_DOC_SFC_2;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-995" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_3 to FK_CM_DOC_SFC_3;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-996" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_4 to FK_CM_DOC_SFC_4;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-997" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_5 to FK_CM_DOC_SFC_5;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-998" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_6 to FK_CM_DOC_SFC_6;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-999" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_7 to FK_CM_DOC_SFC_7;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1000" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_8 to FK_CM_DOC_SFC_8;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1001" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_9 to FK_CM_DOC_SFC_9;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1002" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_10 to FK_CM_DOC_SFC_10;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1003" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_11 to FK_CM_DOC_SFC_11;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1004" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_12 to FK_CM_DOC_SFC_12;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1005" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_13 to FK_CM_DOC_SFC_13;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1006" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_14 to FK_CM_DOC_SFC_14;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1007" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_15 to FK_CM_DOC_SFC_15;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1008" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_16 to FK_CM_DOC_SFC_16;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1009" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_17 to FK_CM_DOC_SFC_17;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1010" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_18 to FK_CM_DOC_SFC_18;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1011" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_19 to FK_CM_DOC_SFC_19;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1012" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_20 to FK_CM_DOC_SFC_20;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1013" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_21 to FK_CM_DOC_SFC_21;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1014" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_23 to FK_CM_DOC_SFC_23;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1015" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_24 to FK_CM_DOC_SFC_24;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1016" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_25 to FK_CM_DOC_SFC_25;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1017" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_26 to FK_CM_DOC_SFC_26;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1018" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column on PK_CM_DOC_SFC</comment>
+		<renameColumn columnDataType="number"
+					  newColumnName="SFC_ID"
+					  oldColumnName="SFC_PFP_ID"
+					  remarks="Ссылка на родительскую запись"
+					  schemaName="apps"
+					  tableName="CM_DOC_SFC_TL"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1019" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_SFC_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC_TL
+			RENAME CONSTRAINT PK_CM_DOC_SFC_PFP_TL to PK_CM_DOC_SFC_TL;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1020" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_SFC_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC_TL
+			RENAME CONSTRAINT UK_CM_DOC_SFC_PFP_TL to UK_CM_DOC_SFC_TL;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1021" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_SFC_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC_TL
+			RENAME CONSTRAINT FK_CM_DOC_SFC_PFP_TL_1 to FK_CM_DOC_SFC_TL_1;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1022" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename table APPS.CM_DOC_SFC_PFP into  APPS.CM_DOC_RFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC
+			RENAME TO CM_DOC_RFC;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1023" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename table APPS.CM_DOC_SFC_PFP_TL into  APPS.CM_DOC_SFC_TL</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_SFC_TL
+			RENAME TO CM_DOC_RFC_TL;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1024" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT PK_CM_DOC_SFC to PK_CM_DOC_RFC;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1026" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_22 to FK_CM_DOC_RFC_22;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1027" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_1 to FK_CM_DOC_RFC_1;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1028" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_2 to FK_CM_DOC_RFC_2;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1029" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_3 to FK_CM_DOC_RFC_3;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1030" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_4 to FK_CM_DOC_RFC_4;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1031" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_5 to FK_CM_DOC_RFC_5;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1032" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_6 to FK_CM_DOC_RFC_6;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1033" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_7 to FK_CM_DOC_RFC_7;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1034" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_8 to FK_CM_DOC_RFC_8;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1035" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_9 to FK_CM_DOC_RFC_9;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1036" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_10 to FK_CM_DOC_RFC_10;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1037" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_11 to FK_CM_DOC_RFC_11;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1038" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_12 to FK_CM_DOC_RFC_12;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1039" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_13 to FK_CM_DOC_RFC_13;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1040" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_14 to FK_CM_DOC_RFC_14;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1041" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_15 to FK_CM_DOC_RFC_15;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1042" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_16 to FK_CM_DOC_RFC_16;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1043" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_17 to FK_CM_DOC_RFC_17;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1044" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_18 to FK_CM_DOC_RFC_18;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1045" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_19 to FK_CM_DOC_RFC_19;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1046" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_20 to FK_CM_DOC_RFC_20;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1047" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_21 to FK_CM_DOC_RFC_21;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1048" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_23 to FK_CM_DOC_RFC_23;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1049" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_24 to FK_CM_DOC_RFC_24;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1050" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_25 to FK_CM_DOC_RFC_25;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1051" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on PK_CM_DOC_SFC</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC
+			RENAME CONSTRAINT FK_CM_DOC_SFC_26 to FK_CM_DOC_RFC_26;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1052" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column on PK_CM_DOC_SFC</comment>
+		<renameColumn columnDataType="number"
+					  newColumnName="RFC_ID"
+					  oldColumnName="SFC_ID"
+					  remarks="Ссылка на родительскую запись"
+					  schemaName="apps"
+					  tableName="CM_DOC_RFC_TL"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1053" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_SFC_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC_TL
+			RENAME CONSTRAINT PK_CM_DOC_SFC_TL to PK_CM_DOC_RFC_TL;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1054" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_SFC_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC_TL
+			RENAME CONSTRAINT UK_CM_DOC_SFC_TL to UK_CM_DOC_RFC_TL;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1055" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_SFC_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			ALTER TABLE APPS.CM_DOC_RFC_TL
+			RENAME CONSTRAINT FK_CM_DOC_SFC_TL_1 to FK_CM_DOC_RFC_TL_1;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1056" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_RFC</comment>
+		<addColumn schemaName="apps"
+				   tableName="CM_DOC_RFC">
+			<column name="bp2_grc_date" type="date" remarks="Бизнес-партнер 2: Св-во о гос.регистрации юр.лица: Дата выдачи"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1057" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_RFC</comment>
+		<addColumn schemaName="apps"
+				   tableName="CM_DOC_RFC">
+			<column name="bp1_kbe" type="varchar2(2)" remarks="Бизнес-партнер 1: КБЕ"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1058" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_RFC</comment>
+		<addColumn schemaName="apps"
+				   tableName="CM_DOC_RFC">
+			<column name="bp2_kbe" type="varchar2(2)" remarks="Бизнес-партнер 1: КБЕ"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1059" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_KEG_CTE</comment>
+		<addColumn schemaName="apps"
+				   tableName="CM_DOC_KEG_CTE">
+			<column name="END_DOC_DATE" type="date" remarks="Дата завершения договора"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1060" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_KEG_CTE</comment>
+		<addColumn schemaName="apps"
+				   tableName="CM_DOC_KEG_CTE">
+			<column name="end_doc_who_code" type="varchar2(30)" remarks="Код того кто завершил договор"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1061" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_KEG_CTE</comment>
+		<addColumn schemaName="apps"
+				   tableName="CM_DOC_KEG_CTE">
+			<column name="END_DOC_TEXT" type="varchar2(2000)" remarks="Причина завершения договора"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1062" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column on CM_DOC_RFC</comment>
+		<dropColumn columnName="energy_sources_address_text"
+					schemaName="apps"
+					tableName="cm_doc_rfc_tl"/>
+		<rollback/>
+	</changeSet>
 </databaseChangeLog>
