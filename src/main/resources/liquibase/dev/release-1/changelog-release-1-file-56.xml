@@ -361,6 +361,63 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1094" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_end</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_end"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1095" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_end</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_end_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1096" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_end</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="dm_request"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1097" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_end</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="dm_request_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1098" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column on CM_DOC_RFC</comment>
+		<dropColumn columnName="GOVREGCERTS_ID"
+					schemaName="apps"
+					tableName="CM_STATE_LICENSE_AT"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1099" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_SFC_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on column apps.CM_STATE_LICENSE_AT.activity_kind
+			is 'На занятие видом деятельности'
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1100" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on CM_DOC_SFC_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on column apps.CM_STATE_LICENSE_AT_TL.activity_kind
+			is 'На занятие видом деятельности'
+		</sql>
+		<rollback/>
+	</changeSet>
 
 
 </databaseChangeLog>

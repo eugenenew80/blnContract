@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1101" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_requests_doc_create</comment>
+		<createTable tableName="cm_requests_doc_create" schemaName="apps" remarks="Запросы на заключение договоров">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_number" type="varchar2(50)" remarks="Номер запроса">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_number" type="varchar2(50)" remarks="Номер запроса">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_status_code" type="varchar2(30)" remarks="код типа запроса">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_type_code" type="varchar2(30)" remarks="Дата создания запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="request_date" type="date" remarks="Дата создания запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="curator_user_id" type="NUMBER" remarks="Куратор запроса: Идентификатор пользователя (user_id)">
+				<constraints nullable="true"/>
+			</column>
+			
+			<column name="cancel_reason" type="varchar2(300)" remarks="Причина отмены запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="cancel_date" type="DATE" remarks="Дата отмены договора">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_id" type="NUMBER" remarks="Бизнес-партнер: Идентификатор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_bin" type="VARCHAR2(12)" remarks="Бизнес-партнер: БИН">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_kbe" type="VARCHAR2(2)" remarks="Бизнес-партнер: КБЕ">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_legal_address_id" type="number" remarks="Бизнес-партнер: Ссылка на юридический адрес юр.лица">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_actual_address_id" type="number" remarks="Бизнес-партнер: Ссылка на фактический адрес юр.лица">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_grc_id" type="NUMBER" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица: Идентификатор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_grc_rle_code" type="VARCHAR2(30)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица: Код документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_grc_series" type="VARCHAR2(30)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица: Серия">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_grc_number" type="VARCHAR2(30)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица: Номер">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_grc_regnum" type="VARCHAR2(30)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица: регистрационный номер">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_grc_date" type="date" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица: Дата выдачи">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_taxcert_id" type="number" remarks="Бизнес-партнер: Св-во о постановке на регистрацию по учету НДС: Идентификатор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_taxcert_series" type="varchar2(30)" remarks="Бизнес-партнер: Св-во о постановке на учет по НДС: Серия">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_taxcert_number" type="varchar2(30)" remarks="Бизнес-партнер: Св-во о постановке на учет по НДС: Номер">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_taxcert_date" type="date" remarks="Бизнес-партнер: Св-во о постановке на регистрацию по учету НДС: Дата выдачи">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_taxcert_start_date" type="date" remarks="Бизнес-партнер: Св-во о постановке на регистрацию по учету НДС: Дата начала действия">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="sla_id" type="number" remarks="Бизнес-партнер: Государственная лицензия на занятие видом деятельности: Ид">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="sla_doc_number" type="varchar2(30)" remarks="Бизнес-партнер: Государственная лицензия на занятие видом деятельности: Номер">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="state_license_at_doc_date" type="date" remarks="Бизнес-партнер: Государственная лицензия на занятие видом деятельности: Дата выдачи">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_add_info" type="VARCHAR2(200)" remarks="Бизнес-партнер: Доп.контактная информация (телефон, факс, email, и т.д.)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_bank_account_id" type="NUMBER" remarks="Бизнес-партнер: Ссылка на ИИК (счет в банке)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_bank_bic" type="VARCHAR2(11)" remarks="Бизнес-партнер: БИК банка">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_bank_account_num" type="VARCHAR2(40)" remarks="Бизнес-партнер: Номер счета">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_is_poa" type="number" remarks="Бизнес-партнер: Доверительный документ: Действует на основании (да/нет)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_poa_type_code" type="varchar2(10)" remarks="Бизнес-партнер: Доверительный документ: Код">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_poa_number" type="varchar2(30)" remarks="Бизнес-партнер: Доверительный документ: Номер">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_poa_date" type="date" remarks="Бизнес-партнер: Доверительный документ: Дата выдачи">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1102" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_requests_doc_create</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_requests_doc_create"
+				schemaName="apps"
+				tableName="cm_requests_doc_create"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1103" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_requests_doc_create_tl</comment>
+		<createTable tableName="cm_requests_doc_create_tl" schemaName="apps" remarks="Переводы Запросы на заключение договоров">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_doc_create_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_name" type="varchar2(500)" remarks="Бизнес-партнер: Наименование">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_legal_address" type="varchar2(300)" remarks="Бизнес-партнер: Юридический адрес">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_actual_address" type="varchar2(300)" remarks="Бизнес-партнер: Фактический адрес">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_contract_person_post" type="varchar2(100)" remarks="Бизнес-партнер: Должность подписывающего">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_contract_person_post_rp" type="varchar2(100)" remarks="Бизнес-партнер: Должность подписывающего в родительном падеже">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_contract_person_fio" type="varchar2(50)" remarks="Бизнес-партнер: ФИО подписывающего">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_contract_person_fio_rp" type="varchar2(50)" remarks="Бизнес-партнер: ФИО подписывающего в родительном падеже">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_grc_issuing_authority" type="varchar2(500)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица:  Орган выдавший св-во">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_grc_rle_name" type="varchar2(150)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица: Наименование вида документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="sla_doc_city" type="varchar2(150)" remarks="Бизнес-партнер: Государственная лицензия на занятие видом деятельности: Место выдачи">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="sla_licensing_authority" type="varchar2(500)" remarks="Бизнес-партнер: Государственная лицензия на занятие видом деятельности: Орган, выдавший лицензию">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="sla_activity_kind" type="varchar2(500)" remarks="Бизнес-партнер: Государственная лицензия на занятие видом деятельности: На занятие видом деятельности">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="sla_special_terms" type="varchar2(300)" remarks="Бизнес-партнер: Государственная лицензия на занятие видом деятельности: Особые условия">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_bank_name" type="varchar2(500)" remarks="Бизнес-партнер 1: Наименование банка">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1104" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_requests_doc_create_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_requests_doc_create_tl"
+				schemaName="apps"
+				tableName="cm_requests_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1105" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_requests_doc_create_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_requests_doc_create_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1106" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_requests_doc_create_tl</comment>
+		<addUniqueConstraint
+				columnNames="request_doc_create_id,lang"
+				constraintName="uk_cm_requests_doc_create_tl"
+				schemaName="apps"
+				tableName="cm_requests_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1107" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create_tl to cm_requests_doc_create</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create_tl"
+				baseColumnNames="request_doc_create_id"
+				constraintName="fk_cm_requests_doc_create_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_requests_doc_create"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-808" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to cm_doc_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="status_id"
+				constraintName="fk_cm_requests_doc_create_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-809" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp_id"
+				constraintName="fk_cm_requests_doc_create_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-810" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp2_id"
+				constraintName="fk_cm_requests_doc_create_6"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-811" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp_legal_address_id"
+				constraintName="fk_cm_requests_doc_create_7"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-812" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp_actual_address_id"
+				constraintName="fk_cm_requests_doc_create_8"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-813" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp2_legal_address_id"
+				constraintName="fk_cm_requests_doc_create_9"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-814" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp2_actual_address_id"
+				constraintName="fk_cm_requests_doc_create_10"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-815" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to cm_taxcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp_taxcert_id"
+				constraintName="fk_cm_requests_doc_create_11"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_taxcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-816" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to cm_taxcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp2_taxcert_id"
+				constraintName="fk_cm_requests_doc_create_12"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_taxcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-817" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to cm_govregcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp_grc_id"
+				constraintName="fk_cm_requests_doc_create_13"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_govregcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-818" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to cm_govregcerts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp2_grc_id"
+				constraintName="fk_cm_requests_doc_create_14"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_govregcerts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-819" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to cm_rle_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp_grc_rle_code"
+				constraintName="fk_cm_requests_doc_create_15"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_rle_doc_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-820" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to cm_rle_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp2_grc_rle_code"
+				constraintName="fk_cm_requests_doc_create_16"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_rle_doc_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-821" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_bank_accounts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp_bank_account_id"
+				constraintName="fk_cm_requests_doc_create_17"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_bank_accounts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-822" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_bank_accounts</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp2_bank_account_id"
+				constraintName="fk_cm_requests_doc_create_18"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_bank_accounts"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-823" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to cm_poa_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp_poa_type_code"
+				constraintName="fk_cm_requests_doc_create_19"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_poa_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-824" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to cm_poa_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="bp2_poa_type_code"
+				constraintName="fk_cm_requests_doc_create_20"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_poa_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-825" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_energy_sources</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="energy_sources_id"
+				constraintName="fk_cm_requests_doc_create_21"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_sources"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-826" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_energy_source_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="energy_sources_type_id"
+				constraintName="fk_cm_requests_doc_create_22"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_source_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-827" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_energy_source_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="tariff_code"
+				constraintName="fk_cm_requests_doc_create_23"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_tariffs"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-828" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_energy_source_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="currency_code"
+				constraintName="fk_cm_requests_doc_create_24"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="currency_codes"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-828-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_requests_doc_create to dict_energy_source_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_requests_doc_create"
+				baseColumnNames="unit_id"
+				constraintName="fk_cm_requests_doc_create_25"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>
