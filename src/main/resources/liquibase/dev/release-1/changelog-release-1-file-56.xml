@@ -303,5 +303,45 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1087" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on dict_request_types</comment>
+        <dropTable cascadeConstraints="true"
+                   schemaName="apps"
+                   tableName="dict_request_types"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1088" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on dict_request_types_tl</comment>
+        <dropTable cascadeConstraints="true"
+                   schemaName="apps"
+                   tableName="dict_request_types_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1089" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on dict_request_types_tl</comment>
+        <dropTable cascadeConstraints="true"
+                   schemaName="apps"
+                   tableName="cm_doc_keg_cbee_a1h"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1090" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on dict_request_types_tl</comment>
+        <dropTable cascadeConstraints="true"
+                   schemaName="apps"
+                   tableName="cm_doc_keg_cbee_a1l"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1091" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on dict_request_types_tl</comment>
+        <dropTable cascadeConstraints="true"
+                   schemaName="apps"
+                   tableName="cm_doc_keg_cbee_a1l_tl"/>
+		<rollback/>
+	</changeSet>
+
 
 </databaseChangeLog>
