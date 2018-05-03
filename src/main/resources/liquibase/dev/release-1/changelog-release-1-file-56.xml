@@ -343,5 +343,24 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1092" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="spgjs_protocol_number" type="varchar2(50)" remarks="Правила закупок ТРУ: номер договора"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1093" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="spgjs_protocol_date" type="Date" remarks="Правила закупок: Дата протокола"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+
 
 </databaseChangeLog>
