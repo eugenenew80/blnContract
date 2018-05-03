@@ -233,4 +233,75 @@
 		/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1081" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on cm_doc_keg_cte_a3l</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a3l">
+			<column name="bp1_id" type="number" remarks="ID поставщика"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1082" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on cm_doc_keg_cte_a3l</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a3l">
+			<column name="bp2_id" type="number" remarks="ID получателя"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1083" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to cm_doc_end_type_tl</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a3l"
+				baseColumnNames="bp1_id"
+				constraintName="fk_cm_doc_keg_cte_a3l_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1084" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to cm_doc_end_type_tl</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a3l"
+				baseColumnNames="bp2_id"
+				constraintName="fk_cm_doc_keg_cte_a3l_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1085" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on cm_doc_keg_cte_a3l_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a3l_tl">
+			<column name="bp1_name" type="varchar2(500)" remarks="Наименование поставщика"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1086" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on cm_doc_keg_cte_a3l_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a3l_tl">
+			<column name="bp2_name" type="varchar2(500)" remarks="Наименование получателя"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+
 </databaseChangeLog>
