@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1212" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_cte_a1h">
+			<column name="contract_id" type="number" remarks="Ссылка на договор"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1213" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_change to cm_doc_keg_cte</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a1h"
+				baseColumnNames="contract_id"
+				constraintName="fk_cm_req_doc_cte_a1h_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1214" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign constraint: fk_cm_requests_doc_create_10</comment>
+		<dropForeignKeyConstraint baseTableName="cm_req_doc_create" constraintName="fk_cm_requests_doc_create_10" baseTableSchemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1215" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign constraint: fk_cm_requests_doc_create_1</comment>
+		<dropForeignKeyConstraint baseTableName="cm_req_doc_create" constraintName="fk_cm_req_doc_create_1" baseTableSchemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1216" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create to cm_req_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="request_status_code"
+				constraintName="fk_cm_req_doc_create_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1217" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create to dm_request_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="request_type_code"
+				constraintName="fkcm_req_doc_create_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_request_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1218" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on cm_doc_notes</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_notes">
+			<column name="note_group_code" type="varchar2(30)" remarks="Код группы примечаний"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1219" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_notes to cm_doc_note_groups</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_notes"
+				baseColumnNames="note_group_code"
+				constraintName="fk_cm_doc_notes_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_note_groups"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1220" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column on cm_doc_keg_cte_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_tl">
+			<column name="vpk_text_reference" type="varchar2(300)" remarks="ВПК: ссылка на документ"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1221" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column on cm_doc_keg_cte</comment>
+		<dropColumn columnName="vpk_text_reference"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1222" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="power" type="number" remarks="Мошность"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1223" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="unit_id" type="number" remarks="Мошность: еденица измерения"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+
+</databaseChangeLog>
