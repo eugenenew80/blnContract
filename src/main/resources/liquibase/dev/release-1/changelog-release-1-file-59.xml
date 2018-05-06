@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1141" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_doc_cte_a1h  </comment>
+		<createTable tableName="cm_req_doc_cte_a1h" schemaName="apps" remarks="Приложение 1 (Заголовок) к запросам">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_number" type="number" remarks="Номер документа">
+				<constraints nullable="true"/>
+			</column>
+			
+			<column name="doc_version" type="number" remarks="Версия">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="status_code" type="varchar2(30)" remarks="Статус">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_date" type="date" remarks="Дата документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="request_id" type="number" remarks="Сформирован на основании запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="planning_year" type="number" remarks="Год">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_id" type="number" remarks="Бизнес партнер, составивший приложение">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1142" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_doc_cte_a1h </comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_doc_cte_a1h"
+				schemaName="apps"
+				tableName="cm_req_doc_cte_a1h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1143" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_doc_cte_a1h </comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_req_doc_cte_a1h_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1144" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a1h to cm_requests_doc_create</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a1h"
+				baseColumnNames="request_id"
+				constraintName="fk_cm_req_doc_cte_a1h_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_doc_create"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1145" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a1h to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a1h "
+				baseColumnNames="bp_id"
+				constraintName="fk_cm_req_doc_cte_a1h_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+	
+	<changeSet id="cm-rus-1146" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a1h to cm_request_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a1h"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_req_doc_cte_a1h_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+</databaseChangeLog>

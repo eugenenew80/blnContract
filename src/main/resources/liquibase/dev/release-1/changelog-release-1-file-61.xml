@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1160" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_hds</comment>
+		<createTable tableName="cm_doc_hds" schemaName="apps" remarks="Справочник источников данных в точках учета для приложений в договорах">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1161" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_hds</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_cm_doc_hds"
+				schemaName="apps"
+				tableName="cm_doc_hds"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1162" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_hds_tl</comment>
+		<createTable tableName="cm_doc_hds_tl" schemaName="apps" remarks="Переводы Справочник источников данных в точках учета для приложений в договорах">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column> 
+
+			<column name="symbol" type="varchar2(10)" remarks="Обозначение">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1163" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_hds_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_cm_doc_hds_tl"
+				schemaName="apps"
+				tableName="cm_doc_hds_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1164" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_hds_tl to cm_doc_hds</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_hds_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_doc_hds_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_hds"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1165" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds">
+			<column name="code" type="varchar2" value="A"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1166" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds">
+			<column name="code" type="varchar2" value="TI"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1167" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds">
+			<column name="code" type="varchar2" value="LP"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1168" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds">
+			<column name="code" type="varchar2" value="C"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1169" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="A"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="АСКУЭ СО"/>
+			<column name="symbol" type="varchar2" value="А"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1170" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="TI"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Данные телеметрии СО"/>
+			<column name="symbol" type="varchar2" value="Т"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1171" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="LP"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Профиль нагрузки"/>
+			<column name="symbol" type="varchar2" value="П"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1172" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="C"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Константа"/>
+			<column name="symbol" type="varchar2" value="К"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1173" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="A"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="АСКУЭ СО"/>
+			<column name="symbol" type="varchar2" value="А"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1174" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="TI"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="СО телеметриясы"/>
+			<column name="symbol" type="varchar2" value="Т"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1175" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="LP"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Профильді жүктеңіз"/>
+			<column name="symbol" type="varchar2" value="П"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1176" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="C"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Тұрақты"/>
+			<column name="symbol" type="varchar2" value="К"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+	<changeSet id="cm-rus-1177" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="A"/>
+			<column name="lang" type="varchar2" value="EN"/>
+			<column name="name" type="varchar2" value="АСКУЭ СО"/>
+			<column name="symbol" type="varchar2" value="А"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1178" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="TI"/>
+			<column name="lang" type="varchar2" value="EN"/>
+			<column name="name" type="varchar2" value="Telemetry of SO"/>
+			<column name="symbol" type="varchar2" value="Т"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1179" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="LP"/>
+			<column name="lang" type="varchar2" value="EN"/>
+			<column name="name" type="varchar2" value="Load profile"/>
+			<column name="symbol" type="varchar2" value="П"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1180" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_hds_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_hds_tl">
+			<column name="code" type="varchar2" value="C"/>
+			<column name="lang" type="varchar2" value="EN"/>
+			<column name="name" type="varchar2" value="Constant"/>
+			<column name="symbol" type="varchar2" value="К"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1181" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="CONTINUE">
+			<columnExists tableName="cm_doc_keg_cte" columnName="power"/>
+		</preConditions>
+		<comment>add column on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="power" type="number" remarks="Мошность"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1182" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<columnExists tableName="cm_doc_keg_cte" columnName="unit_id"/>
+		</preConditions>
+		<comment>rename constraint on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="unit_id" type="number" remarks="Мошность: еденица измерения"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1183" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyName="fk_cm_doc_keg_cte_25"/>
+		</preConditions>
+		<comment>Creating foreign constraint: cm_doc_keg_cte to dict_units</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="unit_id"
+				constraintName="fk_cm_doc_keg_cte_25"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+
+</databaseChangeLog>

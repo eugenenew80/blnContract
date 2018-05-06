@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1117" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_statuses</comment>
+		<createTable tableName="cm_req_statuses" schemaName="apps" remarks="Справочник статусы запросов">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="start_date" type="date" remarks="Дата действия с">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="end_date" type="date" remarks="Дата действия по">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1118" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_statuses</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_cm_req_statuses"
+				schemaName="apps"
+				tableName="cm_req_statuses"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1119" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_statuses_tl</comment>
+		<createTable tableName="cm_req_statuses_tl" schemaName="apps" remarks="Переводы Справочник Статусы запросов">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1120" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_statuses_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_cm_req_statuses_tl"
+				schemaName="apps"
+				tableName="cm_req_statuses_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1121" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_statuses_tl to cm_req_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_statuses_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_req_statuses_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1122" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses">
+			<column name="code" type="varchar2" value="RS01"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1123" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses">
+			<column name="code" type="varchar2" value="RS02"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1124" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses">
+			<column name="code" type="varchar2" value="RS03"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1125" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses">
+			<column name="code" type="varchar2" value="RS04"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1126" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses">
+			<column name="code" type="varchar2" value="RS05"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1127" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses">
+			<column name="code" type="varchar2" value="RS06"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1128" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS01"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Не отправлен"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1129" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS02"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Отправлен"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1130" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS03"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Отменен"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1131" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS04"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="В работе"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1132" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS05"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Выполнен: Одобрение"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1133" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS06"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Выполнен: Отказ"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1134" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS01"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Не отправлен"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1135" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS02"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Отправлен"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1136" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS03"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Отменен"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1137" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS04"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="В работе"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1138" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS05"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Выполнен: Одобрение"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1139" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_statuses_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_statuses_tl">
+			<column name="code" type="varchar2" value="RS06"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Выполнен: Отказ"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1140" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create to cm_req_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="request_status_code"
+				constraintName="fk_cm_requests_doc_create_10"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1184" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cstrc_route</comment>
+		<createTable tableName="cm_doc_keg_cstrc_route" schemaName="apps" remarks="Маршрут для договора на резервирование">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_id" type="NUMBER" remarks="Ид договора">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1185" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cstrc_route</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cstrc_route"
+				schemaName="apps"
+				tableName="cm_doc_keg_cstrc_route"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1186" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_keg_cstrc_route</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_keg_cstrc_route_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1187" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cstrc_route_tl</comment>
+		<createTable tableName="cm_doc_keg_cstrc_route_tl" schemaName="apps" remarks="Маршрут для договора на резервирование">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="route_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(500)" remarks="Наименование">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1188" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cstrc_route_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cstrc_route_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cstrc_route_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1189" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_doc_keg_cstrc_route_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_doc_keg_cstrc_route_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1190" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_keg_cstrc_route_tl</comment>
+		<addUniqueConstraint
+				columnNames="route_id,lang"
+				constraintName="uk_cm_doc_keg_cstrc_route_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cstrc_route_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1191" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cstrc_route_tl to cm_doc_keg_cstrc_route</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cstrc_route_tl"
+				baseColumnNames="route_id"
+				constraintName="fk_cm_doc_keg_cstrc_route_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cstrc_route"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1192" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cstrc_route to dm_request_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cstrc_route"
+				baseColumnNames="doc_id"
+				constraintName="fk_cm_doc_keg_cstrc_route_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>
