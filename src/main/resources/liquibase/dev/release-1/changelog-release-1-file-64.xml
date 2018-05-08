@@ -195,6 +195,14 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1231" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_keg_cte</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_data_sources_in_metering_points_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1231" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>rename column on table cm_doc_awlm_item_types_tl</comment>
 	<renameColumn columnDataType="varchar2(30)"
 				  newColumnName="code"
