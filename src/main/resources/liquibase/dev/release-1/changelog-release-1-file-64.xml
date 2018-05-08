@@ -229,7 +229,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1234" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1235" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>drop unique constraint: cm_doc_note_groups_tl</comment>
 		<dropUniqueConstraint constraintName="cm_doc_note_groups_tl_u1"
 							  schemaName="apps"
@@ -237,7 +237,7 @@
 							  uniqueColumns="code,lang"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1235" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1236" logicalFilePath="path-independent" author="ruslan" context="dev">
 	<comment>Creating primary key for table: cm_req_doc_change</comment>
 	<addPrimaryKey
 			columnNames="code,lang"
@@ -246,8 +246,13 @@
 			tableName="cm_doc_note_groups_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1236" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_doc_notes to cm_doc_note_groups</comment>
+	<changeSet id="cm-rus-1237" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign constraint: fk_cm_requests_doc_create_1</comment>
+		<dropForeignKeyConstraint baseTableName="cm_doc_note_groups_tl" constraintName="cm_doc_note_groups_tl_fk1" baseTableSchemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1238" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_note_groups_tl to cm_doc_note_groups</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="cm_doc_note_groups_tl"
