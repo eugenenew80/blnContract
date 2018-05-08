@@ -202,7 +202,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1231" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1232" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>rename column on table cm_doc_awlm_item_types_tl</comment>
 	<renameColumn columnDataType="varchar2(30)"
 				  newColumnName="code"
@@ -213,7 +213,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1232" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1233" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>drop column on cm_doc_keg_cte_a4l_tl</comment>
 		<dropColumn columnName="hourly_data_sources"
 					schemaName="apps"
@@ -221,7 +221,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1233" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1234" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>drop column on cm_doc_note_groups_tl</comment>
 		<dropColumn columnName="id"
 					schemaName="apps"
@@ -229,7 +229,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1234" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1235" logicalFilePath="path-independent" author="ruslan" context="dev">
 	<comment>Creating primary key for table: cm_req_doc_change</comment>
 	<addPrimaryKey
 			columnNames="code"
@@ -238,7 +238,7 @@
 			tableName="cm_doc_note_groups_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1235" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1236" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_doc_notes to cm_doc_note_groups</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
