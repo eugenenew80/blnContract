@@ -254,4 +254,12 @@
 				referencedColumnNames="code"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1237" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop unique constraint: cm_doc_note_groups_tl</comment>
+		<dropUniqueConstraint constraintName="cm_doc_note_groups_tl_u1"
+							  schemaName="apps"
+							  tableName="cm_doc_note_groups_tl"
+							  uniqueColumns="code,lang"/>
+	</changeSet>
 </databaseChangeLog>
