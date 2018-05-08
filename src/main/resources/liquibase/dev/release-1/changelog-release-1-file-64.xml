@@ -129,7 +129,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1223" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>rename constraint on cm_doc_keg_cte</comment>
+		<comment>add column cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
 			<column name="unit_id" type="number" remarks="Мошность: еденица измерения"/>
@@ -138,4 +138,112 @@
 	</changeSet>
 
 
+	<changeSet id="cm-rus-1224" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop tale cm_doc_keg_cte</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="contracts_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1225" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename constraint on cm_doc_keg_cte</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="contracts"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1226" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_keg_cte</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="contract_statuses_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1227" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_keg_cte</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="contract_statuses"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1228" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_keg_cte</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="contract_types_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1229" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_keg_cte</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="contract_types"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1230" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table cm_doc_keg_cte</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_data_sources_in_metering_points"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1231" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column on table cm_doc_awlm_item_types_tl</comment>
+	<renameColumn columnDataType="varchar2(30)"
+				  newColumnName="code"
+				  oldColumnName="cm_doc_awlm_row_types_code"
+				  remarks="Код типа строк"
+				  schemaName="apps"
+				  tableName="cm_doc_awlm_item_types_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1232" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column on cm_doc_keg_cte_a4l_tl</comment>
+		<dropColumn columnName="hourly_data_sources"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a4l_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1233" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column on cm_doc_note_groups_tl</comment>
+		<dropColumn columnName="id"
+					schemaName="apps"
+					tableName="cm_doc_note_groups_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1234" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating primary key for table: cm_req_doc_change</comment>
+	<addPrimaryKey
+			columnNames="code"
+			constraintName="pk_cm_doc_note_groups_tl"
+			schemaName="apps"
+			tableName="cm_doc_note_groups_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1235" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_notes to cm_doc_note_groups</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_note_groups_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_doc_note_groups_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_note_groups"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
 </databaseChangeLog>
