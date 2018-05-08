@@ -232,7 +232,7 @@
 	<changeSet id="cm-rus-1235" logicalFilePath="path-independent" author="ruslan" context="dev">
 	<comment>Creating primary key for table: cm_req_doc_change</comment>
 	<addPrimaryKey
-			columnNames="code"
+			columnNames="code,lang"
 			constraintName="pk_cm_doc_note_groups_tl"
 			schemaName="apps"
 			tableName="cm_doc_note_groups_tl"/>
