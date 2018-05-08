@@ -267,4 +267,13 @@
 				referencedColumnNames="code"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1238" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_vpk" type="number" remarks="Применяется ВПК"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
 </databaseChangeLog>
