@@ -180,4 +180,30 @@
 		/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1265" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="doc_basis_code" type="varchar2(30)" remarks="Основание для договора"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1266" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to cm_req_doc_create_basis</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="doc_basis_code"
+				constraintName="fk_cm_doc_keg_cte_25"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_doc_create_basis"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
 </databaseChangeLog>
