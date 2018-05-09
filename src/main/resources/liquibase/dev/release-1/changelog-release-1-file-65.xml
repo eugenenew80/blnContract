@@ -233,4 +233,20 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1270" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column on cm_doc_keg_cte_a4h</comment>
+		<dropColumn columnName="is_no_bank"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1271" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_req_doc_change</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_change">
+			<column name="is_no_bank" type="number" remarks="Банка нет в реестре"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
 </databaseChangeLog>
