@@ -175,7 +175,7 @@
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_req_doc_create"
+				referencedTableName="cm_req_doc_create_basis"
 				referencedColumnNames="code"
 		/>
 	</changeSet>
