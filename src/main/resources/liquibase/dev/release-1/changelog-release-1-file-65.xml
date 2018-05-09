@@ -6,46 +6,18 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-208" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_req_doc_cte_a3h </comment>
-		<createTable tableName=" cm_req_doc_cte_a3h" schemaName="apps" remarks="запрос на изменение приложения 3 к договору на передачу эл.энергии по сетям НЭС (заголовки)">
-			<column name="id" type="number" remarks="ид">
+	<changeSet id="cm-rus-1243" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_doc_create_basis</comment>
+		<createTable tableName="cm_req_doc_create_basis" schemaName="apps" remarks="Справочник Основание для создания договора">
+			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="contract_id" type="number" remarks="ID контракта, с которым связан документ">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="request_id" type="number" remarks="ID запроса, на основании которого был создан документ">
+			<column name="start_date" type="date" remarks="Дата действия с">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="doc_number" type="varchar2(30)" remarks="Номер документа">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="doc_date" type="DATE" remarks="Дата утверждения документа">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="doc_version" type="NUMBER" remarks="Версия документа" defaultValue="0">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="status_id" type="NUMBER" remarks="ID статуса документа">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_id" type="NUMBER" remarks="ID поставщика">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_id" type="NUMBER" remarks="ID получателя">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="org_id" type="NUMBER" remarks="Филиал - составитель приложения">
+			<column name="end_date" type="date" remarks="Дата действия по">
 				<constraints nullable="true"/>
 			</column>
 
@@ -67,127 +39,145 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-209" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_req_doc_cte_a3h</comment>
+	<changeSet id="cm-rus-1244" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_doc_create_basis</comment>
 		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_req_doc_cte_a3h"
+				columnNames="code"
+				constraintName="pk_cm_req_doc_create_basis"
 				schemaName="apps"
-				tableName="cm_req_doc_cte_a3h"/>
+				tableName="cm_req_doc_create_basis"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-210" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_req_doc_cte_a3h</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_req_doc_cte_a3h_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-211" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_req_doc_cte_a3h_tl</comment>
-		<createTable tableName="cm_req_doc_cte_a3h_tl" schemaName="apps" remarks="Приложения 3 к договорам на передачу эл.энергии по сетям НЭС (заголовки) Перевод">
-			<column name="id" type="number" remarks="Идентификатор">
+	<changeSet id="cm-rus-1255" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_doc_create_basis_tl</comment>
+		<createTable tableName="cm_req_doc_create_basis_tl" schemaName="apps" remarks="Переводы Справочник Основание для создания договора">
+			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
-
-			<column name="keg_cte_a3h_id" type="number" remarks="Ссылка на родительскую запись">
-				<constraints nullable="false"/>
-			</column>
-
+			
 			<column name="lang" type="varchar2(10)" remarks="Язык">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="header_comments" type="clob" remarks="Примечания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_name" type="VARCHAR2(500)" remarks="Наименование поставщика">
+			<column name="name" type="varchar2(100)" remarks="Наименование">
 				<constraints nullable="false"/>
-			</column>
-
-			<column name="bp2_name" type="VARCHAR2(500)" remarks="Наименование получателя">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
 			</column>
 
 			<column name="create_by" type="number" remarks="Автор">
 				<constraints nullable="true"/>
 			</column>
 
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
 			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
 				<constraints nullable="true"/>
 			</column>
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-212" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_req_doc_cte_a3h_tl</comment>
+	<changeSet id="cm-rus-1256" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_doc_create_basis_tl</comment>
 		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_req_doc_cte_a3h_tl"
+				columnNames="code, lang"
+				constraintName="pk_cm_req_doc_create_basis_tl"
 				schemaName="apps"
-				tableName="cm_req_doc_cte_a3h_tl"/>
+				tableName="cm_req_doc_create_basis_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-213-1" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_req_doc_cte_a3h_tl</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_req_doc_cte_a3h_tl_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-213-2" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: cm_req_doc_cte_a3h_tl</comment>
-		<addUniqueConstraint
-				columnNames="keg_cte_a3h_id,lang"
-				constraintName="uk_cm_req_doc_cte_a3h_tl"
-				schemaName="apps"
-				tableName="cm_req_doc_cte_a3h_tl"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-213" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_req_doc_cte_a3h_tl to cm_req_doc_cte_a3h</comment>
+	<changeSet id="cm-rus-1257" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create_basis_tl to cm_req_doc_create_basis</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_req_doc_cte_a3h_tl"
-				baseColumnNames="keg_cte_a3h_id"
-				constraintName="fk_cm_req_doc_cte_a3h_tl_1"
+				baseTableName="cm_req_doc_create_basis_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_req_doc_create_basis_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="CASCADE"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_req_doc_cte_a3h"
-				referencedColumnNames="id"
+				referencedTableName="cm_req_doc_create_basis"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-214" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_req_doc_cte_a3h to cm_doc_keg_cte</comment>
+	<changeSet id="cm-rus-1258" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_create_basis</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_create_basis">
+			<column name="code" type="varchar2" value="REQUEST"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1259" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_create_basis</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_create_basis">
+			<column name="code" type="varchar2" value="SPGJS"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1260" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_create_basis_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_create_basis_tl">
+			<column name="code" type="varchar2" value="REQUEST"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Запрос потребителя"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1261" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_create_basis_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_create_basis_tl">
+			<column name="code" type="varchar2" value="SPGJS"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Правила закупок ТРУ АО'ФНБ' 'Самрук-Казына'"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1262" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_create_basis_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_create_basis_tl">
+			<column name="code" type="varchar2" value="REQUEST"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Запрос потребителя"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1263" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_create_basis_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_create_basis_tl">
+			<column name="code" type="varchar2" value="SPGJS"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Правила закупок ТРУ АО'ФНБ' 'Самрук-Казына'"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1264" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create to cm_req_doc_create_basis</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_req_doc_cte_a3h"
-				baseColumnNames="contract_id"
-				constraintName="fk_cm_req_doc_cte_a3h_1"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="doc_basis_code"
+				constraintName="fk_cm_req_doc_create_25"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_doc_keg_cte"
-				referencedColumnNames="id"
+				referencedTableName="cm_req_doc_create"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
+
 </databaseChangeLog>

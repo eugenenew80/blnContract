@@ -152,6 +152,10 @@
 				<constraints nullable="true"/>
 			</column>
 
+			<column name="is_vpk" type="date" remarks="ВПК: Дата действия с">
+				<constraints nullable="true"/>
+			</column>
+
 			<column name="vpk_start_date" type="date" remarks="ВПК: Дата действия с">
 				<constraints nullable="true"/>
 			</column>

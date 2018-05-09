@@ -276,4 +276,33 @@
 		</addColumn>
 		<rollback/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1240" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="is_vpk" type="number" remarks="Применяется ВПК"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1241" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="doc_basis_code" type="varchar2(30)" remarks="Основание для договора"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1242" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="control_range" type="varchar2(30)" remarks="Диапазон физического урегулирования дисбалансов"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+
 </databaseChangeLog>
