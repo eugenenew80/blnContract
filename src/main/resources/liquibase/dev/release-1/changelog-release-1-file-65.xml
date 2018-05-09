@@ -233,7 +233,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1269" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1270" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add not null on cm_doc_keg_cte_a4h</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="ACTUAL_TIME_OF_DATA"
