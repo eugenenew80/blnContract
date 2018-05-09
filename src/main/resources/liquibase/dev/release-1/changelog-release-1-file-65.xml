@@ -216,15 +216,6 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1268" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column on cm_doc_keg_cte</comment>
-		<addColumn schemaName="apps"
-				   tableName="cm_doc_keg_cte">
-			<column name="is_no_bank" type="number" remarks="Банка нет в реестре"/>
-		</addColumn>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1269" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add not null on cm_doc_keg_cte_a4h</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="org_id"
@@ -233,7 +224,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1270" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1269" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add not null on cm_doc_keg_cte_a4h</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="ACTUAL_TIME_OF_DATA"
