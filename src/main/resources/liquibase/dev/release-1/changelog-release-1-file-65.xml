@@ -249,7 +249,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1271" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1272" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column on cm_req_doc_change</comment>
 		<modifyDataType columnName="is_arbitrary"
 						newDataType="number"
