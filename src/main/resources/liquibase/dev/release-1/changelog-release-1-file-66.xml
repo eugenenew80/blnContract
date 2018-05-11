@@ -6,46 +6,18 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-208" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_req_doc_cte_a3h </comment>
-		<createTable tableName=" cm_req_doc_cte_a3h" schemaName="apps" remarks="запрос на изменение приложения 3 к договору на передачу эл.энергии по сетям НЭС (заголовки)">
-			<column name="id" type="number" remarks="ид">
+	<changeSet id="cm-rus-1280" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_signatories_groups</comment>
+		<createTable tableName="cm_doc_signatories_groups" schemaName="apps" remarks="Справочник группа подписантов">
+			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="contract_id" type="number" remarks="ID контракта, с которым связан документ">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="request_id" type="number" remarks="ID запроса, на основании которого был создан документ">
+			<column name="start_date" type="date" remarks="Дата действия с">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="doc_number" type="varchar2(30)" remarks="Номер документа">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="doc_date" type="DATE" remarks="Дата утверждения документа">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="doc_version" type="NUMBER" remarks="Версия документа" defaultValue="0">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="status_id" type="NUMBER" remarks="ID статуса документа">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_id" type="NUMBER" remarks="ID поставщика">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_id" type="NUMBER" remarks="ID получателя">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="org_id" type="NUMBER" remarks="Филиал - составитель приложения">
+			<column name="end_date" type="date" remarks="Дата действия по">
 				<constraints nullable="true"/>
 			</column>
 
@@ -67,127 +39,209 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-209" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_req_doc_cte_a3h</comment>
+	<changeSet id="cm-rus-1281" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_signatories_groups</comment>
 		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_req_doc_cte_a3h"
+				columnNames="code"
+				constraintName="pk_cm_doc_signatories_groups"
 				schemaName="apps"
-				tableName="cm_req_doc_cte_a3h"/>
+				tableName="cm_doc_signatories_groups"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-210" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_req_doc_cte_a3h</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_req_doc_cte_a3h_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-211" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_req_doc_cte_a3h_tl</comment>
-		<createTable tableName="cm_req_doc_cte_a3h_tl" schemaName="apps" remarks="Приложения 3 к договорам на передачу эл.энергии по сетям НЭС (заголовки) Перевод">
-			<column name="id" type="number" remarks="Идентификатор">
+	<changeSet id="cm-rus-1282" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_signatories_groups_tl</comment>
+		<createTable tableName="cm_doc_signatories_groups_tl" schemaName="apps" remarks="Переводы справочник группа подписантов">
+			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
-
-			<column name="keg_cte_a3h_id" type="number" remarks="Ссылка на родительскую запись">
-				<constraints nullable="false"/>
-			</column>
-
+			
 			<column name="lang" type="varchar2(10)" remarks="Язык">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="header_comments" type="clob" remarks="Примечания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp1_name" type="VARCHAR2(500)" remarks="Наименование поставщика">
+			<column name="name" type="varchar2(100)" remarks="Наименование">
 				<constraints nullable="false"/>
-			</column>
-
-			<column name="bp2_name" type="VARCHAR2(500)" remarks="Наименование получателя">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
 			</column>
 
 			<column name="create_by" type="number" remarks="Автор">
 				<constraints nullable="true"/>
 			</column>
 
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
 			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
 				<constraints nullable="true"/>
 			</column>
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-212" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_req_doc_cte_a3h_tl</comment>
+	<changeSet id="cm-rus-1283" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_signatories_groups_tl</comment>
 		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_req_doc_cte_a3h_tl"
+				columnNames="code, lang"
+				constraintName="pk_cm_doc_signatories_groups_tl"
 				schemaName="apps"
-				tableName="cm_req_doc_cte_a3h_tl"/>
+				tableName="cm_doc_signatories_groups_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-213-1" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_req_doc_cte_a3h_tl</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_req_doc_cte_a3h_tl_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-213-2" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: cm_req_doc_cte_a3h_tl</comment>
-		<addUniqueConstraint
-				columnNames="keg_cte_a3h_id,lang"
-				constraintName="uk_cm_req_doc_cte_a3h_tl"
-				schemaName="apps"
-				tableName="cm_req_doc_cte_a3h_tl"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-213" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_req_doc_cte_a3h_tl to cm_req_doc_cte_a3h</comment>
+	<changeSet id="cm-rus-1284" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_signatories_groups_tl to cm_doc_signatories_groups</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_req_doc_cte_a3h_tl"
-				baseColumnNames="keg_cte_a3h_id"
-				constraintName="fk_cm_req_doc_cte_a3h_tl_1"
+				baseTableName="cm_doc_signatories_groups_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_doc_signatories_groups_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="CASCADE"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_req_doc_cte_a3h"
-				referencedColumnNames="id"
+				referencedTableName="cm_doc_signatories_groups"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-214" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_req_doc_cte_a3h to cm_doc_keg_cte</comment>
+	<changeSet id="cm-rus-1285" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_groups</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_groups">
+			<column name="code" type="varchar2" value="PROVIDER"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1286" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_groups</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_groups">
+			<column name="code" type="varchar2" value="CONSUMER"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1287" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_groups</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_groups">
+			<column name="code" type="varchar2" value="AGREED"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1288" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_groups_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_groups_tl">
+			<column name="code" type="varchar2" value="PROVIDER"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Поставшик"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1289" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_groups_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_groups_tl">
+			<column name="code" type="varchar2" value="CONSUMER"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Потребитель"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1290" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_groups_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_groups_tl">
+			<column name="code" type="varchar2" value="AGREED"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Согласовано"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1291" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_groups_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_groups_tl">
+			<column name="code" type="varchar2" value="PROVIDER"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Поставшик"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1292" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_groups_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_groups_tl">
+			<column name="code" type="varchar2" value="CONSUMER"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Потребитель"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1293" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_groups_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_groups_tl">
+			<column name="code" type="varchar2" value="AGREED"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Согласовано"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1294" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_signatories to cm_doc_signatories</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_req_doc_cte_a3h"
-				baseColumnNames="contract_id"
-				constraintName="fk_cm_req_doc_cte_a3h_1"
+				baseTableName="cm_doc_signatories"
+				baseColumnNames="signer_group"
+				constraintName="fk_cm_doc_signatories_4"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_doc_keg_cte"
-				referencedColumnNames="id"
+				referencedTableName="cm_doc_signatories_groups"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1295" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_doc_signatories</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_signatories">
+			<column name="is_bis_user" type="number" remarks="пользователь зарегестрирован в билинговой системе"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1296" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_doc_signatories</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_signatories_tl">
+			<column name="bp_name" type="varchar2(500)" remarks="Наименование бизнес партнера"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1297" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_doc_signatories</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_signatories">
+			<column name="org_id" type="number" remarks="id филиала"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1298" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_doc_signatories</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_signatories">
+			<column name="line_number" type="number" remarks="порядок отображения"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
 </databaseChangeLog>

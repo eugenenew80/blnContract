@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1299" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_signatories_ways</comment>
+		<createTable tableName="cm_doc_signatories_ways" schemaName="apps" remarks="Справочник способ подписания">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="start_date" type="date" remarks="Дата действия с">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="end_date" type="date" remarks="Дата действия по">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1300" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_signatories_ways</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_cm_doc_signatories_ways"
+				schemaName="apps"
+				tableName="cm_doc_signatories_ways"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1301" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_signatories_ways_tl</comment>
+		<createTable tableName="cm_doc_signatories_ways_tl" schemaName="apps" remarks="Переводы справочник способ подписания">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1302" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_signatories_ways_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_cm_doc_signatories_ways_tl"
+				schemaName="apps"
+				tableName="cm_doc_signatories_ways_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1303" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_signatories_ways_tl to cm_doc_signatories_ways</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_signatories_ways_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_doc_signatories_ways_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_signatories_ways"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1304" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_ways</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_ways">
+			<column name="code" type="varchar2" value="ECP"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1305" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_ways</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_ways">
+			<column name="code" type="varchar2" value="NO_ECP"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1306" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_ways_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_ways_tl">
+			<column name="code" type="varchar2" value="ECP"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Эцп"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1307" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_ways_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_ways_tl">
+			<column name="code" type="varchar2" value="NO_ECP"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Без эцп"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1308" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_ways_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_ways_tl">
+			<column name="code" type="varchar2" value="ECP"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Эцп"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1309" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_doc_signatories_ways_tl</comment>
+		<insert schemaName="apps" tableName="cm_doc_signatories_ways_tl">
+			<column name="code" type="varchar2" value="NO_ECP"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Без эцп"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1310" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop Foreign Key Constraint</comment>
+		<dropForeignKeyConstraint baseTableName="cm_doc_signatories_and_files" constraintName="fk_cm_doc_signatories_and_files_3" baseTableSchemaName="apps"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1311" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_signatories_and_files to cm_doc_signatories_ways</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_signatories_and_files"
+				baseColumnNames="formation_way_code"
+				constraintName="fk_cm_doc_signatories_and_files_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_signatories_ways"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+</databaseChangeLog>

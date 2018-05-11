@@ -258,4 +258,71 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1273" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_create_basis</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_create_basis">
+			<column name="code" type="varchar2" value="LETTER"/>
+		</insert>
+	<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1274" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_create_basis_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_create_basis_tl">
+			<column name="code" type="varchar2" value="LETTER"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Письмо"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1275" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_create_basis_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_create_basis_tl">
+			<column name="code" type="varchar2" value="LETTER"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Письмо"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1276" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_req_doc_change</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_req_doc_create_basis_tl
+				set name='Протокол закупок ТРУ АО"ФНБ" "Самрук-Казына"'
+			where code='SPGJS';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1277" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_req_doc_change</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_req_doc_create_basis_tl
+				set name='Письмо потребителя'
+			where code='REQUEST';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1278" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_req_doc_change</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_req_doc_create_basis_tl
+				set name='Запрос потребителя'
+			where code='REQUEST';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1279" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_req_doc_change</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_req_doc_create_basis_tl
+				set name='Письмо потребителя'
+			where code='LETTER';
+		</sql>
+		<rollback/>
+	</changeSet>
 </databaseChangeLog>
