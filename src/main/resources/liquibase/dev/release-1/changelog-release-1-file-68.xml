@@ -201,7 +201,7 @@
 	<changeSet id="cm-rus-1326" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into ecm_content_types</comment>
 		<insert schemaName="apps" tableName="ecm_content_types">
-			<column name="id" type="number" value="15"/>
+			<column name="id" type="number" value="16"/>
 			<column name="code" type="varchar2" value="INCOMING_LETTER"/>
 			<column name="name" type="varchar2" value="Входящее письмо"/>
 		</insert>
@@ -211,7 +211,7 @@
 	<changeSet id="cm-rus-1327" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into ecm_content_types</comment>
 		<insert schemaName="apps" tableName="ecm_content_types">
-			<column name="id" type="number" value="16"/>
+			<column name="id" type="number" value="17"/>
 			<column name="code" type="varchar2" value="DECISION_COURTS"/>
 			<column name="name" type="varchar2" value="Решение суда"/>
 		</insert>
@@ -246,7 +246,7 @@
 		<comment>insert into ecm_content_types_tl</comment>
 		<insert schemaName="apps" tableName="ecm_content_types_tl">
 			<column name="id" type="number" value="90"/>
-			<column name="content_type_id" type="number" value="15"/>
+			<column name="content_type_id" type="number" value="17"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Входящее письмо"/>
 			<column name="description" type="varchar2" value="Входящее письмо"/>
@@ -258,7 +258,7 @@
 		<comment>insert into ecm_content_types_tl</comment>
 		<insert schemaName="apps" tableName="ecm_content_types_tl">
 			<column name="id" type="number" value="91"/>
-			<column name="content_type_id" type="number" value="15"/>
+			<column name="content_type_id" type="number" value="17"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Входящее письмо"/>
 			<column name="description" type="varchar2" value="Входящее письмо"/>
