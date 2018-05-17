@@ -316,24 +316,6 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1338" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column on cm_req_doc_change</comment>
-		<dropNotNullConstraint columnDataType="number"
-							   columnName="meter_id"
-							   schemaName="apps"
-							   tableName="mdfem_history"/>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1338-2" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column on cm_req_doc_change</comment>
-		<dropNotNullConstraint columnDataType="TIMESTAMP"
-							   columnName="start_datetime"
-							   schemaName="apps"
-							   tableName="mdfem_history"/>
-		<rollback/>
-	</changeSet>
-
 	<changeSet id="cm-rus-1338-3" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into ecm_content_types</comment>
 		<insert schemaName="apps" tableName="ecm_content_types">
