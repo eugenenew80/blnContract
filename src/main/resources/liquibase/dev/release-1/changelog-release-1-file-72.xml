@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1383" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_doc_cte_a4h </comment>
+		<createTable tableName=" cm_req_doc_cte_a4h" schemaName="apps" remarks="запрос на изменение приложения 4(заголовки)">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="ID контракта, с которым связан документ">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="request_id" type="number" remarks="ID запроса, на основании которого был создан документ">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="doc_number" type="varchar2(30)" remarks="Номер документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="status_code" type="varchar2(30)" remarks="код статуса статуса документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_id" type="NUMBER" remarks="Бизнес партнер - составитель приложения">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="actual_time_of_data" type="TIMESTAMP" remarks="Актуальное время характеристик КУЭ" defaultValueComputed="CURRENT_TIMESTAMP">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1314" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_doc_cte_a4h</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_doc_cte_a4h"
+				schemaName="apps"
+				tableName="cm_req_doc_cte_a4h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1321" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a4h to cm_doc_keg_cte</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a4h"
+				baseColumnNames="contract_id"
+				constraintName="fk_cm_req_doc_cte_a4h_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1321-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a4h to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a4h"
+				baseColumnNames="bp_id"
+				constraintName="fk_cm_req_doc_cte_a4h_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1321-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a4h to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a4h"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_req_doc_cte_a4h_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+</databaseChangeLog>

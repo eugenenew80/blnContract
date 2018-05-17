@@ -6,7 +6,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-208" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1339" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_req_doc_cte_a3h </comment>
 		<createTable tableName=" cm_req_doc_cte_a3h" schemaName="apps" remarks="запрос на изменение приложения 3 к договору на передачу эл.энергии по сетям НЭС (заголовки)">
 			<column name="id" type="number" remarks="ид">
@@ -14,7 +14,7 @@
 			</column>
 
 			<column name="contract_id" type="number" remarks="ID контракта, с которым связан документ">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="request_id" type="number" remarks="ID запроса, на основании которого был создан документ">
@@ -33,27 +33,11 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="status_id" type="NUMBER" remarks="ID статуса документа">
+			<column name="status_code" type="varchar2(30)" remarks="код статуса статуса документа">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="bp1_id" type="NUMBER" remarks="ID поставщика">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp2_id" type="NUMBER" remarks="ID получателя">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="org_id" type="NUMBER" remarks="Филиал - составитель приложения">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+			<column name="bp_id" type="NUMBER" remarks="Бизнес партнер - составитель приложения">
 				<constraints nullable="true"/>
 			</column>
 
@@ -61,13 +45,21 @@
 				<constraints nullable="true"/>
 			</column>
 
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
 			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
 				<constraints nullable="true"/>
 			</column>
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-209" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1340" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_req_doc_cte_a3h</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -76,7 +68,7 @@
 				tableName="cm_req_doc_cte_a3h"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-210" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1341" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: cm_req_doc_cte_a3h</comment>
 		<createSequence
 				incrementBy="1"
@@ -85,14 +77,14 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-211" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1342" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_req_doc_cte_a3h_tl</comment>
-		<createTable tableName="cm_req_doc_cte_a3h_tl" schemaName="apps" remarks="Приложения 3 к договорам на передачу эл.энергии по сетям НЭС (заголовки) Перевод">
+		<createTable tableName="cm_req_doc_cte_a3h_tl" schemaName="apps" remarks="Перевод запрос на изменение приложения 3 к договору на передачу эл.энергии по сетям НЭС (заголовки)">
 			<column name="id" type="number" remarks="Идентификатор">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="keg_cte_a3h_id" type="number" remarks="Ссылка на родительскую запись">
+			<column name="req_cte_a3h_id" type="number" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
 
@@ -130,7 +122,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-212" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1343" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_req_doc_cte_a3h_tl</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -139,7 +131,7 @@
 				tableName="cm_req_doc_cte_a3h_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-213-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1344" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: cm_req_doc_cte_a3h_tl</comment>
 		<createSequence
 				incrementBy="1"
@@ -148,21 +140,21 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-213-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1345" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating unique key for table: cm_req_doc_cte_a3h_tl</comment>
 		<addUniqueConstraint
-				columnNames="keg_cte_a3h_id,lang"
+				columnNames="req_cte_a3h_id,lang"
 				constraintName="uk_cm_req_doc_cte_a3h_tl"
 				schemaName="apps"
 				tableName="cm_req_doc_cte_a3h_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-213" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1346" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_doc_cte_a3h_tl to cm_req_doc_cte_a3h</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="cm_req_doc_cte_a3h_tl"
-				baseColumnNames="keg_cte_a3h_id"
+				baseColumnNames="req_cte_a3h_id"
 				constraintName="fk_cm_req_doc_cte_a3h_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
@@ -174,7 +166,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-214" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1347" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_doc_cte_a3h to cm_doc_keg_cte</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -188,6 +180,40 @@
 				referencedTableSchemaName="apps"
 				referencedTableName="cm_doc_keg_cte"
 				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1348" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a3h to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a3h"
+				baseColumnNames="bp_id"
+				constraintName="fk_cm_req_doc_cte_a3h_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1349" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a3h to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a3h"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_req_doc_cte_a3h_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_statuses"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
 </databaseChangeLog>

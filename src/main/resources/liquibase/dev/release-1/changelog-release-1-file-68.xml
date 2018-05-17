@@ -316,4 +316,31 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1338" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_req_doc_change</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			drop index CM_DOC_NOTES_U1;
+			create unique index CM_DOC_NOTES_U1 on CM_DOC_NOTES (doc_id, note_group_code, item_order) tablespace USERS;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_req_doc_change</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="meter_id"
+							   schemaName="apps"
+							   tableName="mdfem_history"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_req_doc_change</comment>
+		<dropNotNullConstraint columnDataType="TIMESTAMP"
+							   columnName="start_datetime"
+							   schemaName="apps"
+							   tableName="mdfem_history"/>
+		<rollback/>
+	</changeSet>
+
 </databaseChangeLog>

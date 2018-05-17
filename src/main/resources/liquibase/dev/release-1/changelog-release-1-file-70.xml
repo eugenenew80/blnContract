@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1350" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_doc_cte_a3l </comment>
+		<createTable tableName="cm_req_doc_cte_a3l" schemaName="apps" remarks="запрос на изменение приложения 3 к договору на передачу эл.энергии по сетям НЭС (строки)">
+			<column name="id" type="number" remarks="ид">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="req_cte_a3h_id" type="number" remarks="ID приложения к запросу">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="line_number" type="number" remarks="Номер строки">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="metering_point_id" type="number" remarks="ID точки учета">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp1_id" type="number" remarks="ID постовщика">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp2_id" type="number" remarks="ID получателя">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1351" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_doc_cte_a3l</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_doc_cte_a3l"
+				schemaName="apps"
+				tableName="cm_req_doc_cte_a3l"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1352" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_doc_cte_a3l</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_req_doc_cte_a3l_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1353" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_doc_cte_a3l_tl</comment>
+		<createTable tableName="cm_req_doc_cte_a3l_tl" schemaName="apps" remarks="Переводы запрос на изменение приложения 3 к договору на передачу эл.энергии по сетям НЭС (строки)">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="req_cte_a3l_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="accession_name" type="varchar2(200)" remarks="Наименование электроустановок">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="property_boundary" type="VARCHAR2(500)" remarks="Наименование точки раздела по границе балансовой принадлежности">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp1_name" type="VARCHAR2(500)" remarks="Наименование Потребителя">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="responsibility_zone_1" type="VARCHAR2(500)" remarks="Балансовая принадлежность и эксплуатационная ответственность Потребителя">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp2_name" type="VARCHAR2(500)" remarks="Наименование Поставщика">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="responsibility_zone_2" type="VARCHAR2(500)" remarks="Балансовая принадлежность и эксплуатационная ответственность Поставщика">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="line_comment" type="VARCHAR2(200)" remarks="Примечание">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1354" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_doc_cte_a3l_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_doc_cte_a3l_tl"
+				schemaName="apps"
+				tableName="cm_req_doc_cte_a3l_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1355" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_doc_cte_a3l_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_req_doc_cte_a3l_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1356" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_req_doc_cte_a3l_tl</comment>
+		<addUniqueConstraint
+				columnNames="req_cte_a3l_id,lang"
+				constraintName="uk_cm_req_doc_cte_a3l_tl"
+				schemaName="apps"
+				tableName="cm_req_doc_cte_a3l_tl"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-1357" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a3l_tl to cm_req_doc_cte_a3l</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a3l_tl"
+				baseColumnNames="req_cte_a3l_id"
+				constraintName="fk_cm_req_doc_cte_a3l_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_doc_cte_a3l"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1358" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a3l to cm_req_doc_cte_a3h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a3l"
+				baseColumnNames="req_cte_a3h_id"
+				constraintName="fk_cm_req_doc_cte_a3l_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_doc_cte_a3l"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1359" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a3l to dict_metering_points</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a3l"
+				baseColumnNames="metering_point_id"
+				constraintName="fk_cm_req_doc_cte_a3l_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_metering_points"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1360" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a3l to dict_metering_points</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a3l"
+				baseColumnNames="bp1_id"
+				constraintName="fk_cm_req_doc_cte_a3l_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1361" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a3l to dict_metering_points</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a3l"
+				baseColumnNames="bp2_id"
+				constraintName="fk_cm_req_doc_cte_a3l_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1362" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on cm_req_doc_change</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			drop index CM_DOC_NOTES_U1;
+			create unique index CM_DOC_NOTES_U1 on CM_DOC_NOTES (doc_id, note_group_code, item_order) tablespace USERS;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+</databaseChangeLog>
