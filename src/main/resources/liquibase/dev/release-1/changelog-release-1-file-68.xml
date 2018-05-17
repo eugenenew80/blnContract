@@ -343,4 +343,208 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1338-3" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types</comment>
+		<insert schemaName="apps" tableName="ecm_content_types">
+			<column name="id" type="number" value="36"/>
+			<column name="code" type="varchar2" value="KEG_CSDDR_A1"/>
+			<column name="name" type="varchar2" value="Приложение 1 к договору на оказание услуг по передаче ээ по сетям РЭК (при ремонтах)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-4" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types</comment>
+		<insert schemaName="apps" tableName="ecm_content_types">
+			<column name="id" type="number" value="37"/>
+			<column name="code" type="varchar2" value="KEG_CSDDR_A2"/>
+			<column name="name" type="varchar2" value="Приложение 2 к договору на оказание услуг по передаче ээ по сетям РЭК (при ремонтах)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-5" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types</comment>
+		<insert schemaName="apps" tableName="ecm_content_types">
+			<column name="id" type="number" value="38"/>
+			<column name="code" type="varchar2" value="KEG_CTD_A2"/>
+			<column name="name" type="varchar2" value="Приложение 2 к договору на оказание услуг по технической диспетчеризации"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-6" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types</comment>
+		<insert schemaName="apps" tableName="ecm_content_types">
+			<column name="id" type="number" value="39"/>
+			<column name="code" type="varchar2" value="KEG_CBEE_A2"/>
+			<column name="name" type="varchar2" value="Приложение 2 к договору на оказание услуг по организации балансирования"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-7" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types</comment>
+		<insert schemaName="apps" tableName="ecm_content_types">
+			<column name="id" type="number" value="40"/>
+			<column name="code" type="varchar2" value="KEG_CBEE_A3"/>
+			<column name="name" type="varchar2" value="Приложение 3 к договору на оказание услуг по организации балансирования"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-8" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types</comment>
+		<insert schemaName="apps" tableName="ecm_content_types">
+			<column name="id" type="number" value="41"/>
+			<column name="code" type="varchar2" value="KEG_CTE_A4"/>
+			<column name="name" type="varchar2" value="Приложение 4 к договору на оказание услуг по передаче ээ по НЭС"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-9" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="92"/>
+			<column name="content_type_id" type="number" value="36"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Приложение 1 к договору на оказание услуг по передаче ээ по сетям РЭК (при ремонтах)"/>
+			<column name="description" type="varchar2" value="Договорной объем на оказание услуг"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-10" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="93"/>
+			<column name="content_type_id" type="number" value="36"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Приложение 1 к договору на оказание услуг по передаче ээ по сетям РЭК (при ремонтах)"/>
+			<column name="description" type="varchar2" value="Договорной объем на оказание услуг"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-11" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="94"/>
+			<column name="content_type_id" type="number" value="37"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Приложение 2 к договору на оказание услуг по передаче ээ по сетям РЭК (при ремонтах)"/>
+			<column name="description" type="varchar2" value="Список приборов коммерческого учета"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-12" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="95"/>
+			<column name="content_type_id" type="number" value="37"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Приложение 2 к договору на оказание услуг по передаче ээ по сетям РЭК (при ремонтах)"/>
+			<column name="description" type="varchar2" value="Список приборов коммерческого учета"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-13" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="96"/>
+			<column name="content_type_id" type="number" value="38"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Приложение 2 к договору на оказание услуг по технической диспетчеризации"/>
+			<column name="description" type="varchar2" value="Список приборов коммерческого учета"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-14" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="97"/>
+			<column name="content_type_id" type="number" value="38"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Приложение 2 к договору на оказание услуг по технической диспетчеризации"/>
+			<column name="description" type="varchar2" value="Список приборов коммерческого учета"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-15" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="98"/>
+			<column name="content_type_id" type="number" value="39"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Приложение 2 к договору на оказание услуг по организации балансирования"/>
+			<column name="description" type="varchar2" value="Список приборов коммерческого учета"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-16" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="99"/>
+			<column name="content_type_id" type="number" value="39"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Приложение 2 к договору на оказание услуг по организации балансирования"/>
+			<column name="description" type="varchar2" value="Список приборов коммерческого учета"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-17" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="100"/>
+			<column name="content_type_id" type="number" value="40"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Приложение 3 к договору на оказание услуг по организации балансирования"/>
+			<column name="description" type="varchar2" value="Профиль нагрузки"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-18" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="101"/>
+			<column name="content_type_id" type="number" value="40"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Приложение 3 к договору на оказание услуг по организации балансирования"/>
+			<column name="description" type="varchar2" value="Профиль нагрузки"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-19" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="102"/>
+			<column name="content_type_id" type="number" value="41"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Приложение 4 к договору на оказание услуг по передаче ээ по НЭС"/>
+			<column name="description" type="varchar2" value="Профиль нагрузки"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1338-20" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="103"/>
+			<column name="content_type_id" type="number" value="41"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Приложение 4 к договору на оказание услуг по передаче ээ по НЭС"/>
+			<column name="description" type="varchar2" value="Профиль нагрузки"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
 </databaseChangeLog>
