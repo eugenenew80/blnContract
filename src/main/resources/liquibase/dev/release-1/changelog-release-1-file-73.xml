@@ -22,7 +22,7 @@
 			</column>
 
 			<column name="display_order" type="number" remarks="Порядок вывода на экран" default="1">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="item_num" type="varchar2(10)" remarks="№ пункта">
@@ -42,6 +42,74 @@
 			</column>
 
 			<column name="mp_id" type="number" remarks="ID точки учета">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_present_in_askue" type="number" remarks="Наличие АСКУЭ" default="0">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="hourly_data_sources" type="varchar2(30)" remarks="Источники почасовых данных">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="mdfem_history_id" type="number" remarks="ID характеристик средств измерений">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="meter_id" type="number" remarks="ID счетчика">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="meter_serial_number" type="varchar2(30)" remarks="№ счетчика">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="meter_type_name" type="VARCHAR2(100)" remarks="Тип счетчика">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="meter_accuracy_class" type="VARCHAR2(7)" remarks="Класс точности">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="meter_last_verification_date" type="DATE" remarks="Дата последней поверки">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tt_type_id" type="number" remarks="ID типа трансформатора тока">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tt_type_name" type="varchar2(100)" remarks="Тип трансформатора тока">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tt_ktt" type="varchar2(20)" remarks="Коэффициент трансформации тока">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tt_accuracy_class" type="varchar2(7)" remarks="Класс точности трансформатора тока">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tn_type_id" type="number" remarks="ID типа трансформатора напряжения">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tn_type_name" type="varchar2(100)" remarks="Тип трансформатора напряжения">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tn_ktt" type="varchar2(20)" remarks="Коэффициент трансформации напряжения">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="tn_accuracy_class" type="varchar2(7)" remarks="Класс точности трансформатора напряжения">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="meter_factor" type="number" remarks="Расчетный коэффициент">
 				<constraints nullable="true"/>
 			</column>
 
@@ -93,63 +161,31 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="request_doc_change_id" type="number" remarks="Ссылка на родительскую запись">
+			<column name="line_id" type="number" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="bp_name" type="varchar2(500)" remarks="Бизнес-партнер: Наименование">
+			<column name="item_name" type="varchar2(300)" remarks="Наименование пункта">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="bp_legal_address" type="varchar2(300)" remarks="Бизнес-партнер: Юридический адрес">
+			<column name="delivery_point_name" type="varchar2(300)" remarks="Пункт доставки">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="bp_actual_address" type="varchar2(300)" remarks="Бизнес-партнер: Фактический адрес">
+			<column name="dvm_text" type="varchar2(4000)" remarks="Порядок определения">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="bp2_ubpn_short_name" type="varchar2(100)" remarks="Бизнес-партнер: Нерезидент: Тип идентификатора">
+			<column name="object_name" type="varchar2(100)" remarks="Место установки приборов учета">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="bp_contract_person_post" type="varchar2(100)" remarks="Бизнес-партнер: Должность подписывающего">
+			<column name="mp_name" type="varchar2(100)" remarks="Наименование присоединения">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="bp_contract_person_post_rp" type="varchar2(100)" remarks="Бизнес-партнер: Должность подписывающего в родительном падеже">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp_contract_person_fio" type="varchar2(50)" remarks="Бизнес-партнер: ФИО подписывающего">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp_contract_person_fio_rp" type="varchar2(50)" remarks="Бизнес-партнер: ФИО подписывающего в родительном падеже">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp_grc_issuing_authority" type="varchar2(500)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица:  Орган выдавший св-во">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp_grc_rle_name" type="varchar2(150)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица: Наименование вида документа">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="bp_bank_name" type="varchar2(500)" remarks="Бизнес-партнер 1: Наименование банка">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="vpk_text_reference" type="text" remarks="ВПК: ссылка на документ">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+			<column name="mp_short_name" type="varchar2(100)" remarks="Краткое наименование присоединения">
 				<constraints nullable="true"/>
 			</column>
 
@@ -157,9 +193,18 @@
 				<constraints nullable="true"/>
 			</column>
 
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
 			<column name="last_update_by" type="number" remarks="Автор обновления">
 				<constraints nullable="true"/>
 			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
 		</createTable>
 	</changeSet>
 
