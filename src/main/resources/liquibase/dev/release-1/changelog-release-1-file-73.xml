@@ -265,7 +265,7 @@
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
 				referencedTableName="cm_req_doc_cte_a4h"
-				referencedColumnNames="code"
+				referencedColumnNames="id"
 		/>
 	</changeSet>
 
