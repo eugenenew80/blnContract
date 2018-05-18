@@ -21,7 +21,7 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="display_order" type="number" remarks="Порядок вывода на экран" default="1">
+			<column name="display_order" type="number" remarks="Порядок вывода на экран" defaultValue="1">
 				<constraints nullable="true"/>
 			</column>
 
@@ -45,7 +45,7 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="is_present_in_askue" type="number" remarks="Наличие АСКУЭ" default="0">
+			<column name="is_present_in_askue" type="number" remarks="Наличие АСКУЭ" defaultValue="0">
 				<constraints nullable="true"/>
 			</column>
 
