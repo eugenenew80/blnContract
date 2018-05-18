@@ -292,7 +292,7 @@
 				baseTableSchemaName="apps"
 				baseTableName="cm_req_doc_cte_a4l"
 				baseColumnNames="tt_type_id"
-				constraintName="fk_cm_req_doc_cte_a4l_3"
+				constraintName="fk_cm_req_doc_cte_a4l_4"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
