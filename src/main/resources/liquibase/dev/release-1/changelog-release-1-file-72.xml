@@ -55,7 +55,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1314" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1385" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_req_doc_cte_a4h</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -64,7 +64,7 @@
 				tableName="cm_req_doc_cte_a4h"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1321" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1386" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_doc_cte_a4h to cm_doc_keg_cte</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -81,7 +81,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1321-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1387" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_doc_cte_a4h to dict_business_partners</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -98,7 +98,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1321-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1388" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_doc_cte_a4h to dict_business_partners</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
