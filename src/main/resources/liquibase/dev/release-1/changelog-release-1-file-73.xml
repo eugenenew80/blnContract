@@ -318,7 +318,7 @@
 				referencedTableName="mdfem_tn_types"
 				referencedColumnNames="id"
 		/>
-	</changeSet>1
+	</changeSet>
 
 	<changeSet id="cm-rus-1401" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_doc_cte_a4l to mdfem_history</comment>
@@ -390,14 +390,6 @@
 
 	<changeSet id="cm-rus-1405" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_doc_cte_a4l to dict_receipt_and_delivery_points</comment>
-		<addColumn schemaName="apps"
-				   tableName="cm_doc_keg_cte">
-			<column name="status_code" type="varchar(30)"/>
-		</addColumn>
-	</changeSet>
-
-	<changeSet id="cm-rus-1406" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
 			<column name="status_code" type="varchar(30)"/>
@@ -625,7 +617,7 @@
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="cm_req_doc_create"
-				baseColumnNames="status_code"
+				baseColumnNames="doc_type_id"
 				constraintName="fk_cm_req_doc_create_10"
 				deferrable="true"
 				initiallyDeferred="true"
@@ -635,5 +627,68 @@
 				referencedTableName="dm_doc_types"
 				referencedColumnNames="id"
 		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1426" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="is_vpk"
+					schemaName="apps"
+					tableName="cm_req_doc_change"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1427" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="vpk_start_date"
+					schemaName="apps"
+					tableName="cm_req_doc_change"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1428" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="vpk_end_date"
+					schemaName="apps"
+					tableName="cm_req_doc_change"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1429" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="vpk_temporary_factor"
+					schemaName="apps"
+					tableName="cm_req_doc_change"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1430" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="vpk_complete_conditions"
+					schemaName="apps"
+					tableName="cm_req_doc_change"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1431" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="vpk_unit_id"
+					schemaName="apps"
+					tableName="cm_req_doc_change"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1432" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="vpk_current_percent_rate"
+					schemaName="apps"
+					tableName="cm_req_doc_change"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1433" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<modifyDataType columnName="responsibility_zone_1"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a3l_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1434" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<modifyDataType columnName="responsibility_zone_2"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a3l_tl"/>
 	</changeSet>
 </databaseChangeLog>
