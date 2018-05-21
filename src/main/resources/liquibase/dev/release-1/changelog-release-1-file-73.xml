@@ -318,7 +318,7 @@
 				referencedTableName="mdfem_tn_types"
 				referencedColumnNames="id"
 		/>
-	</changeSet>
+	</changeSet>1
 
 	<changeSet id="cm-rus-1401" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_doc_cte_a4l to mdfem_history</comment>
@@ -384,6 +384,255 @@
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
 				referencedTableName="dict_receipt_and_delivery_points"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1405" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a4l to dict_receipt_and_delivery_points</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="status_code" type="varchar(30)"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1406" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="status_code" type="varchar(30)"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1407" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to cm_doc_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_doc_keg_cte_26"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1408" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a1h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a1h">
+			<column name="status_code" type="varchar(30)"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1409" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a1h to cm_doc_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a1h"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_doc_keg_cte_a1h_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1410" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a2h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a2h">
+			<column name="status_code" type="varchar(30)"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1411" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a2h to cm_doc_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a2h"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_doc_keg_cte_a2h_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1412" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a3h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a3h">
+			<column name="status_code" type="varchar(30)"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1413" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a3h to cm_doc_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a3h"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_doc_keg_cte_a3h_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1414" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a4h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a4h">
+			<column name="status_code" type="varchar(30)"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1415" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a4h to cm_doc_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a4h"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_doc_keg_cte_a4h_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1416" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cbee_a3h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3h">
+			<column name="status_code" type="varchar(30)"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1417" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a3h to cm_doc_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a3h"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_doc_keg_cbee_a3h_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1418" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a3h to cm_doc_statuses</comment>
+		<dropForeignKeyConstraint baseTableName="cm_req_doc_create" constraintName="fk_cm_req_doc_create_1" baseTableSchemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1419" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create to cm_doc_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="request_status_code"
+				constraintName="fk_cm_req_doc_create_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1420" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a1h to cm_doc_statuses</comment>
+		<dropForeignKeyConstraint baseTableName="cm_req_doc_cte_a1h" constraintName="fk_cm_req_doc_cte_a1h_3" baseTableSchemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1421" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a1h to cm_doc_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a1h"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_req_doc_cte_a1h_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1422" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a4h to cm_doc_statuses</comment>
+		<dropForeignKeyConstraint baseTableName="cm_req_doc_cte_a4h" constraintName="fk_cm_req_doc_cte_a4h_3" baseTableSchemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1423" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_cte_a4h to cm_doc_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_cte_a4h"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_req_doc_cte_a4h_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1424" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="doc_type_id" type="number"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1425" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create to dm_doc_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_req_doc_create_10"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_doc_types"
 				referencedColumnNames="id"
 		/>
 	</changeSet>
