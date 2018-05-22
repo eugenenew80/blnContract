@@ -705,4 +705,20 @@
 		</insert>
 		<rollback/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1477" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_change</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_change">
+			<column name="end_date" type="TIMESTAMP" remarks="Дата завершения запроса"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1478" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="end_date" type="TIMESTAMP" remarks="Дата завершения запроса"/>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
