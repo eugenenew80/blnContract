@@ -657,4 +657,52 @@
 				referencedColumnNames="code"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1472" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_statuses"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1473" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_statuses_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1474" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types</comment>
+		<insert schemaName="apps" tableName="ecm_content_types">
+			<column name="id" type="number" value="42"/>
+			<column name="code" type="varchar2" value="ACT_BALANCE_RESPONSIBILITY"/>
+			<column name="name" type="varchar2" value="Акт разграничения балансовой ответственности"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1475" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="104"/>
+			<column name="content_type_id" type="number" value="42"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Акт разграничения балансовой ответственности"/>
+			<column name="description" type="varchar2" value="Акт разграничения балансовой ответственности"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1476" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into ecm_content_types_tl</comment>
+		<insert schemaName="apps" tableName="ecm_content_types_tl">
+			<column name="id" type="number" value="105"/>
+			<column name="content_type_id" type="number" value="42"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Акт разграничения балансовой ответственности"/>
+			<column name="description" type="varchar2" value="Акт разграничения балансовой ответственности"/>
+		</insert>
+		<rollback/>
+	</changeSet>
 </databaseChangeLog>
