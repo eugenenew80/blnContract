@@ -649,7 +649,7 @@
 				baseColumnNames="request_status_code"
 				constraintName="fk_cm_req_doc_create_1"
 				deferrable="true"
-				ini1tiallyDeferred="true"
+				initiallyDeferred="true"
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
