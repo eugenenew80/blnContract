@@ -289,12 +289,19 @@
 					tableName="cm_req_doc_change"/>
 	</changeSet>
 
-
 	<changeSet id="cm-rus-1500" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_rfc</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_rfc_tl">
 			<column name="CANCEL_REASON" type="varchar(300)" remarks="Причина отмены запроса"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1501" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_obj_statuses">
+			<column name="order" type="number" remarks="Последовательность"/>
 		</addColumn>
 	</changeSet>
 </databaseChangeLog>
