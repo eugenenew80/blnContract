@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1479" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_vpk</comment>
+		<createTable tableName="cm_req_vpk" schemaName="apps" remarks="Запрос на применение ВПК">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_id" type="number" remarks="Ид договора">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="status_code" type="varchar2(30)" remarks="Код статуса запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="request_type_code" type="varchar2(30)" remarks="Код типа запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="request_start_date" type="date" remarks="Дата создания запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="request_end_date" type="date" remarks="Дата завершения запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="curator_user_id" type="number" remarks="Куратор запроса: Идентификатор пользователя (user_id)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_vpk" type="number" remarks="Применяется ВПК">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="vpk_start_date" type="date" remarks="ВПК: Дата действия с">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="vpk_end_date" type="date" remarks="ВПК: Дата действия по">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="vpk_temporary_factor" type="number" remarks="ВПК: Временный понижающий коэффициент">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="vpk_complete_conditions" type="number" remarks="ВПК: Условие выполнения объема не менее">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="vpk_current_percent_rate" type="number" remarks="ВПК: Процент текущей оплаты, %">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable
+		>
+	</changeSet>
+
+	<changeSet id="cm-rus-1480" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_vpk</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_vpk"
+				schemaName="apps"
+				tableName="cm_req_vpk"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1481" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_vpk</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_req_vpk_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1482" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_vpk_tl</comment>
+		<createTable tableName="cm_req_vpk_tl" schemaName="apps" remarks="Маршрут для договора на резервирование">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="req_vpk_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="vpk_text_reference" type="varchar2(300)" remarks="ВПК: ссылка на документ">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1483" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_vpk_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_vpk_tl"
+				schemaName="apps"
+				tableName="cm_req_vpk_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1484" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_vpk_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_req_vpk_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1485" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_req_vpk_tl</comment>
+		<addUniqueConstraint
+				columnNames="req_vpk_id,lang"
+				constraintName="uk_cm_req_vpk_tl"
+				schemaName="apps"
+				tableName="cm_req_vpk_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1486" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_vpk_tl to cm_req_vpk</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_vpk_tl"
+				baseColumnNames="req_vpk_id"
+				constraintName="fk_cm_req_vpk_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_vpk"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1487" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_vpk to cm_obj_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_vpk"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_req_vpk_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_obj_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1489" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_vpk to dm_request_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_vpk"
+				baseColumnNames="request_type_code"
+				constraintName="fk_cm_req_vpk_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_request_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-1490" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="status" type="varchar(30)"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1491" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_rfc to cm_obj_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_rfc"
+				baseColumnNames="status"
+				constraintName="fk_cm_doc_rfc_28"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_obj_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1492" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_code"
+					schemaName="apps"
+					tableName="cm_doc_keg_cbee_a3h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1493" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_code"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a1h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1494" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_code"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a2h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1495" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_code"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1496" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_code"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a3h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1497" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_code"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a4h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1499" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="cancel_reason"
+					schemaName="apps"
+					tableName="cm_req_doc_change"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-1500" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc_tl">
+			<column name="CANCEL_REASON" type="varchar(300)" remarks="Причина отмены запроса"/>
+		</addColumn>
+	</changeSet>
+</databaseChangeLog>
