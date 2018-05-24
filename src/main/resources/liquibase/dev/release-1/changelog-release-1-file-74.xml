@@ -466,7 +466,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1528" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<addUniqueConstraint columnNames="doc_id, req_id, doc_version, lang"
+		<addUniqueConstraint columnNames="doc_id, req_id, version, lang"
 							 constraintName="uk_cm_doc_files"
 							 deferrable="true"
 							 disabled="true"
@@ -508,7 +508,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1533" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<addUniqueConstraint columnNames="doc_id, req_id, doc_version"
+		<addUniqueConstraint columnNames="doc_id, req_id, version"
 							 constraintName="uk_cm_doc_signatories_1"
 							 deferrable="true"
 							 disabled="true"
