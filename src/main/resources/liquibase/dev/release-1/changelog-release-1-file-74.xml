@@ -419,4 +419,9 @@
 		</addColumn>
 	</changeSet>
 
+	<changeSet id="cm-rus-1522" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign constraint: cm_doc_signatories</comment>
+		<dropForeignKeyConstraint baseTableName="cm_doc_signatories" constraintName="fk_cm_doc_signatories_1" baseTableSchemaName="apps"/>
+	</changeSet>
+
 </databaseChangeLog>
