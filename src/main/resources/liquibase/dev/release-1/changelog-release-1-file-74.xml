@@ -240,39 +240,11 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1493" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>drop column</comment>
-		<dropColumn columnName="status_code"
-					schemaName="apps"
-					tableName="cm_doc_keg_cte_a1h"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1494" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>drop column</comment>
-		<dropColumn columnName="status_code"
-					schemaName="apps"
-					tableName="cm_doc_keg_cte_a2h"/>
-	</changeSet>
-
 	<changeSet id="cm-rus-1495" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>drop column</comment>
 		<dropColumn columnName="status_code"
 					schemaName="apps"
 					tableName="cm_doc_keg_cte"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1496" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>drop column</comment>
-		<dropColumn columnName="status_code"
-					schemaName="apps"
-					tableName="cm_doc_keg_cte_a3h"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1497" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>drop column</comment>
-		<dropColumn columnName="status_code"
-					schemaName="apps"
-					tableName="cm_doc_keg_cte_a4h"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1499" logicalFilePath="path-independent" author="ruslan" context="dev">
