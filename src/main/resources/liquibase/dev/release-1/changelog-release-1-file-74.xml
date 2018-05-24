@@ -367,14 +367,6 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1515" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>modify data type to cm_doc_signatories_and_files</comment>
-		<modifyDataType columnName="signet_signature"
-						newDataType="BLOB"
-						schemaName="apps"
-						tableName="cm_doc_signatories_and_files"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1516" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>modify data type cm_doc_signatories</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="doc_id"
@@ -382,7 +374,7 @@
 							  tableName="cm_doc_signatories"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1517" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1516" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_signatories</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_signatories">
@@ -390,7 +382,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-1518" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1517" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>modify data type cm_doc_files</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="doc_id"
@@ -398,7 +390,7 @@
 							  tableName="cm_doc_files"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1519" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1518" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_files</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_files">
@@ -407,8 +399,24 @@
 	</changeSet>
 
 
-	<changeSet id="cm-rus-1520" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1519" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>drop foreign constraint: cm_doc_files</comment>
 		<dropForeignKeyConstraint baseTableName="cm_doc_files" constraintName="fk_cm_doc_files_1" baseTableSchemaName="apps"/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1520" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="signet_signature"
+					schemaName="apps"
+					tableName="cm_doc_signatories_and_files"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1521" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_files</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_signatories_and_files">
+			<column name="signet_signature" type="BLOB" remarks="Хэш подписи"/>
+		</addColumn>
+	</changeSet>
+
 </databaseChangeLog>
