@@ -358,14 +358,6 @@
 		</addColumn>
 	</changeSet>
 
-    <changeSet id="cm-rus-1513" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_doc_rfc</comment>
-		<addColumn schemaName="apps"
-				   tableName="dict_organizations">
-			<column name="bp_id" type="number" remarks="Ид бизнес партнера"/>
-		</addColumn>
-	</changeSet>
-
     <changeSet id="cm-rus-1514" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_rfc</comment>
 		<modifyDataType columnName="line_comment"
