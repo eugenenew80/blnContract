@@ -424,4 +424,99 @@
 		<dropForeignKeyConstraint baseTableName="cm_doc_signatories" constraintName="fk_cm_doc_signatories_1" baseTableSchemaName="apps"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1523" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<renameColumn columnDataType="number"
+					  newColumnName="version"
+					  oldColumnName="doc_version"
+					  remarks="Версия"
+					  schemaName="apps"
+					  tableName="cm_doc_signatories"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1524" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<renameColumn columnDataType="number"
+					  newColumnName="version"
+					  oldColumnName="doc_version"
+					  remarks="Версия"
+					  schemaName="apps"
+					  tableName="cm_doc_files"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1525" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<addDefaultValue columnDataType="number"
+						 columnName="version"
+						 defaultValue="1"
+						 schemaName="apps"
+						 tableName="cm_doc_signatories"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1526" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<addDefaultValue columnDataType="number"
+						 columnName="version"
+						 defaultValue="1"
+						 schemaName="apps"
+						 tableName="cm_doc_files"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1527" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<dropUniqueConstraint constraintName="uk_cm_doc_files"
+							  schemaName="apps"
+							  tableName="cm_doc_files"
+							  uniqueColumns="doc_id, doc_version, lang"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1527" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<addUniqueConstraint columnNames="doc_id, req_id, doc_version, lang"
+							 constraintName="uk_cm_doc_files"
+							 deferrable="true"
+							 disabled="true"
+							 initiallyDeferred="true"
+							 schemaName="apps"
+							 tableName="cm_doc_files"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1528" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_files</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_files">
+			<column name="version" type="number" remarks="Версия" defaultValue="1"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1529" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<addDefaultValue columnDataType="number"
+						 columnName="line_number"
+						 defaultValue="1"
+						 schemaName="apps"
+						 tableName="cm_doc_signatories"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1530" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<addDefaultValue columnDataType="number"
+						 columnName="line_number"
+						 defaultValue="1"
+						 schemaName="apps"
+						 tableName="cm_doc_signatories"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-1527" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<dropUniqueConstraint constraintName="uk_cm_doc_signatories_1"
+							  schemaName="apps"
+							  tableName="cm_doc_files"
+							  uniqueColumns="doc_id, doc_version"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1527" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<addUniqueConstraint columnNames="doc_id, req_id, doc_version"
+							 constraintName="uk_cm_doc_signatories_1"
+							 deferrable="true"
+							 disabled="true"
+							 initiallyDeferred="true"
+							 schemaName="apps"
+							 tableName="cm_doc_signatories"/>
+	</changeSet>
+
+
+
 </databaseChangeLog>
