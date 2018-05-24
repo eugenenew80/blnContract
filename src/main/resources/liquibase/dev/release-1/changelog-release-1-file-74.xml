@@ -509,6 +509,25 @@
 							 tableName="cm_doc_signatories"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1534" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<renameColumn columnDataType="number"
+					  newColumnName="doc_signatory_id"
+					  oldColumnName="doc_signatories_id"
+					  remarks="Версия"
+					  schemaName="apps"
+					  tableName="cm_doc_signatories_and_files"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1535" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<renameColumn columnDataType="number"
+					  newColumnName="signature_result_code"
+					  oldColumnName="signatories_results_code"
+					  remarks="Версия"
+					  schemaName="apps"
+					  tableName="cm_doc_signatories_and_files"/>
+	</changeSet>
+
+
 
 
 </databaseChangeLog>
