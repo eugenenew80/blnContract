@@ -368,7 +368,7 @@
 
 	<changeSet id="cm-rus-1515" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>modify data type cm_doc_signatories</comment>
-		<addNotNullConstraint columnDataType="number"
+		<dropNotNullConstraint columnDataType="number"
 							  columnName="doc_id"
 							  schemaName="apps"
 							  tableName="cm_doc_signatories"/>
@@ -384,7 +384,7 @@
 
 	<changeSet id="cm-rus-1517" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>modify data type cm_doc_files</comment>
-		<addNotNullConstraint columnDataType="number"
+		<dropNotNullConstraint columnDataType="number"
 							  columnName="doc_id"
 							  schemaName="apps"
 							  tableName="cm_doc_files"/>
