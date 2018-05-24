@@ -304,4 +304,108 @@
 			<column name="order" type="number" remarks="Последовательность"/>
 		</addColumn>
 	</changeSet>
+
+    <changeSet id="cm-rus-1502" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_change">
+			<column name="is_vpk" type="number" remarks="Применяется ВПК"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1503" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_change">
+			<column name="vpk_start_date" type="date" remarks="ВПК: Дата действия с"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1504" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_change">
+			<column name="vpk_end_date" type="date" remarks="ВПК: Дата действия по"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1505" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_change">
+			<column name="vpk_complete_conditions" type="number" remarks="ВПК: Временный понижающий коэффициент"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1506" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_change">
+			<column name="vpk_current_percent_rate" type="number" remarks="ВПК: Процент текущей оплаты, %"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1507" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_change_tl">
+			<column name="text" type="varchar2(1000)" remarks="Текст запроса"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1508" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a4h">
+			<column name="bp1_id" type="number" remarks="Ид бизнес партнера филиала"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1509" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a4h">
+			<column name="bp1_name" type="varchar2(500)" remarks="имя бизнес партнера филиала"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1510" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a4h">
+			<column name="bp2_id" type="number" remarks="Ид бизнес партнера субабонента"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1511" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a4h">
+			<column name="bp2_name" type="varchar2(500)" remarks="имя бизнес партнера субабонента"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1512" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_organizations">
+			<column name="is_organization" type="number" remarks="является организацией"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1513" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_organizations">
+			<column name="bp_id" type="number" remarks="Ид бизнес партнера"/>
+		</addColumn>
+	</changeSet>
+
+    <changeSet id="cm-rus-1514" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<modifyDataType columnName="line_comment"
+						newDataType="varchar2(500)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a3l_tl"/>
+	</changeSet>
 </databaseChangeLog>
