@@ -475,14 +475,6 @@
 							 tableName="cm_doc_files"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1529" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_doc_files</comment>
-		<addColumn schemaName="apps"
-				   tableName="cm_doc_files">
-			<column name="version" type="number" remarks="Версия" defaultValue="1"/>
-		</addColumn>
-	</changeSet>
-
 	<changeSet id="cm-rus-1530" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<addDefaultValue columnDataType="number"
 						 columnName="line_number"
