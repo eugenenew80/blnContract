@@ -495,7 +495,7 @@
 	<changeSet id="cm-rus-1532" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<dropUniqueConstraint constraintName="uk_cm_doc_signatories_1"
 							  schemaName="apps"
-							  tableName="cm_doc_files"
+							  tableName="cm_doc_signatories"
 							  uniqueColumns="doc_id, doc_version"/>
 	</changeSet>
 
