@@ -577,4 +577,46 @@
 						tableName="cm_doc_keg_cte_a4l_tl"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1540" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_id"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1541" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_id"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a1h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1542" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_id"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a2h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1543" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_id"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a3h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1544" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_id"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a4h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1545" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_id"
+					schemaName="apps"
+					tableName="cm_doc_keg_cbee_a3h"/>
+	</changeSet>
+
 </databaseChangeLog>
