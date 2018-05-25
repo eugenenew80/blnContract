@@ -365,38 +365,4 @@
 						schemaName="apps"
 						tableName="cm_doc_keg_cte_a3l_tl"/>
 	</changeSet>
-
-	<changeSet id="cm-rus-1515" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_doc_keg_cte_a4h to dict_business_partners</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="dict_business_partners"
-				baseColumnNames="cm_doc_keg_cte_a4h"
-				constraintName="fk_cm_doc_keg_cte_a4h_5"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_business_partners"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1516" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_doc_keg_cte to dict_business_partners</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="cm_doc_keg_cte_a4h"
-				baseColumnNames="bp2_id"
-				constraintName="fk_cm_doc_keg_cte_a4h_6"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_business_partners"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
 </databaseChangeLog>
