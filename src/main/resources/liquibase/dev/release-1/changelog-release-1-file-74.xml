@@ -540,8 +540,8 @@
 		<comment>Creating foreign constraint: cm_doc_keg_cte_a4h to dict_business_partners</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="dict_business_partners"
-				baseColumnNames="cm_doc_keg_cte_a4h"
+				baseTableName="cm_doc_keg_cte_a4h"
+				baseColumnNames="bp1_id"
 				constraintName="fk_cm_doc_keg_cte_a4h_5"
 				deferrable="true"
 				initiallyDeferred="true"
