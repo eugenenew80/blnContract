@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1578" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_tasks</comment>
+		<createTable tableName="cm_req_tasks" schemaName="apps" remarks="Задачи">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="status_code" type="varchar2(30)" remarks="Код статуса запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="request_id" type="number" remarks="Ид запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="request_type_code" type="varchar2(30)" remarks="Код типа запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="task_start_date" type="date" remarks="Дата создания задачи">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="task_end_date" type="date" remarks="Дата завершения задачи">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="task_planing_end_date" type="date" remarks="Планируемая дата выполнения">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="curator_user_id" type="number" remarks="Куратор запроса: Идентификатор пользователя (user_id)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="header_code" type="varchar2(30)" remarks="код заголовка">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="task_order" type="varchar2(50)" remarks="Порядок выполнения">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable
+		>
+	</changeSet>
+
+	<changeSet id="cm-rus-1579" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_tasks</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_tasks"
+				schemaName="apps"
+				tableName="cm_req_tasks"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1580" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_tasks</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_req_tasks_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1581" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_tasks_tl</comment>
+		<createTable tableName="cm_req_tasks_tl" schemaName="apps" remarks="Маршрут для договора на резервирование">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="task_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_manual_text" type="varchar2(300)" remarks="Ручной ввод заголовка">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="text" type="varchar2(1000)" remarks="Текст задачи">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1582" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_tasks_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_tasks_tl"
+				schemaName="apps"
+				tableName="cm_req_tasks_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1583" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_tasks_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_req_tasks_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1584" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_req_tasks_tl</comment>
+		<addUniqueConstraint
+				columnNames="task_id,lang"
+				constraintName="uk_cm_req_tasks_tl"
+				schemaName="apps"
+				tableName="cm_req_tasks_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1585" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_tasks_tl to cm_req_tasks</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_tasks_tl"
+				baseColumnNames="task_id"
+				constraintName="fk_cm_req_tasks_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_tasks"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1586" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_tasks to cm_obj_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_tasks"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_req_tasks_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_obj_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1587" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_tasks to dm_request_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_tasks"
+				baseColumnNames="request_type_code"
+				constraintName="fk_cm_req_tasks_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_request_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1588" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_tasks to cm_req_doc_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_tasks"
+				baseColumnNames="header_code"
+				constraintName="fk_cm_req_tasks_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_doc_headers"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+
+</databaseChangeLog>

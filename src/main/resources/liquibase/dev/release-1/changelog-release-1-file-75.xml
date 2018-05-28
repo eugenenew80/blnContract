@@ -268,4 +268,16 @@
 		<rollback/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1576" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_vpk"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1577" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_vpk_tl"/>
+	</changeSet>
+
 </databaseChangeLog>
