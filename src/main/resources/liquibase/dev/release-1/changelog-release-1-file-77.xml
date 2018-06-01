@@ -103,7 +103,7 @@
 
 	<changeSet id="cm-rus-1586" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating unique for table: cm_req_tasks_archives</comment>
-		<addUniqueConstraint columnNames="request_id, number"
+		<addUniqueConstraint columnNames="request_id, task_number"
 							 constraintName="uk_cm_req_tasks_archives"
 							 deferrable="true"
 							 disabled="true"
