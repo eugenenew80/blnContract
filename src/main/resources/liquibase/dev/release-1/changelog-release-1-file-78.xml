@@ -137,12 +137,11 @@
 
 	<changeSet id="cm-rus-1600" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add not null constraint</comment>
-		<addNotNullConstraint
-				columnDataType="number"
-				columnName="doc_version"
-				defaultNullValue="1"
-				schemaName="apps"
-				tableName="cm_doc_keg_cte_a2h"/>
+		<addDefaultValue columnDataType="number"
+						 columnName="doc_version"
+						 defaultValue="1"
+						 schemaName="apps"
+						 tableName="cm_doc_keg_cte_a2h"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1601" logicalFilePath="path-independent" author="ruslan" context="dev">
