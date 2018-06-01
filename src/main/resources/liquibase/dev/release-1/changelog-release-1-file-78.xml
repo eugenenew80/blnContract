@@ -175,7 +175,7 @@
 		<comment>Creating foreign constraint: cm_req_tasks_order to dm_request_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_req_tasks_order"
+				baseTableName="cm_doc_keg_cte"
 				baseColumnNames="control_range_unit_id"
 				constraintName="fk_cm_doc_keg_cte_28"
 				deferrable="true"
