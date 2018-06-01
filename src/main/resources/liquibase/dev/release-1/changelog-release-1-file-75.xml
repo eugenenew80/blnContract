@@ -8,7 +8,7 @@
 
 	<changeSet id="cm-rus-1546" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_req_doc_headers</comment>
-		<createTable tableName="cm_req_doc_headers" schemaName="apps" remarks="Справочник заголовки">
+		<createTable tableName="cm_req_doc_headers" schemaName="apps" remarks="Справочник Заголовки задач">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
@@ -42,7 +42,7 @@
 
 	<changeSet id="cm-rus-1548" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_req_doc_headers_tl</comment>
-		<createTable tableName="cm_req_doc_headers_tl" schemaName="apps" remarks="Переводы результат подписания">
+		<createTable tableName="cm_req_doc_headers_tl" schemaName="apps" remarks="Переводы Справочник Заголовки задач">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
@@ -82,7 +82,7 @@
 				tableName="cm_req_doc_headers_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1560" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1550" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_doc_headers_tl to cm_req_doc_headers</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -99,7 +99,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1561" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1551" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_doc_headers</comment>
 		<insert schemaName="apps" tableName="cm_req_doc_headers">
 			<column name="code" type="varchar2" value="DRAFT"/>
@@ -107,7 +107,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1562" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1552" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_doc_headers</comment>
 		<insert schemaName="apps" tableName="cm_req_doc_headers">
 			<column name="code" type="varchar2" value="A01"/>
@@ -115,7 +115,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1563" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1553" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_doc_headers</comment>
 		<insert schemaName="apps" tableName="cm_req_doc_headers">
 			<column name="code" type="varchar2" value="A02"/>
@@ -123,7 +123,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1564" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1554" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_doc_headers</comment>
 		<insert schemaName="apps" tableName="cm_req_doc_headers">
 			<column name="code" type="varchar2" value="A03"/>
@@ -131,7 +131,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1564" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1555" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_doc_headers</comment>
 		<insert schemaName="apps" tableName="cm_req_doc_headers">
 			<column name="code" type="varchar2" value="A04"/>
@@ -139,10 +139,101 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1565" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1556" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_doc_headers</comment>
 		<insert schemaName="apps" tableName="cm_req_doc_headers">
 			<column name="code" type="varchar2" value="MANUAL"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1557" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_headers_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
+			<column name="code" type="varchar2" value="DRAFT"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Создать проект договора"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1558" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_headers_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
+			<column name="code" type="varchar2" value="A01"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Сформировать Приложение 1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1559" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_headers_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
+			<column name="code" type="varchar2" value="DRAFT"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Создать проект договора"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1560" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_headers_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
+			<column name="code" type="varchar2" value="A01"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Сформировать Приложение 1"/>
+		</insert>
+		<rollback/>
+
+	</changeSet>
+
+	<changeSet id="cm-rus-1561" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_headers_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
+			<column name="code" type="varchar2" value="A02"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Сформировать Приложение 2"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1562" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_headers_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
+			<column name="code" type="varchar2" value="A03"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Сформировать Приложение 3"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1563" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_headers_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
+			<column name="code" type="varchar2" value="A02"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Сформировать Приложение 2"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1564" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_headers_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
+			<column name="code" type="varchar2" value="A03"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Сформировать Приложение 3"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1565" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_doc_headers_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
+			<column name="code" type="varchar2" value="A04"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Сформировать Приложение 4"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -150,9 +241,9 @@
 	<changeSet id="cm-rus-1566" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_doc_headers_tl</comment>
 		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="DRAFT"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Создать проект договора"/>
+			<column name="code" type="varchar2" value="A04"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Сформировать Приложение 4"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -160,9 +251,9 @@
 	<changeSet id="cm-rus-1567" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_doc_headers_tl</comment>
 		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="A01"/>
+			<column name="code" type="varchar2" value="MANUAL"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Сформировать Приложение 1"/>
+			<column name="name" type="varchar2" value="Ручной ввод"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -170,114 +261,25 @@
 	<changeSet id="cm-rus-1568" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_doc_headers_tl</comment>
 		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="DRAFT"/>
+			<column name="code" type="varchar2" value="MANUAL"/>
 			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Создать проект договора"/>
+			<column name="name" type="varchar2" value="Ручной ввод"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1569" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_req_doc_headers_tl</comment>
-		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="A01"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Сформировать Приложение 1"/>
-		</insert>
-		<rollback/>
-
-	</changeSet>
-
-	<changeSet id="cm-rus-1570" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_req_doc_headers_tl</comment>
-		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="A02"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Сформировать Приложение 2"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1571" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_req_doc_headers_tl</comment>
-		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="A03"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Сформировать Приложение 3"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1572" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_req_doc_headers_tl</comment>
-		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="A02"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Сформировать Приложение 2"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1373" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_req_doc_headers_tl</comment>
-		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="A03"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Сформировать Приложение 3"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1574" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_req_doc_headers_tl</comment>
-		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="A04"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Сформировать Приложение 4"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1575" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_req_doc_headers_tl</comment>
-		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="A04"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Сформировать Приложение 4"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1574" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_req_doc_headers_tl</comment>
-		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="MANUAL"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Ручной ввод"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1575" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_req_doc_headers_tl</comment>
-		<insert schemaName="apps" tableName="cm_req_doc_headers_tl">
-			<column name="code" type="varchar2" value="MANUAL"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Ручной ввод"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1576" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<dropTable cascadeConstraints="true"
 				   schemaName="apps"
 				   tableName="cm_req_vpk"/>
+		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1577" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1570" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<dropTable cascadeConstraints="true"
 				   schemaName="apps"
 				   tableName="cm_req_vpk_tl"/>
+		<rollback/>
 	</changeSet>
 
 </databaseChangeLog>

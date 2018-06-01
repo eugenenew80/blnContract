@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1591" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_tasks_order</comment>
+		<createTable tableName="cm_req_tasks_order" schemaName="apps" remarks="Таблица для хранения порядка задач по запросам">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="task_id" type="number" remarks="Идентификатор задачи">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="after_task_id" type="number" remarks="Идентификатор задачи после которой будет выполняться">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="task_number" type="number" remarks="Номер задачи после которой будет выполняться">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1592" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_tasks_order</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_tasks_order"
+				schemaName="apps"
+				tableName="cm_req_tasks_order"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1593" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_tasks_order</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_req_tasks_order_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1594" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique for table: cm_req_tasks_order</comment>
+		<addUniqueConstraint columnNames="task_id, after_task_id"
+							 constraintName="uk_cm_req_tasks_order"
+							 deferrable="true"
+							 disabled="true"
+							 initiallyDeferred="true"
+							 schemaName="apps"
+							 tableName="cm_req_tasks_order"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1595" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_tasks_order to cm_req_tasks</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_tasks_order"
+				baseColumnNames="task_id"
+				constraintName="fk_cm_req_tasks_order_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_tasks"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1596" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_tasks_order to dm_request_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_tasks_order"
+				baseColumnNames="after_task_id"
+				constraintName="fk_cm_req_tasks_order_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_tasks"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1597" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint</comment>
+		<addNotNullConstraint
+							  columnDataType="number"
+							  columnName="doc_version"
+							  defaultNullValue="1"
+							  schemaName="apps"
+							  tableName="cm_doc_keg_cte_a1h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1598" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint</comment>
+		<addNotNullConstraint
+							  columnDataType="number"
+							  columnName="doc_version"
+							  defaultNullValue="1"
+							  schemaName="apps"
+							  tableName="cm_doc_keg_cte_a2h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1599" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add default value </comment>
+		<addDefaultValue columnDataType="number"
+						 columnName="doc_version"
+						 defaultValue="1"
+						 schemaName="apps"
+						 tableName="cm_doc_keg_cte_a3h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1600" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint</comment>
+		<addNotNullConstraint
+				columnDataType="number"
+				columnName="doc_version"
+				defaultNullValue="1"
+				schemaName="apps"
+				tableName="cm_doc_keg_cte_a2h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1601" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint</comment>
+		<addNotNullConstraint
+				columnDataType="number"
+				columnName="doc_version"
+				defaultNullValue="1"
+				schemaName="apps"
+				tableName="cm_doc_keg_cbee_a3h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1602" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add default value </comment>
+		<addDefaultValue columnDataType="number"
+						 columnName="doc_version"
+						 defaultValue="1"
+						 schemaName="apps"
+						 tableName="cm_doc_rfc"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1603" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_files</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="control_range_unit_id" type="number" remarks="Диапазон физического урегулирования дисбалансов: ид измерения"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1604" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_tasks_order to dm_request_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_tasks_order"
+				baseColumnNames="control_range_unit_id"
+				constraintName="fk_cm_doc_keg_cte_28"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>

@@ -400,6 +400,9 @@
 
 
 	<changeSet id="cm-rus-1519" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="CONTINUE">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyName="fk_cm_doc_files_1"/>
+		</preConditions>
 		<comment>drop foreign constraint: cm_doc_files</comment>
 		<dropForeignKeyConstraint baseTableName="cm_doc_files" constraintName="fk_cm_doc_files_1" baseTableSchemaName="apps"/>
 	</changeSet>
@@ -420,6 +423,9 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1522" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="CONTINUE">
+			<foreignKeyConstraintExists schemaName="apps" foreignKeyName="fk_cm_doc_signatories_1"/>
+		</preConditions>
 		<comment>drop foreign constraint: cm_doc_signatories</comment>
 		<dropForeignKeyConstraint baseTableName="cm_doc_signatories" constraintName="fk_cm_doc_signatories_1" baseTableSchemaName="apps"/>
 	</changeSet>

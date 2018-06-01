@@ -6,10 +6,14 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-1571" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_req_tasks</comment>
-		<createTable tableName="cm_req_tasks" schemaName="apps" remarks="Таблица для хранения задач по запросам">
+	<changeSet id="cm-rus-1583" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_tasks_archives</comment>
+		<createTable tableName="cm_req_tasks_archives" schemaName="apps" remarks="Таблица для хранения задач по запросам Архив">
 			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="task_id" type="number" remarks="Идентификатор задачи в основной таблице">
 				<constraints nullable="false"/>
 			</column>
 
@@ -79,42 +83,42 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1572" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_req_tasks</comment>
+	<changeSet id="cm-rus-1584" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_tasks_archives</comment>
 		<addPrimaryKey
 				columnNames="id"
-				constraintName="pk_cm_req_tasks"
+				constraintName="pk_cm_req_tasks_archives"
 				schemaName="apps"
-				tableName="cm_req_tasks"/>
+				tableName="cm_req_tasks_archives"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1573" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_req_tasks</comment>
+	<changeSet id="cm-rus-1585" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_tasks_archives</comment>
 		<createSequence
 				incrementBy="1"
 				schemaName="apps"
-				sequenceName="cm_req_tasks_s"
+				sequenceName="cm_req_tasks_archives_s"
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1574" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique for table: cm_req_tasks</comment>
+	<changeSet id="cm-rus-1586" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique for table: cm_req_tasks_archives</comment>
 		<addUniqueConstraint columnNames="request_id, number"
-							 constraintName="uk_cm_req_tasks"
+							 constraintName="uk_cm_req_tasks_archives"
 							 deferrable="true"
 							 disabled="true"
 							 initiallyDeferred="true"
 							 schemaName="apps"
-							 tableName="cm_req_tasks"/>
+							 tableName="cm_req_tasks_archives"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1575" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_req_tasks to cm_obj_statuses</comment>
+	<changeSet id="cm-rus-1587" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_tasks_archives to cm_obj_statuses</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_req_tasks"
+				baseTableName="cm_req_tasks_archives"
 				baseColumnNames="status_code"
-				constraintName="fk_cm_req_tasks_1"
+				constraintName="fk_cm_req_tasks_archives_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
@@ -125,45 +129,23 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1578" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_doc_files</comment>
-		<addColumn schemaName="apps"
-				   tableName="cm_doc_keg_cbee_a3h">
-			<column name="doc_name" type="varchar2(600)" remarks="Название документа"/>
-		</addColumn>
+	<changeSet id="cm-rus-1590" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_tasks_archives to cm_req_doc_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_tasks_archives"
+				baseColumnNames="task_id"
+				constraintName="fk_cm_req_tasks_archives_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_tasks"
+				referencedColumnNames="id"
+		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1579" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_doc_files</comment>
-		<addColumn schemaName="apps"
-				   tableName="cm_doc_keg_cte_a1h">
-			<column name="doc_name" type="varchar2(600)" remarks="Название документа"/>
-		</addColumn>
-	</changeSet>
-
-	<changeSet id="cm-rus-1580" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_doc_files</comment>
-		<addColumn schemaName="apps"
-				   tableName="cm_doc_keg_cte_a2h">
-			<column name="doc_name" type="varchar2(600)" remarks="Название документа"/>
-		</addColumn>
-	</changeSet>
-
-	<changeSet id="cm-rus-1581" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_doc_files</comment>
-		<addColumn schemaName="apps"
-				   tableName="cm_doc_keg_cte_a3h">
-			<column name="doc_name" type="varchar2(600)" remarks="Название документа"/>
-		</addColumn>
-	</changeSet>
-
-	<changeSet id="cm-rus-1582" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_doc_files</comment>
-		<addColumn schemaName="apps"
-				   tableName="cm_doc_keg_cte_a4h">
-			<column name="doc_name" type="varchar2(600)" remarks="Название документа"/>
-		</addColumn>
-	</changeSet>
 
 
 
