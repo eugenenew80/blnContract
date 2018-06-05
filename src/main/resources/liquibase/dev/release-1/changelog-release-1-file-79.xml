@@ -523,7 +523,7 @@
 							  tableName="cm_doc_keg_cte_a1l_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-16" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1670" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="last_update_date"
@@ -531,7 +531,7 @@
 							  tableName="cm_doc_keg_cte_a1l_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1665" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1671" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="create_by"
@@ -539,7 +539,7 @@
 							  tableName="cm_doc_keg_cbee_a3h"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1666" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1672" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="last_update_by"
@@ -547,7 +547,7 @@
 							  tableName="cm_doc_keg_cbee_a3h"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1667" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1673" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="create_date"
@@ -555,7 +555,7 @@
 							  tableName="cm_doc_keg_cbee_a3h"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1668" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1674" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="last_update_date"
@@ -563,7 +563,7 @@
 							  tableName="cm_doc_keg_cbee_a3h"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1669" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1675" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="create_by"
@@ -571,7 +571,7 @@
 							  tableName="cm_doc_keg_cbee_a3l_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1670" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1676" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="last_update_by"
@@ -579,7 +579,7 @@
 							  tableName="cm_doc_keg_cbee_a3l_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1671" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1677" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="create_date"
@@ -587,7 +587,7 @@
 							  tableName="cm_doc_keg_cbee_a3l_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1672" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1678" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="last_update_date"
