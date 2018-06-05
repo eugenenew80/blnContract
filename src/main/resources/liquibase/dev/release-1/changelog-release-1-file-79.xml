@@ -435,97 +435,97 @@
 						tableName="cm_doc_keg_cte_a1h"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1653" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_req_tasks</comment>
-		<addNotNullConstraint columnDataType="number"
-							  columnName="create_by"
-							  schemaName="apps"
-							  tableName="cm_doc_keg_cte_a1h"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1654" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_req_tasks</comment>
-		<addNotNullConstraint columnDataType="number"
-							  columnName="last_update_by"
-							  schemaName="apps"
-							  tableName="cm_doc_keg_cte_a1h"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1655" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_req_tasks</comment>
-		<addNotNullConstraint columnDataType="number"
-							  columnName="create_date"
-							  schemaName="apps"
-							  tableName="cm_doc_keg_cte_a1h"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1656" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_req_tasks</comment>
-		<addNotNullConstraint columnDataType="number"
-							  columnName="last_update_date"
-							  schemaName="apps"
-							  tableName="cm_doc_keg_cte_a1h"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1657" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_req_tasks</comment>
-		<addNotNullConstraint columnDataType="number"
-							  columnName="create_by"
-							  schemaName="apps"
-							  tableName="cm_doc_keg_cte_a1l"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1658" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_req_tasks</comment>
-		<addNotNullConstraint columnDataType="number"
-							  columnName="last_update_by"
-							  schemaName="apps"
-							  tableName="cm_doc_keg_cte_a1l"/>
-	</changeSet>
-
 	<changeSet id="cm-rus-1659" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
-							  columnName="create_date"
+							  columnName="create_by"
 							  schemaName="apps"
-							  tableName="cm_doc_keg_cte_a1l"/>
+							  tableName="cm_doc_keg_cte_a1h"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1660" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
-							  columnName="last_update_date"
+							  columnName="last_update_by"
 							  schemaName="apps"
-							  tableName="cm_doc_keg_cte_a1l"/>
+							  tableName="cm_doc_keg_cte_a1h"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1661" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
-							  columnName="create_by"
+							  columnName="create_date"
 							  schemaName="apps"
-							  tableName="cm_doc_keg_cte_a1l_tl"/>
+							  tableName="cm_doc_keg_cte_a1h"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1662" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
-							  columnName="last_update_by"
+							  columnName="last_update_date"
 							  schemaName="apps"
-							  tableName="cm_doc_keg_cte_a1l_tl"/>
+							  tableName="cm_doc_keg_cte_a1h"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1663" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
-							  columnName="create_date"
+							  columnName="create_by"
 							  schemaName="apps"
-							  tableName="cm_doc_keg_cte_a1l_tl"/>
+							  tableName="cm_doc_keg_cte_a1l"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1664" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
+							  columnName="last_update_by"
+							  schemaName="apps"
+							  tableName="cm_doc_keg_cte_a1l"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1665" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_tasks</comment>
+		<addNotNullConstraint columnDataType="number"
+							  columnName="create_date"
+							  schemaName="apps"
+							  tableName="cm_doc_keg_cte_a1l"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1666" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_tasks</comment>
+		<addNotNullConstraint columnDataType="number"
+							  columnName="last_update_date"
+							  schemaName="apps"
+							  tableName="cm_doc_keg_cte_a1l"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1667" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_tasks</comment>
+		<addNotNullConstraint columnDataType="number"
+							  columnName="create_by"
+							  schemaName="apps"
+							  tableName="cm_doc_keg_cte_a1l_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1668" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_tasks</comment>
+		<addNotNullConstraint columnDataType="number"
+							  columnName="last_update_by"
+							  schemaName="apps"
+							  tableName="cm_doc_keg_cte_a1l_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1669" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_tasks</comment>
+		<addNotNullConstraint columnDataType="number"
+							  columnName="create_date"
+							  schemaName="apps"
+							  tableName="cm_doc_keg_cte_a1l_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-16" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_tasks</comment>
+		<addNotNullConstraint columnDataType="number"
 							  columnName="last_update_date"
 							  schemaName="apps"
 							  tableName="cm_doc_keg_cte_a1l_tl"/>
@@ -563,7 +563,7 @@
 							  tableName="cm_doc_keg_cbee_a3h"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1665" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1669" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="create_by"
@@ -571,7 +571,7 @@
 							  tableName="cm_doc_keg_cbee_a3l_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1666" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1670" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="last_update_by"
@@ -579,7 +579,7 @@
 							  tableName="cm_doc_keg_cbee_a3l_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1667" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1671" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="create_date"
@@ -587,7 +587,7 @@
 							  tableName="cm_doc_keg_cbee_a3l_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1668" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1672" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_tasks</comment>
 		<addNotNullConstraint columnDataType="number"
 							  columnName="last_update_date"
