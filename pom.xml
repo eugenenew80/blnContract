@@ -165,6 +165,28 @@
                 <wildfly-password>1</wildfly-password>
             </properties>
         </profile>
+
+        <profile>
+            <id>biling</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <properties>
+                <driver>oracle.jdbc.OracleDriver</driver>
+                <url>jdbc:oracle:thin:@192.168.82.33:1521:blndprod</url>
+                <username>system</username>
+                <password>${settings.servers.server.ora.password}</password>
+                <scripts>dev</scripts>
+                <skipTests>true</skipTests>
+
+
+                <wildfly-server>10.9.44.240</wildfly-server>
+                <wildfly-port>9990</wildfly-port>
+                <wildfly-user>admin</wildfly-user>
+                <wildfly-password>1</wildfly-password>
+            </properties>
+        </profile>
     </profiles>
     
  	<dependencies>
