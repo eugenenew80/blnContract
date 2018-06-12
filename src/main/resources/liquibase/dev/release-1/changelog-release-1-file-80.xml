@@ -99,18 +99,10 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1689" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dict_time_zones</comment>
-		<insert schemaName="apps" tableName="dict_time_zones">
-			<column name="code" type="varchar2" value="UTC+1"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
 	<changeSet id="cm-rus-1690" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_time_zones</comment>
 		<insert schemaName="apps" tableName="dict_time_zones">
-			<column name="code" type="varchar2" value="UTC+5"/>
+			<column name="code" type="varchar2" value="UTC+1"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -118,17 +110,15 @@
 	<changeSet id="cm-rus-1691" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_time_zones</comment>
 		<insert schemaName="apps" tableName="dict_time_zones">
-			<column name="code" type="varchar2" value="UTC+6"/>
+			<column name="code" type="varchar2" value="UTC+5"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1692" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into dict_time_zones_tl</comment>
-		<insert schemaName="apps" tableName="dict_time_zones_tl">
-			<column name="code" type="varchar2" value="UTC+1"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="UTC+1 (среднеевропейское время)"/>
+		<comment>insert into dict_time_zones</comment>
+		<insert schemaName="apps" tableName="dict_time_zones">
+			<column name="code" type="varchar2" value="UTC+6"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -137,7 +127,7 @@
 		<comment>insert into dict_time_zones_tl</comment>
 		<insert schemaName="apps" tableName="dict_time_zones_tl">
 			<column name="code" type="varchar2" value="UTC+1"/>
-			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="UTC+1 (среднеевропейское время)"/>
 		</insert>
 		<rollback/>
@@ -146,9 +136,9 @@
 	<changeSet id="cm-rus-1694" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_time_zones_tl</comment>
 		<insert schemaName="apps" tableName="dict_time_zones_tl">
-			<column name="code" type="varchar2" value="UTC+5"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="UTC+5 (Западный + Актюбинский филиал)"/>
+			<column name="code" type="varchar2" value="UTC+1"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="UTC+1 (среднеевропейское время)"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -157,13 +147,23 @@
 		<comment>insert into dict_time_zones_tl</comment>
 		<insert schemaName="apps" tableName="dict_time_zones_tl">
 			<column name="code" type="varchar2" value="UTC+5"/>
-			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="UTC+5 (Западный + Актюбинский филиал)"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1696" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_time_zones_tl</comment>
+		<insert schemaName="apps" tableName="dict_time_zones_tl">
+			<column name="code" type="varchar2" value="UTC+5"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="UTC+5 (Западный + Актюбинский филиал)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1697" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_time_zones_tl</comment>
 		<insert schemaName="apps" tableName="dict_time_zones_tl">
 			<column name="code" type="varchar2" value="UTC+6"/>
@@ -173,7 +173,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1697" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1698" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into dict_time_zones_tl</comment>
 		<insert schemaName="apps" tableName="dict_time_zones_tl">
 			<column name="code" type="varchar2" value="UTC+6"/>
@@ -183,7 +183,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1698" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1699" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: media_connection_config to dict_time_zones</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
