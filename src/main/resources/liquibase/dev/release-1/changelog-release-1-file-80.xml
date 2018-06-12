@@ -188,7 +188,7 @@
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="media_connection_config"
-				baseColumnNames="code"
+				baseColumnNames="time_zone"
 				constraintName="fk_media_connection_config_1"
 				deferrable="true"
 				initiallyDeferred="true"
