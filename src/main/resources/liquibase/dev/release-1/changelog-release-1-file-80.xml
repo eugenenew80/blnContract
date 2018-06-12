@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1685" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_time_zones</comment>
+		<createTable tableName="dict_time_zones" schemaName="apps" remarks="Справочник часовых поясов">
+			<column name="code" type="varchar2(10)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1686" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_time_zones</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_dict_time_zones"
+				schemaName="apps"
+				tableName="dict_time_zones"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1687" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_time_zones_tl</comment>
+		<createTable tableName="dict_time_zones_tl" schemaName="apps" remarks="Переводы Справочник Заголовки задач">
+			<column name="code" type="varchar2(10)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1688" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_time_zones_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_dict_time_zones_tl"
+				schemaName="apps"
+				tableName="dict_time_zones_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1689" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_time_zones_tl to dict_time_zones</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_time_zones_tl"
+				baseColumnNames="code"
+				constraintName="fk_dict_time_zones_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_time_zones"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1689" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_time_zones</comment>
+		<insert schemaName="apps" tableName="dict_time_zones">
+			<column name="code" type="varchar2" value="UTC+1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1690" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_time_zones</comment>
+		<insert schemaName="apps" tableName="dict_time_zones">
+			<column name="code" type="varchar2" value="UTC+5"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1691" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_time_zones</comment>
+		<insert schemaName="apps" tableName="dict_time_zones">
+			<column name="code" type="varchar2" value="UTC+6"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1692" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_time_zones_tl</comment>
+		<insert schemaName="apps" tableName="dict_time_zones_tl">
+			<column name="code" type="varchar2" value="UTC+1"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="UTC+1 (среднеевропейское время)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1693" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_time_zones_tl</comment>
+		<insert schemaName="apps" tableName="dict_time_zones_tl">
+			<column name="code" type="varchar2" value="UTC+1"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="UTC+1 (среднеевропейское время)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1694" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_time_zones_tl</comment>
+		<insert schemaName="apps" tableName="dict_time_zones_tl">
+			<column name="code" type="varchar2" value="UTC+5"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="UTC+5 (Западный + Актюбинский филиал)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1695" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_time_zones_tl</comment>
+		<insert schemaName="apps" tableName="dict_time_zones_tl">
+			<column name="code" type="varchar2" value="UTC+5"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="UTC+5 (Западный + Актюбинский филиал)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1696" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_time_zones_tl</comment>
+		<insert schemaName="apps" tableName="dict_time_zones_tl">
+			<column name="code" type="varchar2" value="UTC+6"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="UTC+6 (время Астаны)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1697" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dict_time_zones_tl</comment>
+		<insert schemaName="apps" tableName="dict_time_zones_tl">
+			<column name="code" type="varchar2" value="UTC+6"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="UTC+6 (время Астаны)"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1698" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: media_connection_config to dict_time_zones</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="media_connection_config"
+				baseColumnNames="code"
+				constraintName="fk_media_connection_config_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_time_zones"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+</databaseChangeLog>

@@ -595,4 +595,40 @@
 							  tableName="cm_doc_keg_cbee_a3l_tl"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1679" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_tasks</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_tasks">
+			<column name="task_order" type="varchar2(50)" remarks="Порядок выполнения"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1680" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="bp1_id"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a3h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1681" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="bp2_id"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a3h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1683" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="bp1_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1684" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="bp2_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a3h_tl"/>
+	</changeSet>
+
 </databaseChangeLog>

@@ -169,7 +169,7 @@
         <profile>
             <id>biling</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
 
             <properties>
