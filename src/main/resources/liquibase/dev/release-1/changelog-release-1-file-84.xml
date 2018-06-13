@@ -196,4 +196,14 @@
 				referencedColumnNames="code"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1754" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column ORDER to PORDER in CM_OBJ_STATUSES</comment>
+		<renameColumn columnDataType="number"
+					  newColumnName="porder"
+					  oldColumnName="order"
+					  remarks="Последовательность"
+					  schemaName="apps"
+					  tableName="cm_obj_statuses"/>
+	</changeSet>
 </databaseChangeLog>
