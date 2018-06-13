@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1714" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_consideration_docs</comment>
+		<createTable tableName="cm_req_consideration_docs" schemaName="apps" remarks="Запрос на рассмотрение документов">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="status_code" type="varchar2(30)" remarks="Код статуса запроса">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания запроса" defaultValueComputed="CURRENT_TIMESTAMP">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="end_date" type="TIMESTAMP" remarks="Дата завершения запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="send_date" type="TIMESTAMP" remarks="Дата отправки">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="end_consider_date" type="TIMESTAMP" remarks="Рассмотреть до">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="send_user_id" type="number" remarks="Ид отправителя">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable
+		>
+	</changeSet>
+
+	<changeSet id="cm-rus-1718" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_consideration_docs</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_consideration_docs"
+				schemaName="apps"
+				tableName="cm_req_consideration_docs"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1719" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_consideration_docs_tl</comment>
+		<createTable tableName="cm_req_consideration_docs_tl" schemaName="apps" remarks="Перевод Запрос на рассмотрение документов">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="consideration_doc_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="text" type="varchar2(1000)" remarks="Текст запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1720" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_consideration_docs_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_consideration_docs_tl"
+				schemaName="apps"
+				tableName="cm_req_consideration_docs_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1721" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_consideration_docs_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_req_consideration_docs_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1722" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_req_consideration_docs_tl</comment>
+		<addUniqueConstraint
+				columnNames="consideration_doc_id,lang"
+				constraintName="uk_cm_req_consideration_docs_tl"
+				schemaName="apps"
+				tableName="cm_req_consideration_docs_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1723" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_consideration_docs_tl to cm_req_consideration_docs</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_consideration_docs_tl"
+				baseColumnNames="consideration_doc_id"
+				constraintName="fk_cm_req_consideration_docs_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_consideration_docs"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1724" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_consideration_docs to cm_obj_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_consideration_docs"
+				baseColumnNames="status_code"
+				constraintName="fk_cm_req_consideration_docs_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_obj_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1725" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column</comment>
+		<dropColumn columnName="status_id"
+					schemaName="apps"
+					tableName="cm_doc_rfc"/>
+	</changeSet>
+</databaseChangeLog>

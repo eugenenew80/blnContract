@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1700" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: media_metering_steps</comment>
+		<createTable tableName="media_metering_steps" schemaName="apps" remarks="Справочник Шаги измерений">
+			<column name="code" type="varchar2(10)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1701" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: media_metering_steps</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_media_metering_steps"
+				schemaName="apps"
+				tableName="media_metering_steps"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1702" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: media_metering_steps_tl</comment>
+		<createTable tableName="media_metering_steps_tl" schemaName="apps" remarks="Переводы Справочник Шаги измерений">
+			<column name="code" type="varchar2(10)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1703" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: media_metering_steps_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_media_metering_steps_tl"
+				schemaName="apps"
+				tableName="media_metering_steps_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1704" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: media_metering_steps_tl to media_metering_steps</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="media_metering_steps_tl"
+				baseColumnNames="code"
+				constraintName="fk_media_metering_steps_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="media_metering_steps"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1705" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into media_metering_steps</comment>
+		<insert schemaName="apps" tableName="media_metering_steps">
+			<column name="code" type="varchar2" value="900"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1706" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into media_metering_steps</comment>
+		<insert schemaName="apps" tableName="media_metering_steps">
+			<column name="code" type="varchar2" value="3600"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1707" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into media_metering_steps</comment>
+		<insert schemaName="apps" tableName="media_metering_steps">
+			<column name="code" type="varchar2" value="86400"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1708" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into media_metering_steps_tl</comment>
+		<insert schemaName="apps" tableName="media_metering_steps_tl">
+			<column name="code" type="varchar2" value="900"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="15 минут"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1709" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into media_metering_steps_tl</comment>
+		<insert schemaName="apps" tableName="media_metering_steps_tl">
+			<column name="code" type="varchar2" value="900"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="15 минут"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1710" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into media_metering_steps_tl</comment>
+		<insert schemaName="apps" tableName="media_metering_steps_tl">
+			<column name="code" type="varchar2" value="3600"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="1 час"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1711" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into media_metering_steps_tl</comment>
+		<insert schemaName="apps" tableName="media_metering_steps_tl">
+			<column name="code" type="varchar2" value="3600"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="1 час"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1712" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into media_metering_steps_tl</comment>
+		<insert schemaName="apps" tableName="media_metering_steps_tl">
+			<column name="code" type="varchar2" value="86400"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Сутки"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1713" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into media_metering_steps_tl</comment>
+		<insert schemaName="apps" tableName="media_metering_steps_tl">
+			<column name="code" type="varchar2" value="86400"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Сутки"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+
+</databaseChangeLog>
