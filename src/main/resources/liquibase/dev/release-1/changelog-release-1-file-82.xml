@@ -165,6 +165,10 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1725" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<preConditions onFail="MARK_RAN" >
+			<columnExists schemaName="apps" tableName="cm_doc_rfc" columnName="status_id" />
+		</preConditions>
+
 		<comment>drop column</comment>
 		<dropColumn columnName="status_id"
 					schemaName="apps"
