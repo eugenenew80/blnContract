@@ -25,7 +25,7 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="consider_result_code" type="varchar2(10)" remarks="Код результата">
+			<column name="consider_result_code" type="varchar2(30)" remarks="Код результата">
 				<constraints nullable="true"/>
 			</column>
 

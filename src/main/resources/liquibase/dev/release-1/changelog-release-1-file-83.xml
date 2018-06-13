@@ -9,7 +9,7 @@
 	<changeSet id="cm-rus-1726" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_req_consideration_results</comment>
 		<createTable tableName="cm_req_consideration_results" schemaName="apps" remarks="Справочник результаты согласования">
-			<column name="code" type="varchar2(10)" remarks="Код">
+			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
 
@@ -43,7 +43,7 @@
 	<changeSet id="cm-rus-1728" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_req_consideration_results_tl</comment>
 		<createTable tableName="cm_req_consideration_results_tl" schemaName="apps" remarks="Переводы Справочник результаты согласования">
-			<column name="code" type="varchar2(10)" remarks="Код">
+			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
 			
