@@ -191,7 +191,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1739" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1741" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_consideration_results_tl</comment>
 		<insert schemaName="apps" tableName="cm_req_consideration_results_tl">
 			<column name="code" type="varchar2" value="NOT_APPROVED"/>
@@ -201,7 +201,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1740" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1742" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_consideration_results_tl</comment>
 		<insert schemaName="apps" tableName="cm_req_consideration_results_tl">
 			<column name="code" type="varchar2" value="NOT_APPROVED"/>

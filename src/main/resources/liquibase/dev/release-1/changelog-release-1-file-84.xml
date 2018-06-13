@@ -6,7 +6,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-1741" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1744" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_req_con_doc_routes</comment>
 		<createTable tableName="cm_req_con_doc_routes" schemaName="apps" remarks="Запрос на рассмотрение документов: маршрут">
 			<column name="id" type="number" remarks="Идентификатор">
@@ -55,7 +55,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1742" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1745" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_req_con_doc_routes</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -64,7 +64,7 @@
 				tableName="cm_req_con_doc_routes"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1743" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1746" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: cm_req_con_doc_route_orders</comment>
 		<createSequence
 				incrementBy="1"
@@ -73,7 +73,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1744" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1747" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_req_con_doc_route_orders</comment>
 		<createTable tableName="cm_req_con_doc_route_orders" schemaName="apps" remarks="Запрос на рассмотрение документов: порядок маршрутов">
 			<column name="id" type="number" remarks="Идентификатор">
@@ -111,7 +111,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1745" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1748" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_req_con_doc_route_orders</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -120,7 +120,7 @@
 				tableName="cm_req_con_doc_route_orders"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1746" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1749" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: cm_req_con_doc_route_orders</comment>
 		<createSequence
 				incrementBy="1"
@@ -129,7 +129,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1747" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1750" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_con_doc_route_orders to cm_req_con_doc_routes</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -146,7 +146,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1748" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1751" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_con_doc_route_orders to cm_req_con_doc_routes</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -163,7 +163,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1749" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1752" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_con_doc_routes to cm_req_consideration_docs</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -180,7 +180,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1750" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1753" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_req_con_doc_routes to cm_req_consideration_results</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
