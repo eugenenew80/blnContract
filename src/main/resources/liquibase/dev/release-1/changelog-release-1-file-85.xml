@@ -107,7 +107,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1732" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1762" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_con_approval_condition</comment>
 		<insert schemaName="apps" tableName="cm_req_con_approval_condition">
 			<column name="code" type="varchar2" value="PERCENT"/>
@@ -115,7 +115,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1735" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1763" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_con_approval_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_req_con_approval_condition_tl">
 			<column name="code" type="varchar2" value="UNANIMOUSLY"/>
@@ -125,7 +125,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1736" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1764" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_con_approval_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_req_con_approval_condition_tl">
 			<column name="code" type="varchar2" value="UNANIMOUSLY"/>
@@ -135,7 +135,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1737" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1765" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_con_approval_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_req_con_approval_condition_tl">
 			<column name="code" type="varchar2" value="PERCENT"/>
@@ -145,7 +145,7 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1738" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1766" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_req_con_approval_condition_tl</comment>
 		<insert schemaName="apps" tableName="cm_req_con_approval_condition_tl">
 			<column name="code" type="varchar2" value="PERCENT"/>
