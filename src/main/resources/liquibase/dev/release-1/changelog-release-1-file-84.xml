@@ -197,7 +197,7 @@
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="cm_req_con_doc_routes"
-				baseColumnNames="consider_result_code"
+				baseColumnNames="result_code"
 				constraintName="fk_cm_req_con_doc_routes_2"
 				deferrable="true"
 				initiallyDeferred="true"
