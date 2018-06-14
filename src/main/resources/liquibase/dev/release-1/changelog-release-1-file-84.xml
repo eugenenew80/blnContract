@@ -13,7 +13,11 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="cm_req_consideration_doc_id" type="number" remarks="Идентификатор запроса">
+			<column name="line_number" type="number" remarks="порядок вывода">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="request_id" type="number" remarks="Идентификатор запроса">
 				<constraints nullable="false"/>
 			</column>
 
@@ -21,19 +25,23 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="end_date" type="TIMESTAMP" remarks="Срок">
+			<column name="consider_before_date" type="TIMESTAMP" remarks="Срок">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="consider_result_code" type="varchar2(30)" remarks="Код результата">
+			<column name="is_parallel" type="number" remarks="Последовательное рассмотрение">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="line_number" type="number" remarks="порядок вывода">
+			<column name="result_code" type="varchar2(30)" remarks="Код результата расмотрения">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="is_consistent_consider" type="number" remarks="Последовательное рассмотрение">
+			<column name="comment" type="varchar2(30)" remarks="Коментарий ">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="consider_date" type="TIMESTAMP" remarks="Дата рассмотрения">
 				<constraints nullable="true"/>
 			</column>
 
@@ -77,6 +85,10 @@
 		<comment>Creating table: cm_req_con_doc_route_orders</comment>
 		<createTable tableName="cm_req_con_doc_route_orders" schemaName="apps" remarks="Запрос на рассмотрение документов: порядок маршрутов">
 			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_id" type="number" remarks="Идентификатор маршрута">
 				<constraints nullable="false"/>
 			</column>
 
@@ -187,6 +199,23 @@
 				baseTableName="cm_req_con_doc_routes"
 				baseColumnNames="consider_result_code"
 				constraintName="fk_cm_req_con_doc_routes_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_consideration_results"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1754" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_consideration_docs to cm_req_consideration_results</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_con_doc_route_orders"
+				baseColumnNames="request_id"
+				constraintName="fk_cm_req_con_doc_route_orders_3"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"

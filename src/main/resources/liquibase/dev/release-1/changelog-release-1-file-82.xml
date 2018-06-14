@@ -17,23 +17,27 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="req_create_date" type="TIMESTAMP" remarks="Дата создания запроса" defaultValueComputed="CURRENT_TIMESTAMP">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="end_date" type="TIMESTAMP" remarks="Дата завершения запроса">
-				<constraints nullable="true"/>
-			</column>
-
 			<column name="send_date" type="TIMESTAMP" remarks="Дата отправки">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="end_consider_date" type="TIMESTAMP" remarks="Рассмотреть до">
+			<column name="send_user_id" type="number" remarks="Ид отправителя">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="send_user_id" type="number" remarks="Ид отправителя">
+			<column name="consider_before_date" type="TIMESTAMP" remarks="Рассмотреть до">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="approval_threshold" type="number" remarks="Порог утверждения">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="approval_code" type="number" remarks="Код условия для удвердения">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_notify_about_reading" type="number" remarks="Уведомлять о прочтении">
 				<constraints nullable="true"/>
 			</column>
 
@@ -76,7 +80,7 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="consideration_doc_id" type="number" remarks="Ссылка на родительскую запись">
+			<column name="request_id" type="number" remarks="Ссылка на родительскую запись">
 				<constraints nullable="false"/>
 			</column>
 
@@ -85,19 +89,19 @@
 			</column>
 
 			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
+				<constraints nullable="false"/>
 			</column>
 
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
+				<constraints nullable="false"/>
 			</column>
 
 			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
+				<constraints nullable="false"/>
 			</column>
 
 			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
+				<constraints nullable="false"/>
 			</column>
 
 		</createTable>
@@ -124,7 +128,7 @@
 	<changeSet id="cm-rus-1722" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating unique key for table: cm_req_consideration_docs_tl</comment>
 		<addUniqueConstraint
-				columnNames="consideration_doc_id,lang"
+				columnNames="request_id,lang"
 				constraintName="uk_cm_req_consideration_docs_tl"
 				schemaName="apps"
 				tableName="cm_req_consideration_docs_tl"/>
@@ -135,7 +139,7 @@
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="cm_req_consideration_docs_tl"
-				baseColumnNames="consideration_doc_id"
+				baseColumnNames="request_id"
 				constraintName="fk_cm_req_consideration_docs_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1756" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_con_approval_condition</comment>
+		<createTable tableName="cm_req_con_approval_condition" schemaName="apps" remarks="Справочник условия утверждения">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1757" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_con_approval_condition</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_cm_req_con_approval_condition"
+				schemaName="apps"
+				tableName="cm_req_con_approval_condition"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1758" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_con_approval_condition_tl</comment>
+		<createTable tableName="cm_req_con_approval_condition_tl" schemaName="apps" remarks="Переводы Справочник условия утверждения">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1759" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_con_approval_condition_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_cm_req_con_approval_condition_tl"
+				schemaName="apps"
+				tableName="cm_req_con_approval_condition_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1760" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_con_approval_condition_tl to cm_req_con_approval_condition</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_con_approval_condition_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_req_con_approval_condition_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_con_approval_condition"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1761" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_con_approval_condition</comment>
+		<insert schemaName="apps" tableName="cm_req_con_approval_condition">
+			<column name="code" type="varchar2" value="UNANIMOUSLY"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1732" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_con_approval_condition</comment>
+		<insert schemaName="apps" tableName="cm_req_con_approval_condition">
+			<column name="code" type="varchar2" value="PERCENT"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1735" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_con_approval_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_con_approval_condition_tl">
+			<column name="code" type="varchar2" value="UNANIMOUSLY"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Единогласно"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1736" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_con_approval_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_con_approval_condition_tl">
+			<column name="code" type="varchar2" value="UNANIMOUSLY"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Единогласно"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1737" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_con_approval_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_con_approval_condition_tl">
+			<column name="code" type="varchar2" value="PERCENT"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Процент"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1738" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_req_con_approval_condition_tl</comment>
+		<insert schemaName="apps" tableName="cm_req_con_approval_condition_tl">
+			<column name="code" type="varchar2" value="PERCENT"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Процент"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+</databaseChangeLog>
