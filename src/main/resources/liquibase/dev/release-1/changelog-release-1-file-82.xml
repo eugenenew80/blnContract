@@ -173,5 +173,6 @@
 		<dropColumn columnName="status_id"
 					schemaName="apps"
 					tableName="cm_doc_rfc"/>
+		<rollback/>
 	</changeSet>
 </databaseChangeLog>

@@ -197,16 +197,6 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1754" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>rename column ORDER to PORDER in CM_OBJ_STATUSES</comment>
-		<renameColumn columnDataType="number"
-					  newColumnName="porder"
-					  oldColumnName="order"
-					  remarks="Последовательность"
-					  schemaName="apps"
-					  tableName="cm_obj_statuses"/>
-	</changeSet>
-
 	<changeSet id="cm-rus-1755" logicalFilePath="path-independent" author="ruslan">
 		<comment>comment on column APPS.MEDIA_WORK_LIST_HEADERS.PARAM_TYPE</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
