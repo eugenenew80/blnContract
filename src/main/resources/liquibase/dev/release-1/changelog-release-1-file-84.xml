@@ -210,7 +210,7 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1754" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_req_consideration_docs to cm_req_consideration_results</comment>
+		<comment>Creating foreign constraint: cm_req_con_doc_route_orders to cm_req_consideration_docs</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="cm_req_con_doc_route_orders"
@@ -221,8 +221,8 @@
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_req_consideration_results"
-				referencedColumnNames="code"
+				referencedTableName="cm_req_consideration_docs"
+				referencedColumnNames="id"
 		/>
 	</changeSet>
 
