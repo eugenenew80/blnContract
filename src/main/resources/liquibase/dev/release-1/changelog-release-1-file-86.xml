@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1794" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_pro_cldr_color_types</comment>
+		<createTable tableName="cm_pro_cldr_color_types" schemaName="apps" remarks="Справочник производственный календарь: цвет дней недели">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1795" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_pro_cldr_color_types</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_cm_pro_cldr_color_types"
+				schemaName="apps"
+				tableName="cm_pro_cldr_color_types"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1796" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_pro_cldr_color_types_tl</comment>
+		<createTable tableName="cm_pro_cldr_color_types_tl" schemaName="apps" remarks="Переводы производственный календарь: цвет дней недели">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+			
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1798" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_pro_cldr_color_types_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_cm_pro_cldr_color_types_tl"
+				schemaName="apps"
+				tableName="cm_pro_cldr_color_types_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1799" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_pro_cldr_color_types_tl to cm_pro_cldr_color_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_pro_cldr_color_types_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_pro_cldr_color_types_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_pro_cldr_color_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+</databaseChangeLog>

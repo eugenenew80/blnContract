@@ -154,4 +154,262 @@
 		</insert>
 		<rollback/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1767" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_obj_status_groups</comment>
+		<insert schemaName="apps" tableName="cm_obj_status_groups">
+			<column name="code" type="varchar2" value="REQUEST_FOR_CON_DOC"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1768" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_obj_status_groups_tl</comment>
+		<insert schemaName="apps" tableName="cm_obj_status_groups_tl">
+			<column name="code" type="varchar2" value="REQUEST_FOR_CON_DOC"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Статусы Запроса на расмотрение документов"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1769" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_obj_status_groups_tl</comment>
+		<insert schemaName="apps" tableName="cm_obj_status_groups_tl">
+			<column name="code" type="varchar2" value="REQUEST_FOR_CON_DOC"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Статусы Запроса на расмотрение документов"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1770" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into CM_OBJ_STATUSES</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses">
+			<column name="GROUP_CODE" type="varchar2" value="REQUEST_FOR_CON_DOC"/>
+			<column name="code" type="varchar2" value="REQ_CON_DOC_SENT"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1771" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_obj_statuses</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses_tl">
+			<column name="code" type="varchar2" value="REQ_CON_DOC_SENT"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="отправлен на согласование"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1772" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_obj_statuses</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses_tl">
+			<column name="code" type="varchar2" value="REQ_CON_DOC_SENT"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="отправлен на согласование"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1773" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into CM_OBJ_STATUSES</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses">
+			<column name="GROUP_CODE" type="varchar2" value="REQUEST_FOR_CON_DOC"/>
+			<column name="code" type="varchar2" value="REQ_CON_DOC_AGREED"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1774" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_obj_statuses</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses_tl">
+			<column name="code" type="varchar2" value="REQ_CON_DOC_AGREED"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Согласован"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1775" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_obj_statuses</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses_tl">
+			<column name="code" type="varchar2" value="REQ_CON_DOC_AGREED"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Согласован"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1776" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into CM_OBJ_STATUSES</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses">
+			<column name="GROUP_CODE" type="varchar2" value="REQUEST_FOR_CON_DOC"/>
+			<column name="code" type="varchar2" value="REQ_CON_DOC_NOT_AGREED"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1777" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_obj_statuses</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses_tl">
+			<column name="code" type="varchar2" value="REQ_CON_DOC_NOT_AGREED"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Не согласован"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1778" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_obj_statuses</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses_tl">
+			<column name="code" type="varchar2" value="REQ_CON_DOC_NOT_AGREED"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Не согласован"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1779" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into CM_OBJ_STATUSES</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses">
+			<column name="GROUP_CODE" type="varchar2" value="REQUEST_FOR_CON_DOC"/>
+			<column name="code" type="varchar2" value="REQ_CON_DOC_OVERDUE"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1780" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_obj_statuses</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses_tl">
+			<column name="code" type="varchar2" value="REQ_CON_DOC_OVERDUE"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Просрочен"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1781" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_obj_statuses</comment>
+		<insert schemaName="apps" tableName="cm_obj_statuses_tl">
+			<column name="code" type="varchar2" value="REQ_CON_DOC_OVERDUE"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Просрочен"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1782" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_admissible_estimate_accruals" type="number" remarks="Допустимы оценочные начисления"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1783" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_rfc</comment>
+		<modifyDataType columnName="forfeit_day_delay"
+						newDataType="number"
+						schemaName="apps"
+						tableName="cm_doc_rfc"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1784" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_rfc</comment>
+		<modifyDataType columnName="forfeit_max_percent"
+						newDataType="number"
+						schemaName="apps"
+						tableName="cm_doc_rfc"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1785" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in mdfem_history</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_history">
+			<column name="act_doc_number" type="varchar2(50)" remarks="Номер акта замены "/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1786" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in mdfem_history</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_history">
+			<column name="act_date" type="TIMESTAMP" remarks="Дата акта замены"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1787" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in mdfem_history</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_history">
+			<column name="metering_seal_number" type="varchar2(30)" remarks="Номер пломбы (счетчика)"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1788" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in mdfem_history</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_history">
+			<column name="is_in_loads" type="varchar2(30)" remarks="При замене находилось под нагрузкой (0-нет, 1-да)"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1789" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in mdfem_history</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_history">
+			<column name="undercount_header_id" type="number" remarks=" ID акта недоучета"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1790" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in mdfem_history</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_history">
+			<column name="count_of_under_headers" type="number" remarks=" ID акта недоучета"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1791" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in mdfem_history</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_history">
+			<column name="parent_id" type="number" remarks="ID предыдущей записи "/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1792" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_history to mdfem_undercount_header</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_history"
+				baseColumnNames="undercount_header_id"
+				constraintName="fk_mdfem_history_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_undercount_header"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1793" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_history to mdfem_history</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_history"
+				baseColumnNames="parent_id"
+				constraintName="fk_mdfem_history_6"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_history"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
 </databaseChangeLog>
