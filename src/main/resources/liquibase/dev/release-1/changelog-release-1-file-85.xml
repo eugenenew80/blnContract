@@ -412,4 +412,13 @@
 				referencedColumnNames="id"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1793-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in mdfem_history</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3h">
+			<column name="doc_type_id" type="number" remarks="Тип приложения"/>
+		</addColumn>
+	</changeSet>
+
 </databaseChangeLog>
