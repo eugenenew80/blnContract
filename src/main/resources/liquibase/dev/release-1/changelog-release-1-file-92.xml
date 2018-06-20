@@ -187,7 +187,7 @@
 				baseTableSchemaName="apps"
 				baseTableName="cm_pro_cldr_transfer"
 				baseColumnNames="day_type_code"
-				constraintName="fk_cm_pro_cldr_transfer_1"
+				constraintName="fk_cm_pro_cldr_transfer_2"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
