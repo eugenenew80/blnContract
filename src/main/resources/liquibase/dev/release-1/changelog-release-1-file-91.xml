@@ -6,7 +6,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-1836" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1840" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_pro_cldr_holiday_schedule</comment>
 		<createTable tableName="cm_pro_cldr_holiday_schedule" schemaName="apps" remarks="производственный календарь: праздничные дни">
 			<column name="id" type="number" remarks="Идентификатор">
@@ -56,7 +56,7 @@
 	</changeSet>
 
 
-	<changeSet id="cm-rus-1837" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1841" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_pro_cldr_holiday_schedule_tl</comment>
 		<createTable tableName="cm_pro_cldr_holiday_schedule_tl" schemaName="apps" remarks="Перевод производственный календарь: праздничные дни">
 			<column name="id" type="number" remarks="Идентификатор">
@@ -98,7 +98,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1838" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1842" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_pro_cldr_holiday_schedule_tl</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -107,7 +107,7 @@
 				tableName="cm_pro_cldr_holiday_schedule_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1839" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1843" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: cm_pro_cldr_holiday_schedule_tl</comment>
 		<createSequence
 				incrementBy="1"
@@ -116,7 +116,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1840" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1844" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating unique key for table: cm_pro_cldr_holiday_schedule_tl</comment>
 		<addUniqueConstraint
 				columnNames="schedule_id,lang"
@@ -125,7 +125,7 @@
 				tableName="cm_pro_cldr_holiday_schedule_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1841" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1845" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_pro_cldr_holiday_schedule_tl to cm_pro_cldr_holiday_schedule</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -142,7 +142,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1843" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1846" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_pro_cldr_holiday_schedule</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -151,7 +151,7 @@
 				tableName="cm_pro_cldr_holiday_schedule"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1844" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1847" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: cm_req_con_doc_route_orders</comment>
 		<createSequence
 				incrementBy="1"
@@ -160,7 +160,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1845" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1848" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_pro_cldr_holiday_schedule to cm_pro_cldr_headers</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
