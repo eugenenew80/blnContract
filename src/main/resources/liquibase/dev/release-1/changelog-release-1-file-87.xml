@@ -205,7 +205,7 @@
 		<comment>insert into cm_pro_cldr_day_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types_tl">
 			<column name="code" type="varchar2" value="SHIFT_WORK_DAY"/>
-			<column name="lang" type="varchar2" value="RU"/>
+			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Перенесенные рабочие дни"/>
 		</insert>
 		<rollback/>
