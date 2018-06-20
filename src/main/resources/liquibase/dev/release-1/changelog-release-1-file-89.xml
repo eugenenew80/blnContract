@@ -182,20 +182,4 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1851" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_pro_cldr_lines to cm_pro_cldr_color_types</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="cm_pro_cldr_lines"
-				baseColumnNames="day_color_code"
-				constraintName="fk_cm_pro_cldr_lines_3"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="cm_pro_cldr_color_types"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
 </databaseChangeLog>
