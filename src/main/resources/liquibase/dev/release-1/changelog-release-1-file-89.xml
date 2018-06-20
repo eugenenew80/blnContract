@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1841" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_pro_cldr_lines</comment>
+		<createTable tableName="cm_pro_cldr_lines" schemaName="apps" remarks="производственный календарь: строки">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Ид заголовка">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="full_date" type="date" remarks="Дата календаря">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="day_type_code" type="varchar2(30)" remarks="тип дня недели">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1842" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_pro_cldr_lines</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_pro_cldr_lines"
+				schemaName="apps"
+				tableName="cm_pro_cldr_lines"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1843" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_con_doc_route_orders</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_pro_cldr_lines_s"
+				startValue="1"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-1844" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_pro_cldr_lines_tl</comment>
+		<createTable tableName="cm_pro_cldr_lines_tl" schemaName="apps" remarks="Перевод производственный календарь: строки">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="line_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="day_nm_lng" type="varchar2(50)" remarks="наименование дня недели">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="mon" type="varchar2(17)" remarks="Месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1845" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_pro_cldr_lines_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_pro_cldr_lines_tl"
+				schemaName="apps"
+				tableName="cm_pro_cldr_lines_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1846" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_pro_cldr_lines_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_pro_cldr_lines_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1847" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_pro_cldr_lines_tl</comment>
+		<addUniqueConstraint
+				columnNames="line_id,lang"
+				constraintName="uk_cm_pro_cldr_lines_tl"
+				schemaName="apps"
+				tableName="cm_pro_cldr_lines_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1848" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_pro_cldr_lines_tl to cm_pro_cldr_lines</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_pro_cldr_lines_tl"
+				baseColumnNames="line_id"
+				constraintName="fk_cm_pro_cldr_lines_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_pro_cldr_lines"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1849" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_pro_cldr_lines to cm_pro_cldr_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_pro_cldr_lines"
+				baseColumnNames="header_id"
+				constraintName="fk_cm_pro_cldr_lines_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_pro_cldr_headers"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1850" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_pro_cldr_lines to cm_pro_cldr_day_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_pro_cldr_lines"
+				baseColumnNames="day_type_code"
+				constraintName="fk_cm_pro_cldr_lines_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_pro_cldr_day_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1851" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_pro_cldr_lines to cm_pro_cldr_color_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_pro_cldr_lines"
+				baseColumnNames="day_color_code"
+				constraintName="fk_cm_pro_cldr_lines_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_pro_cldr_color_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+</databaseChangeLog>
