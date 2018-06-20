@@ -130,6 +130,15 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1854" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_pro_cldr_transfer</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_pro_cldr_transfer"
+				schemaName="apps"
+				tableName="cm_pro_cldr_transfer"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1855" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_pro_cldr_transfer_tl to cm_pro_cldr_transfer</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -144,15 +153,6 @@
 				referencedTableName="cm_pro_cldr_transfer"
 				referencedColumnNames="id"
 		/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1855" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_pro_cldr_transfer</comment>
-		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_pro_cldr_transfer"
-				schemaName="apps"
-				tableName="cm_pro_cldr_transfer"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1856" logicalFilePath="path-independent" author="ruslan" context="dev">
