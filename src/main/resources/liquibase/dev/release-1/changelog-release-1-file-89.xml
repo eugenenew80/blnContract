@@ -74,7 +74,7 @@
 	</changeSet>
 
 
-	<changeSet id="cm-rus-1820" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1828" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_pro_cldr_lines_tl</comment>
 		<createTable tableName="cm_pro_cldr_lines_tl" schemaName="apps" remarks="Перевод производственный календарь: строки">
 			<column name="id" type="number" remarks="Идентификатор">
@@ -120,7 +120,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1821" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1829" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_pro_cldr_lines_tl</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -129,7 +129,7 @@
 				tableName="cm_pro_cldr_lines_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1822" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1830" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: cm_pro_cldr_lines_tl</comment>
 		<createSequence
 				incrementBy="1"
@@ -138,21 +138,21 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1823" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1831" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating unique key for table: cm_pro_cldr_lines_tl</comment>
 		<addUniqueConstraint
-				columnNames="header_id,lang"
+				columnNames="line_id,lang"
 				constraintName="uk_cm_pro_cldr_lines_tl"
 				schemaName="apps"
 				tableName="cm_pro_cldr_lines_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1824" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1832" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_pro_cldr_lines_tl to cm_pro_cldr_lines</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="cm_pro_cldr_lines_tl"
-				baseColumnNames="header_id"
+				baseColumnNames="line_id"
 				constraintName="fk_cm_pro_cldr_lines_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
@@ -161,6 +161,57 @@
 				referencedTableSchemaName="apps"
 				referencedTableName="cm_pro_cldr_lines"
 				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1833" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_pro_cldr_lines to cm_pro_cldr_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_pro_cldr_lines"
+				baseColumnNames="header_id"
+				constraintName="fk_cm_pro_cldr_lines_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_pro_cldr_headers"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1834" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_pro_cldr_lines to cm_pro_cldr_day_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_pro_cldr_lines"
+				baseColumnNames="day_type_code"
+				constraintName="fk_cm_pro_cldr_lines_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_pro_cldr_day_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1835" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_pro_cldr_lines to cm_pro_cldr_color_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_pro_cldr_lines"
+				baseColumnNames="day_color_code"
+				constraintName="fk_cm_pro_cldr_lines_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_pro_cldr_color_types"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
 </databaseChangeLog>

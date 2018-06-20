@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1836" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_pro_cldr_work_schedule</comment>
+		<createTable tableName="cm_pro_cldr_work_schedule" schemaName="apps" remarks="производственный календарь: график рабочих дней">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="calendar_id" type="number" remarks="Идентификатор календаря">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="is_d01" type="number" remarks="Понедельник">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_d02" type="number" remarks="Вторник">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_d03" type="number" remarks="Среда">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_d04" type="number" remarks="Четверг">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_d05" type="number" remarks="Пятница">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_d06" type="number" remarks="Суббота">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_d07" type="number" remarks="Воскресенье">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="start_date" type="date" remarks="период действия с">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="end_date" type="date" remarks="период действия по">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1837" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_pro_cldr_work_schedule</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_pro_cldr_work_schedule"
+				schemaName="apps"
+				tableName="cm_pro_cldr_work_schedule"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1838" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_con_doc_route_orders</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_pro_cldr_work_schedule_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1839" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_pro_cldr_work_schedule to cm_pro_cldr_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_pro_cldr_work_schedule"
+				baseColumnNames="calendar_id"
+				constraintName="fk_cm_pro_cldr_work_schedule_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_pro_cldr_headers"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>
