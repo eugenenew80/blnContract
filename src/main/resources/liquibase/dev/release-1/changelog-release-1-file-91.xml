@@ -126,6 +126,16 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1845" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_pro_cldr_holiday_schedule</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_pro_cldr_holiday_schedule"
+				schemaName="apps"
+				tableName="cm_pro_cldr_holiday_schedule"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-1846" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_pro_cldr_holiday_schedule_tl to cm_pro_cldr_holiday_schedule</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -140,15 +150,6 @@
 				referencedTableName="cm_pro_cldr_holiday_schedule"
 				referencedColumnNames="id"
 		/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1846" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_pro_cldr_holiday_schedule</comment>
-		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_pro_cldr_holiday_schedule"
-				schemaName="apps"
-				tableName="cm_pro_cldr_holiday_schedule"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-1847" logicalFilePath="path-independent" author="ruslan" context="dev">
