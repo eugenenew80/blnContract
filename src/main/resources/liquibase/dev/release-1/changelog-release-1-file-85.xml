@@ -421,4 +421,32 @@
 		</addColumn>
 	</changeSet>
 
+	<changeSet id="cm-rus-1793-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_organizations to dict_organizations_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_organizations"
+				baseColumnNames="org_type"
+				constraintName="fk_dict_organizations_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1793-3" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column in cm_req_con_doc_routes</comment>
+		<renameColumn columnDataType="varchar2(30)"
+					  newColumnName="note"
+					  oldColumnName="comment"
+					  remarks="Коментарий"
+					  schemaName="apps"
+					  tableName="cm_req_con_doc_routes"/>
+	</changeSet>
+
+
 </databaseChangeLog>
