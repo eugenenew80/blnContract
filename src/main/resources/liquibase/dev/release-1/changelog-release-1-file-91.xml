@@ -6,7 +6,7 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-1860" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1852" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_pro_cldr_holiday_schedule</comment>
 		<createTable tableName="cm_pro_cldr_holiday_schedule" schemaName="apps" remarks="производственный календарь: праздничные дни">
 			<column name="id" type="number" remarks="Идентификатор">
@@ -25,7 +25,7 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="is_public_holiday" type="number" remarks="Государственный праздник">
+			<column name="is_state_holiday" type="number" remarks="Государственный праздник">
 				<constraints nullable="true"/>
 			</column>
 
@@ -56,7 +56,7 @@
 	</changeSet>
 
 
-	<changeSet id="cm-rus-1861" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1853" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_pro_cldr_holiday_schedule_tl</comment>
 		<createTable tableName="cm_pro_cldr_holiday_schedule_tl" schemaName="apps" remarks="Перевод производственный календарь: праздничные дни">
 			<column name="id" type="number" remarks="Идентификатор">
@@ -98,7 +98,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1862" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1854" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_pro_cldr_holiday_schedule_tl</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -107,7 +107,7 @@
 				tableName="cm_pro_cldr_holiday_schedule_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1863" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1855" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: cm_pro_cldr_holiday_schedule_tl</comment>
 		<createSequence
 				incrementBy="1"
@@ -116,7 +116,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1864" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1856" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating unique key for table: cm_pro_cldr_holiday_schedule_tl</comment>
 		<addUniqueConstraint
 				columnNames="schedule_id,lang"
@@ -125,7 +125,7 @@
 				tableName="cm_pro_cldr_holiday_schedule_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1865" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1857" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_pro_cldr_holiday_schedule</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -135,7 +135,7 @@
 	</changeSet>
 
 
-	<changeSet id="cm-rus-1866" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1858" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_pro_cldr_holiday_schedule_tl to cm_pro_cldr_holiday_schedule</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -152,7 +152,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1867" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1859" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: cm_req_con_doc_route_orders</comment>
 		<createSequence
 				incrementBy="1"
@@ -161,7 +161,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1868" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1860" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_pro_cldr_holiday_schedule to cm_pro_cldr_headers</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
