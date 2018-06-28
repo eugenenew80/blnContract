@@ -177,4 +177,94 @@
 				referencedColumnNames="id"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1861" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to media_work_list_headers</comment>
+		<addColumn schemaName="apps"
+				   tableName="media_work_list_headers">
+		<column name="org_id" type="number" remarks="организация"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1862" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: media_work_list_headers to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="media_work_list_headers"
+				baseColumnNames="org_id"
+				constraintName="fk_media_work_list_headers_9"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1863" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_organizations</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_organizations">
+			<column name="sap_code" type="varchar2(30)" remarks="Код в САП"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1864" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_doc_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_doc_types">
+			<column name="gjs_id" type="number" remarks="Ид услуги"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1865" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dm_doc_types to dict_gjs</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dm_doc_types"
+				baseColumnNames="gjs_id"
+				constraintName="fk_dm_doc_types_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="DICT_GJS"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1866" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dm_doc_types to dict_gjs</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_billing_periods"/>
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1867" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dm_doc_types to dict_gjs</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_billing_periods_tl"/>
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1868" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dm_doc_types to dict_gjs</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_billing_periods_state"/>
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1868" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dm_doc_types to dict_gjs</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_billing_periods_state_tl"/>
+		/>
+	</changeSet>
 </databaseChangeLog>

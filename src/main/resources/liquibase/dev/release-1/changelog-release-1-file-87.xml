@@ -166,7 +166,7 @@
 	<changeSet id="cm-rus-1828" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_pro_cldr_day_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types_tl">
-			<column name="code" type="varchar2" value="HOLIDAYS"/>
+			<column name="code" type="varchar2" value="HOLIDAY"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Праздничный день"/>
 		</insert>
@@ -176,7 +176,7 @@
 	<changeSet id="cm-rus-1829" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_pro_cldr_day_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types_tl">
-			<column name="code" type="varchar2" value="HOLIDAYS"/>
+			<column name="code" type="varchar2" value="HOLIDAY"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Праздничный день"/>
 		</insert>

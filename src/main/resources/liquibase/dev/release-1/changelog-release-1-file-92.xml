@@ -6,60 +6,44 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-1860" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_pro_cldr_holiday_schedule</comment>
-		<createTable tableName="cm_pro_cldr_holiday_schedule" schemaName="apps" remarks="производственный календарь: праздничные дни">
-			<column name="id" type="number" remarks="Идентификатор">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="calendar_id" type="number" remarks="Идентификатор календаря">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="holiday_start_date" type="date" remarks="Дата праздника с">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="holiday_end_date" type="date" remarks="Дата праздника по">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="is_public_holiday" type="number" remarks="Государственный праздник">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="valid_start_date" type="date" remarks="срок действия с">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="valid_end_date" type="date" remarks="срок действия по">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_by" type="number" remarks="Автор">
+	<changeSet id="cm-rus-1869" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dm_doc_sorts</comment>
+		<createTable tableName="dm_doc_sorts" schemaName="apps" remarks="Справочник виды договоров">
+			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
 
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
 			</column>
 		</createTable>
 	</changeSet>
 
+	<changeSet id="cm-rus-1870" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dm_doc_sorts</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_dm_doc_sorts"
+				schemaName="apps"
+				tableName="dm_doc_sorts"/>
+	</changeSet>
 
-	<changeSet id="cm-rus-1861" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_pro_cldr_holiday_schedule_tl</comment>
-		<createTable tableName="cm_pro_cldr_holiday_schedule_tl" schemaName="apps" remarks="Перевод производственный календарь: праздничные дни">
-			<column name="id" type="number" remarks="Идентификатор">
+	<changeSet id="cm-rus-1871" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dm_doc_sorts_tl</comment>
+		<createTable tableName="dm_doc_sorts_tl" schemaName="apps" remarks="Переводы Справочник виды договоров">
+			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
 
@@ -67,114 +51,254 @@
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="schedule_id" type="number" remarks="Ссылка на родительскую запись">
+			<column name="name" type="varchar2(100)" remarks="Описание">
 				<constraints nullable="false"/>
-			</column>
-
-			<column name="name" type="varchar2(100)" remarks="Названия праздника">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="description" type="varchar2(300)" remarks="описание праздника">
-				<constraints nullable="true"/>
 			</column>
 
 			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
-
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1862" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_pro_cldr_holiday_schedule_tl</comment>
+	<changeSet id="cm-rus-1872" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dm_doc_sorts_tl</comment>
 		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_pro_cldr_holiday_schedule_tl"
+				columnNames="code, lang"
+				constraintName="pk_dm_doc_sorts_tl"
 				schemaName="apps"
-				tableName="cm_pro_cldr_holiday_schedule_tl"/>
+				tableName="dm_doc_sorts_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1863" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_pro_cldr_holiday_schedule_tl</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_pro_cldr_holiday_schedule_tl_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1864" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating unique key for table: cm_pro_cldr_holiday_schedule_tl</comment>
-		<addUniqueConstraint
-				columnNames="schedule_id,lang"
-				constraintName="uk_cm_pro_cldr_holiday_schedule_tl"
-				schemaName="apps"
-				tableName="cm_pro_cldr_holiday_schedule_tl"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1865" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_pro_cldr_holiday_schedule</comment>
-		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_cm_pro_cldr_holiday_schedule"
-				schemaName="apps"
-				tableName="cm_pro_cldr_holiday_schedule"/>
-	</changeSet>
-
-
-	<changeSet id="cm-rus-1866" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_pro_cldr_holiday_schedule_tl to cm_pro_cldr_holiday_schedule</comment>
+	<changeSet id="cm-rus-1873" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dm_doc_sorts_tl to dm_doc_sorts</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_pro_cldr_holiday_schedule_tl"
-				baseColumnNames="schedule_id"
-				constraintName="fk_cm_pro_cldr_holiday_schedule_tl_1"
+				baseTableName="dm_doc_sorts_tl"
+				baseColumnNames="code"
+				constraintName="fk_dm_doc_sorts_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="CASCADE"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_pro_cldr_holiday_schedule"
-				referencedColumnNames="id"
+				referencedTableName="dm_doc_sorts"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1867" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: cm_req_con_doc_route_orders</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="cm_pro_cldr_holiday_schedule_s"
-				startValue="1"/>
+	<changeSet id="cm-rus-1874" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dm_doc_sorts</comment>
+		<insert schemaName="apps" tableName="dm_doc_sorts">
+			<column name="code" type="varchar2" value="PURCHASE"/>
+		</insert>
+		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1868" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_pro_cldr_holiday_schedule to cm_pro_cldr_headers</comment>
+	<changeSet id="cm-rus-1875" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dm_doc_sorts</comment>
+		<insert schemaName="apps" tableName="dm_doc_sorts">
+			<column name="code" type="varchar2" value="SALE"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1876" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dm_doc_sorts_tl</comment>
+		<insert schemaName="apps" tableName="dm_doc_sorts_tl">
+			<column name="code" type="varchar2" value="PURCHASE"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Закупочный"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1877" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dm_doc_sorts_tl</comment>
+		<insert schemaName="apps" tableName="dm_doc_sorts_tl">
+			<column name="code" type="varchar2" value="PURCHASE"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Закупочный"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1878" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dm_doc_sorts_tl</comment>
+		<insert schemaName="apps" tableName="dm_doc_sorts_tl">
+			<column name="code" type="varchar2" value="SALE"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Сбытовой"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1879" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dm_doc_sorts_tl</comment>
+		<insert schemaName="apps" tableName="dm_doc_sorts_tl">
+			<column name="code" type="varchar2" value="SALE"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Сбытовой"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1880" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dm_doc_sorts_tl</comment>
+		<dropColumn columnName="line_number"
+					schemaName="apps"
+					tableName="CM_DOC_KEG_CTE_A3L"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1881" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dm_doc_sorts_tl</comment>
+		<dropColumn columnName="line_number"
+					schemaName="apps"
+					tableName="CM_REQ_DOC_CTE_A3L"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1882" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_doc_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_doc_types">
+			<column name="sort_code" type="varchar2(30)" remarks="Код вида"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1883" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dm_doc_types to dm_doc_sorts</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_pro_cldr_holiday_schedule"
-				baseColumnNames="calendar_id"
-				constraintName="fk_cm_pro_cldr_holiday_schedule_1"
+				baseTableName="dm_doc_types"
+				baseColumnNames="sort_code"
+				constraintName="fk_dm_doc_types_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_pro_cldr_headers"
-				referencedColumnNames="id"
+				referencedTableName="dm_doc_sorts"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1884" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'SALE'
+			where code = 'KEG_CTE'
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1885" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'SALE'
+			where code = 'KEG_CTD'
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1886" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'SALE'
+			where code = 'KEG_CBEE'
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1887" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'SALE'
+			where code = 'KEG_CSTRC'
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1888" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'SALE'
+			where code = 'PURCHASE'
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1889" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'PURCHASE'
+			where code = 'KEG_CSDDR'
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1890" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'PURCHASE'
+			where code = 'SFC_PFP'
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1891" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'PURCHASE'
+			where code = 'SFC_PFS'
+		</sql>
+
+	<changeSet id="cm-rus-1892" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'SALE'
+			where code = 'SFC_SCC'
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1893" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'SALE'
+			where code = 'SFC_PAP'
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1894" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'PURCHASE'
+			where code = 'SFC_EPAMS'
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1895" logicalFilePath="path-independent" author="eugene">
+		<comment>update data in table: dict_data_sources</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.dm_doc_types
+			set sort_code = 'SALE'
+			where code = 'SFC_CLSEA'
+		</sql>
+	</changeSet>
+
 </databaseChangeLog>
