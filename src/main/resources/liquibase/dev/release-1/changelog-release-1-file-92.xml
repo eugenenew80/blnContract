@@ -194,7 +194,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1884" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1884" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
@@ -203,7 +203,7 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-1885" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1885" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
@@ -212,7 +212,7 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-1886" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1886" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
@@ -221,7 +221,7 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-1887" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1887" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
@@ -230,7 +230,7 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-1888" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1888" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
@@ -239,7 +239,7 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-1889" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1889" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
@@ -248,7 +248,7 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-1890" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1890" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
@@ -257,15 +257,16 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-1891" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1891" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
 			set sort_code = 'PURCHASE'
 			where code = 'SFC_PFS'
 		</sql>
+	</changeSet>
 
-	<changeSet id="cm-rus-1892" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1892" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
@@ -274,7 +275,7 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-1893" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1893" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
@@ -283,7 +284,7 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-1894" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1894" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
@@ -292,7 +293,7 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-1895" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1895" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.dm_doc_types
@@ -301,7 +302,7 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-1896" logicalFilePath="path-independent" author="eugene">
+	<changeSet id="cm-rus-1896" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: dict_data_sources</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			comment on column APPS.MDFEM_HISTORY.COUNT_OF_UNDER_HEADERS
