@@ -257,7 +257,7 @@
 				   tableName="cm_billing_periods_state"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1868" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1868-1" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: dm_doc_types to dict_gjs</comment>
 		<dropTable cascadeConstraints="true"
 				   schemaName="apps"

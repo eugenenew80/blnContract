@@ -310,4 +310,12 @@
 		</sql>
 	</changeSet>
 
+	<changeSet id="cm-rus-1897" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to mdfem_history</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_history">
+			<column name="is_draw_up" type="number" remarks="Составлен акт недоучета электроэнергии"/>
+		</addColumn>
+	</changeSet>
+
 </databaseChangeLog>
