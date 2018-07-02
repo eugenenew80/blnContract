@@ -318,4 +318,20 @@
 		</addColumn>
 	</changeSet>
 
+	<changeSet id="cm-rus-1898" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to mdfem_eem_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_eem_types">
+			<column name="manufacture_date" type="date" remarks="Дата выпуска"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1899" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to mdfem_eem_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_eem_types">
+			<column name="stamp_verification" type="date" remarks="Пломба о проверки СИ"/>
+		</addColumn>
+	</changeSet>
+
 </databaseChangeLog>
