@@ -330,7 +330,15 @@
 		<comment>add column to mdfem_eem_types</comment>
 		<addColumn schemaName="apps"
 				   tableName="mdfem_eem_types">
-			<column name="stamp_verification" type="date" remarks="Пломба о проверки СИ"/>
+			<column name="stamp_verification" type="varchar2(30)" remarks="Пломба о проверки СИ"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1900" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to MDFEM_HISTORY </comment>
+		<addColumn schemaName="apps"
+				   tableName="MDFEM_HISTORY">
+			<column name="counter_factor_u1_u2" type="number" remarks="Коэффициент счетчика (U1ном/U2ном)x(I1ном/I2ном)"/>
 		</addColumn>
 	</changeSet>
 
