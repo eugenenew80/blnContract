@@ -342,4 +342,21 @@
 		</addColumn>
 	</changeSet>
 
+	<changeSet id="cm-rus-1901" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte </comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="fin_req_line_id" type="number" remarks="Номер заявки в SAP ERP"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1902" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte </comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="fin_req_line_id" type="number" remarks="Номер заявки в SAP ERP"/>
+		</addColumn>
+	</changeSet>
+
+
 </databaseChangeLog>
