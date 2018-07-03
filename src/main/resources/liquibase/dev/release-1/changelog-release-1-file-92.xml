@@ -329,7 +329,7 @@
 	<changeSet id="cm-rus-1899" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to mdfem_eem_types</comment>
 		<addColumn schemaName="apps"
-				   tableName="mdfem_eem_types">
+				   tableName="mdfem_eem_base">
 			<column name="stamp_verification" type="varchar2(30)" remarks="Пломба о проверки СИ"/>
 		</addColumn>
 	</changeSet>
