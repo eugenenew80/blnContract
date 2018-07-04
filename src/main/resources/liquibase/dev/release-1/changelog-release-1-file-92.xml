@@ -351,12 +351,26 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1902" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to cm_doc_keg_cte </comment>
+		<comment>add column to dict_business_partners</comment>
 		<addColumn schemaName="apps"
-				   tableName="cm_doc_rfc">
-			<column name="fin_req_line_id" type="number" remarks="Номер заявки в SAP ERP"/>
+				   tableName="dict_business_partners">
+			<column name="is_sap_approved" type="number" remarks="Утверждено в SAP MDG"/>
 		</addColumn>
 	</changeSet>
 
+	<changeSet id="cm-rus-1903" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_business_partners</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_business_partners">
+			<column name="bp_create_date" type="TIMESTAMP" remarks="Дата создания (Основания БП)"/>
+		</addColumn>
+	</changeSet>
 
+	<changeSet id="cm-rus-1904" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_business_partners</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_business_partners">
+			<column name="bp_end_date" type="TIMESTAMP" remarks="Дата ликвидации"/>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
