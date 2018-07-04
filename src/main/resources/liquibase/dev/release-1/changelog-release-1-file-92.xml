@@ -394,7 +394,7 @@
 	<changeSet id="cm-rus-1907" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_keg_cte_a1h</comment>
 		<addColumn schemaName="apps"
-				   tableName="cm_doc_keg_cte_a1h_tl">
+				   tableName="cm_doc_keg_cte_a1h">
 			<column name="header_name" type="varchar2(300)" remarks="Заголовок"/>
 		</addColumn>
 	</changeSet>
@@ -426,7 +426,7 @@
 	<changeSet id="cm-rus-1911" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_keg_cbee_a3h</comment>
 		<addColumn schemaName="apps"
-				   tableName="cm_doc_keg_cbee_a3h_tl">
+				   tableName="cm_doc_keg_cbee_a3h">
 			<column name="header_name" type="varchar2(300)" remarks="Заголовок"/>
 		</addColumn>
 	</changeSet>
