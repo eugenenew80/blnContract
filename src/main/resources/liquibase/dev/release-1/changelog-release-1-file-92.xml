@@ -351,6 +351,15 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-1902" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc </comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="fin_req_line_id" type="number" remarks="Номер заявки в SAP ERP"/>
+		</addColumn>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-1903" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to dict_business_partners</comment>
 		<addColumn schemaName="apps"
 				   tableName="dict_business_partners">
@@ -358,7 +367,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-1903" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1904" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to dict_business_partners</comment>
 		<addColumn schemaName="apps"
 				   tableName="dict_business_partners">
@@ -366,7 +375,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-1904" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1905" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to dict_business_partners</comment>
 		<addColumn schemaName="apps"
 				   tableName="dict_business_partners">
