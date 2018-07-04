@@ -382,4 +382,179 @@
 			<column name="bp_end_date" type="TIMESTAMP" remarks="Дата ликвидации"/>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="cm-rus-1906" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_doc_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_doc_types_tl">
+			<column name="default_header_name" type="varchar2(300)" remarks="Заголовок по умолчанию"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1907" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a1h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a1h_tl">
+			<column name="header_name" type="varchar2(300)" remarks="Заголовок"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1908" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a2h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a2h_tl">
+			<column name="header_name" type="varchar2(300)" remarks="Заголовок"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1909" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a3h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a3h_tl">
+			<column name="header_name" type="varchar2(300)" remarks="Заголовок"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1910" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a4h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a4h_tl">
+			<column name="header_name" type="varchar2(300)" remarks="Заголовок"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1911" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cbee_a3h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3h_tl">
+			<column name="header_name" type="varchar2(300)" remarks="Заголовок"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1912" logicalFilePath="path-independent" author="ruslan">
+	<comment>update data in table: dm_doc_types_tl</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		update apps.dm_doc_types_tl
+		set default_header_name = 'Договорной объем на оказание услуг по передаче электрической энергии по национальной электрической сети'
+		where id = 4
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1913" logicalFilePath="path-independent" author="ruslan">
+	<comment>update data in table: dm_doc_types_tl</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		update apps.dm_doc_types_tl
+		set default_header_name = 'Пункты приема и пункты доставки электрической энергии'
+		where id = 5
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1914" logicalFilePath="path-independent" author="ruslan">
+	<comment>update data in table: dm_doc_types_tl</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		update apps.dm_doc_types_tl
+		set default_header_name = 'Акт разграничения балансовой принадлежности и эксплуатационной ответственности электрических сетей'
+		where id = 6
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1915" logicalFilePath="path-independent" author="ruslan">
+	<comment>update data in table: dm_doc_types_tl</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		update apps.dm_doc_types_tl
+		set default_header_name = 'Список приборов коммерческого учета электрической энергии, их характеристики, места установки и Методика расчёта фактического объема оказанных услуг по передаче электрической энергии по сетям АО «KEGOC»'
+		where id = 7
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1916" logicalFilePath="path-independent" author="ruslan">
+	<comment>update data in table: dm_doc_types_tl</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		update apps.dm_doc_types_tl
+		set default_header_name = 'Договорной объем на оказание услуг по технической диспетчеризации отпуска в сеть и потребления электрической энергии'
+		where id = 12
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1917" logicalFilePath="path-independent" author="ruslan">
+	<comment>update data in table: dm_doc_types_tl</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		update apps.dm_doc_types_tl
+		set default_header_name = 'Список приборов коммерческого учета электрической энергии, их характеристики, места установки и Методика расчёта фактического объема оказанных услуг по технической диспетчеризации отпуска в сеть и потребления электрической энергии'
+		where id = 13
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1918" logicalFilePath="path-independent" author="ruslan">
+	<comment>update data in table: dm_doc_types_tl</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		update apps.dm_doc_types_tl
+		set default_header_name = 'Договорной объем на оказание услуг по организации балансирования производства потребления электрической энергии'
+		where id = 17
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1919" logicalFilePath="path-independent" author="ruslan">
+	<comment>update data in table: dm_doc_types_tl</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		update apps.dm_doc_types_tl
+		set default_header_name = 'Профиль нагрузки'
+		where id = 19
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1920" logicalFilePath="path-independent" author="ruslan">
+	<comment>update data in table: dm_doc_types_tl</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		update apps.dm_doc_types_tl
+		set default_header_name = 'Список приборов коммерческого учета электрической энергии, их характеристики, места установки и Методика расчёта фактического объема оказанных услуг по организации балансирования производства-потребления электрической энергии'
+		where id = 18
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1921" logicalFilePath="path-independent" author="ruslan">
+	<comment>update data in table: dm_doc_types_tl</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		update apps.dm_doc_types_tl
+		set default_header_name = 'Договорной объем на оказание услуг по передаче и/или распределению электрической энергии'
+		where id = 27
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1922" logicalFilePath="path-independent" author="ruslan">
+	<comment>update data in table: dm_doc_types_tl</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		update apps.dm_doc_types_tl
+		set default_header_name = 'Список приборов коммерческого учета электрической энергии, их характеристики и места установки'
+		where id = 28
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1923" logicalFilePath="path-independent" author="ruslan">
+	<comment>rename table: dm_doc_types_tl</comment>
+		<renameTable newTableName="cm_req_con_docs"
+					 oldTableName="cm_req_consideration_docs"
+					 schemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1924" logicalFilePath="path-independent" author="ruslan">
+	<comment>rename table: dm_doc_types_tl</comment>
+		<renameTable newTableName="cm_req_con_docs_tl"
+					 oldTableName="cm_req_consideration_docs_tl"
+					 schemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1925" logicalFilePath="path-independent" author="ruslan">
+	<comment>rename table: dm_doc_types_tl</comment>
+		<renameTable newTableName="cm_req_con_results"
+					 oldTableName="cm_req_consideration_results"
+					 schemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1926" logicalFilePath="path-independent" author="ruslan">
+	<comment>rename table: dm_doc_types_tl</comment>
+		<renameTable newTableName="cm_req_con_results_tl"
+					 oldTableName="cm_req_consideration_results_tl"
+					 schemaName="apps"/>
+	</changeSet>
 </databaseChangeLog>
