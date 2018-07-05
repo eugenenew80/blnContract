@@ -570,15 +570,31 @@
 		<comment>add column to cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
-			<column name="basis_for_acts" type="varchar2(500)" remarks="Действует на основание"/>
+			<column name="bp1_basis_for_acts" type="varchar2(500)" remarks="Действует на основание"/>
 		</addColumn>
 	</changeSet>
 
 	<changeSet id="cm-rus-1929" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="bp2_basis_for_acts" type="varchar2(500)" remarks="Действует на основание"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1930" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_rfc</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_rfc">
-			<column name="basis_for_acts" type="varchar2(500)" remarks="Действует на основание"/>
+			<column name="bp1_basis_for_acts" type="varchar2(500)" remarks="Действует на основание"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1931" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="bp2_basis_for_acts" type="varchar2(500)" remarks="Действует на основание"/>
 		</addColumn>
 	</changeSet>
 
