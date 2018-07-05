@@ -729,4 +729,29 @@
 			<column name="erp_payment_code" type="varchar2(20)" remarks="Код условия платежа в SAP ERP"/>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="cm-rus-1947" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_gjs</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_gjs">
+			<column name="erp_code" type="varchar2(20)" remarks="Код условия в SAP ERP"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1948" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: ecm_contents to ecm_content_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="ecm_contents"
+				baseColumnNames="content_type_id"
+				constraintName="fk_ecm_contents_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="ecm_content_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
 </databaseChangeLog>
