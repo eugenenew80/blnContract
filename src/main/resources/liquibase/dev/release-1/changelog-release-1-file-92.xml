@@ -598,4 +598,127 @@
 		</addColumn>
 	</changeSet>
 
+	<changeSet id="cm-rus-1932" logicalFilePath="path-independent" author="ruslan">
+		<comment>update data in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_keg_cte c
+			set c.bp1_basis_for_acts = 'доверенности с номером ' || c.bp1_poa_number || ' Дата выдачи документа ' || c.bp1_poa_date
+			where c.bp1_poa_type_code = 'POA';
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1933" logicalFilePath="path-independent" author="ruslan">
+		<comment>update data in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_keg_cte c
+			set c.bp1_basis_for_acts = 'генеральной доверенности с номером ' || c.bp1_poa_number || ' Дата выдачи документа ' || c.bp1_poa_date
+			where c.bp1_poa_type_code = 'GPA';
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1934" logicalFilePath="path-independent" author="ruslan">
+		<comment>update data in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_keg_cte c
+			set c.bp1_basis_for_acts = 'Устава'
+			where c.bp1_poa_type_code = 'CHARTER';
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1935" logicalFilePath="path-independent" author="ruslan">
+		<comment>update data in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_keg_cte c
+			set c.bp2_basis_for_acts = 'доверенности с номером ' || c.bp2_poa_number || ' Дата выдачи документа ' || c.bp2_poa_date
+			where c.bp2_poa_type_code = 'POA';
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1936" logicalFilePath="path-independent" author="ruslan">
+		<comment>update data in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_keg_cte c
+			set c.bp2_basis_for_acts = 'генеральной доверенности с номером ' || c.bp2_poa_number || ' Дата выдачи документа ' || c.bp2_poa_date
+			where c.bp2_poa_type_code = 'GPA';
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1937" logicalFilePath="path-independent" author="ruslan">
+		<comment>update data in table: dm_doc_types_tl</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_keg_cte c
+			set c.bp2_basis_for_acts = 'Устава'
+			where c.bp2_poa_type_code = 'CHARTER';
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1938" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="transfer_to_erp_date" type="TIMESTAMP" remarks="Дата передачи в систему ERP"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1939" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="transfer_to_erp_status" type="varchar2(20)" remarks="Статус передачи в SAP ERP"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1940" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="transfer_to_erp_date" type="TIMESTAMP" remarks="Дата передачи в систему ERP"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1941" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="transfer_to_erp_status" type="varchar2(20)" remarks="Статус передачи в SAP ERP"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1942" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_business_partners</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_business_partners">
+			<column name="erp_bp_num" type="varchar2(20)" remarks="Номер бизнес партнера из MDG"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1943" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_business_partners</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_business_partners">
+			<column name="erp_company_code" type="varchar2(4)" remarks="Код компании из MDG"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1944" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique for table: dict_business_partners</comment>
+		<addUniqueConstraint columnNames="erp_bp_num"
+							 constraintName="uk_dict_business_partners_1"
+							 deferrable="true"
+							 disabled="true"
+							 initiallyDeferred="true"
+							 schemaName="apps"
+							 tableName="dict_business_partners"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1945" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique for table: dict_business_partners</comment>
+		<addUniqueConstraint columnNames="erp_company_code"
+							 constraintName="uk_dict_business_partners_2"
+							 deferrable="true"
+							 disabled="true"
+							 initiallyDeferred="true"
+							 schemaName="apps"
+							 tableName="dict_business_partners"/>
+	</changeSet>
 </databaseChangeLog>
