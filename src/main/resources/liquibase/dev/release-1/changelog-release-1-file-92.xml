@@ -721,4 +721,12 @@
 							 schemaName="apps"
 							 tableName="dict_business_partners"/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1946" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_payment_condition</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_payment_condition">
+			<column name="erp_payment_code" type="varchar2(20)" remarks="Код условия платежа в SAP ERP"/>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
