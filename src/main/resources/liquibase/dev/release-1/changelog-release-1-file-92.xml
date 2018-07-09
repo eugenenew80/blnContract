@@ -754,4 +754,43 @@
 				referencedColumnNames="id"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1949" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to mdfem_eem_base</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_eem_base">
+			<column name="manufacture_date" type="date" remarks="Дата выпуска"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1950" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to mdfem_eem_base</comment>
+		<dropColumn columnName="manufacture_date"
+					schemaName="apps"
+					tableName="mdfem_eem_types"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1951" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to mdfem_eem_base</comment>
+		<dropColumn columnName="scan_document_id"
+					schemaName="apps"
+					tableName="mdfem_undercount_header"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1952" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="day_1" type="number" remarks="количество рабочих дней"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1953" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="day_2" type="number" remarks="количество календарный дней"/>
+		</addColumn>
+	</changeSet>
+
 </databaseChangeLog>
