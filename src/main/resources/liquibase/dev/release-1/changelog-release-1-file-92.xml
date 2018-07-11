@@ -738,7 +738,7 @@
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-1948" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<!--<changeSet id="cm-rus-1948" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: ecm_contents to ecm_content_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -753,7 +753,7 @@
 				referencedTableName="ecm_content_types"
 				referencedColumnNames="id"
 		/>
-	</changeSet>
+	</changeSet>-->
 
 	<changeSet id="cm-rus-1949" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to mdfem_eem_base</comment>
@@ -792,5 +792,16 @@
 			<column name="day_2" type="number" remarks="количество календарный дней"/>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="cm-rus-1954" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column to dm_doc_types</comment>
+		<renameColumn columnDataType="number"
+					  newColumnName="is_active"
+					  oldColumnName="is_active number"
+					  remarks="Действующий?"
+					  schemaName="apps"
+					  tableName="dm_doc_types"/>
+	</changeSet>
+
 
 </databaseChangeLog>
