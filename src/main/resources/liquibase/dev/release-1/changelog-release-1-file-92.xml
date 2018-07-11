@@ -803,5 +803,33 @@
 					  tableName="dm_doc_types"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-1955" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte</comment>
+		<dropColumn columnName="fin_esf_transfer_statuses"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
 
+	<changeSet id="cm-rus-1956" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="transferred_to_erp" type="TIMESTAMP" remarks="Дата передачи в ERP"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1957" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_rfc</comment>
+		<dropColumn columnName="transfer_to_erp_status"
+					schemaName="apps"
+					tableName="cm_doc_rfc"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1958" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="transferred_to_erp" type="TIMESTAMP" remarks="Дата передачи в ERP"/>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
