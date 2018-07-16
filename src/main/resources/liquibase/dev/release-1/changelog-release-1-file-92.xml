@@ -883,4 +883,24 @@
 					  schemaName="apps"
 					  tableName="cm_doc_keg_cte"/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1965" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column cm_doc_keg_cte.req_line_id</comment>
+		<renameColumn columnDataType="number"
+					  newColumnName="REQ_LINE_ID"
+					  oldColumnName="FIN_REQ_LINE_ID"
+					  remarks="Номер заявки в SAP ERP"
+					  schemaName="apps"
+					  tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1966" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column cm_doc_rfc.REQ_LINE_ID</comment>
+		<renameColumn columnDataType="number"
+					  newColumnName="REQ_LINE_ID"
+					  oldColumnName="FIN_REQ_LINE_ID"
+					  remarks="Номер заявки в SAP ERP"
+					  schemaName="apps"
+					  tableName="cm_doc_rfc"/>
+	</changeSet>
 </databaseChangeLog>
