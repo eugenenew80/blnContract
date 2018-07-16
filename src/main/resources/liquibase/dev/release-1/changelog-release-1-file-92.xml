@@ -847,82 +847,24 @@
 		</addColumn>
 	</changeSet>
 
+
 	<changeSet id="cm-rus-1961" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_refinancing_rate</comment>
-		<createTable tableName="cm_refinancing_rate" schemaName="apps" remarks="Справочник кратность ставки рефенансирования">
-			<column name="code" type="varchar2(30)" remarks="Код">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="start_date" type="TIMESTAMP" remarks="Дата с">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="end_date" type="TIMESTAMP" remarks="Дата по">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
-			</column>
-		</createTable>
-	</changeSet>
-
-	<changeSet id="cm-rus-1962" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_refinancing_rate</comment>
-		<addPrimaryKey
-				columnNames="code"
-				constraintName="pk_cm_refinancing_rate"
-				schemaName="apps"
-				tableName="cm_refinancing_rate"/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1963" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_keg_cte</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte">
-			<column name="refinancing_rate" type="varchar2(30)" remarks="Код ставки рефинансирования"/>
+			<column name="refinancing_rate" type="number" remarks="Ставка рефинансирования"/>
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-1964" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1962" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_rfc</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_rfc">
-			<column name="refinancing_rate" type="varchar2(30)" remarks="Код ставки рефинансирования"/>
+			<column name="refinancing_rate" type="number" remarks="Ставка рефинансирования"/>
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-1965" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_doc_rfc to cm_refinancing_rate</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="cm_doc_rfc"
-				baseColumnNames="refinancing_rate"
-				constraintName="fk_cm_doc_rfc_30"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="cm_refinancing_rate"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1966" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1963" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_doc_rfc to cm_refinancing_rate</comment>
 		<renameColumn columnDataType="TIMESTAMP"
 					  newColumnName="transferred_to_erp_date"
@@ -932,7 +874,7 @@
 					  tableName="cm_doc_rfc"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1967" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1964" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_doc_keg_cte to cm_refinancing_rate</comment>
 		<renameColumn columnDataType="TIMESTAMP"
 					  newColumnName="transferred_to_erp_date"
@@ -941,6 +883,4 @@
 					  schemaName="apps"
 					  tableName="cm_doc_keg_cte"/>
 	</changeSet>
-
-
 </databaseChangeLog>
