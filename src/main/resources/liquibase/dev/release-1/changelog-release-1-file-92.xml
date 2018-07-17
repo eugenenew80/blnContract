@@ -934,4 +934,11 @@
 			<column name="is_ready" type="number" remarks="Готов"/>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="cm-rus-1971" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_rfc</comment>
+		<dropColumn columnName="SAP_CODE"
+					schemaName="apps"
+					tableName="cm_doc_payment_condition"/>
+	</changeSet>
 </databaseChangeLog>
