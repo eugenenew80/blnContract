@@ -918,6 +918,7 @@
 				   tableName="cm_doc_keg_cte">
 			<column name="is_need_transfer_to_erp" type="number" remarks="Требуется передача в ЕРП"/>
 		</addColumn>
+	</changeSet>
 
 	<changeSet id="cm-rus-1969" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_keg_cte</comment>
