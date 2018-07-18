@@ -942,4 +942,67 @@
 					schemaName="apps"
 					tableName="cm_doc_payment_condition"/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1972" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_pro_cldr_day_types</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_pro_cldr_day_types"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1973" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_pro_cldr_day_types_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_pro_cldr_day_types_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1974" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_pro_cldr_headers</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_pro_cldr_headers"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1975" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_pro_cldr_headers_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_pro_cldr_headers_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1976" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_pro_cldr_holiday_shedule</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_pro_cldr_holiday_shedule"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1977" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_pro_cldr_holiday_shedule_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_pro_cldr_holiday_shedule_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1978" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_pro_cldr_lines</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_pro_cldr_lines"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1979" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_pro_cldr_transfer</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_pro_cldr_transfer"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1980" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_pro_cldr_transfer_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_pro_cldr_transfer_tl"/>
+	</changeSet>
 </databaseChangeLog>
