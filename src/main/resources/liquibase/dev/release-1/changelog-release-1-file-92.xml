@@ -1005,4 +1005,12 @@
 				   schemaName="apps"
 				   tableName="cm_pro_cldr_transfer_tl"/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1981" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_metering_points</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_metering_points">
+			<column name="bypass_switch" type="number" remarks="Обходной выключатель"/>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
