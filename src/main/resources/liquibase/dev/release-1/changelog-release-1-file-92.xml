@@ -1013,4 +1013,73 @@
 			<column name="bypass_switch" type="number" remarks="Обходной выключатель"/>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="cm-rus-1982" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="status_new" type="varchar2(20)" remarks="Статус"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1983" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="status_new"
+				constraintName="fk_cm_doc_keg_cte_30"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1984" logicalFilePath="path-independent" author="ruslan">
+		<comment>update data in table: cm_doc_keg_cte</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_keg_cte c
+			set c.status_new = 'SIGNED'
+			where c.status = 'CONTRACTS_SIGNED';
+		</sql>
+
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_keg_cte c
+			set c.status_new = 'APPROVED'
+			where c.status = 'CONTRACTS_APPROVED';
+		</sql>
+
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_keg_cte c
+			set c.status_new = 'CLOSE'
+			where c.status = 'CONTRACTS_CLOSE';
+		</sql>
+
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_keg_cte c
+			set c.status_new = 'CREATE'
+			where c.status = 'CONTRACTS_NOT_COMPLITED';
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-1985" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte</comment>
+		<dropColumn columnName="status"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1986" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column in cm_doc_keg_cte</comment>
+		<renameColumn columnDataType="varchar2(20)"
+					  newColumnName="status"
+					  oldColumnName="status_new"
+					  remarks="Статус"
+					  schemaName="apps"
+					  tableName="cm_doc_keg_cte"/>
+	</changeSet>
 </databaseChangeLog>
