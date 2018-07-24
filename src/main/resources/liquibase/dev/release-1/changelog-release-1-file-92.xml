@@ -1134,7 +1134,7 @@
 	<changeSet id="cm-rus-1993" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column in dict_organization</comment>
 		<addColumn schemaName="apps"
-				   tableName="dict_organization">
+				   tableName="dict_organizations">
 			<column name="calendar_id" type="number" remarks="Идентификатор календаря"/>
 		</addColumn>
 	</changeSet>
