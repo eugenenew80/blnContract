@@ -1129,6 +1129,7 @@
 				   tableName="dm_doc_types">
 			<column name="is_need_si" type="number" remarks="требуется СФ"/>
 		</addColumn>
+	</changeSet>
 
 	<changeSet id="cm-rus-1993" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column in dict_organization</comment>
