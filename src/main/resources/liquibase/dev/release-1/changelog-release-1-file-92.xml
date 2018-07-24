@@ -1082,4 +1082,76 @@
 					  schemaName="apps"
 					  tableName="cm_doc_keg_cte"/>
 	</changeSet>
+
+	<changeSet id="cm-rus-1987" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_need_avr" type="number" remarks="требуется АВР"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1988" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_need_si" type="number" remarks="требуется СФ"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1989" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="is_need_avr" type="number" remarks="требуется АВР"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1990" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="is_need_si" type="number" remarks="требуется СФ"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1991" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in dm_doc_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_doc_types">
+			<column name="is_need_avr" type="number" remarks="требуется АВР"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1992" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in dm_doc_types</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_doc_types">
+			<column name="is_need_si" type="number" remarks="требуется СФ"/>
+		</addColumn>
+
+	<changeSet id="cm-rus-1993" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column in dict_organization</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_organization">
+			<column name="calendar_id" type="number" remarks="Идентификатор календаря"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-1994" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating foreign constraint: dict_organizations to fin_pro_cldr_headers</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="dict_organizations"
+			baseColumnNames="calendar_id"
+			constraintName="fk_dict_organizations_2"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="fin_pro_cldr_headers"
+			referencedColumnNames="id"
+	/>
+	</changeSet>
 </databaseChangeLog>
