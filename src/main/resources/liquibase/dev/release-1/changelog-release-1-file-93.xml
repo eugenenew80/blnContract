@@ -323,18 +323,6 @@
 		</insert>
 
 		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="REPORT"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Отчеты"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="REPORT"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Отчеты"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
 			<column name="code" type="varchar2" value="FORECASTS"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Прогнозы"/>
