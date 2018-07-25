@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="cm-rus-1995" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_notice_type</comment>
+		<createTable tableName="pa_notice_type" schemaName="apps" remarks="Справочник Типы уведомлений:">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1996" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_notice_type</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_pa_notice_type"
+				schemaName="apps"
+				tableName="pa_notice_type"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1997" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_notice_type_tl</comment>
+		<createTable tableName="pa_notice_type_tl" schemaName="apps" remarks="Переводы Справочник Типы уведомлений:">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-1998" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_notice_type_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_pa_notice_type_tl"
+				schemaName="apps"
+				tableName="pa_notice_type_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1999" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_notice_type_tl to la_pa_notice_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_notice_type_tl"
+				baseColumnNames="code"
+				constraintName="fk_pa_notice_type_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_notice_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2000" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_notice_type</comment>
+		<insert schemaName="apps" tableName="pa_notice_type">
+			<column name="code" type="varchar2" value="SYSTEM"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_type">
+			<column name="code" type="varchar2" value="NOTICE"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_type">
+			<column name="code" type="varchar2" value="LIMITATION"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2001" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_notice_type_tl</comment>
+		<insert schemaName="apps" tableName="pa_notice_type_tl">
+			<column name="code" type="varchar2" value="SYSTEM"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Системное сообщение"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_type_tl">
+			<column name="code" type="varchar2" value="SYSTEM"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Системное сообщение"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_type_tl">
+			<column name="code" type="varchar2" value="NOTICE"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Уведомление"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_type_tl">
+			<column name="code" type="varchar2" value="NOTICE"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Уведомление"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_type_tl">
+			<column name="code" type="varchar2" value="LIMITATION"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Уведомление об ограничении"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_type_tl">
+			<column name="code" type="varchar2" value="LIMITATION"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Уведомление об ограничении"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+	
+	<changeSet id="cm-rus-2002" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_notice_categories</comment>
+		<createTable tableName="pa_notice_categories" schemaName="apps" remarks="Справочник Категории уведомлений:">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2003" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_notice_categories</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_pa_notice_categories"
+				schemaName="apps"
+				tableName="pa_notice_categories"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2004" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_notice_categories_tl</comment>
+		<createTable tableName="pa_notice_categories_tl" schemaName="apps" remarks="Переводы Справочник Категории уведомлений:">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2005" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_notice_categories_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_pa_notice_categories_tl"
+				schemaName="apps"
+				tableName="pa_notice_categories_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2006" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_notice_categories_tl to pa_notice_categories</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_notice_categories_tl"
+				baseColumnNames="code"
+				constraintName="fk_pa_notice_categories_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_notice_categories"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2007" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_notice_categories</comment>
+		<insert schemaName="apps" tableName="pa_notice_categories">
+			<column name="code" type="varchar2" value="DOC"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories">
+			<column name="code" type="varchar2" value="FIN"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories">
+			<column name="code" type="varchar2" value="CALC"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories">
+			<column name="code" type="varchar2" value="REPORT"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories">
+			<column name="code" type="varchar2" value="FORECASTS"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2008" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_notice_categories_tl</comment>
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="DOC"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Договора"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="DOC"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Договора"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="FIN"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Финансы"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="FIN"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Финансы"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="CALC"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Расчеты"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="CALC"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Расчеты"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="REPORT"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Отчеты"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="REPORT"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Отчеты"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="REPORT"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Отчеты"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="REPORT"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Отчеты"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="FORECASTS"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Прогнозы"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_notice_categories_tl">
+			<column name="code" type="varchar2" value="FORECASTS"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Прогнозы"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-2009" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_message</comment>
+		<createTable tableName="pa_message" schemaName="apps" remarks="Сообщение уведомления">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="notice_type" type="varchar2(30)" remarks="Код типа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="notice_categories" type="varchar2(30)" remarks="Код категории">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="text" type="varchar2(300)" remarks="Текст">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_delete" type="number" remarks="Запись удалена">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2010" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_message</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_message"
+				schemaName="apps"
+				tableName="pa_message"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2011" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_message</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_message_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2012" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_message to pa_notice_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_message"
+				baseColumnNames="notice_type"
+				constraintName="fk_pa_message_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_notice_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2013" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_message to pa_notice_categories</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_message"
+				baseColumnNames="notice_categories"
+				constraintName="fk_pa_message_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_notice_categories"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+</databaseChangeLog>
