@@ -156,8 +156,8 @@
 	</changeSet>
 	
 	<changeSet id="cm-rus-2002" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: pa_notice_categories</comment>
-		<createTable tableName="pa_notice_categories" schemaName="apps" remarks="Справочник Категории уведомлений:">
+		<comment>Creating table: pa_message_type</comment>
+		<createTable tableName="pa_message_type" schemaName="apps" remarks="Справочник Категории уведомлений:">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
@@ -181,17 +181,17 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-2003" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: pa_notice_categories</comment>
+		<comment>Creating primary key for table: pa_message_type</comment>
 		<addPrimaryKey
 				columnNames="code"
-				constraintName="pk_pa_notice_categories"
+				constraintName="pk_pa_message_type"
 				schemaName="apps"
-				tableName="pa_notice_categories"/>
+				tableName="pa_message_type"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-2004" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: pa_notice_categories_tl</comment>
-		<createTable tableName="pa_notice_categories_tl" schemaName="apps" remarks="Переводы Справочник Категории уведомлений:">
+		<comment>Creating table: pa_message_type_tl</comment>
+		<createTable tableName="pa_message_type_tl" schemaName="apps" remarks="Переводы Справочник Категории уведомлений:">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
@@ -201,6 +201,10 @@
 			</column>
 
 			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="text" type="varchar2(100)" remarks="Текст">
 				<constraints nullable="false"/>
 			</column>
 
@@ -223,115 +227,251 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-2005" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: pa_notice_categories_tl</comment>
+		<comment>Creating primary key for table: pa_message_type_tl</comment>
 		<addPrimaryKey
 				columnNames="code, lang"
-				constraintName="pk_pa_notice_categories_tl"
+				constraintName="pk_pa_message_type_tl"
 				schemaName="apps"
-				tableName="pa_notice_categories_tl"/>
+				tableName="pa_message_type_tl"/>
 	</changeSet>
 
 	<changeSet id="cm-rus-2006" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: pa_notice_categories_tl to pa_notice_categories</comment>
+		<comment>Creating foreign constraint: pa_message_type_tl to pa_message_type</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="pa_notice_categories_tl"
+				baseTableName="pa_message_type_tl"
 				baseColumnNames="code"
-				constraintName="fk_pa_notice_categories_tl_1"
+				constraintName="fk_pa_message_type_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="CASCADE"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="pa_notice_categories"
+				referencedTableName="pa_message_type"
 				referencedColumnNames="code"
 		/>
 	</changeSet>
 
 	<changeSet id="cm-rus-2007" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into pa_notice_categories</comment>
-		<insert schemaName="apps" tableName="pa_notice_categories">
-			<column name="code" type="varchar2" value="DOC"/>
+		<comment>insert into pa_message_type</comment>
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="D1"/>
 		</insert>
 
-		<insert schemaName="apps" tableName="pa_notice_categories">
-			<column name="code" type="varchar2" value="FIN"/>
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="D2"/>
 		</insert>
 
-		<insert schemaName="apps" tableName="pa_notice_categories">
-			<column name="code" type="varchar2" value="CALC"/>
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="D3"/>
 		</insert>
 
-		<insert schemaName="apps" tableName="pa_notice_categories">
-			<column name="code" type="varchar2" value="REPORT"/>
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="D4"/>
 		</insert>
 
-		<insert schemaName="apps" tableName="pa_notice_categories">
-			<column name="code" type="varchar2" value="FORECASTS"/>
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="D5"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="D6"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="FIN1"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="FIN2"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="FIN3"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="FIN4"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="FIN5"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type">
+			<column name="code" type="varchar2" value="FIN6"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
 	<changeSet id="cm-rus-2008" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into pa_notice_categories_tl</comment>
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="DOC"/>
+		<comment>insert into pa_message_type_tl</comment>
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D1"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Запрос принет к расмотрению"/>
 		</insert>
 
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="DOC"/>
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D1"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Запрос принет к расмотрению"/>
 		</insert>
 
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="FIN"/>
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D2"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Запрос отклонен по причине"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D2"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Запрос отклонен по причине"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D3"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Готов проект договора"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D3"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Готов проект договора"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D4"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Готов проект доп соглашения"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D4"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Готов проект доп соглашения"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D5"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Договор подписан"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D5"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Договор подписан"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D6"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Доп. соглашение подписано"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="D6"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Договора"/>
+			<column name="text" type="varchar2" value="Доп. соглашение подписано"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN1"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Финансы"/>
+			<column name="text" type="varchar2" value="Пришел счсет на оплату"/>
 		</insert>
 
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="FIN"/>
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN1"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Финансы"/>
+			<column name="text" type="varchar2" value="Пришел счсет на оплату"/>
 		</insert>
 
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="CALC"/>
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN2"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Расчеты"/>
+			<column name="name" type="varchar2" value="Финансы"/>
+			<column name="text" type="varchar2" value="Пришла счет фактура"/>
 		</insert>
 
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="CALC"/>
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN2"/>
 			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Расчеты"/>
+			<column name="name" type="varchar2" value="Финансы"/>
+			<column name="text" type="varchar2" value="Пришла счет фактура"/>
 		</insert>
 
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="REPORT"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Отчеты"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="REPORT"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Отчеты"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="FORECASTS"/>
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN3"/>
 			<column name="lang" type="varchar2" value="RU"/>
 			<column name="name" type="varchar2" value="Прогнозы"/>
+			<column name="text" type="varchar2" value="Пришел акт сверки"/>
 		</insert>
 
-		<insert schemaName="apps" tableName="pa_notice_categories_tl">
-			<column name="code" type="varchar2" value="FORECASTS"/>
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN3"/>
 			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Прогнозы"/>
+			<column name="text" type="varchar2" value="Пришел акт сверки"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN4"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Прогнозы"/>
+			<column name="text" type="varchar2" value="Запрос на предоставление графика погашения задолжености"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN4"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Прогнозы"/>
+			<column name="text" type="varchar2" value="Запрос на предоставление графика погашения задолжености"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN5"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Прогнозы"/>
+			<column name="text" type="varchar2" value="Зачислен платеж на сумму"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN5"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Прогнозы"/>
+			<column name="text" type="varchar2" value="Зачислен платеж на сумму"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN6"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Прогнозы"/>
+			<column name="text" type="varchar2" value="Ограничение из-за большой задолжности"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_message_type_tl">
+			<column name="code" type="varchar2" value="FIN6"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Прогнозы"/>
+			<column name="text" type="varchar2" value="Ограничение из-за большой задолжности"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -348,7 +488,7 @@
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="notice_categories" type="varchar2(30)" remarks="Код категории">
+			<column name="message_type" type="varchar2(30)" remarks="Код категории">
 				<constraints nullable="true"/>
 			</column>
 
@@ -414,18 +554,18 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-2013" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: pa_message to pa_notice_categories</comment>
+		<comment>Creating foreign constraint: pa_message to pa_message_type</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="pa_message"
-				baseColumnNames="notice_categories"
+				baseColumnNames="message_type"
 				constraintName="fk_pa_message_2"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="pa_notice_categories"
+				referencedTableName="pa_message_type"
 				referencedColumnNames="code"
 		/>
 	</changeSet>
