@@ -599,6 +599,15 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-2018" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_rfc">
+			<column name="status_new" type="varchar2(20)" remarks="Статус"/>
+		</addColumn>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-2019" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_doc_rfc to wf_states</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -615,7 +624,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-2019" logicalFilePath="path-independent" author="ruslan">
+	<changeSet id="cm-rus-2020" logicalFilePath="path-independent" author="ruslan">
 		<comment>update data in table: cm_doc_keg_cte</comment>
 		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
 			update apps.cm_doc_rfc c
@@ -642,14 +651,14 @@
 		</sql>
 	</changeSet>
 
-	<changeSet id="cm-rus-2020" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-2021" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>drop column to cm_doc_rfc</comment>
 		<dropColumn columnName="status"
 					schemaName="apps"
 					tableName="cm_doc_rfc"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-2021" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-2022" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>rename column in cm_doc_rfc</comment>
 		<renameColumn columnDataType="varchar2(20)"
 					  newColumnName="status"
