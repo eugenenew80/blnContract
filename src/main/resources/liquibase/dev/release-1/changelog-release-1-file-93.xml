@@ -570,4 +570,98 @@
 		/>
 	</changeSet>
 
+	<changeSet id="cm-rus-2014" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_obj_statuses</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_obj_statuses"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2015" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_obj_statuses_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_obj_statuses_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2016" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_obj_status_groups</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_obj_status_groups"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2017" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_obj_status_groups_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_obj_status_groups_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2018" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop fk: fk_cm_doc_rfc_28</comment>
+		<dropForeignKeyConstraint baseTableName="cm_doc_rfc" schemaName="apps" constraintName="fk_cm_doc_rfc_28"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-2019" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_rfc to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_rfc"
+				baseColumnNames="status_new"
+				constraintName="fk_cm_doc_rfc_28"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2020" logicalFilePath="path-independent" author="ruslan">
+		<comment>update data in table: cm_doc_keg_cte</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_rfc c
+			set c.status_new = 'SIGNED'
+			where c.status = 'CONTRACTS_SIGNED';
+		</sql>
+
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_rfc c
+			set c.status_new = 'APPROVED'
+			where c.status = 'CONTRACTS_APPROVED';
+		</sql>
+
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_rfc c
+			set c.status_new = 'CLOSE'
+			where c.status = 'CONTRACTS_CLOSE';
+		</sql>
+
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			update apps.cm_doc_rfc c
+			set c.status_new = 'CREATE'
+			where c.status = 'CONTRACTS_NOT_COMPLITED';
+		</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-2021" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_rfc</comment>
+		<dropColumn columnName="status"
+					schemaName="apps"
+					tableName="cm_doc_rfc"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2022" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column in cm_doc_rfc</comment>
+		<renameColumn columnDataType="varchar2(20)"
+					  newColumnName="status"
+					  oldColumnName="status_new"
+					  remarks="Статус"
+					  schemaName="apps"
+					  tableName="cm_doc_rfc"/>
+	</changeSet>
 </databaseChangeLog>
