@@ -600,7 +600,7 @@
 
 	<changeSet id="cm-rus-2018" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>drop fk: fk_cm_doc_rfc_28</comment>
-		<dropForeignKeyConstraint baseTableName="cm_doc_rfc" baseTableSchemaName="apps" constraintName="fk_cm_doc_rfc_28"/>
+		<dropForeignKeyConstraint baseTableName="cm_doc_rfc" baseTableSchemaName="apps" constraintName="FK_CM_DOC_RFC_28"/>
 	</changeSet>
 
 
