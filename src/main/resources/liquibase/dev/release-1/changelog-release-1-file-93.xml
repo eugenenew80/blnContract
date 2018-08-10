@@ -606,7 +606,6 @@
 		</addColumn>
 	</changeSet>
 
-
 	<changeSet id="cm-rus-2019" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_doc_rfc to wf_states</comment>
 		<addForeignKeyConstraint
@@ -666,5 +665,172 @@
 					  remarks="Статус"
 					  schemaName="apps"
 					  tableName="cm_doc_rfc"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2023" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps" tableName="pa_message">
+			<column name="user_id" type="number" remarks="Идентификатор кому это сообщение">
+				<constraints nullable="false"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2024" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_power_transformers</comment>
+		<addColumn schemaName="apps" tableName="dict_power_transformers">
+			<column name="type" type="varchar2(50)" remarks="Тип">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2025" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_power_transformers</comment>
+		<addColumn schemaName="apps" tableName="dict_power_transformers">
+			<column name="windings_number" type="number" remarks="Количество обмоток в трансформаторах тока">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2026" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_reactors</comment>
+		<addColumn schemaName="apps" tableName="dict_reactors">
+			<column name="type" type="varchar2(50)" remarks="Тип">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2027" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_power_transformers</comment>
+		<addColumn schemaName="apps" tableName="dict_power_transformers">
+			<column name="input_hl_id" type="number" remarks="Ид точки учета для Ввод ВН">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2028" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_power_transformers</comment>
+		<addColumn schemaName="apps" tableName="dict_power_transformers">
+			<column name="input_ml_id" type="number" remarks="Ид точки учета для Ввод СН">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2029" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_power_transformers</comment>
+		<addColumn schemaName="apps" tableName="dict_power_transformers">
+			<column name="input_ll_id" type="number" remarks="Ид точки учета для Ввод НН">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2030" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_power_transformers to dict_metering_points</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_power_transformers"
+				baseColumnNames="input_hl_id"
+				constraintName="fk_dict_power_transformers_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_metering_points"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2031" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_power_transformers to dict_metering_points</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_power_transformers"
+				baseColumnNames="input_ml_id"
+				constraintName="fk_dict_power_transformers_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_metering_points"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2032" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_power_transformers to dict_metering_points</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_power_transformers"
+				baseColumnNames="input_ll_id"
+				constraintName="fk_dict_power_transformers_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_metering_points"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2033" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_power_transformers</comment>
+		<addColumn schemaName="apps" tableName="dict_power_transformers">
+			<column name="input_mp_id" type="number" remarks="точка учета фиксирующия на вводе ВН">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2034" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_power_transformers</comment>
+		<addColumn schemaName="apps" tableName="dict_reactors">
+			<column name="input_mp_id" type="number" remarks="точка учета фиксирующия на вводе ВН">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-2035" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_power_transformers to dict_metering_points</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_power_transformers"
+				baseColumnNames="input_mp_id"
+				constraintName="fk_dict_power_transformers_6"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_metering_points"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2036" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_power_transformers to dict_metering_points</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_reactors"
+				baseColumnNames="input_mp_id"
+				constraintName="FK_DICT_REACTORS_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_metering_points"
+				referencedColumnNames="id"
+		/>
 	</changeSet>
 </databaseChangeLog>
