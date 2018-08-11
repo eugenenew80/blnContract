@@ -833,4 +833,453 @@
 				referencedColumnNames="id"
 		/>
 	</changeSet>
+
+
+	<changeSet id="cm-rus-2037" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dm_regulations</comment>
+		<createTable tableName="dm_regulations" schemaName="apps" remarks="Справочник Нормативно-правовые акты:">
+			<column name="code" type="varchar2(30)" remarks="Код документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="edition" type="varchar2(30)" remarks="Издание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="introduction_date" type="date" remarks="Дата создание">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2038" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dm_regulations</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_dm_regulations"
+				schemaName="apps"
+				tableName="dm_regulations"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2039" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dm_regulations_tl</comment>
+		<createTable tableName="dm_regulations_tl" schemaName="apps" remarks="Переводы Справочник Категории уведомлений:">
+			<column name="code" type="varchar2(30)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(300)" remarks="Наименование">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="approved" type="varchar2(100)" remarks="Утвержденно">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="registered" type="varchar2(100)" remarks="Зарегестрировано">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2040" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dm_regulations_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_dm_regulations_tl"
+				schemaName="apps"
+				tableName="dm_regulations_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2041" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dm_regulations_tl to dm_regulations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dm_regulations_tl"
+				baseColumnNames="code"
+				constraintName="fk_dm_regulations_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_regulations"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2042" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_message_type</comment>
+		<insert schemaName="apps" tableName="dm_regulations">
+			<column name="code" type="varchar2" value="И KEGOC 00-529-13-ПР"/>
+			<column name="edition" type="number" value="1"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_regulations">
+			<column name="code" type="varchar2" value="Р KEGOC 00-504-17"/>
+			<column name="edition" type="number" value="1"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_regulations">
+			<column name="code" type="varchar2" value="СТ KEGOC 00-107-13-ПР"/>
+			<column name="edition" type="number" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2043" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_message_type_tl</comment>
+		<insert schemaName="apps" tableName="dm_regulations_tl">
+			<column name="code" type="varchar2" value="И KEGOC 00-529-13-ПР"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Инструкция по составлению балансов электрической энергии на подстанциях АО 'KEGOC'"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_regulations_tl">
+			<column name="code" type="varchar2" value="И KEGOC 00-529-13-ПР"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Инструкция по составлению балансов электрической энергии на подстанциях АО 'KEGOC'"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_regulations_tl">
+			<column name="code" type="varchar2" value="Р KEGOC 00-504-17"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Формирование и согласование баланса производства, поступления, и потребления электрической энергии по региону"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_regulations_tl">
+			<column name="code" type="varchar2" value="Р KEGOC 00-504-17"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Формирование и согласование баланса производства, поступления, и потребления электрической энергии по региону"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_regulations_tl">
+			<column name="code" type="varchar2" value="СТ KEGOC 00-107-13-ПР"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Управление договорами на оказание системных услуг"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_regulations_tl">
+			<column name="code" type="varchar2" value="СТ KEGOC 00-107-13-ПР"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Управление договорами на оказание системных услуг"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2044" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_doc_types</comment>
+		<addColumn schemaName="apps" tableName="dm_doc_types">
+			<column name="reg_doc_code" type="varchar2(30)" remarks="Код Нормативно-правового акта">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2045" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dm_doc_types</comment>
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="36"/>
+			<column name="code" type="varchar2" value="CALC"/>
+			<column name="is_a_type" type="number" value="0"/>
+			<column name="is_active" type="number" value="1"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="37"/>
+			<column name="parent_type_id" type="number" value="36"/>
+			<column name="code" type="varchar2" value="CALC_ASP1"/>
+			<column name="is_a_type" type="number" value="1"/>
+			<column name="is_active" type="number" value="1"/>
+			<column name="reg_doc_code" type="vacrhar2" value="СТ KEGOC 00-107-13-ПР"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="38"/>
+			<column name="parent_type_id" type="number" value="36"/>
+			<column name="code" type="varchar2" value="CALC_BALPS"/>
+			<column name="is_a_type" type="number" value="1"/>
+			<column name="is_active" type="number" value="1"/>
+			<column name="reg_doc_code" type="varchar2" value="И KEGOC 00-529-13-ПР"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="39"/>
+			<column name="parent_type_id" type="number" value="38"/>
+			<column name="code" type="varchar2" value="CALC_ASP2"/>
+			<column name="is_a_type" type="number" value="1"/>
+			<column name="is_active" type="number" value="1"/>
+			<column name="reg_doc_code" type="varchar2" value="И KEGOC 00-529-13-ПР"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="40"/>
+			<column name="parent_type_id" type="number" value="38"/>
+			<column name="code" type="varchar2" value="CALC_DOPNEB"/>
+			<column name="is_a_type" type="number" value="1"/>
+			<column name="is_active" type="number" value="1"/>
+			<column name="reg_doc_code" type="varchar2" value="И KEGOC 00-529-13-ПР"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="41"/>
+			<column name="parent_type_id" type="number" value="38"/>
+			<column name="code" type="varchar2" value="CALC_RP"/>
+			<column name="is_a_type" type="number" value="1"/>
+			<column name="is_active" type="number" value="1"/>
+			<column name="reg_doc_code" type="varchar2" value="И KEGOC 00-529-13-ПР"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="42"/>
+			<column name="parent_type_id" type="number" value="36"/>
+			<column name="code" type="varchar2" value="CALC_INTER_LEP"/>
+			<column name="is_a_type" type="number" value="1"/>
+			<column name="is_active" type="number" value="1"/>
+			<column name="reg_doc_code" type="varchar2" value="Р KEGOC 00-504-17"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="43"/>
+			<column name="parent_type_id" type="number" value="36"/>
+			<column name="code" type="varchar2" value="CALC_FOGR"/>
+			<column name="is_a_type" type="number" value="1"/>
+			<column name="is_active" type="number" value="1"/>
+			<column name="reg_doc_code" type="varchar2" value="Р KEGOC 00-504-17"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="44"/>
+			<column name="parent_type_id" type="number" value="36"/>
+			<column name="code" type="varchar2" value="CALC_PPGR"/>
+			<column name="is_a_type" type="number" value="1"/>
+			<column name="is_active" type="number" value="1"/>
+			<column name="reg_doc_code" type="varchar2" value="Р KEGOC 00-504-17"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types">
+			<column name="id" type="number" value="45"/>
+			<column name="parent_type_id" type="number" value="36"/>
+			<column name="code" type="varchar2" value="CALC_FBPP1"/>
+			<column name="is_a_type" type="number" value="1"/>
+			<column name="is_active" type="number" value="1"/>
+			<column name="reg_doc_code" type="varchar2" value="Р KEGOC 00-504-17"/>
+		</insert>
+
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2046" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into dm_doc_types_tl</comment>
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="71"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="doc_type_id" type="number" value="36"/>
+			<column name="short_name" type="varchar2" value="Расчеты"/>
+			<column name="name" type="varchar2" value="Расчеты"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="72"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="doc_type_id" type="number" value="36"/>
+			<column name="short_name" type="varchar2" value="Расчеты"/>
+			<column name="name" type="varchar2" value="Расчеты"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="73"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="doc_type_id" type="number" value="37"/>
+			<column name="short_name" type="varchar2" value="Акт съема показаний приборов коммерческого учета"/>
+			<column name="name" type="varchar2" value="Акт съема показаний приборов коммерческого учета электроэнергии"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="74"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="doc_type_id" type="number" value="37"/>
+			<column name="short_name" type="varchar2" value="Акт съема показаний приборов коммерческого учета"/>
+			<column name="name" type="varchar2" value="Акт съема показаний приборов коммерческого учета электроэнергии"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="75"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="doc_type_id" type="number" value="38"/>
+			<column name="short_name" type="varchar2" value="Акт о составлении баланса электроэнергии на подстанции"/>
+			<column name="name" type="varchar2" value="Акт о составлении баланса электроэнергии на подстанции"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="76"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="doc_type_id" type="number" value="38"/>
+			<column name="short_name" type="varchar2" value="Акт о составлении баланса электроэнергии на подстанции"/>
+			<column name="name" type="varchar2" value="Акт о составлении баланса электроэнергии на подстанции"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="77"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="doc_type_id" type="number" value="39"/>
+			<column name="short_name" type="varchar2" value="Акт съема показаний счетчиков электрической энергии на подстанции"/>
+			<column name="name" type="varchar2" value="Акт съема показаний счетчиков электрической энергии на подстанции"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="78"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="doc_type_id" type="number" value="39"/>
+			<column name="short_name" type="varchar2" value="Акт съема показаний счетчиков электрической энергии на подстанции"/>
+			<column name="name" type="varchar2" value="Акт съема показаний счетчиков электрической энергии на подстанции"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="79"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="doc_type_id" type="number" value="40"/>
+			<column name="short_name" type="varchar2" value="Расчет значений допустимого небаланса на подстанции"/>
+			<column name="name" type="varchar2" value="Расчет значений допустимого небаланса на подстанции"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="80"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="doc_type_id" type="number" value="40"/>
+			<column name="short_name" type="varchar2" value="Расчет значений допустимого небаланса на подстанции"/>
+			<column name="name" type="varchar2" value="Расчет значений допустимого небаланса на подстанции"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="81"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="doc_type_id" type="number" value="41"/>
+			<column name="short_name" type="varchar2" value="Расчет потерь электроэнергии на подстанции"/>
+			<column name="name" type="varchar2" value="Расчет потерь электроэнергии на подстанции"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="82"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="doc_type_id" type="number" value="41"/>
+			<column name="short_name" type="varchar2" value="Расчет потерь электроэнергии на подстанции"/>
+			<column name="name" type="varchar2" value="Расчет потерь электроэнергии на подстанции"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="83"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="doc_type_id" type="number" value="42"/>
+			<column name="short_name" type="varchar2" value="Акт сверки объемов перетока по межрегиональным ЛЭП"/>
+			<column name="name" type="varchar2" value="Акт сверки расчета фактических объемов электроэнергии переданных и полученных сторонами в точках поставки по межрегиональным линиям электропередачи"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="84"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="doc_type_id" type="number" value="42"/>
+			<column name="short_name" type="varchar2" value="Акт сверки объемов перетока по межрегиональным ЛЭП"/>
+			<column name="name" type="varchar2" value="Акт сверки расчета фактических объемов электроэнергии переданных и полученных сторонами в точках поставки по межрегиональным линиям электропередачи"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="85"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="doc_type_id" type="number" value="43"/>
+			<column name="short_name" type="varchar2" value="Фактические объемы эл.энергии на границе балансовой принадлежности"/>
+			<column name="name" type="varchar2" value="Акт сверки расчета фактических объемов электроэнергии переданных и полученных сторонами в точках поставки по межрегиональным линиям электропередачи"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="86"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="doc_type_id" type="number" value="43"/>
+			<column name="short_name" type="varchar2" value="Фактические объемы эл.энергии на границе балансовой принадлежности"/>
+			<column name="name" type="varchar2" value="Акт сверки расчета фактических объемов электроэнергии переданных и полученных сторонами в точках поставки по межрегиональным линиям электропередачи"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="87"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="doc_type_id" type="number" value="44"/>
+			<column name="short_name" type="varchar2" value="Прием в сеть и выдача из сети по границе балансового раздела для определения фактических потерь электроэнергии"/>
+			<column name="name" type="varchar2" value="Прием в сеть и выдача из сети по границе балансового раздела для определения фактических потерь электроэнергии"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="88"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="doc_type_id" type="number" value="44"/>
+			<column name="short_name" type="varchar2" value="Прием в сеть и выдача из сети по границе балансового раздела для определения фактических потерь электроэнергии"/>
+			<column name="name" type="varchar2" value="Прием в сеть и выдача из сети по границе балансового раздела для определения фактических потерь электроэнергии"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="89"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="doc_type_id" type="number" value="45"/>
+			<column name="short_name" type="varchar2" value="Баланс производства, поступления, и потребления электрической энергии по региону филиала АО 'KEGOC'"/>
+			<column name="name" type="varchar2" value="Баланс производства, поступления, и потребления электрической энергии по региону филиала АО 'KEGOC'"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="dm_doc_types_tl">
+			<column name="id" type="number" value="90"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="doc_type_id" type="number" value="45"/>
+			<column name="short_name" type="varchar2" value="Баланс производства, поступления, и потребления электрической энергии по региону филиала АО 'KEGOC'"/>
+			<column name="name" type="varchar2" value="Баланс производства, поступления, и потребления электрической энергии по региону филиала АО 'KEGOC'"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2047" logicalFilePath="path-independent" author="ruslan">
+		<comment>Create/Recreate primary, unique and foreign key constraints</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			alter table APPS.FIN_PAYMENT_REQUEST_LINES
+			drop constraint FK_FIN_PAYMENT_REQUEST_LINES_1;
+			alter table APPS.FIN_PAYMENT_REQUEST_LINES
+			add constraint FK_FIN_PAYMENT_REQUEST_LINES_1 foreign key (PAYMENT_REQUEST_ID)
+			references APPS.FIN_PAYMENT_REQUESTS (ID) on delete cascade
+			deferrable initially deferred;
+	</sql>
+	</changeSet>
+
+
 </databaseChangeLog>
