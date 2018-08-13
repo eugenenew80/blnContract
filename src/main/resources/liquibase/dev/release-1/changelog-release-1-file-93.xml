@@ -834,7 +834,6 @@
 		/>
 	</changeSet>
 
-
 	<changeSet id="cm-rus-2037" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: dm_regulations</comment>
 		<createTable tableName="dm_regulations" schemaName="apps" remarks="Справочник Нормативно-правовые акты:">
@@ -1281,5 +1280,30 @@
 	</sql>
 	</changeSet>
 
+	<changeSet id="cm-rus-2048" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to mdfem_undercount_header</comment>
+		<addColumn schemaName="apps" tableName="mdfem_undercount_header">
+			<column name="parameter_type_id" type="number" remarks="Вид учета">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2049" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_undercount_header to media_parameters</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_undercount_header"
+				baseColumnNames="parameter_type_id"
+				constraintName="FK_mdfem_undercount_header_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="media_parameters"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
 
 </databaseChangeLog>
