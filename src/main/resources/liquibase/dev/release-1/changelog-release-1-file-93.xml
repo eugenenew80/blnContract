@@ -1318,11 +1318,14 @@
 	</changeSet>
 
 	<changeSet id="cm-rus-2051" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column in dict_organization</comment>
-		<addColumn schemaName="apps"
-				   tableName="dict_organizations">
-			<column name="calendar_id" type="number" remarks="Идентификатор календаря"/>
-		</addColumn>
+		<comment>Creating unique for table: dict_metering_points</comment>
+		<addUniqueConstraint columnNames="code"
+							 constraintName="uk_dict_metering_points_1"
+							 deferrable="true"
+							 disabled="true"
+							 initiallyDeferred="true"
+							 schemaName="apps"
+							 tableName="dict_metering_points"/>
 	</changeSet>
 
 
