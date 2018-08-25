@@ -1328,5 +1328,31 @@
 							 tableName="dict_metering_points"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-2052" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_rfc</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_rfc">
+			<column name="energy_zone_id" type="number" remarks="Идентификатор энергозоны">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2053" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_rfc to dict_energy_zones</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_rfc"
+				baseColumnNames="energy_zone_id"
+				constraintName="FK_cm_doc_rfc_30"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_zones"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
 
 </databaseChangeLog>
