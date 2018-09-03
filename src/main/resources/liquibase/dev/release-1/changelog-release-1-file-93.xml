@@ -1354,5 +1354,143 @@
 		/>
 	</changeSet>
 
+	<changeSet id="cm-rus-2054" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="contract_type_id" type="number" remarks="id типа контракта">
+				<constraints nullable="false"/>
+			</column>
+		</addColumn>
+	</changeSet>
 
+	<changeSet id="cm-rus-2055" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="is_resident" type="number" remarks="Является резидентом (Да/Нет)">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2057" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="ubp_number" type="number" remarks="Уникальный номер Бизнесс-партнера">
+				<constraints nullable="false"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2058" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_req_doc_create</comment>
+		<dropColumn columnName="bp_legal_address_id"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2059" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_req_doc_create</comment>
+		<dropColumn columnName="bp_actual_address_id"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2060" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="bp_legal_address" type="varchar2(300)" remarks="Юридический адрес">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2061" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="bp_actual_address_id" type="varchar2(300)" remarks="Фактический адрес">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2062" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="bp_grc_reg_date" type="date" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица: Дата регистрации">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2063" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="tax_authority_name" type="varchar2(300)" remarks="Бизнес-партнер: Св-во о постановке на учет по НДС: Наименование налогового органа">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2064" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="sla_licensing_authority" type="varchar2(300)" remarks="Бизнес-партнер: Государственная лицензия на занятие видом деятельности: Орган выдавший лицензию">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2065" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="sla_special_terms" type="varchar2(300)" remarks="Бизнес-партнер: Государственная лицензия на занятие видом деятельности: Особые условия">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2066" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="sla_activity_kind" type="varchar2(300)" remarks="Бизнес-партнер: Государственная лицензия на занятие видом деятельности: Вид деятельности">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2067" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="contract_person_post" type="varchar2(300)" remarks="Должность подписывающего">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2068" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="contract_person_post_rp" type="varchar2(300)" remarks="Должность подписывающего в род. Падеже">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2069" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="contract_person_fio" type="varchar2(300)" remarks="ФИО подписывающего">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2070" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="contract_person_fio_rp" type="varchar2(300)" remarks="ФИО подписывающего в род. Падеже">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
