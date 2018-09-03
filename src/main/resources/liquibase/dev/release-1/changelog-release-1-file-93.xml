@@ -1493,4 +1493,98 @@
 			</column>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="cm-rus-2071" logicalFilePath="path-independent" author="ruslan">
+	<comment>add comment table: cm_req_doc_create</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		comment on column apps.CM_REQ_DOC_CREATE.doc_type_id
+		is 'id типа контракта';
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-2072" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_req_doc_create</comment>
+		<dropColumn columnName="contract_type_id"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2073" logicalFilePath="path-independent" author="ruslan">
+	<comment>add comment table: cm_req_doc_create</comment>
+	<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+		comment on column apps.CM_REQ_DOC_CREATE.cancel_date
+		is 'Дата отмены запроса';
+	</sql>
+	</changeSet>
+
+	<changeSet id="cm-rus-2074" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_cte_a1h</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_cte_a1h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2075" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_keg_a1l</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_keg_a1l"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2076" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_keg_a1l_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_keg_a1l_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2077" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_cte_a3h</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_cte_a3h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2078" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_cte_a3h_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_cte_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2079" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_cte_a3l</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_cte_a3l"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2080" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_cte_a3l_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_cte_a3l_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2081" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_cte_a4h</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_cte_a4h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2082" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_cte_a4l</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_cte_a4l"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2083" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_cte_a4l_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_cte_a4l_tl"/>
+	</changeSet>
+
 </databaseChangeLog>
