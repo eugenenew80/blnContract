@@ -1587,4 +1587,439 @@
 				   tableName="cm_req_doc_cte_a4l_tl"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-2084" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="bp_name" type="varchar2(1000)" remarks="Бизнес-партнер: Наименование">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2085" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<renameColumn columnDataType="varchar2(300)"
+					  newColumnName="bp_tax_authority_name"
+					  oldColumnName="tax_authority_name"
+					  remarks="A String"
+					  schemaName="apps"
+					  tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2086" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="denied_reason" type="varchar2(1000)" remarks="причина отклонения запроса">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2087" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="is_change_requisites" type="number" remarks="Признак изменения реквизитов">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2088" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="is_change_doc_date" type="number" remarks="Признак изменения сроков договора">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2089" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="is_keg_cte_a1" type="number" remarks="Признак изменения приложения «Договорной объем»">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2090" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="is_keg_cte_a3" type="number" remarks="Признак изменения приложения «Границы раздела»">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2091" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="is_keg_cte_a4" type="number" remarks="Признак изменения приложения «Список приборов»">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2093" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="new_date" type="date" remarks="Новая дата договора">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2094" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="text_keg_cte_a1" type="number" remarks="Текст к приложению «Договорной объем»">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2095" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="text_keg_cte_a3" type="number" remarks="Текст к приложению «Границы раздела»">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2096" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="text_keg_cte_a4" type="number" remarks="Текст к приложению «Список приборов»">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2097" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps" tableName="cm_req_doc_create">
+			<column name="text_vpk" type="number" remarks="Текст по ВПК">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2098" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<renameColumn columnDataType="varchar2(300)"
+					  newColumnName="bp_actual_address"
+					  oldColumnName="bp_actual_address_id"
+					  remarks="Фактический адрес"
+					  schemaName="apps"
+					  tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2099" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="bp1_actual_address_id" type="number" remarks="Бизнес-партнер 1: Ссылка на фактический адрес юр.лица">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2101" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="bp1_taxcert_series" type="varchar2(30)" remarks="Бизнес-партнер 1: Св-во о постановке на учет по НДС: Серия">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2102" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="bp1_taxcert_number" type="varchar2(30)" remarks="Бизнес-партнер 1: Св-во о постановке на учет по НДС: Номер">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2103" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="bp2_actual_address_id" type="number" remarks="Бизнес-партнер 2: Ссылка на фактический адрес юр.лица">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2104" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="energy_sources_id" type="number" remarks="Ид электростанции (Выбирать только ВИЭ)">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2105" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="energy_sources_type_id" type="number" remarks="Ид типа электростанции (Выбирать только ВИЭ)">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2106" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="area_cadastral_number" type="number" remarks="Плошадка: кадастровый номер">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2107" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="area_total_area" type="varchar2(100)" remarks="Плошадка: общая плошадь">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2108" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="area_sum_power" type="varchar2(100)" remarks="Плошадка: Суммарная установленная мощность, генерирующего оборудования электростанции с разбивкой по видам используемых ВИЭ">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2109" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="area_power_factor" type="varchar2(100)" remarks="Плошадка: Прогнозный коэффициент использования установленной мощности электростанции">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2110" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="tariff_code" type="varchar2(30)" remarks="Код тарифа">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2111" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="currency_code" type="varchar2(30)" remarks="Код валюты">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2112" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="tariff_value" type="number" remarks="Значение тарифа">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2113" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="payment_work_days" type="number" remarks="Условия оплаты: В течение рабочих дней после выставления акта сверки">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2114" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="payment_calendar_days" type="number" remarks="Условия оплаты: В течение календарных дней с момента окончания поставки">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2115" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="forfeit_day_delay" type="number" remarks="ставка за день просрочки, %">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2116" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="forfeit_max_percent" type="number" remarks="Но не более от просроченной суммы, %">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2117" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="is_sale_code" type="varchar2(30)" remarks="код покупки или продажи">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2118" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="day_1" type="number" remarks="количество рабочих дней">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2119" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="day_2" type="number" remarks="количество календарный дней">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2120" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="energy_zone_id" type="number" remarks="Идентификатор энергозоны">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2121" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to dict_energy_zones</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="energy_zone_id"
+				constraintName="FK_cm_doc_keg_cte_31"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_zones"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2122" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to dict_post_addresses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp1_actual_address_id"
+				constraintName="FK_cm_doc_keg_cte_32"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2123" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to dict_post_addresses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="bp2_actual_address_id"
+				constraintName="FK_cm_doc_keg_cte_33"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_post_addresses"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2124" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to dict_energy_sources</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="energy_sources_id"
+				constraintName="FK_cm_doc_keg_cte_34"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_sources"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2125" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to dict_energy_source_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="energy_sources_type_id"
+				constraintName="FK_cm_doc_keg_cte_35"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_source_types"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2126" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to dict_tariffs</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="tariff_code"
+				constraintName="FK_cm_doc_keg_cte_36"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_tariffs"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2127" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_doc_keg_cte to currency_codes</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="currency_code"
+				constraintName="FK_cm_doc_keg_cte_37"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="currency_codes"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
 </databaseChangeLog>
