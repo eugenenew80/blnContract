@@ -2058,4 +2058,327 @@
 			</column>
 		</addColumn>
 	</changeSet>
+
+    <changeSet id="cm-rus-2133" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: res_distribution_ee_rule_settings</comment>
+        <createTable tableName="res_distribution_ee_rule_settings" schemaName="apps" remarks="ВИЭ настройка правил распределения ЭЭ по зонам">
+            <column name="id" type="number" remarks="Идентификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="start_date" type="date" remarks="Дата действия с">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="end_date" type="date" remarks="Дата действия по">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="cm-rus-2134" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: res_distribution_ee_rule_settings</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_res_distribution_ee_rule_settings"
+                schemaName="apps"
+                tableName="res_distribution_ee_rule_settings"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2135" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: res_distribution_ee_rule_settings</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="res_distribution_ee_rule_settings_s"
+                startValue="1"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2136" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: res_distribution_ee_rule_settings_tl</comment>
+        <createTable tableName="res_distribution_ee_rule_settings_tl" schemaName="apps" remarks="ВИЭ настройка правил распределения ЭЭ по зонам">
+            <column name="id" type="number" remarks="Идентификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar2(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="rule_setting_id" type="number" remarks="Ссылка на родительскую запись">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar2(300)" remarks="Наименование">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="cm-rus-2137" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: res_distribution_ee_rule_settings_tl</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_res_distribution_ee_rule_settings_tl"
+                schemaName="apps"
+                tableName="res_distribution_ee_rule_settings_tl"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2138" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: res_distribution_ee_rule_settings_tl</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="res_distribution_ee_rule_settings_tl_s"
+                startValue="1"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2139" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating unique key for table: res_distribution_ee_rule_settings_tl</comment>
+        <addUniqueConstraint
+                columnNames="rule_setting_id,lang"
+                constraintName="uk_res_distribution_ee_rule_settings_tl"
+                schemaName="apps"
+                tableName="res_distribution_ee_rule_settings_tl"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2140" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating index: res_distribution_ee_rule_settings_tl</comment>
+        <createIndex indexName="idx_res_distribution_ee_rule_settings_tl_1"
+                     schemaName="apps"
+                     tableName="res_distribution_ee_rule_settings_tl"
+                     unique="false">
+            <column name="rule_setting_id" type="number"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="cm-rus-2141" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: res_distribution_ee_rule_settings_tl to res_distribution_ee_rule_settings</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="res_distribution_ee_rule_settings_tl"
+                baseColumnNames="rule_setting_id"
+                constraintName="fk_res_distribution_ee_rule_settings_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="res_distribution_ee_rule_settings"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="cm-rus-2142" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column to cm_doc_keg_cte_tl</comment>
+        <dropColumn columnName="bp1_taxcert_series"
+                    schemaName="apps"
+                    tableName="cm_doc_keg_cte_tl"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2143" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>drop column to cm_doc_keg_cte_tl</comment>
+        <dropColumn columnName="bp1_taxcert_number"
+                    schemaName="apps"
+                    tableName="cm_doc_keg_cte_tl"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2144" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: res_distribution_ee_energy_zones</comment>
+        <createTable tableName="res_distribution_ee_energy_zones" schemaName="apps" remarks="ВИЭ настройка правил распределения ЭЭ по зонам">
+            <column name="id" type="number" remarks="Идентификатор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="rule_setting_id" type="number" remarks="Ссылка на родительскую запись">
+                <constraints nullable="true"/>
+            </column>
+
+			<column name="res_energy_zone_id" type="number" remarks="Ид энергозоны ВИЭ">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="consumer_energy_zone_id" type="number" remarks="Ид энергозоны УП">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="cm-rus-2145" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: res_distribution_ee_energy_zones</comment>
+        <addPrimaryKey
+                columnNames="id"
+                constraintName="pk_res_distribution_ee_energy_zones"
+                schemaName="apps"
+                tableName="res_distribution_ee_energy_zones"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2146" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating sequence for table: res_distribution_ee_energy_zones</comment>
+        <createSequence
+                incrementBy="1"
+                schemaName="apps"
+                sequenceName="res_distribution_ee_energy_zones_s"
+                startValue="1"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2147" logicalFilePath="path-independent" author="ruslan">
+        <comment>update data in table: dict_energy_zones</comment>
+        <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+            update apps.DICT_ENERGY_ZONES c
+            set c.code = 'N'
+            where c.code = '1';
+        </sql>
+
+        <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+            update apps.DICT_ENERGY_ZONES c
+            set c.code = 'S'
+            where c.code = '2';
+        </sql>
+
+        <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+            update apps.DICT_ENERGY_ZONES c
+            set c.code = 'W'
+            where c.code = '3';
+        </sql>
+
+        <sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+            update apps.DICT_ENERGY_ZONES c
+            set c.code = 'K'
+            where c.code = '4';
+        </sql>
+	<rollback/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2148" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: res_distribution_ee_energy_zones to res_distribution_ee_rule_settings</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="res_distribution_ee_energy_zones"
+                baseColumnNames="rule_setting_id"
+                constraintName="fk_res_distribution_ee_energy_zones_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="res_distribution_ee_rule_settings"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="cm-rus-2149" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: res_distribution_ee_energy_zones to dict_energy_zones</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="res_distribution_ee_energy_zones"
+                baseColumnNames="res_energy_zone_id"
+                constraintName="fk_res_distribution_ee_energy_zones_2"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_energy_zones"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="cm-rus-2150" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating foreign constraint: res_distribution_ee_energy_zones to dict_energy_zones</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="res_distribution_ee_energy_zones"
+                baseColumnNames="consumer_energy_zone_id"
+                constraintName="fk_res_distribution_ee_energy_zones_3"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_energy_zones"
+                referencedColumnNames="id"
+        />
+    </changeSet>
+
+    <changeSet id="cm-rus-2151" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating index: res_distribution_ee_energy_zones</comment>
+        <createIndex indexName="idx_res_distribution_ee_energy_zones_1"
+                     schemaName="apps"
+                     tableName="res_distribution_ee_energy_zones"
+                     unique="false">
+            <column name="rule_setting_id" type="number"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="cm-rus-2152" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating index: res_distribution_ee_energy_zones</comment>
+        <createIndex indexName="idx_res_distribution_ee_energy_zones_2"
+                     schemaName="apps"
+                     tableName="res_distribution_ee_energy_zones"
+                     unique="false">
+            <column name="res_energy_zone_id" type="number"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="cm-rus-2153" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating index: res_distribution_ee_energy_zones</comment>
+        <createIndex indexName="idx_res_distribution_ee_energy_zones_3"
+                     schemaName="apps"
+                     tableName="res_distribution_ee_energy_zones"
+                     unique="false">
+            <column name="consumer_energy_zone_id" type="number"/>
+        </createIndex>
+    </changeSet>
+
+
 </databaseChangeLog>
