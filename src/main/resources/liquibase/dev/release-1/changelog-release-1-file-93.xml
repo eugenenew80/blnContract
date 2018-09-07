@@ -2380,5 +2380,172 @@
         </createIndex>
     </changeSet>
 
+	<changeSet id="cm-rus-2154" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_contract_type</comment>
+		<createTable tableName="cm_contract_type" schemaName="apps" remarks="Справочник Типы договоров">
+			<column name="code" type="varchar2(10)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
 
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2155" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_contract_type</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_cm_contract_type"
+				schemaName="apps"
+				tableName="cm_contract_type"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2156" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_contract_type_tl</comment>
+		<createTable tableName="cm_contract_type_tl" schemaName="apps" remarks="Переводы Типы договоров">
+			<column name="code" type="varchar2(10)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2157" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_contract_type_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_cm_contract_type_tl"
+				schemaName="apps"
+				tableName="cm_contract_type_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2158" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_contract_type_tl to cm_contract_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_contract_type_tl"
+				baseColumnNames="code"
+				constraintName="fk_cm_contract_type_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_contract_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2159" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_contract_type</comment>
+		<insert schemaName="apps" tableName="cm_contract_type">
+			<column name="code" type="varchar2" value="KEG"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="cm_contract_type">
+			<column name="code" type="varchar2" value="RFC"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2160" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_contract_type_tl</comment>
+		<insert schemaName="apps" tableName="cm_contract_type_tl">
+			<column name="code" type="varchar2" value="KEG"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Договора Кегока"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="cm_contract_type_tl">
+			<column name="code" type="varchar2" value="KEG"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Договора Кегока"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="cm_contract_type_tl">
+			<column name="code" type="varchar2" value="RFC"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Договора РФЦ"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="cm_contract_type_tl">
+			<column name="code" type="varchar2" value="RFC"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Договора РФЦ"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2161" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte">
+			<column name="contract_type_code" type="varchar2(10)" remarks="Тип контракта">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2162" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: res_distribution_ee_energy_zones to dict_energy_zones</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte"
+				baseColumnNames="contract_type_code"
+				constraintName="fk_cm_doc_keg_cte_38"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_contract_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2163" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index: cm_doc_keg_cte</comment>
+		<createIndex indexName="idx_cm_doc_keg_cte_1"
+					 schemaName="apps"
+					 tableName="cm_doc_keg_cte"
+					 unique="false">
+			<column name="contract_type_code" type="number"/>
+		</createIndex>
+	</changeSet>
 </databaseChangeLog>
