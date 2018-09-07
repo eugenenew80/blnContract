@@ -2022,4 +2022,40 @@
 				referencedColumnNames="code"
 		/>
 	</changeSet>
+
+	<changeSet id="cm-rus-2128" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_tl</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte_tl">
+			<column name="energy_sources_type" type="varchar2(100)" remarks="Тип электростанции (вставить автоматически)">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2129" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_tl</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte_tl">
+			<column name="energy_sources_address" type="varchar2(100)" remarks="Адресс электростанции (вставить автоматически)">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2130" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_tl</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte_tl">
+			<column name="photo_element_type" type="varchar2(100)" remarks="Тип фотоэлектрического модуля (Если указана солнечная электростанция)">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2132" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_tl</comment>
+		<addColumn schemaName="apps" tableName="cm_doc_keg_cte_tl">
+			<column name="photo_element_made_in_country" type="varchar2(100)" remarks="Страна производитель фотоэлектрического модуля (Если указана солнечная электростанция)">
+				<constraints nullable="true"/>
+			</column>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
