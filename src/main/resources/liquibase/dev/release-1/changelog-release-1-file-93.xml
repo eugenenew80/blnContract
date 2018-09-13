@@ -2548,4 +2548,181 @@
 			<column name="contract_type_code" type="number"/>
 		</createIndex>
 	</changeSet>
+
+	<changeSet id="cm-rus-2164" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_req_doc_create</comment>
+		<dropColumn columnName="request_type_code"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2165" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_req_doc_create</comment>
+		<dropColumn columnName="curator_status_code"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2166" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="curator_state" type="varchar2(20)" remarks="Статус для согласованиея со стороны Кегока"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2167" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="subject_state" type="varchar2(20)" remarks="Статус который видит Субьект"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2168" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: adm_funcs</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="adm_funcs"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2169" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: adm_roles</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="adm_roles"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2170" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: adm_role_dicts</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="adm_role_dicts"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2171" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: adm_role_funcs</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="adm_role_funcs"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2172" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: adm_role_modules</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="adm_role_modules"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2173" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: adm_users</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="adm_users"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2174" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: adm_user_roles</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="adm_user_roles"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2175" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: meta_adms</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="meta_adms"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2176" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: meta_dicts</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="meta_dicts"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2177" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: meta_dict_groups</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="meta_dict_groups"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2178" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: meta_media</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="meta_media"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2179" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: meta_modules</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="meta_modules"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2180" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_change</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_change"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2181" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_change_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_change_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2182" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="curator_state"
+				constraintName="fk_cm_req_doc_create_11"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2183" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="subject_state"
+				constraintName="fk_cm_req_doc_create_12"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
 </databaseChangeLog>
