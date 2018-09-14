@@ -2865,11 +2865,11 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				  sequenceName="adm_roles_s"/>
 </changeSet>
 
-<changeSet id="cm-rus-2206" logicalFilePath="path-independent" author="ruslan" context="dev">
-	<comment>drop sequence adm_users_s</comment>
-	<dropSequence schemaName="apps"
-				  sequenceName="adm_users_s"/>
-</changeSet>
+	<changeSet id="cm-rus-2206" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence adm_users_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="adm_users_s"/>
+	</changeSet>
 
 	<changeSet id="cm-rus-2207" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_keg_cte</comment>
@@ -2879,5 +2879,156 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</addColumn>
 	</changeSet>
 
+
+	<changeSet id="cm-rus-2208" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_doc_close</comment>
+		<createTable tableName="cm_req_doc_close" schemaName="apps" remarks="Запрос на завершениие договора">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="Идентификатор Договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="request_type" type="varchar2(30)" remarks="Тип запроса">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="close_date" type="date" remarks="Планируемая дата завершения договора">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="cancel_date" type="date" remarks="Дата отмены запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="rejected_date" type="date" remarks="Дата отклонения запроса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2209" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_doc_close</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_doc_close"
+				schemaName="apps"
+				tableName="cm_req_doc_close"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2210" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_req_doc_close</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_req_doc_close_s"
+				startValue="1"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-2211" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_req_doc_close_tl</comment>
+		<createTable tableName="cm_req_doc_close_tl" schemaName="apps" remarks="Перевод Запрос на завершениие договора">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_close_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="description" type="varchar2(500)" remarks="Описание причины завершения договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="subject_cancel_description" type="varchar2(500)" remarks="Причина отмены запроса субъектом">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="curator_rejected_description" type="varchar2(500)" remarks="Причина отклонения запроса куратором">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2212" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_req_doc_close_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_req_doc_close_tl"
+				schemaName="apps"
+				tableName="cm_req_doc_close_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2213" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_req_doc_close_tl</comment>
+		<addUniqueConstraint
+				columnNames="doc_close_id,lang"
+				constraintName="uk_cm_req_doc_close_tl"
+				schemaName="apps"
+				tableName="cm_req_doc_close_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2214" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_close_tl to cm_req_doc_close</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_close_tl"
+				baseColumnNames="doc_close_id"
+				constraintName="fk_cm_req_doc_close_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_doc_close"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2215" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop fk in cm_doc_files</comment>
+			<dropForeignKeyConstraint baseTableSchemaName="apps" baseTableName="cm_doc_files" constraintName="fk_cm_doc_files_3"/>
+		<rollback/>
+	</changeSet>
 
 </databaseChangeLog>
