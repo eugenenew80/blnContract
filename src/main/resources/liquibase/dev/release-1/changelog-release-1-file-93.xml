@@ -2870,4 +2870,14 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	<dropSequence schemaName="apps"
 				  sequenceName="adm_users_s"/>
 </changeSet>
+
+	<changeSet id="cm-rus-2207" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_show_subject" type="number" remarks="отображдать в ЛК субьетку"/>
+		</addColumn>
+	</changeSet>
+
+
 </databaseChangeLog>
