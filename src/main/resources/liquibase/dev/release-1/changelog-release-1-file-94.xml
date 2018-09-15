@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="pa-rus-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_debt_repayment_schedule_h</comment>
+		<createTable tableName="pa_debt_repayment_schedule_h" schemaName="apps" remarks="Заголовок запрос на согласование графика погашения задолженности">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="Идентификатор договора">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="bp_id" type="number" remarks="Идентификатор бизнес партнера">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="amount" type="number" remarks="сумма задолжности">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="state" type="varchar2(20)" remarks="Статус запрооса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_not_show" type="number" remarks="Скрыть">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="subject_cancel_description" type="varchar2(500)" remarks="Причина отмены запроса субьектом">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="curator_reject_description" type="varchar2(500)" remarks="Причина отклонения запроса куратаром">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_debt_repayment_schedule_h</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_debt_repayment_schedule_h"
+				schemaName="apps"
+				tableName="pa_debt_repayment_schedule_h"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-3" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_debt_repayment_schedule_h</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_debt_repayment_schedule_h_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-5" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_debt_repayment_schedule_h to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_debt_repayment_schedule_h"
+				baseColumnNames="bp_id"
+				constraintName="fk_pa_debt_repayment_schedule_h_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-6" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_debt_repayment_schedule_l</comment>
+		<createTable tableName="pa_debt_repayment_schedule_l" schemaName="apps" remarks="Строки запрос на согласование графика погашения задолженности">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Идентификатор заголовка">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="payment_date" type="date" remarks="Дата оплаты">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="text" type="number" remarks="Комментарий">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="amount" type="number" remarks="сумма оплаты">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-7" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_debt_repayment_schedule_l</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_debt_repayment_schedule_l"
+				schemaName="apps"
+				tableName="pa_debt_repayment_schedule_l"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-8" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_debt_repayment_schedule_l</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_debt_repayment_schedule_l_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-9" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_debt_repayment_schedule_l to pa_debt_repayment_schedule_h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_debt_repayment_schedule_l"
+				baseColumnNames="header_id"
+				constraintName="fk_pa_debt_repayment_schedule_l_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_debt_repayment_schedule_h"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+</databaseChangeLog>
