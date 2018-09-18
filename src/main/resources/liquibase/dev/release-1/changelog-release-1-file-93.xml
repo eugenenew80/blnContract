@@ -3026,9 +3026,23 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	</changeSet>
 
 	<changeSet id="cm-rus-2215" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>drop fk in cm_doc_files</comment>
-			<dropForeignKeyConstraint baseTableSchemaName="apps" baseTableName="cm_doc_files" constraintName="fk_cm_doc_files_3"/>
-		<rollback/>
+		<comment>rename column in cm_doc_keg_cte</comment>
+		<renameColumn columnDataType="varchar2(10)"
+					  newColumnName="contract_type"
+					  oldColumnName="contract_type_code"
+					  remarks="Тип контракта"
+					  schemaName="apps"
+					  tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2216" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column in cm_doc_keg_cte</comment>
+		<renameColumn columnDataType="varchar2(10)"
+					  newColumnName="contract_group"
+					  oldColumnName="contract_type"
+					  remarks="Тип контракта"
+					  schemaName="apps"
+					  tableName="cm_doc_keg_cte"/>
 	</changeSet>
 
 </databaseChangeLog>
