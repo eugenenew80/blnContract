@@ -1092,4 +1092,151 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 					schemaName="apps"
 					tableName="cm_req_doc_create_tl"/>
 	</changeSet>
+
+	<changeSet	id="pa-rus-69" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_close</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_close"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-70" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_close_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_close_tl"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-71" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: demo_zapros</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="demo_zapros"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-72" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: demo_zapros_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="demo_zapros_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-73" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence demo_zapros_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="demo_zapros_s"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-75" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_req_doc_close_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_req_doc_close_s"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-76" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Add comments to the columns</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			-- Add comments to the columns
+			comment on column apps.calc_balance_result_u_lines.amount
+			is 'Значение среднего напряжения';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-77" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: payment_plan_headers</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="payment_plan_headers"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-78" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: payment_plan_lines</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="payment_plan_lines"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-79" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence payment_plan_lines_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="payment_plan_lines_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-80" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence payment_plan_headers_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="payment_plan_headers_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-81" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence payment_plan_headers_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="dm_request_tl_s"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-82" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_headers_day</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_headers_day"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-83" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_headers_day_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_headers_day_s"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-84" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_headers_year</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_headers_year"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-85" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_headers_year_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_headers_year_s"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-86" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_info_types</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_info_types"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-87" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_info_types_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_info_types_s"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-88" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_values_day</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_values_day"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-89" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_values_day_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_values_day_s"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-90" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_values_year</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_values_year"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-91" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_values_year_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_values_year_s"/>
+	</changeSet>
 </databaseChangeLog>

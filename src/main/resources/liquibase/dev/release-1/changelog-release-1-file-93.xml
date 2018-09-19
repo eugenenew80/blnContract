@@ -570,7 +570,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	/>
 </changeSet>
 
-<changeSet id="cm-rus-2014" logicalFilePath="path-independent" author="ruslan" context="dev">
+<changeSet	id="cm-rus-2014" logicalFilePath="path-independent" author="ruslan" context="dev">
 	<comment>drop table: cm_obj_statuses</comment>
 	<dropTable cascadeConstraints="true"
 			   schemaName="apps"
@@ -3045,4 +3045,43 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 					  tableName="cm_doc_keg_cte"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-2217" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a1h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a1h">
+			<column name="is_show_subject" type="number" remarks="Оютображать в ЛК субъекту"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2218" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a2h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a2h">
+			<column name="is_show_subject" type="number" remarks="Оютображать в ЛК субъекту"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2219" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a3h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a3h">
+			<column name="is_show_subject" type="number" remarks="Оютображать в ЛК субъекту"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2220" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a4h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a4h">
+			<column name="is_show_subject" type="number" remarks="Оютображать в ЛК субъекту"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2221" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cbee_a3h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3h">
+			<column name="is_show_subject" type="number" remarks="Оютображать в ЛК субъекту"/>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
