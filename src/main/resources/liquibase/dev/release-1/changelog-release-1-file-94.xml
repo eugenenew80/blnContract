@@ -1239,4 +1239,12 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		<dropSequence schemaName="apps"
 					  sequenceName="pcv_values_year_s"/>
 	</changeSet>
+
+	<changeSet id="pa-rus-92" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_debt_repayment_schedule_h</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_debt_repayment_schedule_h">
+			<column name="curator_id" type="number" remarks="Ид куратора"/>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
