@@ -1247,4 +1247,124 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			<column name="curator_id" type="number" remarks="Ид куратора"/>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="pa-rus-93" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_debt_repayment_schedule_h</comment>
+		<modifyDataType columnName="text"
+						newDataType="varchar2(500)"
+						schemaName="apps"
+						tableName="pa_req_debt_repayment_schedule_l"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-94" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: dm_request</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="dm_request"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-95" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: dm_request</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="dm_request_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-96" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: cm_doc_keg_cte </comment>
+		<createIndex indexName="idx_cm_doc_keg_cte_2"
+					 schemaName="apps"
+					 tableName="cm_doc_keg_cte">
+			<column name="doc_basis_code" type="varchar2(30)"/>
+		</createIndex>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-97" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: cm_req_doc_create </comment>
+		<createIndex indexName="idx_cm_req_doc_create_3"
+					 schemaName="apps"
+					 tableName="cm_req_doc_create">
+			<column name="bp_grc_rle_code" type="varchar2(30)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-98" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create to cm_req_doc_create_basis</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="bp_grc_rle_code"
+				constraintName="fk_cm_req_doc_create_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_doc_create_basis"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-99" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<modifyDataType columnName="text_keg_cte_A1"
+						newDataType="varchar2(500)"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-100" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<modifyDataType columnName="text_keg_cte_A3"
+						newDataType="varchar2(500)"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-101" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<modifyDataType columnName="text_keg_cte_A4"
+						newDataType="varchar2(500)"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-102" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<modifyDataType columnName="text_vpk"
+						newDataType="varchar2(500)"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-103" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create_tl">
+			<column name="bp_grc_doc_city" type="varchar2(200)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица:Место выдачи"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-104" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create_tl">
+			<column name="bp_grc_issuer_fio" type="varchar2(50)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица:ФИО, выдавшего документ"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-105" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create_tl">
+			<column name="bp_grc_issuer_post" type="varchar2(50)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица:Должность выдавшего документ"/>
+		</addColumn>
+	</changeSet>
+
+
+
+
+
+
 </databaseChangeLog>
