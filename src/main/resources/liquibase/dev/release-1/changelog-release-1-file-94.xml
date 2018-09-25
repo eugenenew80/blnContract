@@ -1362,9 +1362,121 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</addColumn>
 	</changeSet>
 
+	<changeSet id="pa-rus-106" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_h</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_h">
+			<column name="state" type="varchar2(20)" remarks="Статус формирования"/>
+		</addColumn>
+	</changeSet>
 
+	<changeSet id="pa-rus-107" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_req_prediction_val_h </comment>
+		<createIndex indexName="idx_pa_req_prediction_val_h_1"
+					 schemaName="apps"
+					 tableName="pa_req_prediction_val_h">
+			<column name="state" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
 
+	<changeSet id="pa-rus-108" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_req_prediction_val_h to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_prediction_val_h"
+				baseColumnNames="state"
+				constraintName="fk_pa_req_prediction_val_h_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
 
+	<changeSet id="pa-rus-109" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_req_prediction_val_d</comment>
+		<dropColumn columnName="h14"
+					schemaName="apps"
+					tableName="pa_req_prediction_val_d"/>
+	</changeSet>
 
+	<changeSet id="pa-rus-110" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_d">
+			<column name="h13" type="number" remarks="Обьем за 13 час"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-111" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_d">
+			<column name="h14" type="number" remarks="Обьем за 14 час"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-112" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="object_type" type="varchar2(30)" remarks="Тип обьекта"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-113" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="object_id" type="number" remarks="Идентификатор обьекта"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-114" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_message to wf_objects</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_message"
+				baseColumnNames="object_type"
+				constraintName="fk_pa_message_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_objects"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-115" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_message </comment>
+		<createIndex indexName="idx_pa_message_1"
+					 schemaName="apps"
+					 tableName="pa_message">
+			<column name="object_type" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-116" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_message </comment>
+		<createIndex indexName="idx_pa_message_2"
+					 schemaName="apps"
+					 tableName="pa_message">
+			<column name="notice_type" type="varchar2(30)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-117" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_message </comment>
+		<createIndex indexName="idx_pa_message_3"
+					 schemaName="apps"
+					 tableName="pa_message">
+			<column name="message_type" type="varchar2(30)"/>
+		</createIndex>
+	</changeSet>
 
 </databaseChangeLog>
