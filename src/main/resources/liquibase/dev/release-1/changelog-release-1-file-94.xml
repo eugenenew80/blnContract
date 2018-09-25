@@ -1479,4 +1479,27 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</createIndex>
 	</changeSet>
 
+	<changeSet id="pa-rus-118" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="is_read" type="number" remarks="Прочитано"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-119" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="parent_id" type="number" remarks="родитель"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-120" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="subject" type="varchar2(500)" remarks="тема"/>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
