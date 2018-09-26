@@ -1502,4 +1502,13 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			<column name="subject" type="varchar2(500)" remarks="тема"/>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="pa-rus-121" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint cm_taxcerts_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2(500)"
+							   columnName="legal_name"
+							   schemaName="apps"
+							   tableName="cm_taxcerts_tl"/>
+		<rollback/>
+	</changeSet>
 </databaseChangeLog>
