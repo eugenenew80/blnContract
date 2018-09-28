@@ -128,7 +128,7 @@
         </profile>
 
         <profile>
-            <id>Prod</id>
+            <id>blntest</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -167,7 +167,7 @@
         </profile>
 
         <profile>
-            <id>biling</id>
+            <id>prod</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
