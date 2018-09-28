@@ -1653,4 +1653,83 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				referencedColumnNames="code"
 		/>
 	</changeSet>
+
+	<changeSet	id="pa-rus-141" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_info_types_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_info_types_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-142" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pa_req_projected_val_d_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pa_req_projected_val_d_s"/>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-144" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pa_req_projected_val_y_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pa_req_projected_val_y_s"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-145" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pa_req_projected_val_y5_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pa_req_projected_val_y5_s"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-146" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_prediction_val_h</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_prediction_val_h_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-147" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_prediction_val_y</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_prediction_val_y_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-148" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_prediction_val_d</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_prediction_val_d_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-149" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_prediction_val_y5</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_prediction_val_y5_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-151" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_info_types_tl_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_info_types_tl_s"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-152" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column to dm_doc_file_info</comment>
+		<renameColumn columnDataType="varchar2(300)"
+					  newColumnName="comments"
+					  oldColumnName="comment"
+					  remarks="Комментарий к документу"
+					  schemaName="apps"
+					  tableName="dm_doc_file_info"/>
+	</changeSet>
+
 </databaseChangeLog>
