@@ -69,7 +69,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		<comment>Creating foreign constraint: res_daily_schedule to wf_states</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="pa_res_daily_schedule"
+				baseTableName="res_daily_schedule"
 				baseColumnNames="state"
 				constraintName="fk_res_daily_schedule_1"
 				deferrable="true"
@@ -78,7 +78,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
 				referencedTableName="wf_states"
-				referencedColumnNames="id"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
 
@@ -143,7 +143,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 
 		<insert schemaName="apps" tableName="res_daily_schedule_volume_types">
 			<column name="code" type="varchar2" value="SALE"/>
-			<column name="code" type="varchar2" value="Обьемы продаж"/>
+			<column name="name" type="varchar2" value="Обьемы продаж"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -152,10 +152,6 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		<comment>Creating table: res_daily_schedule_info_type</comment>
 		<createTable tableName="res_daily_schedule_info_type" schemaName="apps" remarks="Справочник Типов информации для Суточного графика">
 			<column name="code" type="varchar2(20)" remarks="Код">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="name" type="varchar2(100)" remarks="Описание">
 				<constraints nullable="false"/>
 			</column>
 
@@ -238,7 +234,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	<changeSet id="res-rus-13" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: res_daily_schedule_info_type_tl</comment>
 		<addPrimaryKey
-				columnNames="code"
+				columnNames="code,lang"
 				constraintName="pk_res_daily_schedule_info_type_tl"
 				schemaName="apps"
 				tableName="res_daily_schedule_info_type_tl"/>
@@ -248,17 +244,38 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		<comment>insert into res_daily_schedule_info_type_tl</comment>
 		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
 			<column name="code" type="varchar2" value="PREDICT"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Прогнозные"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
+			<column name="code" type="varchar2" value="PREDICT"/>
+			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Прогнозные"/>
 		</insert>
 
 		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
 			<column name="code" type="varchar2" value="FACT"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Фактические"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
+			<column name="code" type="varchar2" value="FACT"/>
+			<column name="lang" type="varchar2" value="KZ"/>
 			<column name="name" type="varchar2" value="Фактические"/>
 		</insert>
 
 		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
 			<column name="code" type="varchar2" value="ESTIMATE"/>
-			<column name="code" type="varchar2" value="оценочные"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="оценочные"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
+			<column name="code" type="varchar2" value="ESTIMATE"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="оценочные"/>
 		</insert>
 		<rollback/>
 	</changeSet>
@@ -268,12 +285,12 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="res_daily_schedule_info_type_tl"
-				baseColumnNames="state"
+				baseColumnNames="code"
 				constraintName="fk_res_daily_schedule_info_type_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="CASCADE"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
 				referencedTableName="res_daily_schedule_info_type"
 				referencedColumnNames="code"
@@ -323,11 +340,11 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="info_type" type="varhar2(20)" remarks="Тип информации">
+			<column name="info_type" type="varchar2(20)" remarks="Тип информации">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="volume_types" type="varhar2(20)" remarks="Типы объемов">
+			<column name="volume_type" type="varchar2(20)" remarks="Типы объемов">
 				<constraints nullable="true"/>
 			</column>
 
@@ -388,7 +405,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		<comment>Creating index for table: res_daily_schedule</comment>
 		<createIndex indexName="idx_res_daily_schedule_values_headers_1"
 					 schemaName="apps"
-					 tableName="res_daily_schedule">
+					 tableName="res_daily_schedule_values_headers">
 			<column name="schedule_id" type="number"/>
 		</createIndex>
 	</changeSet>
@@ -414,7 +431,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		<comment>Creating index for table: res_daily_schedule</comment>
 		<createIndex indexName="idx_res_daily_schedule_values_headers_2"
 					 schemaName="apps"
-					 tableName="res_daily_schedule">
+					 tableName="res_daily_schedule_values_headers">
 			<column name="contract_id" type="number"/>
 		</createIndex>
 	</changeSet>
@@ -440,44 +457,18 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
 		<createIndex indexName="idx_res_daily_schedule_values_headers_3"
 					 schemaName="apps"
-					 tableName="res_daily_schedule">
-			<column name="contract_id" type="number"/>
+					 tableName="res_daily_schedule_values_headers">
+			<column name="bp_id" type="number"/>
 		</createIndex>
 	</changeSet>
 
-	<changeSet id="res-rus-25" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_headers to dict_business_partners</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_headers"
-				baseColumnNames="bp_id"
-				constraintName="fk_res_daily_schedule_values_headers_3"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="cm_doc_keg_cte"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-26" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_3"
-					 schemaName="apps"
-					 tableName="res_daily_schedule">
-			<column name="contract_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-25" logicalFilePath="path-independent" author="ruslan">
+	<changeSet id="res-rus-27" logicalFilePath="path-independent" author="ruslan">
 		<comment>Creating foreign constraint: res_daily_schedule_values_headers to cm_doc_cptri_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="res_daily_schedule_values_headers"
 				baseColumnNames="meter_type"
-				constraintName="fk_res_daily_schedule_values_headers_4"
+				constraintName="fk_res_daily_schedule_values_headers_5"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
@@ -488,38 +479,12 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		/>
 	</changeSet>
 
-	<changeSet id="res-rus-26" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_4"
-					 schemaName="apps"
-					 tableName="res_daily_schedule">
-			<column name="meter_type" type="varchar2(30)"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-27" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_headers to dict_energy_zones</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_headers"
-				baseColumnNames="energy_zone_id"
-				constraintName="fk_res_daily_schedule_values_headers_5"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_energy_zones"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
 	<changeSet id="res-rus-28" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
 		<createIndex indexName="idx_res_daily_schedule_values_headers_5"
 					 schemaName="apps"
-					 tableName="res_daily_schedule">
-			<column name="energy_zone_id" type="number"/>
+					 tableName="res_daily_schedule_values_headers">
+			<column name="meter_type" type="varchar2(30)"/>
 		</createIndex>
 	</changeSet>
 
@@ -529,7 +494,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				baseTableSchemaName="apps"
 				baseTableName="res_daily_schedule_values_headers"
 				baseColumnNames="energy_zone_id"
-				constraintName="fk_res_daily_schedule_values_headers_5"
+				constraintName="fk_res_daily_schedule_values_headers_6"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
@@ -542,10 +507,88 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 
 	<changeSet id="res-rus-30" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_5"
+		<createIndex indexName="idx_res_daily_schedule_values_headers_6"
 					 schemaName="apps"
-					 tableName="res_daily_schedule">
+					 tableName="res_daily_schedule_values_headers">
 			<column name="energy_zone_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="res-rus-31" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_daily_schedule_values_headers to res_distribution_ee_rule_settings</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_daily_schedule_values_headers"
+				baseColumnNames="energy_zone_settings"
+				constraintName="fk_res_daily_schedule_values_headers_7"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="res_distribution_ee_rule_settings"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-32" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
+		<createIndex indexName="idx_res_daily_schedule_values_headers_7"
+					 schemaName="apps"
+					 tableName="res_daily_schedule_values_headers">
+			<column name="energy_zone_settings" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="res-rus-33" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_daily_schedule_values_headers to res_daily_schedule_info_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_daily_schedule_values_headers"
+				baseColumnNames="info_type"
+				constraintName="fk_res_daily_schedule_values_headers_8"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="res_daily_schedule_info_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-34" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
+		<createIndex indexName="idx_res_daily_schedule_values_headers_8"
+					 schemaName="apps"
+					 tableName="res_daily_schedule_values_headers">
+			<column name="info_type" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="res-rus-35" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_daily_schedule_values_headers to res_daily_schedule_volume_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_daily_schedule_values_headers"
+				baseColumnNames="volume_type"
+				constraintName="fk_res_daily_schedule_values_headers_9"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="res_daily_schedule_volume_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-36" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
+		<createIndex indexName="idx_res_daily_schedule_values_headers_9"
+					 schemaName="apps"
+					 tableName="res_daily_schedule_values_headers">
+			<column name="volume_type" type="varchar2(20)"/>
 		</createIndex>
 	</changeSet>
 </databaseChangeLog>
