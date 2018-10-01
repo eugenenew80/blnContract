@@ -1731,5 +1731,4 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 					  schemaName="apps"
 					  tableName="dm_doc_file_info"/>
 	</changeSet>
-
 </databaseChangeLog>

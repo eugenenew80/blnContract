@@ -3084,4 +3084,15 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			<column name="is_show_subject" type="number" remarks="Оютображать в ЛК субъекту"/>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="cm-rus-2222" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>creating index cm_doc_keg_cte</comment>
+		<createIndex indexName="idx_cm_doc_keg_cte_3"
+					 schemaName="apps"
+					 tableName="cm_doc_keg_cte"
+					 unique="false">
+			<column name="energy_zone_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
 </databaseChangeLog>
