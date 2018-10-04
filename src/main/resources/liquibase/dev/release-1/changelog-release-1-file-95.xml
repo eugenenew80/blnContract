@@ -30,19 +30,19 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			</column>
 
 			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 		</createTable>
 	</changeSet>
@@ -132,7 +132,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	<changeSet id="res-rus-8" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into res_daily_schedule_volume_types</comment>
 		<insert schemaName="apps" tableName="res_daily_schedule_volume_types">
-			<column name="code" type="varchar2" value="BAY"/>
+			<column name="code" type="varchar2" value="BUY"/>
 			<column name="name" type="varchar2" value="обьем покупок виэ"/>
 		</insert>
 
@@ -308,18 +308,6 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="version" type="number" remarks="Версия" defaultValueNumeric="1">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="is_active" type="number" remarks="Запись активная" defaultValueNumeric="0">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="is_show" type="number" remarks="Отображать в ЛК">
-				<constraints nullable="true"/>
-			</column>
-
 			<column name="contract_id" type="number" remarks="Идентификатор договора">
 				<constraints nullable="false"/>
 			</column>
@@ -349,19 +337,19 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			</column>
 
 			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 
 			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="false"/>
+				<constraints nullable="true"/>
 			</column>
 		</createTable>
 	</changeSet>
@@ -448,7 +436,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_doc_keg_cte"
+				referencedTableName="dict_business_partners"
 				referencedColumnNames="id"
 		/>
 	</changeSet>
@@ -589,6 +577,643 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 					 schemaName="apps"
 					 tableName="res_daily_schedule_values_headers">
 			<column name="volume_type" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="res-rus-37" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: res_daily_schedule_values_lines</comment>
+		<createTable tableName="res_daily_schedule_values_lines" schemaName="apps" remarks="Суточный график: Строки Обьемов">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Идентификатор заголовка">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="val_date" type="TIMESTAMP" remarks="Время суточного графика">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="val" type="number" remarks="Объем">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="res-rus-38" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: res_daily_schedule_values_lines</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_res_daily_schedule_values_lines"
+				schemaName="apps"
+				tableName="res_daily_schedule_values_lines"/>
+	</changeSet>
+
+	<changeSet id="res-rus-39" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: res_daily_schedule_values_lines</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="res_daily_schedule_values_lines_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="res-rus-40" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_daily_schedule_values_lines to res_daily_schedule_values_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_daily_schedule_values_lines"
+				baseColumnNames="header_id"
+				constraintName="fk_res_daily_schedule_values_lines_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="res_daily_schedule_values_headers"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-41" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_daily_schedule_values_lines</comment>
+		<createIndex indexName="idx_res_daily_schedule_values_lines_1"
+					 schemaName="apps"
+					 tableName="res_daily_schedule_values_lines">
+			<column name="header_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="res-rus-43" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into res_daily_schedule</comment>
+		<insert schemaName="apps" tableName="res_daily_schedule">
+			<column name="id" type="number" value="1"/>
+			<column name="schedule_date" type="date" value="24-ноя-15"/>
+			<column name="version" type="number" value="1"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="res-rus-44" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.res_distribution_ee_rule_settings</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="create_by"
+							   schemaName="apps"
+							   tableName="res_distribution_ee_rule_settings"/>
+
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="create_date"
+							   schemaName="apps"
+							   tableName="res_distribution_ee_rule_settings"/>
+
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="last_update_by"
+							   schemaName="apps"
+							   tableName="res_distribution_ee_rule_settings"/>
+
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="last_update_date"
+							   schemaName="apps"
+							   tableName="res_distribution_ee_rule_settings"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="res-rus-45" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint APPS.res_distribution_ee_rule_settings</comment>
+		<addNotNullConstraint columnDataType="date"
+							  columnName="start_date"
+							  schemaName="apps"
+							  tableName="res_distribution_ee_rule_settings"/>
+	</changeSet>
+
+	<changeSet id="res-rus-46" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into res_daily_schedule</comment>
+		<insert schemaName="apps" tableName="res_distribution_ee_rule_settings">
+			<column name="id" type="number" value="1"/>
+			<column name="start_date" type="date" value="24-ноя-15"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="res-rus-47" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into res_daily_schedule_values_headers</comment>
+		<insert schemaName="apps" tableName="res_daily_schedule_values_headers">
+			<column name="id" type="number" value="1"/>
+			<column name="schedule_id" type="number" value="1"/>
+			<column name="contract_id" type="number" value="506"/>
+			<column name="bp_id" type="number" value="68"/>
+			<column name="meter_type" type="varchar2(30)" value="CONSUMPTION"/>
+			<column name="energy_zone_id" type="number" value="1"/>
+			<column name="energy_zone_settings" type="number" value="1"/>
+			<column name="info_type" type="varchar2(20)" value="FACT"/>
+			<column name="volume_type" type="varchar2(20)" value="BUY"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="res-rus-48" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into res_daily_schedule_values_lines</comment>
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="1"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 00.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="2"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 1.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="3"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 2.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="4"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 3.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="5"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 4.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="6"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 5.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="7"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 6.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="8"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 7.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="9"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 8.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="10"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 9.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="11"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 10.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="12"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 11.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="13"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 12.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="14"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 13.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="res-rus-49" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into res_daily_schedule_values_lines</comment>
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="15"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 14.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="16"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 15.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="17"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 16.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="18"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 17.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="19"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 18.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="20"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 19.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="21"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 20.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="22"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 21.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="23"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 22.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
+			<column name="id" type="number" value="24"/>
+			<column name="header_id" type="number" value="1"/>
+			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 23.00.00"/>
+			<column name="val" type="number" value="2000"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="res-rus-50" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: res_month_schedule_headers</comment>
+		<createTable tableName="res_month_schedule_headers" schemaName="apps" remarks="прогнозные и фактические объемы покупки, продажи ЭЭ за месец: Заголовок">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="period_id" type="number" remarks="Ид периода">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="version" type="number" remarks="Версия" defaultValueNumeric="1">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="state" type="varchar2(20)" remarks="Статус">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_show" type="number" remarks="Отображать в ЛК">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="res-rus-51" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: res_month_schedule_headers</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_res_month_schedule_headers"
+				schemaName="apps"
+				tableName="res_month_schedule_headers"/>
+	</changeSet>
+
+	<changeSet id="res-rus-52" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: res_month_schedule_headers</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="res_month_schedule_headers_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="res-rus-53" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_month_schedule_headers to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_month_schedule_headers"
+				baseColumnNames="state"
+				constraintName="fk_res_month_schedule_headers_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-54" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_month_schedule_headers</comment>
+		<createIndex indexName="idx_res_month_schedule_headers_1"
+					 schemaName="apps"
+					 tableName="res_month_schedule_headers">
+			<column name="state" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+
+
+	<changeSet id="res-rus-55" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: res_month_schedule_lines</comment>
+		<createTable tableName="res_month_schedule_lines" schemaName="apps" remarks="прогнозные и фактические объемы покупки, продажи ЭЭ за месец: Строки">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="идентификатор заголовка">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="Идентификатор договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_id" type="number" remarks="Идентификатор Бизнес партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="energy_zone_id" type="number" remarks="Идентификатор энергозоны">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="energy_zone_settings" type="number" remarks="Идентификатор настройки энергозоны">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="info_type" type="varchar2(20)" remarks="Тип информации">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="quantity" type="number" remarks="количество">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="res-rus-56" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: res_month_schedule_lines</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_res_month_schedule_lines"
+				schemaName="apps"
+				tableName="res_month_schedule_lines"/>
+	</changeSet>
+
+	<changeSet id="res-rus-57" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: res_month_schedule_lines</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="res_month_schedule_lines_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="res-rus-58" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_month_schedule_lines to res_month_schedule_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_month_schedule_lines"
+				baseColumnNames="header_id"
+				constraintName="fk_res_month_schedule_lines_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="res_month_schedule_headers"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-59" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_month_schedule_lines</comment>
+		<createIndex indexName="idx_res_month_schedule_lines_1"
+					 schemaName="apps"
+					 tableName="res_month_schedule_lines">
+			<column name="header_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="res-rus-60" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_month_schedule_lines to cm_doc_keg_cte</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_month_schedule_lines"
+				baseColumnNames="contract_id"
+				constraintName="fk_res_month_schedule_lines_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-61" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_month_schedule_lines</comment>
+		<createIndex indexName="idx_res_month_schedule_lines_2"
+					 schemaName="apps"
+					 tableName="res_month_schedule_lines">
+			<column name="contract_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="res-rus-62" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_month_schedule_lines to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_month_schedule_lines"
+				baseColumnNames="bp_id"
+				constraintName="fk_res_month_schedule_lines_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-63" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_month_schedule_lines</comment>
+		<createIndex indexName="idx_res_month_schedule_lines_3"
+					 schemaName="apps"
+					 tableName="res_month_schedule_lines">
+			<column name="bp_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="res-rus-64" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_month_schedule_lines to dict_energy_zones</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_month_schedule_lines"
+				baseColumnNames="energy_zone_id"
+				constraintName="fk_res_month_schedule_lines_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_zones"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-65" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_month_schedule_lines</comment>
+		<createIndex indexName="idx_res_month_schedule_lines_4"
+					 schemaName="apps"
+					 tableName="res_month_schedule_lines">
+			<column name="energy_zone_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="res-rus-66" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_month_schedule_lines to res_distribution_ee_rule_settings</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_month_schedule_lines"
+				baseColumnNames="energy_zone_settings"
+				constraintName="fk_res_month_schedule_lines_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="res_distribution_ee_rule_settings"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-67" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_month_schedule_lines</comment>
+		<createIndex indexName="idx_res_month_schedule_lines_5"
+					 schemaName="apps"
+					 tableName="res_month_schedule_lines">
+			<column name="energy_zone_settings" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="res-rus-68" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_month_schedule_lines to res_daily_schedule_info_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_month_schedule_lines"
+				baseColumnNames="info_type"
+				constraintName="fk_res_month_schedule_lines_6"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="res_daily_schedule_info_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-69" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_month_schedule_lines</comment>
+		<createIndex indexName="idx_res_month_schedule_lines_6"
+					 schemaName="apps"
+					 tableName="res_month_schedule_lines">
+			<column name="info_type" type="varchar2(20)"/>
 		</createIndex>
 	</changeSet>
 </databaseChangeLog>

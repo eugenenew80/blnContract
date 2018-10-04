@@ -1731,4 +1731,56 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 					  schemaName="apps"
 					  tableName="dm_doc_file_info"/>
 	</changeSet>
+
+	<changeSet id="cm-rus-153" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>update PA_MESSAGE</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on column APPS.PA_MESSAGE.create_by
+			is 'От кого';
+
+			comment on column APPS.PA_MESSAGE.create_date
+			is 'Дата/время отправки';
+
+			comment on column APPS.PA_MESSAGE.parent_id
+			is 'Ответ на входящее';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-154" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="is_sent" type="number" remarks="Отправлен ответ Да/Нет"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-155" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_message</comment>
+		<dropColumn columnName="message_type"
+					schemaName="apps"
+					tableName="pa_message"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-156" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_message</comment>
+		<dropColumn columnName="is_delete"
+					schemaName="apps"
+					tableName="pa_message"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-157" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_message</comment>
+		<dropColumn columnName="object_type"
+					schemaName="apps"
+					tableName="pa_message"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-158" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_message</comment>
+		<dropColumn columnName="object_id"
+					schemaName="apps"
+					tableName="pa_message"/>
+	</changeSet>
+
 </databaseChangeLog>
