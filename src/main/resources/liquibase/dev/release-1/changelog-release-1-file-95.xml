@@ -1216,4 +1216,13 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			<column name="info_type" type="varchar2(20)"/>
 		</createIndex>
 	</changeSet>
+
+	<changeSet id="res-rus-70" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte</comment>
+		<modifyDataType columnName="area_cadastral_number"
+						newDataType="varchar2(20)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
 </databaseChangeLog>
