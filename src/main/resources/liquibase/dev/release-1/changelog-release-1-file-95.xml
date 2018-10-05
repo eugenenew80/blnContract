@@ -989,7 +989,6 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</createIndex>
 	</changeSet>
 
-
 	<changeSet id="res-rus-55" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: res_month_schedule_lines</comment>
 		<createTable tableName="res_month_schedule_lines" schemaName="apps" remarks="прогнозные и фактические объемы покупки, продажи ЭЭ за месец: Строки">
@@ -1223,6 +1222,32 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 						newDataType="varchar2(20)"
 						schemaName="apps"
 						tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="res-rus-71" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_month_schedule_headers to fin_periods</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_month_schedule_headers"
+				baseColumnNames="period_id"
+				constraintName="fk_res_month_schedule_headers_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="fin_periods"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-72" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_month_schedule_headers</comment>
+		<createIndex indexName="idx_res_month_schedule_headers_2"
+					 schemaName="apps"
+					 tableName="res_month_schedule_headers">
+			<column name="period_id" type="number"/>
+		</createIndex>
 	</changeSet>
 
 </databaseChangeLog>

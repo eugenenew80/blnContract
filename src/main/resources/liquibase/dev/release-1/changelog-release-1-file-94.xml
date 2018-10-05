@@ -1783,4 +1783,316 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 					tableName="pa_message"/>
 	</changeSet>
 
+
+	<changeSet id="pa-rus-159" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_h</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_h">
+			<column name="contract_code" type="varchar2(10)" remarks="Код типа контракта"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-160" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_prediction_val_h to cm_contract_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_prediction_val_h"
+				baseColumnNames="contract_code"
+				constraintName="fk_pa_req_prediction_val_h_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_contract_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-161" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_req_prediction_val_h</comment>
+		<createIndex indexName="idx_pa_req_prediction_val_h_4"
+					 schemaName="apps"
+					 tableName="pa_req_prediction_val_h">
+			<column name="contract_code" type="varchar2(10)"/>
+		</createIndex>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-162" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_res_approved_volume_headers</comment>
+		<createTable tableName="pa_res_approved_volume_headers" schemaName="apps" remarks="Утвержденные прогнозные объемы ЭЭ: Заголовок">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="Идентификатор договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_id" type="number" remarks="Идентификатор Бизнес партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="energy_sources_id" type="number" remarks="Идентификатор электростанции">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="contract_code" type="varchar2(10)" remarks="Тип контракта Кегок или РФЦ">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="prediction_val_types" type="varchar2(10)" remarks="Типы прогнозных обьемов">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-163" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_res_approved_volume_headers</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_res_approved_volume_headers"
+				schemaName="apps"
+				tableName="pa_res_approved_volume_headers"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-164" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_res_approved_volume_headers</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_res_approved_volume_headers_s"
+				startValue="1"/>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-165" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_headers to cm_doc_keg_cte</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_headers"
+				baseColumnNames="contract_id"
+				constraintName="fk_pa_res_approved_volume_headers_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-166" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_headers</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_headers_1"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_headers">
+			<column name="contract_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-167" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_headers to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_headers"
+				baseColumnNames="bp_id"
+				constraintName="fk_pa_res_approved_volume_headers_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-168" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_headers</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_headers_2"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_headers">
+			<column name="bp_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-169" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_headers to dict_energy_sources</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_headers"
+				baseColumnNames="energy_sources_id"
+				constraintName="fk_pa_res_approved_volume_headers_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_sources"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-170" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_headers</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_headers_3"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_headers">
+			<column name="energy_sources_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-171" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_headers to cm_contract_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_headers"
+				baseColumnNames="contract_code"
+				constraintName="fk_pa_res_approved_volume_headers_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_contract_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-172" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_headers</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_headers_4"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_headers">
+			<column name="contract_code" type="varchar2(10)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-173" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_headers to pa_prediction_val_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_headers"
+				baseColumnNames="prediction_val_types"
+				constraintName="fk_pa_res_approved_volume_headers_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="PA_PREDICTION_VAL_TYPES"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-174" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_headers</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_headers_5"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_headers">
+			<column name="prediction_val_types" type="varchar2(10)"/>
+		</createIndex>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-175" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_res_approved_volume_lines</comment>
+		<createTable tableName="pa_res_approved_volume_lines" schemaName="apps" remarks="Утвержденные прогнозные объемы ЭЭ: Заголовок">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Идентификатор заголовка">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="val_date" type="TIMESTAMP" remarks="Время суточного графика">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="val" type="number" remarks="Объем">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-176" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_res_approved_volume_lines</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_res_approved_volume_lines"
+				schemaName="apps"
+				tableName="pa_res_approved_volume_lines"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-177" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_res_approved_volume_lines</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_res_approved_volume_lines_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-178" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_lines to pa_res_approved_volume_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_lines"
+				baseColumnNames="header_id"
+				constraintName="fk_pa_res_approved_volume_lines_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_res_approved_volume_headers"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-179" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_lines</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_lines_1"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_lines">
+			<column name="header_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
 </databaseChangeLog>
