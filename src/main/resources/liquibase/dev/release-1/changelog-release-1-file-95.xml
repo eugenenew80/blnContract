@@ -1283,4 +1283,96 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			<column name="status" type="varchar2(20)"/>
 		</createIndex>
 	</changeSet>
+
+	<changeSet id="res-rus-76" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to res_month_schedule_lines</comment>
+		<addColumn schemaName="apps"
+				   tableName="res_month_schedule_lines">
+			<column name="bp_energy_zone_id" type="number" remarks="Идентификатор энергозоны для условного потребителя"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="res-rus-77" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to res_daily_schedule</comment>
+		<addColumn schemaName="apps"
+				   tableName="res_daily_schedule">
+			<column name="org_id" type="number" remarks="Ид филиала"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="res-rus-78" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_daily_schedule to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_daily_schedule"
+				baseColumnNames="org_id"
+				constraintName="fk_res_daily_schedule_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-79" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_daily_schedule</comment>
+		<createIndex indexName="idx_res_daily_schedule_3"
+					 schemaName="apps"
+					 tableName="res_daily_schedule">
+			<column name="org_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+
+	<changeSet id="res-rus-80" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign key in table: res_daily_schedule</comment>
+		<dropForeignKeyConstraint baseTableName="res_daily_schedule" constraintName="fk_res_daily_schedule_2" baseTableSchemaName="apps"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="res-rus-81" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_daily_schedule to media_batch_statuses</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_daily_schedule"
+				baseColumnNames="status"
+				constraintName="fk_res_daily_schedule_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="media_batch_statuses"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-82" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_month_schedule_lines to dict_energy_zones</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_month_schedule_lines"
+				baseColumnNames="bp_energy_zone_id"
+				constraintName="fk_res_month_schedule_lines_7"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_zones"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-83" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_month_schedule_lines</comment>
+		<createIndex indexName="idx_res_month_schedule_lines_7"
+					 schemaName="apps"
+					 tableName="res_month_schedule_lines">
+			<column name="bp_energy_zone_id" type="number"/>
+		</createIndex>
+	</changeSet>
 </databaseChangeLog>
