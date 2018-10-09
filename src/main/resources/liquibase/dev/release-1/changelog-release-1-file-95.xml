@@ -1250,4 +1250,37 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</createIndex>
 	</changeSet>
 
+	<changeSet id="res-rus-73" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to res_daily_schedule</comment>
+		<addColumn schemaName="apps"
+				   tableName="res_daily_schedule">
+			<column name="status" type="varchar2(20)" remarks="Статус передачи в брэ"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="res-rus-74" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_daily_schedule to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_daily_schedule"
+				baseColumnNames="status"
+				constraintName="fk_res_daily_schedule_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-75" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_daily_schedule</comment>
+		<createIndex indexName="idx_res_daily_schedule_2"
+					 schemaName="apps"
+					 tableName="res_daily_schedule">
+			<column name="status" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
 </databaseChangeLog>
