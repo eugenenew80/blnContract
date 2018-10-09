@@ -3095,4 +3095,11 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</createIndex>
 	</changeSet>
 
+	<changeSet id="cm-rus-2223" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint cm_doc_keg_cte</comment>
+		<addNotNullConstraint columnDataType="varchar2(10)"
+							  columnName="contract_group"
+							  schemaName="apps"
+							  tableName="cm_doc_keg_cte"/>
+	</changeSet>
 </databaseChangeLog>
