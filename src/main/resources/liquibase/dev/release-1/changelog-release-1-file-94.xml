@@ -2095,4 +2095,28 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</createIndex>
 	</changeSet>
 
+	<changeSet	id="pa-rus-180" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pa_req_prediction_val_y5</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pa_req_prediction_val_y5"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-181" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint pa_req_prediction_val_h</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="energy_sources_id"
+							   schemaName="apps"
+							   tableName="pa_req_prediction_val_h"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-182" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint pa_req_prediction_val_h</comment>
+		<addNotNullConstraint
+				columnDataType="varchar2(10)"
+				columnName="contract_code"
+				schemaName="apps"
+				tableName="pa_req_prediction_val_h"/>
+	</changeSet>
 </databaseChangeLog>
