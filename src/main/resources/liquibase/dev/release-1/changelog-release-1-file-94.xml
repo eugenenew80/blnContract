@@ -2119,4 +2119,96 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				schemaName="apps"
 				tableName="pa_req_prediction_val_h"/>
 	</changeSet>
+
+
+	<changeSet id="pa-rus-183" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="region_id" type="number" remarks="Идентификатор региона"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-184" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: cm_req_doc_create to dict_regions</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="region_id"
+				constraintName="fk_cm_req_doc_create_14"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_regions"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-185" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: cm_req_doc_create</comment>
+		<createIndex indexName="idx_cm_req_doc_create_14"
+					 schemaName="apps"
+					 tableName="cm_req_doc_create">
+			<column name="region_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-186" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="bp_is_poa"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-187" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="bp_poa_type_code"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-188" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="bp_poa_number"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-189" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="bp_poa_date"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-190" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_contract_person_post"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-191" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_contract_person_post_rp"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-192" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_contract_person_fio"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-193" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_contract_person_fio_rp"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
 </databaseChangeLog>

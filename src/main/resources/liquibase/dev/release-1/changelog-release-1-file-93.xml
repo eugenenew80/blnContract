@@ -3102,4 +3102,19 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 							  schemaName="apps"
 							  tableName="cm_doc_keg_cte"/>
 	</changeSet>
+
+	<changeSet	id="cm-rus-2224" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_rfc</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_rfc"/>
+	</changeSet>
+
+	<changeSet	id="cm-rus-2225" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_rfc_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_rfc_tl"/>
+	</changeSet>
+
 </databaseChangeLog>

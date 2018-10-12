@@ -1375,4 +1375,38 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			<column name="bp_energy_zone_id" type="number"/>
 		</createIndex>
 	</changeSet>
+
+	<changeSet id="res-rus-84" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to res_daily_schedule_values_headers</comment>
+		<addColumn schemaName="apps"
+				   tableName="res_daily_schedule_values_headers">
+			<column name="bp_energy_zone_id" type="number" remarks="Идентификатор энергозоны для условного потребителя"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="res-rus-85" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_daily_schedule_values_headers to dict_energy_zones</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_daily_schedule_values_headers"
+				baseColumnNames="bp_energy_zone_id"
+				constraintName="fk_res_daily_schedule_values_headers_10"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_zones"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-86" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
+		<createIndex indexName="idx_res_daily_schedule_values_headers_10"
+					 schemaName="apps"
+					 tableName="res_daily_schedule_values_headers">
+			<column name="bp_energy_zone_id" type="number"/>
+		</createIndex>
+	</changeSet>
 </databaseChangeLog>
