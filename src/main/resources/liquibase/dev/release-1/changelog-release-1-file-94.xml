@@ -2120,7 +2120,6 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				tableName="pa_req_prediction_val_h"/>
 	</changeSet>
 
-
 	<changeSet id="pa-rus-183" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_req_doc_create</comment>
 		<addColumn schemaName="apps"
@@ -2211,4 +2210,53 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 					tableName="cm_req_doc_create_tl"/>
 	</changeSet>
 
+	<changeSet id="pa-rus-194" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_y </comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_y">
+			<column name="units_id" type="number" remarks="еденица измерения"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-195" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_d</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_d">
+			<column name="units_id" type="number" remarks="еденица измерения"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-196" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_prediction_val_y to dict_units</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_prediction_val_y"
+				baseColumnNames="units_id"
+				constraintName="fk_pa_req_prediction_val_y_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-197" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_prediction_val_d to dict_units</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_prediction_val_d"
+				baseColumnNames="units_id"
+				constraintName="fk_pa_req_prediction_val_d_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
 </databaseChangeLog>

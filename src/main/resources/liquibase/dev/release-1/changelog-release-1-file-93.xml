@@ -3117,4 +3117,46 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				   tableName="cm_doc_rfc_tl"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-2226" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: dict_metering_points </comment>
+		<createIndex indexName="idx_dict_metering_points_1"
+					 schemaName="apps"
+					 tableName="dict_metering_points">
+			<column name="accounting_type_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="cm-rus-2227" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: dict_metering_points_tl </comment>
+		<createIndex indexName="idx_dict_metering_points_tl_1"
+					 schemaName="apps"
+					 tableName="dict_metering_points_tl">
+			<column name="metering_point_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="cm-rus-2228" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_power_transformers</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_power_transformers">
+			<column name="BN" type="number" remarks="Полная мощность ввода ВН, кВА"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2229" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_power_transformers</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_power_transformers">
+			<column name="CN" type="number" remarks="Полная мощность ввода СН, кВА"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2230" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_power_transformers</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_power_transformers">
+			<column name="NN" type="number" remarks="Полная мощность ввода НН, кВА"/>
+		</addColumn>
+	</changeSet>
+
 </databaseChangeLog>
