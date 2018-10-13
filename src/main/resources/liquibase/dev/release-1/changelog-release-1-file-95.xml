@@ -1409,4 +1409,47 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			<column name="bp_energy_zone_id" type="number"/>
 		</createIndex>
 	</changeSet>
+
+	<changeSet id="res-rus-87" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from res_month_schedule_lines</comment>
+		<dropColumn columnName="info_type"
+					schemaName="apps"
+					tableName="res_month_schedule_lines"/>
+	</changeSet>
+
+	<changeSet id="res-rus-88" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to res_month_schedule_lines</comment>
+		<addColumn schemaName="apps"
+				   tableName="res_month_schedule_lines">
+			<column name="volume_type" type="varchar2(20)" remarks="видов обьемов"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="res-rus-89" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_month_schedule_lines to res_daily_schedule_volume_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_month_schedule_lines"
+				baseColumnNames="volume_type"
+				constraintName="fk_res_month_schedule_lines_8"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="res_daily_schedule_volume_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-90" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_month_schedule_lines</comment>
+		<createIndex indexName="idx_res_month_schedule_lines_8"
+					 schemaName="apps"
+					 tableName="res_month_schedule_lines">
+			<column name="volume_type" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+
+
 </databaseChangeLog>

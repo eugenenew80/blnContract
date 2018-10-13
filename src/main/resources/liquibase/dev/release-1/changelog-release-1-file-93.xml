@@ -3159,4 +3159,171 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</addColumn>
 	</changeSet>
 
+
+    <changeSet id="cm-rus-2231" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_power_equipment_types</comment>
+        <createTable tableName="dict_power_equipment_types" schemaName="apps" remarks="справочник видов силового оборудования ">
+            <column name="code" type="varchar2(20)" remarks="Код">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="cm-rus-2232" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: dict_power_equipment_types</comment>
+        <addPrimaryKey
+                columnNames="code"
+                constraintName="pk_dict_power_equipment_types"
+                schemaName="apps"
+                tableName="dict_power_equipment_types"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2233" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>insert into dict_power_equipment_types</comment>
+        <insert schemaName="apps" tableName="dict_power_equipment_types">
+            <column name="code" type="varchar2" value="T"/>
+        </insert>
+
+        <insert schemaName="apps" tableName="dict_power_equipment_types">
+            <column name="code" type="varchar2" value="AT"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2234" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: dict_power_equipment_types_tl</comment>
+        <createTable tableName="dict_power_equipment_types_tl" schemaName="apps" remarks="справочник видов силового оборудования перевод">
+            <column name="code" type="varchar2(20)" remarks="Код">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar2(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar2(100)" remarks="Описание">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="cm-rus-2235" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: dict_power_equipment_types_tl</comment>
+        <addPrimaryKey
+                columnNames="code,lang"
+                constraintName="pk_dict_power_equipment_types_tl"
+                schemaName="apps"
+                tableName="dict_power_equipment_types_tl"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2236" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>insert into dict_power_equipment_types_tl</comment>
+        <insert schemaName="apps" tableName="dict_power_equipment_types_tl">
+            <column name="code" type="varchar2" value="T"/>
+            <column name="lang" type="varchar2" value="RU"/>
+            <column name="name" type="varchar2" value="Трансформатор"/>
+        </insert>
+
+        <insert schemaName="apps" tableName="dict_power_equipment_types_tl">
+            <column name="code" type="varchar2" value="T"/>
+            <column name="lang" type="varchar2" value="KZ"/>
+            <column name="name" type="varchar2" value="Трансформатор"/>
+        </insert>
+
+        <insert schemaName="apps" tableName="dict_power_equipment_types_tl">
+            <column name="code" type="varchar2" value="AT"/>
+            <column name="lang" type="varchar2" value="RU"/>
+            <column name="name" type="varchar2" value="Автотрансформатор"/>
+        </insert>
+
+        <insert schemaName="apps" tableName="dict_power_equipment_types_tl">
+            <column name="code" type="varchar2" value="AT"/>
+            <column name="lang" type="varchar2" value="KZ"/>
+            <column name="name" type="varchar2" value="Автотрансформатор"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2237" logicalFilePath="path-independent" author="ruslan">
+        <comment>Creating foreign constraint: dict_power_equipment_types_tl to dict_power_equipment_types_tl</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_power_equipment_types_tl"
+                baseColumnNames="code"
+                constraintName="fk_dict_power_equipment_types_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_power_equipment_types"
+                referencedColumnNames="code"
+        />
+    </changeSet>
+
+    <changeSet id="cm-rus-2238" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column to dict_power_transformers</comment>
+        <addColumn schemaName="apps"
+                   tableName="dict_power_transformers">
+            <column name="equipment_type" type="varchar2(20)" remarks="вид силового оборудования"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="cm-rus-2239" logicalFilePath="path-independent" author="ruslan">
+        <comment>Creating foreign constraint: dict_power_transformers to dict_power_equipment_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="dict_power_transformers"
+                baseColumnNames="equipment_type"
+                constraintName="fk_dict_power_transformers_7"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="dict_power_equipment_types"
+                referencedColumnNames="code"
+        />
+    </changeSet>
+
+    <changeSet id="cm-rus-2240" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating index for table: dict_power_transformers</comment>
+        <createIndex indexName="idx_dict_power_transformers_1"
+                     schemaName="apps"
+                     tableName="dict_power_transformers">
+            <column name="equipment_type" type="varchar2(20)"/>
+        </createIndex>
+    </changeSet>
 </databaseChangeLog>
