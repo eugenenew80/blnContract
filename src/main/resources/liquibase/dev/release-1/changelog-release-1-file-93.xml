@@ -3159,7 +3159,6 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</addColumn>
 	</changeSet>
 
-
     <changeSet id="cm-rus-2231" logicalFilePath="path-independent" author="ruslan" context="dev">
         <comment>Creating table: dict_power_equipment_types</comment>
         <createTable tableName="dict_power_equipment_types" schemaName="apps" remarks="справочник видов силового оборудования ">
@@ -3324,6 +3323,173 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                      schemaName="apps"
                      tableName="dict_power_transformers">
             <column name="equipment_type" type="varchar2(20)"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="cm-rus-2241" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: pa_res_consumer_types</comment>
+        <createTable tableName="pa_res_consumer_types" schemaName="apps" remarks="справочник Тип потребителя">
+            <column name="code" type="varchar2(20)" remarks="Код">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="cm-rus-2242" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: pa_res_consumer_types</comment>
+        <addPrimaryKey
+                columnNames="code"
+                constraintName="pk_pa_res_consumer_types"
+                schemaName="apps"
+                tableName="pa_res_consumer_types"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2243" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>insert into pa_res_consumer_types</comment>
+        <insert schemaName="apps" tableName="pa_res_consumer_types">
+            <column name="code" type="varchar2" value="CONDITIONAL"/>
+        </insert>
+
+        <insert schemaName="apps" tableName="pa_res_consumer_types">
+            <column name="code" type="varchar2" value="SUBJECT"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2244" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating table: pa_res_consumer_types_tl</comment>
+        <createTable tableName="pa_res_consumer_types_tl" schemaName="apps" remarks="справочник Тип потребителя">
+            <column name="code" type="varchar2(20)" remarks="Код">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="lang" type="varchar2(10)" remarks="Язык">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar2(100)" remarks="Название">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_by" type="number" remarks="Автор">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_by" type="number" remarks="Автор обновления">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="cm-rus-2245" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating primary key for table: pa_res_consumer_types_tl</comment>
+        <addPrimaryKey
+                columnNames="code,lang"
+                constraintName="pk_pa_res_consumer_types_tl"
+                schemaName="apps"
+                tableName="pa_res_consumer_types_tl"/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2246" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>insert into pa_res_consumer_types_tl</comment>
+        <insert schemaName="apps" tableName="pa_res_consumer_types_tl">
+            <column name="code" type="varchar2" value="CONDITIONAL"/>
+            <column name="lang" type="varchar2" value="RU"/>
+            <column name="name" type="varchar2" value="Условный потребитель"/>
+        </insert>
+
+        <insert schemaName="apps" tableName="pa_res_consumer_types_tl">
+            <column name="code" type="varchar2" value="CONDITIONAL"/>
+            <column name="lang" type="varchar2" value="KZ"/>
+            <column name="name" type="varchar2" value="Условный потребитель"/>
+        </insert>
+
+            <insert schemaName="apps" tableName="pa_res_consumer_types_tl">
+            <column name="code" type="varchar2" value="SUBJECT"/>
+            <column name="lang" type="varchar2" value="RU"/>
+            <column name="name" type="varchar2" value="Субьект ВИЭ"/>
+        </insert>
+
+        <insert schemaName="apps" tableName="pa_res_consumer_types_tl">
+            <column name="code" type="varchar2" value="SUBJECT"/>
+            <column name="lang" type="varchar2" value="KZ"/>
+            <column name="name" type="varchar2" value="Субьект ВИЭ"/>
+        </insert>
+        <rollback/>
+    </changeSet>
+
+    <changeSet id="cm-rus-2247" logicalFilePath="path-independent" author="ruslan">
+        <comment>Creating foreign constraint: pa_res_consumer_types_tl to pa_res_consumer_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="pa_res_consumer_types_tl"
+                baseColumnNames="code"
+                constraintName="fk_pa_res_consumer_types_tl_1"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="CASCADE"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="pa_res_consumer_types"
+                referencedColumnNames="code"
+        />
+    </changeSet>
+
+    <changeSet id="cm-rus-2248" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>add column to pa_req_prediction_val_h</comment>
+        <addColumn schemaName="apps"
+                   tableName="pa_req_prediction_val_h">
+            <column name="consumer_type" type="varchar2(20)" remarks="Потребителя"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="cm-rus-2249" logicalFilePath="path-independent" author="ruslan">
+        <comment>Creating foreign constraint: pa_req_prediction_val_h to pa_res_consumer_types</comment>
+        <addForeignKeyConstraint
+                baseTableSchemaName="apps"
+                baseTableName="pa_req_prediction_val_h"
+                baseColumnNames="consumer_type"
+                constraintName="fk_pa_req_prediction_val_h_7"
+                deferrable="true"
+                initiallyDeferred="true"
+                onDelete="RESTRICT"
+                onUpdate="RESTRICT"
+                referencedTableSchemaName="apps"
+                referencedTableName="pa_res_consumer_types"
+                referencedColumnNames="code"
+        />
+    </changeSet>
+
+    <changeSet id="cm-rus-2250" logicalFilePath="path-independent" author="ruslan" context="dev">
+        <comment>Creating index for table: pa_req_prediction_val_h</comment>
+        <createIndex indexName="idx_pa_req_prediction_val_h_7"
+                     schemaName="apps"
+                     tableName="pa_req_prediction_val_h">
+            <column name="consumer_type" type="varchar2(20)"/>
         </createIndex>
     </changeSet>
 </databaseChangeLog>

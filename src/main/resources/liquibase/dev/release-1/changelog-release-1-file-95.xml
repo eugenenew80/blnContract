@@ -1451,5 +1451,37 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</createIndex>
 	</changeSet>
 
+	<changeSet id="res-rus-91" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to res_month_schedule_lines</comment>
+		<addColumn schemaName="apps"
+				   tableName="res_month_schedule_lines">
+			<column name="org_id" type="number" remarks="Идентификатор филиала"/>
+		</addColumn>
+	</changeSet>
 
+	<changeSet id="res-rus-92" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: res_month_schedule_lines to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="res_month_schedule_lines"
+				baseColumnNames="org_id"
+				constraintName="fk_res_month_schedule_lines_9"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="res-rus-93" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: res_month_schedule_lines</comment>
+		<createIndex indexName="idx_res_month_schedule_lines_9"
+					 schemaName="apps"
+					 tableName="res_month_schedule_lines">
+			<column name="org_id" type="number"/>
+		</createIndex>
+	</changeSet>
 </databaseChangeLog>
