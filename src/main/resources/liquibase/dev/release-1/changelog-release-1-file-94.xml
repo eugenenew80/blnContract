@@ -2453,4 +2453,214 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 					tableName="cm_req_doc_create"/>
 	</changeSet>
 
+	<changeSet id="pa-rus-220" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint pa_req_prediction_val_d</comment>
+		<addNotNullConstraint
+				columnDataType="date"
+				columnName="units_id"
+				schemaName="apps"
+				tableName="pa_req_prediction_val_d"/>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-222" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint pa_req_prediction_val_y</comment>
+		<addNotNullConstraint
+				columnDataType="date"
+				columnName="units_id"
+				schemaName="apps"
+				tableName="pa_req_prediction_val_y"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-223" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint dm_doc_file_info</comment>
+		<addNotNullConstraint
+				columnDataType="date"
+				columnName="doc_type_code"
+				schemaName="apps"
+				tableName="dm_doc_file_info"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-224" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify datatype dm_doc_file_info</comment>
+		<modifyDataType columnName="file_hash"
+						newDataType="varchar2(4000)"
+						schemaName="apps"
+						tableName="dm_doc_file_info"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-225" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify datatype cm_req_doc_create</comment>
+		<modifyDataType columnName="control_range"
+						newDataType="number"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-226" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_user_type</comment>
+		<createTable tableName="pa_user_type" schemaName="apps" remarks="Справочник типы Пользователей">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-227" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_user_type</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_pa_user_type"
+				schemaName="apps"
+				tableName="pa_user_type"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-228" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_user_type_tl</comment>
+		<createTable tableName="pa_user_type_tl" schemaName="apps" remarks="Переводы Справочник типы Пользователей">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-229" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_user_type_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_pa_user_type_tl"
+				schemaName="apps"
+				tableName="pa_user_type_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-230" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_user_type_tl to pa_user_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_user_type_tl"
+				baseColumnNames="code"
+				constraintName="fk_pa_user_type_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_user_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-231" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_user_type</comment>
+		<insert schemaName="apps" tableName="pa_user_type">
+			<column name="code" type="varchar2" value="SUBJECT"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_user_type">
+			<column name="code" type="varchar2" value="EMPLOYEE"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-232" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_user_type_tl</comment>
+		<insert schemaName="apps" tableName="pa_user_type_tl">
+			<column name="code" type="varchar2" value="SUBJECT"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Субьект"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_user_type_tl">
+			<column name="code" type="varchar2" value="SUBJECT"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Субьект"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_user_type_tl">
+			<column name="code" type="varchar2" value="EMPLOYEE"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Сотрудник"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_user_type_tl">
+			<column name="code" type="varchar2" value="EMPLOYEE"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Сотрудник"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-233" logicalFilePath="path-independent" author="ruslan">
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="user_type" type="varchar2(20)" remarks="Тип пользователя кому отправляют"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-234" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_message to pa_user_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_message"
+				baseColumnNames="user_type"
+				constraintName="fk_pa_message_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_user_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-235" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_message</comment>
+		<createIndex indexName="idx_pa_message_1"
+					 schemaName="apps"
+					 tableName="pa_message">
+			<column name="user_type" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
 </databaseChangeLog>
