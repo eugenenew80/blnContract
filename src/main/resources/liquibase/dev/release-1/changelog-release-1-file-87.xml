@@ -6,9 +6,9 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-1800" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1816" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_pro_cldr_day_types</comment>
-		<createTable tableName="cm_pro_cldr_day_types" schemaName="apps" remarks="Справочник производственный календарь: типы дней недели">
+		<createTable tableName="cm_pro_cldr_day_types" schemaName="apps" remarks="Справочник производственный календарь:  Дни недели">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
@@ -31,7 +31,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1801" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1817" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_pro_cldr_day_types</comment>
 		<addPrimaryKey
 				columnNames="code"
@@ -40,13 +40,13 @@
 				tableName="cm_pro_cldr_day_types"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1802" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1818" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_pro_cldr_day_types_tl</comment>
-		<createTable tableName="cm_pro_cldr_day_types_tl" schemaName="apps" remarks="Переводы производственный календарь: типы дней недели">
+		<createTable tableName="cm_pro_cldr_day_types_tl" schemaName="apps" remarks="Переводы производственный календарь: Дни недели">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
-			
+
 			<column name="lang" type="varchar2(10)" remarks="Язык">
 				<constraints nullable="false"/>
 			</column>
@@ -73,7 +73,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1803" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1819" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_pro_cldr_day_types_tl</comment>
 		<addPrimaryKey
 				columnNames="code, lang"
@@ -82,7 +82,7 @@
 				tableName="cm_pro_cldr_day_types_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1804" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1820" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_pro_cldr_day_types_tl to cm_pro_cldr_day_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -99,7 +99,7 @@
 		/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1805" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1821" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_pro_cldr_day_types</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types">
 			<column name="code" type="varchar2" value="WORK_DAY"/>
@@ -107,106 +107,78 @@
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1806" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1822" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_pro_cldr_day_types</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types">
-			<column name="code" type="varchar2" value="WEEKEND"/>
+			<column name="code" type="varchar2" value="DAY_OFF"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1807" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1823" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_pro_cldr_day_types</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types">
-			<column name="code" type="varchar2" value="HOLIDAYS"/>
+			<column name="code" type="varchar2" value="HOLIDAY"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1808" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_pro_cldr_day_types</comment>
-		<insert schemaName="apps" tableName="cm_pro_cldr_day_types">
-			<column name="code" type="varchar2" value="SHIFT_WORK_DAY"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1809" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1824" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_pro_cldr_day_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types_tl">
 			<column name="code" type="varchar2" value="WORK_DAY"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Рабочие дни"/>
+			<column name="name" type="varchar2" value="Рабочий день"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1810" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1825" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_pro_cldr_day_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types_tl">
 			<column name="code" type="varchar2" value="WORK_DAY"/>
 			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Рабочие дни"/>
+			<column name="name" type="varchar2" value="Рабочий день"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1811" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1826" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_pro_cldr_day_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types_tl">
-			<column name="code" type="varchar2" value="WEEKEND"/>
+			<column name="code" type="varchar2" value="DAY_OFF"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Выходные дни"/>
+			<column name="name" type="varchar2" value="Выходной день"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1812" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1827" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_pro_cldr_day_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types_tl">
-			<column name="code" type="varchar2" value="WEEKEND"/>
+			<column name="code" type="varchar2" value="DAY_OFF"/>
 			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Выходные дни"/>
+			<column name="name" type="varchar2" value="Выходной день"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1813" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1828" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_pro_cldr_day_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types_tl">
-			<column name="code" type="varchar2" value="HOLIDAYS"/>
+			<column name="code" type="varchar2" value="HOLIDAY"/>
 			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Праздничные дни"/>
+			<column name="name" type="varchar2" value="Праздничный день"/>
 		</insert>
 		<rollback/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1814" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1829" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>insert into cm_pro_cldr_day_types_tl</comment>
 		<insert schemaName="apps" tableName="cm_pro_cldr_day_types_tl">
-			<column name="code" type="varchar2" value="HOLIDAYS"/>
+			<column name="code" type="varchar2" value="HOLIDAY"/>
 			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Праздничные дни"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1815" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_pro_cldr_day_types_tl</comment>
-		<insert schemaName="apps" tableName="cm_pro_cldr_day_types_tl">
-			<column name="code" type="varchar2" value="SHIFT_WORK_DAY"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Перенесенные рабочие дни"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="cm-rus-1816" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into cm_pro_cldr_day_types_tl</comment>
-		<insert schemaName="apps" tableName="cm_pro_cldr_day_types_tl">
-			<column name="code" type="varchar2" value="SHIFT_WORK_DAY"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Перенесенные рабочие дни"/>
+			<column name="name" type="varchar2" value="Праздничный день"/>
 		</insert>
 		<rollback/>
 	</changeSet>

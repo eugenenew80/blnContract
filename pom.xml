@@ -109,7 +109,7 @@
         <profile>
             <id>dev2</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
 
             <properties>
@@ -128,16 +128,16 @@
         </profile>
 
         <profile>
-            <id>Prod</id>
+            <id>blntest</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
 
             <properties>
                 <driver>oracle.jdbc.OracleDriver</driver>
-                <url>jdbc:oracle:thin:@localhost:1521:BLNDEV</url>
+                <url>jdbc:oracle:thin:@10.9.44.240:1521:BLNDEV</url>
                 <username>system</username>
-                <password>${settings.servers.server.ora.password}</password>
+                <password>qwerty</password>
                 <scripts>dev</scripts>
                 <skipTests>true</skipTests>
 
@@ -167,9 +167,9 @@
         </profile>
 
         <profile>
-            <id>biling</id>
+            <id>prod</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
 
             <properties>

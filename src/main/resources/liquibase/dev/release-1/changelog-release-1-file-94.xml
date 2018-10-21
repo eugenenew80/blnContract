@@ -1,0 +1,2666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+	<changeSet id="pa-rus-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_req_debt_repayment_schedule_h</comment>
+		<createTable tableName="pa_req_debt_repayment_schedule_h" schemaName="apps" remarks="Заголовок запрос на согласование графика погашения задолженности">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="Идентификатор договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_id" type="number" remarks="Идентификатор бизнес партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="amount" type="number" remarks="сумма задолжности">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="state" type="varchar2(20)" remarks="Статус запрооса">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_not_show" type="number" remarks="Скрыть">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="subject_cancel_description" type="varchar2(500)" remarks="Причина отмены запроса субьектом">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="curator_reject_description" type="varchar2(500)" remarks="Причина отклонения запроса куратаром">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_req_debt_repayment_schedule_h</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_req_debt_repayment_schedule_h"
+				schemaName="apps"
+				tableName="pa_req_debt_repayment_schedule_h"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-3" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_debt_repayment_schedule_h</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_debt_repayment_schedule_h_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-5" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_debt_repayment_schedule_h to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_debt_repayment_schedule_h"
+				baseColumnNames="bp_id"
+				constraintName="fk_pa_req_debt_repayment_schedule_h_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-6" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_req_debt_repayment_schedule_l</comment>
+		<createTable tableName="pa_req_debt_repayment_schedule_l" schemaName="apps" remarks="Строки запрос на согласование графика погашения задолженности">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Идентификатор заголовка">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="payment_date" type="date" remarks="Дата оплаты">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="text" type="number" remarks="Комментарий">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="amount" type="number" remarks="сумма оплаты">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-7" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_req_debt_repayment_schedule_l</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_req_debt_repayment_schedule_l"
+				schemaName="apps"
+				tableName="pa_req_debt_repayment_schedule_l"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-8" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_debt_repayment_schedule_l</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_debt_repayment_schedule_l_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-9" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_debt_repayment_schedule_l to pa_debt_repayment_schedule_h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_debt_repayment_schedule_l"
+				baseColumnNames="header_id"
+				constraintName="fk_pa_req_debt_repayment_schedule_l_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_req_debt_repayment_schedule_h"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-10" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_req_projected_val_h</comment>
+		<createTable tableName="pa_req_projected_val_h" schemaName="apps" remarks="Заголовок запрос на согласование прогнозных обьемов ЭЭ">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="Идентификатор договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="energy_sources_id" type="number" remarks="Ид электростанции">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_id" type="number" remarks="Ид Бизнес партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="is_day" type="number" remarks="Прогнозные обьемы за сутки">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_year" type="number" remarks="Прогнозные обьемы за год">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_5_year" type="number" remarks="Прогнозные обьемы за 5 лет">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="subject_cancel_description" type="varchar2(500)" remarks="Причина отмены запроса субьектом">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="curator_reject_description" type="varchar2(500)" remarks="Причина отклонения запроса куратаром">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-11" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_req_projected_val_h</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_req_projected_val_h"
+				schemaName="apps"
+				tableName="pa_req_projected_val_h"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-12" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_projected_val_h</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_projected_val_h_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-13" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_projected_val_h to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_projected_val_h"
+				baseColumnNames="bp_id"
+				constraintName="fk_pa_req_projected_val_h_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-14" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_projected_val_h to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_projected_val_h"
+				baseColumnNames="energy_sources_id"
+				constraintName="fk_pa_req_projected_val_h_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_sources"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-15" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_req_projected_val_d</comment>
+		<createTable tableName="pa_req_projected_val_d" schemaName="apps" remarks="Строки запрос на согласование прогнозных обьемов ЭЭ за сутки">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Идентификатор заголовка">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="day_date" type="date" remarks="Дата суток">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h01" type="number" remarks="Обьем за 1 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h02" type="number" remarks="Обьем за 2 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h03" type="number" remarks="Обьем за 3 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h04" type="number" remarks="Обьем за 4 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h05" type="number" remarks="Обьем за 5 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h06" type="number" remarks="Обьем за 6 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h07" type="number" remarks="Обьем за 7 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h08" type="number" remarks="Обьем за 8 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h09" type="number" remarks="Обьем за 9 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h10" type="number" remarks="Обьем за 10 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h11" type="number" remarks="Обьем за 11 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h12" type="number" remarks="Обьем за 12 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h14" type="number" remarks="Обьем за 13 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h15" type="number" remarks="Обьем за 15 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h16" type="number" remarks="Обьем за 16 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h17" type="number" remarks="Обьем за 17 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h18" type="number" remarks="Обьем за 18 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h19" type="number" remarks="Обьем за 19 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h20" type="number" remarks="Обьем за 20 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h21" type="number" remarks="Обьем за 21 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h22" type="number" remarks="Обьем за 22 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h23" type="number" remarks="Обьем за 23 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="h24" type="number" remarks="Обьем за 24 час">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-16" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_req_projected_val_d</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_req_projected_val_d"
+				schemaName="apps"
+				tableName="pa_req_projected_val_d"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-17" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_projected_val_d</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_projected_val_d_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-18" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_projected_val_d to pa_req_projected_val_h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_projected_val_d"
+				baseColumnNames="header_id"
+				constraintName="fk_pa_req_projected_val_d_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_req_projected_val_h"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-19" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_req_projected_val_y</comment>
+		<createTable tableName="pa_req_projected_val_y" schemaName="apps" remarks="Строки запрос на согласование прогнозных обьемов ЭЭ за год">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Идентификатор заголовка">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="year" type="number" remarks="Год">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m01" type="number" remarks="Обьем за 1 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m02" type="number" remarks="Обьем за 2 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m03" type="number" remarks="Обьем за 3 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m04" type="number" remarks="Обьем за 4 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m05" type="number" remarks="Обьем за 5 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m06" type="number" remarks="Обьем за 6 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m07" type="number" remarks="Обьем за 7 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m08" type="number" remarks="Обьем за 8 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m09" type="number" remarks="Обьем за 9 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m10" type="number" remarks="Обьем за 10 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m11" type="number" remarks="Обьем за 11 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m12" type="number" remarks="Обьем за 12 месец">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-20" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_req_projected_val_y</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_req_projected_val_y"
+				schemaName="apps"
+				tableName="pa_req_projected_val_y"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-21" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_projected_val_y</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_projected_val_y_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-22" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_projected_val_y to pa_req_projected_val_h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_projected_val_y"
+				baseColumnNames="header_id"
+				constraintName="fk_pa_req_projected_val_y_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_req_projected_val_h"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+	<changeSet id="pa-rus-23" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_req_projected_val_y5</comment>
+		<createTable tableName="pa_req_projected_val_y5" schemaName="apps" remarks="Строки запрос на согласование прогнозных обьемов ЭЭ за 5 лет">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Идентификатор заголовка">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="year" type="number" remarks="Год">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="k01" type="number" remarks="1 квартал">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="k02" type="number" remarks="2 квартал">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="k03" type="number" remarks="3 квартал">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="k04" type="number" remarks="4 квартал">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-24" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_req_projected_val_y5</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_req_projected_val_y5"
+				schemaName="apps"
+				tableName="pa_req_projected_val_y5"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-25" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_projected_val_y5</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_projected_val_y5_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-26" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_projected_val_y5 to pa_req_projected_val_h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_projected_val_y5"
+				baseColumnNames="header_id"
+				constraintName="fk_pa_req_projected_val_y5_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_req_projected_val_h"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-27" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint cm_req_doc_create</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="ubp_number"
+							   schemaName="apps"
+							   tableName="cm_req_doc_create"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-28" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint cm_req_doc_create</comment>
+		<addNotNullConstraint
+				columnDataType="date"
+				columnName="request_date"
+				schemaName="apps"
+				tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-29" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint cm_req_doc_create</comment>
+		<addNotNullConstraint
+				columnDataType="number"
+				columnName="doc_type_id"
+				schemaName="apps"
+				tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-30" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint cm_req_doc_create</comment>
+		<addNotNullConstraint
+				columnDataType="varchar2(30)"
+				columnName="request_type"
+				schemaName="apps"
+				tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-31" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="bp_legal_address"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-32" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="bp_actual_address"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-33" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="sla_special_terms"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-34" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="sla_activity_kind"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-35" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="bp_name"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-36" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="bp_bank_add" type="number" remarks="Добавить счет"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-37" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="bp_bank_id" type="number" remarks="Банк"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-38" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create_tl">
+			<column name="close_description" type="varchar2(500)" remarks="Причина завершения договора"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-39" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="contract_id" type="number" remarks="Договор"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-40" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="contract_start_date" type="date" remarks="Текущий договор с"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-41" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="contract_end_date" type="date" remarks="Текущий договор по"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-42" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="close_date" type="date" remarks="Дата завершения договора"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-43" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_prediction_val_types</comment>
+		<createTable tableName="pa_prediction_val_types" schemaName="apps" remarks="Справочник виды прогнозных данных">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-44" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_prediction_val_types</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_pa_prediction_val_types"
+				schemaName="apps"
+				tableName="pa_prediction_val_types"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-45" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_prediction_val_types_tl</comment>
+		<createTable tableName="pa_prediction_val_types_tl" schemaName="apps" remarks="Переводы Справочник виды договоров">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-46" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_prediction_val_types_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_pa_prediction_val_types_tl"
+				schemaName="apps"
+				tableName="pa_prediction_val_types_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-47" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_prediction_val_types_tl to pa_prediction_val_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_prediction_val_types_tl"
+				baseColumnNames="code"
+				constraintName="fk_pa_prediction_val_types_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_prediction_val_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-48" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_prediction_val_types</comment>
+		<insert schemaName="apps" tableName="pa_prediction_val_types">
+			<column name="code" type="varchar2" value="DAY"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_prediction_val_types">
+			<column name="code" type="varchar2" value="YEAR"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_prediction_val_types">
+			<column name="code" type="varchar2" value="5_YEARS"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-49" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_prediction_val_types_tl</comment>
+		<insert schemaName="apps" tableName="pa_prediction_val_types_tl">
+			<column name="code" type="varchar2" value="DAY"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="сутки"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_prediction_val_types_tl">
+			<column name="code" type="varchar2" value="DAY"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="сутки"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_prediction_val_types_tl">
+			<column name="code" type="varchar2" value="YEAR"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="год"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_prediction_val_types_tl">
+			<column name="code" type="varchar2" value="YEAR"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="год"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_prediction_val_types_tl">
+			<column name="code" type="varchar2" value="5_YEARS"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="пять лет"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_prediction_val_types_tl">
+			<column name="code" type="varchar2" value="5_YEARS"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="пять лет"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-50" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_req_projected_val_h</comment>
+		<dropColumn columnName="is_day"
+					schemaName="apps"
+					tableName="pa_req_projected_val_h"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-51" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_req_projected_val_h</comment>
+		<dropColumn columnName="is_year"
+					schemaName="apps"
+					tableName="pa_req_projected_val_h"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-52" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop  value from pa_req_projected_val_h</comment>
+		<dropColumn columnName="is_5_year"
+					schemaName="apps"
+					tableName="pa_req_projected_val_h"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-53" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="prediction_val_types" type="varchar2(10)" remarks="Типы прогнозных обьемов"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-54" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_h</comment>
+		<renameTable newTableName="pa_req_prediction_val_h"
+					 oldTableName="pa_req_projected_val_h"
+					 schemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-55" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_d</comment>
+		<renameTable newTableName="pa_req_prediction_val_d"
+					 oldTableName="pa_req_projected_val_d"
+					 schemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-56" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_y</comment>
+		<renameTable newTableName="pa_req_prediction_val_y"
+					 oldTableName="pa_req_projected_val_y"
+					 schemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-57" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_y</comment>
+		<renameTable newTableName="pa_req_prediction_val_y5"
+					 oldTableName="pa_req_projected_val_y5"
+					 schemaName="apps"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-58" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>update pa_req_projected_val_h</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			-- Rename indexes
+			alter index apps.PK_PA_REQ_PROJECTED_VAL_H rename to PK_PA_REQ_PREDICTION_VAL_H;
+			-- Rename primary, unique and foreign key constraints
+			alter table apps.PA_REQ_PREDICTION_VAL_H
+			rename constraint PK_PA_REQ_PROJECTED_VAL_H to PK_PA_REQ_PREDICTION_VAL_H;
+			alter table apps.PA_REQ_PREDICTION_VAL_H
+			rename constraint FK_PA_REQ_PROJECTED_VAL_H_1 to FK_PA_REQ_PREDICTION_VAL_H_1;
+			alter table apps.PA_REQ_PREDICTION_VAL_H
+			rename constraint FK_PA_REQ_PROJECTED_VAL_H_2 to FK_PA_REQ_PREDICTION_VAL_H_2;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-59" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>update PA_REQ_PROJECTED_VAL_Y</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			-- Rename indexes
+			alter index APPS.PK_PA_REQ_PROJECTED_VAL_Y rename to PK_PA_REQ_PREDICTION_VAL_Y;
+			-- Rename primary, unique and foreign key constraints
+			alter table APPS.PA_REQ_PREDICTION_VAL_Y
+			rename constraint PK_PA_REQ_PROJECTED_VAL_Y to PK_PA_REQ_PREDICTION_VAL_Y;
+			alter table APPS.PA_REQ_PREDICTION_VAL_Y
+			rename constraint FK_PA_REQ_PROJECTED_VAL_Y_1 to FK_PA_REQ_PREDICTION_VAL_Y_1;
+
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-60" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>update PA_REQ_PROJECTED_VAL_Y</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			-- Rename indexes
+			alter index APPS.PK_PA_REQ_PROJECTED_VAL_D rename to PK_PA_REQ_PREDICATION_VAL_D;
+			-- Rename primary, unique and foreign key constraints
+			alter table APPS.PA_REQ_PREDICTION_VAL_D
+			rename constraint PK_PA_REQ_PROJECTED_VAL_D to PK_PA_REQ_PREDICATION_VAL_D;
+			alter table APPS.PA_REQ_PREDICTION_VAL_D
+			rename constraint FK_PA_REQ_PROJECTED_VAL_D_1 to FK_PA_REQ_PREDICATION_VAL_D_1;
+
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-61" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>update PA_REQ_PROJECTED_VAL_Y</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			-- Rename indexes
+			alter index APPS.PK_PA_REQ_PROJECTED_VAL_Y5 rename to PK_PA_REQ_PREDICATION_VAL_Y5;
+			-- Rename primary, unique and foreign key constraints
+			alter table APPS.PA_REQ_PREDICTION_VAL_Y5
+			rename constraint PK_PA_REQ_PROJECTED_VAL_Y5 to PK_PA_REQ_PREDICATION_VAL_Y5;
+			alter table APPS.PA_REQ_PREDICTION_VAL_Y5
+			rename constraint FK_PA_REQ_PROJECTED_VAL_Y5_1 to FK_PA_REQ_PREDICATION_VAL_Y5_1;
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-62" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to PA_REQ_PROJECTED_VAL_H</comment>
+		<addColumn schemaName="apps"
+				   tableName="PA_REQ_PREDICTION_VAL_H">
+			<column name="prediction_val_types" type="varchar2(10)" remarks="Типы прогнозных обьемов"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-63" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_req_projected_val_h to pa_prediction_val_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="PA_REQ_PREDICTION_VAL_H"
+				baseColumnNames="prediction_val_types"
+				constraintName="fk_PA_REQ_PREDICTION_VAL_H_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_prediction_val_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-64" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="prediction_val_types"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-65" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="planing_close_date" type="date" remarks="Планируемая дата завершения договора"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-66" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create_tl">
+			<column name="subject_close_description" type="date" remarks="Описание причины завершения договора Субьектом"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-67" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="planing_close_date"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-68" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="subject_close_description"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-69" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_close</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_close"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-70" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_req_doc_close_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_req_doc_close_tl"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-71" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: demo_zapros</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="demo_zapros"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-72" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: demo_zapros_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="demo_zapros_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-73" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence demo_zapros_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="demo_zapros_s"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-75" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_req_doc_close_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_req_doc_close_s"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-76" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Add comments to the columns</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			-- Add comments to the columns
+			comment on column apps.calc_balance_result_u_lines.amount
+			is 'Значение среднего напряжения';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-77" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: payment_plan_headers</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="payment_plan_headers"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-78" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: payment_plan_lines</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="payment_plan_lines"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-79" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence payment_plan_lines_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="payment_plan_lines_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-80" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence payment_plan_headers_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="payment_plan_headers_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-81" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence payment_plan_headers_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="dm_request_tl_s"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-82" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_headers_day</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_headers_day"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-83" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_headers_day_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_headers_day_s"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-84" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_headers_year</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_headers_year"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-85" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_headers_year_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_headers_year_s"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-86" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_info_types</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_info_types"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-87" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_info_types_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_info_types_s"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-88" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_values_day</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_values_day"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-89" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_values_day_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_values_day_s"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-90" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_values_year</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_values_year"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-91" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_values_year_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_values_year_s"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-92" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_debt_repayment_schedule_h</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_debt_repayment_schedule_h">
+			<column name="curator_id" type="number" remarks="Ид куратора"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-93" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_debt_repayment_schedule_h</comment>
+		<modifyDataType columnName="text"
+						newDataType="varchar2(500)"
+						schemaName="apps"
+						tableName="pa_req_debt_repayment_schedule_l"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-94" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: dm_request</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="dm_request"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-95" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: dm_request</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="dm_request_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-96" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: cm_doc_keg_cte </comment>
+		<createIndex indexName="idx_cm_doc_keg_cte_2"
+					 schemaName="apps"
+					 tableName="cm_doc_keg_cte">
+			<column name="doc_basis_code" type="varchar2(30)"/>
+		</createIndex>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-97" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: cm_req_doc_create </comment>
+		<createIndex indexName="idx_cm_req_doc_create_3"
+					 schemaName="apps"
+					 tableName="cm_req_doc_create">
+			<column name="bp_grc_rle_code" type="varchar2(30)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-98" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create to cm_req_doc_create_basis</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="bp_grc_rle_code"
+				constraintName="fk_cm_req_doc_create_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_req_doc_create_basis"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-99" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<modifyDataType columnName="text_keg_cte_A1"
+						newDataType="varchar2(500)"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-100" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<modifyDataType columnName="text_keg_cte_A3"
+						newDataType="varchar2(500)"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-101" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<modifyDataType columnName="text_keg_cte_A4"
+						newDataType="varchar2(500)"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-102" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<modifyDataType columnName="text_vpk"
+						newDataType="varchar2(500)"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-103" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create_tl">
+			<column name="bp_grc_doc_city" type="varchar2(200)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица:Место выдачи"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-104" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create_tl">
+			<column name="bp_grc_issuer_fio" type="varchar2(50)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица:ФИО, выдавшего документ"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-105" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create_tl">
+			<column name="bp_grc_issuer_post" type="varchar2(50)" remarks="Бизнес-партнер: Св-во о гос.регистрации юр.лица:Должность выдавшего документ"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-106" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_h</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_h">
+			<column name="state" type="varchar2(20)" remarks="Статус формирования"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-107" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_req_prediction_val_h </comment>
+		<createIndex indexName="idx_pa_req_prediction_val_h_1"
+					 schemaName="apps"
+					 tableName="pa_req_prediction_val_h">
+			<column name="state" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-108" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_req_prediction_val_h to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_prediction_val_h"
+				baseColumnNames="state"
+				constraintName="fk_pa_req_prediction_val_h_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-109" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_req_prediction_val_d</comment>
+		<dropColumn columnName="h14"
+					schemaName="apps"
+					tableName="pa_req_prediction_val_d"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-110" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_d">
+			<column name="h13" type="number" remarks="Обьем за 13 час"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-111" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_d">
+			<column name="h14" type="number" remarks="Обьем за 14 час"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-112" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="object_type" type="varchar2(30)" remarks="Тип обьекта"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-113" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="object_id" type="number" remarks="Идентификатор обьекта"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-114" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_message to wf_objects</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_message"
+				baseColumnNames="object_type"
+				constraintName="fk_pa_message_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_objects"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-115" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_message </comment>
+		<createIndex indexName="idx_pa_message_1"
+					 schemaName="apps"
+					 tableName="pa_message">
+			<column name="object_type" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-116" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_message </comment>
+		<createIndex indexName="idx_pa_message_2"
+					 schemaName="apps"
+					 tableName="pa_message">
+			<column name="notice_type" type="varchar2(30)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-117" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_message </comment>
+		<createIndex indexName="idx_pa_message_3"
+					 schemaName="apps"
+					 tableName="pa_message">
+			<column name="message_type" type="varchar2(30)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-118" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="is_read" type="number" remarks="Прочитано"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-119" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="parent_id" type="number" remarks="родитель"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-120" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="subject" type="varchar2(500)" remarks="тема"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-121" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint cm_taxcerts_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2(500)"
+							   columnName="legal_name"
+							   schemaName="apps"
+							   tableName="cm_taxcerts_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-122" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column from cm_state_license_at</comment>
+		<dropColumn columnName="activity_kind"
+					schemaName="apps"
+					tableName="cm_state_license_at"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-123" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column from cm_state_license_at</comment>
+		<dropColumn columnName="license_type"
+					schemaName="apps"
+					tableName="cm_state_license_at"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-124" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column from cm_state_license_at</comment>
+		<dropColumn columnName="special_terms"
+					schemaName="apps"
+					tableName="cm_state_license_at"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-125" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column from cm_state_license_at</comment>
+		<dropColumn columnName="licensing_authority"
+					schemaName="apps"
+					tableName="cm_state_license_at"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-126" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column from cm_state_license_at</comment>
+		<dropColumn columnName="authority_head"
+					schemaName="apps"
+					tableName="cm_state_license_at"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-127" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column from cm_state_license_at</comment>
+		<dropColumn columnName="doc_city"
+					schemaName="apps"
+					tableName="cm_state_license_at"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-128" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column from cm_state_license_at</comment>
+		<dropColumn columnName="revocation_authority"
+					schemaName="apps"
+					tableName="cm_state_license_at"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-129" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column from cm_state_license_at</comment>
+		<dropColumn columnName="revocation_note"
+					schemaName="apps"
+					tableName="cm_state_license_at"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-130" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column from cm_req_doc_create</comment>
+		<dropColumn columnName="sla_licensing_authority"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-131" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: calc_doc_asp1_headers</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="calc_doc_asp1_headers"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-132" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: calc_doc_asp1_headers_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="calc_doc_asp1_headers_tl"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-133" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: calc_doc_asp1_lines</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="calc_doc_asp1_lines"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-134" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: calc_doc_asp1_lines_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="calc_doc_asp1_lines_tl"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-135" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: calc_doc_messages</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="calc_doc_messages"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-136" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: calc_doc_messages_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="calc_doc_messages_tl"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-137" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: calc_doc_notes</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="calc_doc_notes"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-138" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: calc_doc_notes_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="calc_doc_notes_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-139" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign key in table: cm_req_doc_create</comment>
+		<dropForeignKeyConstraint baseTableName="cm_req_doc_create" constraintName="fk_cm_req_doc_create_1" baseTableSchemaName="apps"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-140" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_req_doc_create to wf_objects</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="bp_grc_rle_code"
+				constraintName="fk_cm_req_doc_create_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_rle_doc_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-141" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pcv_info_types_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pcv_info_types_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-142" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pa_req_projected_val_d_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pa_req_projected_val_d_s"/>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-144" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pa_req_projected_val_y_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pa_req_projected_val_y_s"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-145" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pa_req_projected_val_y5_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pa_req_projected_val_y5_s"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-146" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_prediction_val_h</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_prediction_val_h_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-147" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_prediction_val_y</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_prediction_val_y_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-148" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_prediction_val_d</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_prediction_val_d_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-149" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_req_prediction_val_y5</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_req_prediction_val_y5_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-151" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence pcv_info_types_tl_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="pcv_info_types_tl_s"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-152" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>rename column to dm_doc_file_info</comment>
+		<renameColumn columnDataType="varchar2(300)"
+					  newColumnName="comments"
+					  oldColumnName="comment"
+					  remarks="Комментарий к документу"
+					  schemaName="apps"
+					  tableName="dm_doc_file_info"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-153" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>update PA_MESSAGE</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on column APPS.PA_MESSAGE.create_by
+			is 'От кого';
+
+			comment on column APPS.PA_MESSAGE.create_date
+			is 'Дата/время отправки';
+
+			comment on column APPS.PA_MESSAGE.parent_id
+			is 'Ответ на входящее';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-154" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_message</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="is_sent" type="number" remarks="Отправлен ответ Да/Нет"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-155" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_message</comment>
+		<dropColumn columnName="message_type"
+					schemaName="apps"
+					tableName="pa_message"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-156" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_message</comment>
+		<dropColumn columnName="is_delete"
+					schemaName="apps"
+					tableName="pa_message"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-157" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_message</comment>
+		<dropColumn columnName="object_type"
+					schemaName="apps"
+					tableName="pa_message"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-158" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from pa_message</comment>
+		<dropColumn columnName="object_id"
+					schemaName="apps"
+					tableName="pa_message"/>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-159" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_h</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_h">
+			<column name="contract_code" type="varchar2(10)" remarks="Код типа контракта"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-160" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_prediction_val_h to cm_contract_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_prediction_val_h"
+				baseColumnNames="contract_code"
+				constraintName="fk_pa_req_prediction_val_h_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_contract_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-161" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_req_prediction_val_h</comment>
+		<createIndex indexName="idx_pa_req_prediction_val_h_4"
+					 schemaName="apps"
+					 tableName="pa_req_prediction_val_h">
+			<column name="contract_code" type="varchar2(10)"/>
+		</createIndex>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-162" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_res_approved_volume_headers</comment>
+		<createTable tableName="pa_res_approved_volume_headers" schemaName="apps" remarks="Утвержденные прогнозные объемы ЭЭ: Заголовок">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="Идентификатор договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_id" type="number" remarks="Идентификатор Бизнес партнера">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="energy_sources_id" type="number" remarks="Идентификатор электростанции">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="contract_code" type="varchar2(10)" remarks="Тип контракта Кегок или РФЦ">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="prediction_val_types" type="varchar2(10)" remarks="Типы прогнозных обьемов">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-163" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_res_approved_volume_headers</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_res_approved_volume_headers"
+				schemaName="apps"
+				tableName="pa_res_approved_volume_headers"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-164" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_res_approved_volume_headers</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_res_approved_volume_headers_s"
+				startValue="1"/>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-165" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_headers to cm_doc_keg_cte</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_headers"
+				baseColumnNames="contract_id"
+				constraintName="fk_pa_res_approved_volume_headers_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-166" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_headers</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_headers_1"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_headers">
+			<column name="contract_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-167" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_headers to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_headers"
+				baseColumnNames="bp_id"
+				constraintName="fk_pa_res_approved_volume_headers_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-168" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_headers</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_headers_2"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_headers">
+			<column name="bp_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-169" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_headers to dict_energy_sources</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_headers"
+				baseColumnNames="energy_sources_id"
+				constraintName="fk_pa_res_approved_volume_headers_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_energy_sources"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-170" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_headers</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_headers_3"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_headers">
+			<column name="energy_sources_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-171" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_headers to cm_contract_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_headers"
+				baseColumnNames="contract_code"
+				constraintName="fk_pa_res_approved_volume_headers_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_contract_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-172" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_headers</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_headers_4"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_headers">
+			<column name="contract_code" type="varchar2(10)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-173" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_headers to pa_prediction_val_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_headers"
+				baseColumnNames="prediction_val_types"
+				constraintName="fk_pa_res_approved_volume_headers_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="PA_PREDICTION_VAL_TYPES"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-174" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_headers</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_headers_5"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_headers">
+			<column name="prediction_val_types" type="varchar2(10)"/>
+		</createIndex>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-175" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_res_approved_volume_lines</comment>
+		<createTable tableName="pa_res_approved_volume_lines" schemaName="apps" remarks="Утвержденные прогнозные объемы ЭЭ: Заголовок">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Идентификатор заголовка">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="val_date" type="TIMESTAMP" remarks="Время суточного графика">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="val" type="number" remarks="Объем">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-176" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_res_approved_volume_lines</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_res_approved_volume_lines"
+				schemaName="apps"
+				tableName="pa_res_approved_volume_lines"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-177" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_res_approved_volume_lines</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_res_approved_volume_lines_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-178" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_res_approved_volume_lines to pa_res_approved_volume_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_res_approved_volume_lines"
+				baseColumnNames="header_id"
+				constraintName="fk_pa_res_approved_volume_lines_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_res_approved_volume_headers"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-179" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_res_approved_volume_lines</comment>
+		<createIndex indexName="idx_pa_res_approved_volume_lines_1"
+					 schemaName="apps"
+					 tableName="pa_res_approved_volume_lines">
+			<column name="header_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet	id="pa-rus-180" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: pa_req_prediction_val_y5</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="pa_req_prediction_val_y5"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-181" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint pa_req_prediction_val_h</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="energy_sources_id"
+							   schemaName="apps"
+							   tableName="pa_req_prediction_val_h"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-182" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint pa_req_prediction_val_h</comment>
+		<addNotNullConstraint
+				columnDataType="varchar2(10)"
+				columnName="contract_code"
+				schemaName="apps"
+				tableName="pa_req_prediction_val_h"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-183" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="region_id" type="number" remarks="Идентификатор региона"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-184" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: cm_req_doc_create to dict_regions</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="region_id"
+				constraintName="fk_cm_req_doc_create_14"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_regions"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-185" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: cm_req_doc_create</comment>
+		<createIndex indexName="idx_cm_req_doc_create_14"
+					 schemaName="apps"
+					 tableName="cm_req_doc_create">
+			<column name="region_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-186" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="bp_is_poa"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-187" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="bp_poa_type_code"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-188" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="bp_poa_number"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-189" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="bp_poa_date"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-190" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_contract_person_post"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-191" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_contract_person_post_rp"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-192" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_contract_person_fio"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-193" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_contract_person_fio_rp"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-194" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_y </comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_y">
+			<column name="units_id" type="number" remarks="еденица измерения"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-195" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_d</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_d">
+			<column name="units_id" type="number" remarks="еденица измерения"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-196" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_prediction_val_y to dict_units</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_prediction_val_y"
+				baseColumnNames="units_id"
+				constraintName="fk_pa_req_prediction_val_y_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-197" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_req_prediction_val_d to dict_units</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_req_prediction_val_d"
+				baseColumnNames="units_id"
+				constraintName="fk_pa_req_prediction_val_d_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-198" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Add comments to the columns</comment>
+		<sql dbms="postgres, oracle" endDelimiter=";" splitStatements="true" stripComments="true">
+			comment on column APPS.CM_REQ_DOC_CREATE.is_vpk
+			is 'Признак изменения ВПК';
+		</sql>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-199" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="doc_basis_code"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-200" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="contract_person_post"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-201" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="contract_person_post_rp"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-202" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="contract_person_fio"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-203" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="contract_person_fio_rp"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-203" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="contract_person_fio_rp"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-204" logicalFilePath="path-independent" author="ruslan">
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="contract_group" type="varchar2(10)" remarks="Тип контракта"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-205" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: cm_req_doc_create to cm_contract_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="contract_group"
+				constraintName="fk_cm_req_doc_create_15"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_contract_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-206" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: cm_req_doc_create </comment>
+		<createIndex indexName="idx_cm_req_doc_create_1"
+					 schemaName="apps"
+					 tableName="cm_req_doc_create">
+			<column name="contract_group" type="varchar2(10)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-207" logicalFilePath="path-independent" author="ruslan">
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="control_range_unit" type="number" remarks="еденица измерения диапазона физического урегулирования дисбаланса"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-208" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: cm_req_doc_create to dict_units</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_req_doc_create"
+				baseColumnNames="control_range_unit"
+				constraintName="fk_cm_req_doc_create_16"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-209" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: cm_req_doc_create </comment>
+		<createIndex indexName="idx_cm_req_doc_create_2"
+					 schemaName="apps"
+					 tableName="cm_req_doc_create">
+			<column name="control_range_unit" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-210" logicalFilePath="path-independent" author="ruslan">
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="is_keg_cte_a2" type="number" remarks="Признак изменения приложения «Пункты приема и доставки ЭЭ»"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-211" logicalFilePath="path-independent" author="ruslan">
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="text_keg_cte_a2" type="varchar2(1000)" remarks="Текст к приложению «Пункты приема и доставки ЭЭ»"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-212" logicalFilePath="path-independent" author="ruslan">
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="is_keg_cbee_a3" type="number" remarks="Признак изменения приложения «Профиль нагрузки»"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-213" logicalFilePath="path-independent" author="ruslan">
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="text_keg_cbee_a3" type="varchar2(1000)" remarks="Текст к приложению «Профиль нагрузки»"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-214" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_grc_issuing_authority"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-215" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="sla_doc_city"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-216" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_grc_doc_city"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-217" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_grc_issuer_fio"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-218" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create_tl</comment>
+		<dropColumn columnName="bp_grc_issuer_post"
+					schemaName="apps"
+					tableName="cm_req_doc_create_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-219" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="denied_reason"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-220" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint pa_req_prediction_val_d</comment>
+		<addNotNullConstraint
+				columnDataType="date"
+				columnName="units_id"
+				schemaName="apps"
+				tableName="pa_req_prediction_val_d"/>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-222" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint pa_req_prediction_val_y</comment>
+		<addNotNullConstraint
+				columnDataType="date"
+				columnName="units_id"
+				schemaName="apps"
+				tableName="pa_req_prediction_val_y"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-223" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint dm_doc_file_info</comment>
+		<addNotNullConstraint
+				columnDataType="date"
+				columnName="doc_type_code"
+				schemaName="apps"
+				tableName="dm_doc_file_info"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-224" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify datatype dm_doc_file_info</comment>
+		<modifyDataType columnName="file_hash"
+						newDataType="varchar2(4000)"
+						schemaName="apps"
+						tableName="dm_doc_file_info"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-225" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify datatype cm_req_doc_create</comment>
+		<modifyDataType columnName="control_range"
+						newDataType="number"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-226" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_user_type</comment>
+		<createTable tableName="pa_user_type" schemaName="apps" remarks="Справочник типы Пользователей">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-227" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_user_type</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_pa_user_type"
+				schemaName="apps"
+				tableName="pa_user_type"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-228" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_user_type_tl</comment>
+		<createTable tableName="pa_user_type_tl" schemaName="apps" remarks="Переводы Справочник типы Пользователей">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-229" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_user_type_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_pa_user_type_tl"
+				schemaName="apps"
+				tableName="pa_user_type_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-230" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: pa_user_type_tl to pa_user_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_user_type_tl"
+				baseColumnNames="code"
+				constraintName="fk_pa_user_type_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_user_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-231" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_user_type</comment>
+		<insert schemaName="apps" tableName="pa_user_type">
+			<column name="code" type="varchar2" value="SUBJECT"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_user_type">
+			<column name="code" type="varchar2" value="EMPLOYEE"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-232" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into pa_user_type_tl</comment>
+		<insert schemaName="apps" tableName="pa_user_type_tl">
+			<column name="code" type="varchar2" value="SUBJECT"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Субьект"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_user_type_tl">
+			<column name="code" type="varchar2" value="SUBJECT"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Субьект"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_user_type_tl">
+			<column name="code" type="varchar2" value="EMPLOYEE"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Сотрудник"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="pa_user_type_tl">
+			<column name="code" type="varchar2" value="EMPLOYEE"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Сотрудник"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-233" logicalFilePath="path-independent" author="ruslan">
+		<addColumn schemaName="apps"
+				   tableName="pa_message">
+			<column name="user_type" type="varchar2(20)" remarks="Тип пользователя кому отправляют"/>
+		</addColumn>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="pa-rus-234" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_message to pa_user_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_message"
+				baseColumnNames="user_type"
+				constraintName="fk_pa_message_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_user_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-235" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: pa_message</comment>
+		<createIndex indexName="idx_pa_message_1"
+					 schemaName="apps"
+					 tableName="pa_message">
+			<column name="user_type" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+</databaseChangeLog>

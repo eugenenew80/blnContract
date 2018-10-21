@@ -7,46 +7,185 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
 	<changeSet id="cm-rus-1794" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_pro_cldr_color_types</comment>
-		<createTable tableName="cm_pro_cldr_color_types" schemaName="apps" remarks="Справочник производственный календарь: цвет дней недели">
-			<column name="code" type="varchar2(30)" remarks="Код">
+		<comment>Creating table: cm_billing_periods</comment>
+		<createTable tableName="cm_billing_periods" schemaName="apps" remarks="Расчетный период">
+			<column name="id" type="number" remarks="Идентификатор">
 				<constraints nullable="false"/>
 			</column>
 
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+			<column name="start_date" type="date" remarks="Дата начала">
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+			<column name="end_date" type="date" remarks="Дата окончания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="state_code" type="varchar2(30)" remarks="состояние">
 				<constraints nullable="true"/>
 			</column>
 
 			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
 			</column>
 
 			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
 			</column>
 		</createTable>
 	</changeSet>
 
+
 	<changeSet id="cm-rus-1795" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_pro_cldr_color_types</comment>
-		<addPrimaryKey
-				columnNames="code"
-				constraintName="pk_cm_pro_cldr_color_types"
-				schemaName="apps"
-				tableName="cm_pro_cldr_color_types"/>
+		<comment>Creating table: cm_billing_periods_tl</comment>
+		<createTable tableName="cm_billing_periods_tl" schemaName="apps" remarks="Перевод Расчетный период">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="billing_period_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(100)" remarks="расчетный период">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+
+		</createTable>
 	</changeSet>
 
 	<changeSet id="cm-rus-1796" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: cm_pro_cldr_color_types_tl</comment>
-		<createTable tableName="cm_pro_cldr_color_types_tl" schemaName="apps" remarks="Переводы производственный календарь: цвет дней недели">
+		<comment>Creating primary key for table: cm_billing_periods</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_billing_periods"
+				schemaName="apps"
+				tableName="cm_billing_periods"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1797" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_billing_periods</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_billing_periods_s"
+				startValue="1"/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-1798" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_billing_periods_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_billing_periods_tl"
+				schemaName="apps"
+				tableName="cm_billing_periods_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1799" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: cm_billing_periods_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="cm_billing_periods_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1800" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_billing_periods_tl</comment>
+		<addUniqueConstraint
+				columnNames="billing_period_id,lang"
+				constraintName="uk_cm_billing_periods_tl"
+				schemaName="apps"
+				tableName="cm_billing_periods_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1801" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_billing_periods_tl to cm_billing_periods</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_billing_periods_tl"
+				baseColumnNames="billing_period_id"
+				constraintName="fk_cm_billing_periods_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_billing_periods"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1802" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating table: cm_billing_periods_state</comment>
+	<createTable tableName="cm_billing_periods_state" schemaName="apps" remarks="Справочник Расчетный период: состояние">
+		<column name="code" type="varchar2(30)" remarks="Код">
+			<constraints nullable="false"/>
+		</column>
+
+		<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="create_by" type="number" remarks="Автор">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="last_update_by" type="number" remarks="Автор обновления">
+			<constraints nullable="true"/>
+		</column>
+	</createTable>
+</changeSet>
+
+	<changeSet id="cm-rus-1803" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_billing_periods_state</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_cm_billing_periods_state"
+				schemaName="apps"
+				tableName="cm_billing_periods_state"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1804" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_billing_periods_state_tl</comment>
+		<createTable tableName="cm_billing_periods_state_tl" schemaName="apps" remarks="Справочник Расчетный период: состояние">
 			<column name="code" type="varchar2(30)" remarks="Код">
 				<constraints nullable="false"/>
 			</column>
-			
+
 			<column name="lang" type="varchar2(10)" remarks="Язык">
 				<constraints nullable="false"/>
 			</column>
@@ -73,29 +212,125 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1798" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: cm_pro_cldr_color_types_tl</comment>
+	<changeSet id="cm-rus-1805" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_billing_periods_state_tl</comment>
 		<addPrimaryKey
 				columnNames="code, lang"
-				constraintName="pk_cm_pro_cldr_color_types_tl"
+				constraintName="pk_cm_billing_periods_state_tl"
 				schemaName="apps"
-				tableName="cm_pro_cldr_color_types_tl"/>
+				tableName="cm_billing_periods_state_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1799" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating foreign constraint: cm_pro_cldr_color_types_tl to cm_pro_cldr_color_types</comment>
+	<changeSet id="cm-rus-1806" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: cm_billing_periods_state_tl to cm_billing_periods_state</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="cm_pro_cldr_color_types_tl"
+				baseTableName="cm_billing_periods_state_tl"
 				baseColumnNames="code"
-				constraintName="fk_cm_pro_cldr_color_types_tl_1"
+				constraintName="fk_cm_billing_periods_state_tl_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="CASCADE"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="cm_pro_cldr_color_types"
+				referencedTableName="cm_billing_periods_state"
 				referencedColumnNames="code"
 		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1807" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_billing_periods_state</comment>
+		<insert schemaName="apps" tableName="cm_billing_periods_state">
+			<column name="code" type="varchar2" value="CREATE"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1808" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_billing_periods_state</comment>
+		<insert schemaName="apps" tableName="cm_billing_periods_state">
+			<column name="code" type="varchar2" value="OPEN"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1809" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_billing_periods_state</comment>
+		<insert schemaName="apps" tableName="cm_billing_periods_state">
+			<column name="code" type="varchar2" value="CLOSE"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1810" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_billing_periods_state_tl</comment>
+		<insert schemaName="apps" tableName="cm_billing_periods_state_tl">
+			<column name="code" type="varchar2" value="CREATE"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Создан"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1811" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_billing_periods_state_tl</comment>
+		<insert schemaName="apps" tableName="cm_billing_periods_state_tl">
+			<column name="code" type="varchar2" value="CREATE"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Создан"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1812" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_billing_periods_state_tl</comment>
+		<insert schemaName="apps" tableName="cm_billing_periods_state_tl">
+			<column name="code" type="varchar2" value="OPEN"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Открыт"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1813" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_billing_periods_state_tl</comment>
+		<insert schemaName="apps" tableName="cm_billing_periods_state_tl">
+			<column name="code" type="varchar2" value="OPEN"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Открыт"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1814" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_billing_periods_state_tl</comment>
+		<insert schemaName="apps" tableName="cm_billing_periods_state_tl">
+			<column name="code" type="varchar2" value="CLOSE"/>
+			<column name="lang" type="varchar2" value="RU"/>
+			<column name="name" type="varchar2" value="Закрыт"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1815" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_billing_periods_state_tl</comment>
+		<insert schemaName="apps" tableName="cm_billing_periods_state_tl">
+			<column name="code" type="varchar2" value="CLOSE"/>
+			<column name="lang" type="varchar2" value="KZ"/>
+			<column name="name" type="varchar2" value="Закрыт"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-1815-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into cm_billing_periods_state_tl</comment>
+		<addUniqueConstraint columnNames="keg_cte_a3h_id, metering_point_id,bp1_id,bp2_id"
+							 constraintName="uk_cm_doc_keg_cte_a3l_1"
+							 deferrable="true"
+							 disabled="true"
+							 initiallyDeferred="true"
+							 schemaName="apps"
+							 tableName="cm_doc_keg_cte_a3l"/>
+		<rollback/>
 	</changeSet>
 </databaseChangeLog>

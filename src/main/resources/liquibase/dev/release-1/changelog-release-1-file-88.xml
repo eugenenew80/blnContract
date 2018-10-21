@@ -6,15 +6,11 @@
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="cm-rus-1817" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1830" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_pro_cldr_headers</comment>
 		<createTable tableName="cm_pro_cldr_headers" schemaName="apps" remarks="производственный календарь: заголовок">
 			<column name="id" type="number" remarks="Идентификатор">
 				<constraints nullable="false"/>
-			</column>
-
-			<column name="year" type="varchar2(10)" remarks="год">
-				<constraints nullable="true"/>
 			</column>
 
 			<column name="start_date" type="date" remarks="период действия с">
@@ -43,7 +39,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1818" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1831" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_pro_cldr_headers</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -52,7 +48,7 @@
 				tableName="cm_pro_cldr_headers"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1819" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1832" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: cm_req_con_doc_route_orders</comment>
 		<createSequence
 				incrementBy="1"
@@ -62,7 +58,7 @@
 	</changeSet>
 
 
-	<changeSet id="cm-rus-1820" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1833" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: cm_pro_cldr_headers_tl</comment>
 		<createTable tableName="cm_pro_cldr_headers_tl" schemaName="apps" remarks="Перевод производственный календарь: заголовок">
 			<column name="id" type="number" remarks="Идентификатор">
@@ -104,7 +100,7 @@
 		</createTable>
 	</changeSet>
 
-	<changeSet id="cm-rus-1821" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1834" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: cm_pro_cldr_headers_tl</comment>
 		<addPrimaryKey
 				columnNames="id"
@@ -113,7 +109,7 @@
 				tableName="cm_pro_cldr_headers_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1822" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1835" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating sequence for table: cm_pro_cldr_headers_tl</comment>
 		<createSequence
 				incrementBy="1"
@@ -122,7 +118,7 @@
 				startValue="1"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1823" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1836" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating unique key for table: cm_pro_cldr_headers_tl</comment>
 		<addUniqueConstraint
 				columnNames="header_id,lang"
@@ -131,7 +127,7 @@
 				tableName="cm_pro_cldr_headers_tl"/>
 	</changeSet>
 
-	<changeSet id="cm-rus-1824" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-1837" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: cm_pro_cldr_headers_tl to cm_pro_cldr_headers</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
