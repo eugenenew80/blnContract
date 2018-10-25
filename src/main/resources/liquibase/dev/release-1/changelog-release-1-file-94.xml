@@ -2462,7 +2462,6 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				tableName="pa_req_prediction_val_d"/>
 	</changeSet>
 
-
 	<changeSet id="pa-rus-222" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add not null constraint pa_req_prediction_val_y</comment>
 		<addNotNullConstraint
@@ -2663,4 +2662,28 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			<column name="user_type" type="varchar2(20)"/>
 		</createIndex>
 	</changeSet>
+
+	<changeSet id="pa-rus-236" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint cm_req_doc_create</comment>
+		<addNotNullConstraint
+				columnDataType="number"
+				columnName="bp_id"
+				schemaName="apps"
+				tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-237" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from dict_power_transformers</comment>
+		<dropColumn columnName="name"
+					schemaName="apps"
+					tableName="dict_power_transformers"/>
+	</changeSet>
+
+	<changeSet	id="pa-rus-238" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: calc_bs_result_bp_lines</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="calc_bs_result_bp_lines"/>
+	</changeSet>
+
 </databaseChangeLog>
