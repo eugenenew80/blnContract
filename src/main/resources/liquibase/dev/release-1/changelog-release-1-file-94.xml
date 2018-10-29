@@ -2686,4 +2686,20 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				   tableName="calc_bs_result_bp_lines"/>
 	</changeSet>
 
+	<changeSet id="pa-rus-239" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_power_transformers</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_power_transformers">
+			<column name="name" type="varchar2(300)" remarks="Наименование"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-240" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_contact_types_tl</comment>
+		<modifyDataType columnName="short_name"
+						newDataType="varchar2(200)"
+						schemaName="apps"
+						tableName="dict_contact_types_tl"/>
+	</changeSet>
+
 </databaseChangeLog>
