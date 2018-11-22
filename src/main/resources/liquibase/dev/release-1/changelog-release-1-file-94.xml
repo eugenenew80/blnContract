@@ -2702,4 +2702,222 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 						tableName="dict_contact_types_tl"/>
 	</changeSet>
 
+	<changeSet id="pa-rus-241" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a4h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a4h">
+			<column name="is_ready" type="number" remarks="Готов"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-242" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a3h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a3h">
+			<column name="is_ready" type="number" remarks="Готов"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-243" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a2h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a2h">
+			<column name="is_ready" type="number" remarks="Готов"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-244" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_a1h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_a1h">
+			<column name="is_ready" type="number" remarks="Готов"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-245" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cbee_a3h</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cbee_a3h">
+			<column name="is_ready" type="number" remarks="Готов"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-246" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_regulations</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_regulations">
+			<column name="id" type="number" remarks="Идентификатор"/>
+		</addColumn>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-247" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_regulations_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_regulations_tl">
+			<column name="regulation_id" type="number" remarks="Ссылка на родительскую запись"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-248" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_regulations_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_regulations_tl">
+			<column name="id" type="number" remarks="Идентификатор"/>
+		</addColumn>
+	</changeSet>
+
+
+	<changeSet id="pa-rus-249" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint to dm_regulations</comment>
+		<addNotNullConstraint columnDataType="number"
+							  columnName="id"
+							  schemaName="apps"
+							  tableName="dm_regulations"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-250" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint to dm_regulations_tl</comment>
+		<addNotNullConstraint columnDataType="number"
+							  columnName="regulation_id"
+							  schemaName="apps"
+							  tableName="dm_regulations_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-251" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add not null constraint to dm_regulations_tl</comment>
+		<addNotNullConstraint columnDataType="number"
+							  columnName="id"
+							  schemaName="apps"
+							  tableName="dm_regulations_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-252" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>create index dm_regulations</comment>
+		<createIndex indexName="idx_dm_regulations"
+					 schemaName="apps"
+					 tableName="dm_regulations"
+					 unique="true">
+			<column name="id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-253" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dm_regulations</comment>
+		<addUniqueConstraint
+				columnNames="regulation_id, lang"
+				constraintName="uk_dm_regulations_tl_1"
+				schemaName="apps"
+				tableName="dm_regulations_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-254" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>create index dm_regulations_tl</comment>
+		<createIndex indexName="idx_dm_regulations_tl"
+					 schemaName="apps"
+					 tableName="dm_regulations_tl"
+					 unique="true">
+			<column name="id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="pa-rus-255" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: dm_regulations</comment>
+		<addUniqueConstraint
+				columnNames="id"
+				constraintName="uk_dm_regulations_1"
+				schemaName="apps"
+				tableName="dm_regulations"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-256" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: dm_regulations_tl to dm_regulations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dm_regulations_tl"
+				baseColumnNames="regulation_id"
+				constraintName="fk_dm_regulations_tl_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dm_regulations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="pa-rus-257" logicalFilePath="path-independent" author="ruslan">
+		<comment>drop not null constraint dm_doc_signers</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="bp_id"
+							   schemaName="apps"
+							   tableName="dm_doc_signers"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-258" logicalFilePath="path-independent" author="ruslan">
+		<comment>drop not null constraint dm_doc_signers</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="display_order"
+							   schemaName="apps"
+							   tableName="dm_doc_signers"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-259" logicalFilePath="path-independent" author="ruslan">
+		<comment>drop not null constraint dm_doc_signers</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="is_user_bis"
+							   schemaName="apps"
+							   tableName="dm_doc_signers"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-260" logicalFilePath="path-independent" author="ruslan">
+		<comment>drop not null constraint dm_doc_signers</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="user_id"
+							   schemaName="apps"
+							   tableName="dm_doc_signers"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-261" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_regulations_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_regulations_tl">
+			<column name="phone_number" type="varchar2(100)" remarks="Телефонный номер"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="pa-rus-262" logicalFilePath="path-independent" author="ruslan">
+		<comment>drop not null constraint dm_doc_signers_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2"
+							   columnName="post_name"
+							   schemaName="apps"
+							   tableName="dm_doc_signers_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-263" logicalFilePath="path-independent" author="ruslan">
+		<comment>drop not null constraint dm_doc_signers_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2"
+							   columnName="last_name"
+							   schemaName="apps"
+							   tableName="dm_doc_signers_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-264" logicalFilePath="path-independent" author="ruslan">
+		<comment>drop not null constraint dm_doc_signers_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2"
+							   columnName="first_name"
+							   schemaName="apps"
+							   tableName="dm_doc_signers_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-265" logicalFilePath="path-independent" author="ruslan">
+		<comment>drop not null constraint dm_doc_signers_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2"
+							   columnName="middle_name"
+							   schemaName="apps"
+							   tableName="dm_doc_signers_tl"/>
+	</changeSet>
+
+
 </databaseChangeLog>
