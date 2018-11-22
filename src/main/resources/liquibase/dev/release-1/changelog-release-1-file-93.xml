@@ -4135,4 +4135,133 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			<column name="is_change_control_range" type="number" remarks="Признак изменения диапозона физического урегулирования дисбаланса"/>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="cm-rus-2316" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_video_lessons</comment>
+		<createTable tableName="pa_video_lessons" schemaName="apps" remarks="Перевод для 1 приложения">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="url_address" type="varchar2(300)" remarks="Адрес">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2317" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_video_lessons</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_video_lessons"
+				schemaName="apps"
+				tableName="pa_video_lessons"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2318" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_video_lessons</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_video_lessons_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2319" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_video_lessons_tl</comment>
+		<createTable tableName="pa_video_lessons_tl" schemaName="apps" remarks="Перевод справочник видеуроков">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="video_lessons_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(500)" remarks="Название документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2320" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_video_lessons_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_video_lessons_tl"
+				schemaName="apps"
+				tableName="pa_video_lessons_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2321" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: pa_video_lessons_tl</comment>
+		<addUniqueConstraint
+				columnNames="video_lessons_id,lang"
+				constraintName="uk_pa_video_lessons_tl"
+				schemaName="apps"
+				tableName="pa_video_lessons_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2322" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_video_lessons_tl to pa_video_lessons</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_video_lessons_tl"
+				baseColumnNames="video_lessons_id"
+				constraintName="fk_pa_video_lessons_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_video_lessons"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2323" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dm_regulations</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dm_regulations_s"
+				startValue="1"/>
+	</changeSet>
+
 </databaseChangeLog>
