@@ -4264,4 +4264,35 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				startValue="1"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-2324" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dm_regulations</comment>
+		<dropPrimaryKey constraintName="pk_dm_regulations_tl"
+						schemaName="apps"
+						tableName="dm_regulations_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2325" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from dm_regulations_tl</comment>
+		<dropColumn columnName="code"
+					schemaName="apps"
+					tableName="dm_regulations_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2326" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dm_regulations_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dm_regulations_tl"
+				schemaName="apps"
+				tableName="dm_regulations_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2327" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dm_regulations_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dm_regulations_tl_s"
+				startValue="1"/>
+	</changeSet>
 </databaseChangeLog>
