@@ -4295,4 +4295,93 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				sequenceName="dm_regulations_tl_s"
 				startValue="1"/>
 	</changeSet>
+
+	<changeSet id="cm-rus-2328" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte_a2h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a2h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2329" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte_a1h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a1h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2330" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte_a3h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2331" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte_a4h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a4h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2332" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cbee_a3h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cbee_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2333" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="region_id"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2334" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="region_id" type="number" remarks="Регион"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2335" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_doc_signers</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_doc_signers">
+			<column name="activity_code" type="varchar2(20)" remarks="Код действия"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2336" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: dm_doc_signers to wf_object_activities</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dm_doc_signers"
+				baseColumnNames="activity_code"
+				constraintName="fk_dm_doc_signers_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_activities"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2337" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_regulations</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_regulations">
+			<column name="is_internal_document" type="number" remarks="Внутрений документ"/>
+		</addColumn>
+	</changeSet>
+
 </databaseChangeLog>
