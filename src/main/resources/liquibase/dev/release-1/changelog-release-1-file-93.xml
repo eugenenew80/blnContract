@@ -4384,4 +4384,12 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</addColumn>
 	</changeSet>
 
+	<changeSet id="cm-rus-2338" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_req_doc_create</comment>
+		<modifyDataType columnName="region_id"
+						newDataType="varchar2(2000)"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
 </databaseChangeLog>
