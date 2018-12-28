@@ -3492,4 +3492,1332 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
             <column name="consumer_type" type="varchar2(20)"/>
         </createIndex>
     </changeSet>
+
+	<changeSet id="cm-rus-2251" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to dict_business_partners_tol</comment>
+		<modifyDataType columnName="contact_info"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="dict_business_partners_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2252" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte</comment>
+		<modifyDataType columnName="bp1_add_info"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2253" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte</comment>
+		<modifyDataType columnName="bp2_add_info"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2254" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating table: cm_doc_keg_cte_a1h_a3h_tl</comment>
+		<createTable tableName="cm_doc_keg_cte_a1h_a3h_tl" schemaName="apps" remarks="Перевод для таблиц cm_doc_keg_cte_a1h и cm_doc_keg_cbee_a3h">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_name" type="varchar2(600)" remarks="Название документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_name" type="varchar2(300)" remarks="Заголовок">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2255" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cte_a1h_a3h_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cte_a1h_a3h_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cte_a1h_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2256" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_keg_cte_a1h_a3h_tl</comment>
+		<addUniqueConstraint
+				columnNames="header_id,lang"
+				constraintName="uk_cm_doc_keg_cte_a1h_a3h_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cte_a1h_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2257" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating table: cm_doc_keg_cte_a4h_tl</comment>
+		<createTable tableName="cm_doc_keg_cte_a4h_tl" schemaName="apps" remarks="Перевод для 4 приложения">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_name" type="varchar2(600)" remarks="Название документа">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_name" type="varchar2(300)" remarks="Заголовок">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp1_name" type="varchar2(500)" remarks="имя бизнес партнера филиала">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp2_name" type="varchar2(500)" remarks="имя бизнес партнера субабонента">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2258" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cte_a4h_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cte_a4h_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cte_a4h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2259" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_keg_cte_a4h_tl</comment>
+		<addUniqueConstraint
+				columnNames="header_id,lang"
+				constraintName="uk_cm_doc_keg_cte_a4h_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cte_a4h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2260" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a4h_tl to cm_doc_keg_cte_a4h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a4h_tl"
+				baseColumnNames="header_id"
+				constraintName="fk_cm_doc_keg_cte_a4h_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte_a4h"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2261" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a1h_a3h_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2(300)"
+							   columnName="header_name"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a1h_a3h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2262" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a1h_a3h_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2(600)"
+							   columnName="doc_name"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a1h_a3h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2263" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a1h_a3h_tl</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="create_by"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a1h_a3h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2264" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a1h_a3h_tl</comment>
+		<dropNotNullConstraint columnDataType="TIMESTAMP"
+							   columnName="create_date"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a1h_a3h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2265" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a1h_a3h_tl</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="last_update_by"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a1h_a3h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2266" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a1h_a3h_tl</comment>
+		<dropNotNullConstraint columnDataType="TIMESTAMP"
+							   columnName="last_update_date"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a1h_a3h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2267" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a4h_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2(300)"
+							   columnName="header_name"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a4h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2268" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a4h_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2(600)"
+							   columnName="doc_name"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a4h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2269" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a4h_tl</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="create_by"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a4h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2270" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a4h_tl</comment>
+		<dropNotNullConstraint columnDataType="date"
+							   columnName="create_date"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a4h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2271" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a4h_tl</comment>
+		<dropNotNullConstraint columnDataType="number"
+							   columnName="last_update_by"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a4h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2272" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a4h_tl</comment>
+		<dropNotNullConstraint columnDataType="date"
+							   columnName="last_update_date"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a4h_tl"/>
+		<rollback/>
+	</changeSet>
+
+
+	<changeSet id="cm-rus-2273" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a4h_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2(500)"
+							   columnName="bp1_name"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a4h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2274" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop not null constraint APPS.cm_doc_keg_cte_a4h_tl</comment>
+		<dropNotNullConstraint columnDataType="varchar2(500)"
+							   columnName="bp2_name"
+							   schemaName="apps"
+							   tableName="cm_doc_keg_cte_a4h_tl"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet	id="cm-rus-2275" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop table: cm_doc_keg_cte_a1h_a3h_tl</comment>
+		<dropTable cascadeConstraints="true"
+				   schemaName="apps"
+				   tableName="cm_doc_keg_cte_a1h_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2276" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cte_a1h_tl</comment>
+		<createTable tableName="cm_doc_keg_cte_a1h_tl" schemaName="apps" remarks="Перевод для 1 приложения">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_name" type="varchar2(600)" remarks="Название документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="header_name" type="varchar2(300)" remarks="Заголовок">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2277" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cte_a1h_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cte_a1h_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cte_a1h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2278" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_keg_cte_a1h_tl</comment>
+		<addUniqueConstraint
+				columnNames="header_id,lang"
+				constraintName="uk_cm_doc_keg_cte_a1h_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cte_a1h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2279" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: cm_doc_keg_cte_a1h_tl to cm_doc_keg_cte_a1h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cte_a1h_tl"
+				baseColumnNames="header_id"
+				constraintName="fk_cm_doc_keg_cte_a1h_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte_a1h"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2280" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: cm_doc_keg_cbee_a3h_tl</comment>
+		<createTable tableName="cm_doc_keg_cbee_a3h_tl" schemaName="apps" remarks="Перевод для 3 приложения к договору на балансирование">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="doc_name" type="varchar2(600)" remarks="Название документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="header_name" type="varchar2(300)" remarks="Заголовок">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2281" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: cm_doc_keg_cbee_a3h_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_cm_doc_keg_cbee_a3h_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cbee_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2282" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: cm_doc_keg_cbee_a3h_tl</comment>
+		<addUniqueConstraint
+				columnNames="header_id,lang"
+				constraintName="uk_cm_doc_keg_cbee_a3h_tl"
+				schemaName="apps"
+				tableName="cm_doc_keg_cbee_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2283" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: cm_doc_keg_cbee_a3h_tl to cm_doc_keg_cbee_a3h</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="cm_doc_keg_cbee_a3h_tl"
+				baseColumnNames="header_id"
+				constraintName="fk_cm_doc_keg_cbee_a3h_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cbee_a3h"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2284" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cbee_a3d_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cbee_a3d_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2285" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cbee_a3h_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cbee_a3h_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2286" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cbee_a3l_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cbee_a3l_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2287" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cbee_a3l_tl_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cbee_a3l_tl_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2288" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cte_a2_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cte_a2_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2289" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cte_a2_tl_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cte_a2_tl_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2290" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cte_a2h_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cte_a2h_tl_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2291" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cte_a2l_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cte_a2l_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2292" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cte_a3h_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cte_a3h_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2293" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cte_a3h_tl_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cte_a3h_tl_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2294" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cte_a3l_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cte_a3l_tl_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2295" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop sequence cm_doc_keg_cte_tl_s</comment>
+		<dropSequence schemaName="apps"
+					  sequenceName="cm_doc_keg_cte_tl_s"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2296" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cbee_a3h</comment>
+		<dropColumn columnName="doc_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cbee_a3h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2297" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cbee_a3h</comment>
+		<dropColumn columnName="header_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cbee_a3h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2298" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte_a1h</comment>
+		<dropColumn columnName="header_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a1h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2299" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte_a1h</comment>
+		<dropColumn columnName="doc_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a1h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2300" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte_a2h</comment>
+		<dropColumn columnName="doc_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a2h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2304" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte_a3h</comment>
+		<dropColumn columnName="doc_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a3h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2306" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte_a4h</comment>
+		<dropColumn columnName="doc_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a4h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2307" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte_a4h</comment>
+		<dropColumn columnName="header_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a4h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2308" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte_a4h</comment>
+		<dropColumn columnName="bp1_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a4h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2309" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte_a4h</comment>
+		<dropColumn columnName="bp2_name"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte_a4h"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2310" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_keg_cte_a2" type="number" remarks="Признак изменения приложения «Пункты приема и доставки ЭЭ»"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2311" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_change_control_range" type="number" remarks="Признак изменения диапозона физического урегулирования дисбаланса"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2312" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_keg_cbee_a3" type="number" remarks="Признак изменения приложения «Профиль нагрузки»"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2313" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="preamble_dop" type="clob" remarks="Преамбула дополнительного соглашения"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2314" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="text_dop" type="clob" remarks="Текст дополнительного соглашения"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2315" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="is_change_control_range" type="number" remarks="Признак изменения диапозона физического урегулирования дисбаланса"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2316" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_video_lessons</comment>
+		<createTable tableName="pa_video_lessons" schemaName="apps" remarks="Перевод для 1 приложения">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="url_address" type="varchar2(300)" remarks="Адрес">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2317" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_video_lessons</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_video_lessons"
+				schemaName="apps"
+				tableName="pa_video_lessons"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2318" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: pa_video_lessons</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="pa_video_lessons_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2319" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: pa_video_lessons_tl</comment>
+		<createTable tableName="pa_video_lessons_tl" schemaName="apps" remarks="Перевод справочник видеуроков">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="video_lessons_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(500)" remarks="Название документа">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2320" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: pa_video_lessons_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_pa_video_lessons_tl"
+				schemaName="apps"
+				tableName="pa_video_lessons_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2321" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: pa_video_lessons_tl</comment>
+		<addUniqueConstraint
+				columnNames="video_lessons_id,lang"
+				constraintName="uk_pa_video_lessons_tl"
+				schemaName="apps"
+				tableName="pa_video_lessons_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2322" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: pa_video_lessons_tl to pa_video_lessons</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="pa_video_lessons_tl"
+				baseColumnNames="video_lessons_id"
+				constraintName="fk_pa_video_lessons_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="pa_video_lessons"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2323" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dm_regulations</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dm_regulations_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2324" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dm_regulations</comment>
+		<dropPrimaryKey constraintName="pk_dm_regulations_tl"
+						schemaName="apps"
+						tableName="dm_regulations_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2325" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from dm_regulations_tl</comment>
+		<dropColumn columnName="code"
+					schemaName="apps"
+					tableName="dm_regulations_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2326" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dm_regulations_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_dm_regulations_tl"
+				schemaName="apps"
+				tableName="dm_regulations_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2327" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: dm_regulations_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="dm_regulations_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2328" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte_a2h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a2h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2329" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte_a1h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a1h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2330" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte_a3h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2331" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte_a4h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a4h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2332" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cbee_a3h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cbee_a3h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2333" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column value from cm_req_doc_create</comment>
+		<dropColumn columnName="region_id"
+					schemaName="apps"
+					tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2334" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_req_doc_create</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_req_doc_create">
+			<column name="region_id" type="number" remarks="Регион"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2335" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_doc_signers</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_doc_signers">
+			<column name="activity_code" type="varchar2(20)" remarks="Код действия"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2336" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: dm_doc_signers to wf_object_activities</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dm_doc_signers"
+				baseColumnNames="activity_code"
+				constraintName="fk_dm_doc_signers_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_activities"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2337" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dm_regulations</comment>
+		<addColumn schemaName="apps"
+				   tableName="dm_regulations">
+			<column name="is_internal_document" type="number" remarks="Внутрений документ"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2338" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_req_doc_create</comment>
+		<modifyDataType columnName="region_id"
+						newDataType="varchar2(2000)"
+						schemaName="apps"
+						tableName="cm_req_doc_create"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2339" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_keg_cte_a1" type="number" remarks="Признак изменения приложения «Договорной объем»"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2340" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_change_requisites" type="number" remarks="Признак изменения реквизитов"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2341" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_change_doc_date" type="number" remarks="Признак изменения сроков договора"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2342" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_keg_cte_a3" type="number" remarks="Признак изменения приложения «Границы раздела»"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2343" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_keg_cte_a4" type="number" remarks="Признак изменения приложения «Список приборов»"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2344" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to wf_activities_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="wf_activities_tl">
+			<column name="decision" type="varchar2(200)" remarks="Решение"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2345" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to wf_activities</comment>
+		<dropColumn columnName="decision"
+					schemaName="apps"
+					tableName="wf_activities"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2346" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: wf_act_and_task_types</comment>
+		<createTable tableName="wf_act_and_task_types" schemaName="apps" remarks="Справочник связи Типов задач и действий">
+			<column name="id" type="number" remarks="Ид">
+				<constraints nullable="false"/>
+			</column>
+			<column name="activity_code" type="varchar2(20)" remarks="Код действия">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="task_type_code" type="varchar2(20)" remarks="Код типа задач">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2347" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: wf_act_and_task_types</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_wf_act_and_task_types"
+				schemaName="apps"
+				tableName="wf_act_and_task_types"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2348" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: wf_act_and_task_types to wf_activities</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="wf_act_and_task_types"
+				baseColumnNames="activity_code"
+				constraintName="fk_wf_act_and_task_types_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_activities"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2349" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: wf_act_and_task_types to wf_task_types</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="wf_act_and_task_types"
+				baseColumnNames="task_type_code"
+				constraintName="fk_wf_act_and_task_types_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_task_types"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2350" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte">
+			<column name="is_dop_change_vpk" type="number" remarks="признак изменения ВПК по доп. соглашению"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2351" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_tl">
+			<column name="preamble_dop" type="clob" remarks="Преамбула дополнительного соглашения"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2352" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_tl">
+			<column name="text_dop" type="clob" remarks="Текст дополнительного соглашения"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2353" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte</comment>
+		<dropColumn columnName="preamble_dop"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2354" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to cm_doc_keg_cte</comment>
+		<dropColumn columnName="text_dop"
+					schemaName="apps"
+					tableName="cm_doc_keg_cte"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2355" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_tl">
+			<column name="bp1_basis_for_acts" type="varchar2(500)" remarks="Действует на основание"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2356" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_tl">
+			<column name="bp2_basis_for_acts" type="varchar2(500)" remarks="Действует на основание"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2357" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_tl">
+			<column name="bp1_add_info" type="varchar2(1000)" remarks="Бизнес-партнер 2: Доп.контактная информация"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2358" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to cm_doc_keg_cte_tl</comment>
+		<addColumn schemaName="apps"
+				   tableName="cm_doc_keg_cte_tl">
+			<column name="bp2_add_info" type="varchar2(1000)" remarks="Бизнес-партнер 1: Доп.контактная информация"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2559" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: report_years</comment>
+		<createTable tableName="report_years" schemaName="apps" remarks="справочник годов">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2560" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: report_years</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_report_years"
+				schemaName="apps"
+				tableName="report_years"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2561" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: report_years</comment>
+		<createTable tableName="report_quarter" schemaName="apps" remarks="справочник квартал">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2562" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: report_quarter</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_report_quarter"
+				schemaName="apps"
+				tableName="report_quarter"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2563" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into report_quarter</comment>
+		<insert schemaName="apps" tableName="report_quarter">
+			<column name="code" type="varchar2" value="1"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="report_quarter">
+			<column name="code" type="varchar2" value="2"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="report_quarter">
+			<column name="code" type="varchar2" value="3"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="report_quarter">
+			<column name="code" type="varchar2" value="4"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2564" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_h</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_h">
+			<column name="year" type="date" remarks="год составления прогноза"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2565" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_h</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_h">
+			<column name="send_date" type="date" remarks="Дата отправки"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2566" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_business_partners</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_business_partners">
+			<column name="org_id" type="number" remarks="Структурное подразделение"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2567" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_business_partners to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_business_partners"
+				baseColumnNames="org_id"
+				constraintName="fk_dict_business_partners_7"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2569" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to dict_business_partners</comment>
+		<modifyDataType columnName="ERP_COMPANY_CODE"
+						newDataType="varchar2(30)"
+						schemaName="apps"
+						tableName="dict_business_partners"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2570" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to dict_business_partners</comment>
+		<modifyDataType columnName="ERP_COMPANY_CODE"
+						newDataType="varchar2(4)"
+						schemaName="apps"
+						tableName="dict_business_partners"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2571" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to dict_business_partners</comment>
+		<dropColumn columnName="erp_company_code"
+					schemaName="apps"
+					tableName="dict_business_partners"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2572" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to dict_business_partners</comment>
+		<dropColumn columnName="org_id"
+					schemaName="apps"
+					tableName="dict_business_partners"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2573" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to dict_organizations</comment>
+		<createIndex indexName="idx_dict_organizations_1"
+					 schemaName="apps"
+					 tableName="dict_organizations"
+					 unique="true">
+			<column name="bp_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="cm-rus-2574" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on pa_req_prediction_val_h</comment>
+		<modifyDataType columnName="year"
+						newDataType="number"
+						schemaName="apps"
+						tableName="pa_req_prediction_val_h"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2575" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_prade_on_energy_sources</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_prade_on_energy_sources">
+			<column name="org_id" type="number" remarks="Структурное подразделение"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2576" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_prade_on_substations</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_prade_on_substations">
+			<column name="org_id" type="number" remarks="Структурное подразделение"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2577" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_prade_on_substations to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_prade_on_substations"
+				baseColumnNames="org_id"
+				constraintName="fk_dict_prade_on_substations_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2578" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_prade_on_energy_sources to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_prade_on_energy_sources"
+				baseColumnNames="org_id"
+				constraintName="fk_dict_prade_on_energy_sources_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2579" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to plan_curator_settings_lines</comment>
+		<addColumn schemaName="apps"
+				   tableName="plan_curator_settings_lines">
+			<column name="num" type="number" remarks="Порядок вывода"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2580" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_receipt_and_delivery_points</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_receipt_and_delivery_points">
+			<column name="org_id" type="number" remarks="Идентификатор Филиал"/>
+		</addColumn>
+	</changeSet>
+
 </databaseChangeLog>

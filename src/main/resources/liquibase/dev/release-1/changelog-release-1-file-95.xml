@@ -6,1307 +6,504 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
 
-	<changeSet id="res-rus-1" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: res_daily_schedule</comment>
-		<createTable tableName="res_daily_schedule" schemaName="apps" remarks="Суточный график">
-			<column name="id" type="number" remarks="Идентификатор">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="schedule_date" type="date" remarks="Дата графика">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="version" type="number" remarks="Версия" defaultValueNumeric="1">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="state" type="varchar2(20)" remarks="Статус">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="is_show" type="number" remarks="Отображать в ЛК">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
-			</column>
-		</createTable>
-	</changeSet>
-
-	<changeSet id="res-rus-2" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: res_daily_schedule</comment>
-		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_res_daily_schedule"
-				schemaName="apps"
-				tableName="res_daily_schedule"/>
-	</changeSet>
-
-	<changeSet id="res-rus-3" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: res_daily_schedule</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="res_daily_schedule_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="res-rus-4" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule to wf_states</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule"
-				baseColumnNames="state"
-				constraintName="fk_res_daily_schedule_1"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="wf_states"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-5" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule</comment>
-		<createIndex indexName="idx_res_daily_schedule_1"
-					 schemaName="apps"
-					 tableName="res_daily_schedule">
-			<column name="state" type="varchar2(20)"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-6" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: res_daily_schedule_volume_types</comment>
-		<createTable tableName="res_daily_schedule_volume_types" schemaName="apps" remarks="Справочник Видов обьемов для Суточного графика">
-			<column name="code" type="varchar2(20)" remarks="Код">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="name" type="varchar2(100)" remarks="Описание">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
-			</column>
-		</createTable>
-	</changeSet>
-
-	<changeSet id="res-rus-7" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: res_daily_schedule_volume_types</comment>
-		<addPrimaryKey
-				columnNames="code"
-				constraintName="pk_res_daily_schedule_volume_types"
-				schemaName="apps"
-				tableName="res_daily_schedule_volume_types"/>
-	</changeSet>
-
-	<changeSet id="res-rus-8" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into res_daily_schedule_volume_types</comment>
-		<insert schemaName="apps" tableName="res_daily_schedule_volume_types">
-			<column name="code" type="varchar2" value="BUY"/>
-			<column name="name" type="varchar2" value="обьем покупок виэ"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_volume_types">
-			<column name="code" type="varchar2" value="CONSUMPTION"/>
-			<column name="name" type="varchar2" value="обьемы отпуска"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_volume_types">
-			<column name="code" type="varchar2" value="SALE"/>
-			<column name="name" type="varchar2" value="Обьемы продаж"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="res-rus-9" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: res_daily_schedule_info_type</comment>
-		<createTable tableName="res_daily_schedule_info_type" schemaName="apps" remarks="Справочник Типов информации для Суточного графика">
-			<column name="code" type="varchar2(20)" remarks="Код">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
-			</column>
-		</createTable>
-	</changeSet>
-
-	<changeSet id="res-rus-10" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: res_daily_schedule_info_type</comment>
-		<addPrimaryKey
-				columnNames="code"
-				constraintName="pk_res_daily_schedule_info_type"
-				schemaName="apps"
-				tableName="res_daily_schedule_info_type"/>
-	</changeSet>
-
-	<changeSet id="res-rus-11" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into res_daily_schedule_information_type</comment>
-		<insert schemaName="apps" tableName="res_daily_schedule_info_type">
-			<column name="code" type="varchar2" value="PREDICT"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_info_type">
-			<column name="code" type="varchar2" value="FACT"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_info_type">
-			<column name="code" type="varchar2" value="ESTIMATE"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="res-rus-12" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: res_daily_schedule_info_type_tl</comment>
-		<createTable tableName="res_daily_schedule_info_type_tl" schemaName="apps" remarks="Справочник перевод Типов информации для Суточного графика">
-			<column name="code" type="varchar2(20)" remarks="Код">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="lang" type="varchar2(10)" remarks="Язык">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="name" type="varchar2(100)" remarks="Описание">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
-			</column>
-		</createTable>
-	</changeSet>
-
-	<changeSet id="res-rus-13" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: res_daily_schedule_info_type_tl</comment>
-		<addPrimaryKey
-				columnNames="code,lang"
-				constraintName="pk_res_daily_schedule_info_type_tl"
-				schemaName="apps"
-				tableName="res_daily_schedule_info_type_tl"/>
-	</changeSet>
-
-	<changeSet id="res-rus-14" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into res_daily_schedule_info_type_tl</comment>
-		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
-			<column name="code" type="varchar2" value="PREDICT"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Прогнозные"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
-			<column name="code" type="varchar2" value="PREDICT"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Прогнозные"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
-			<column name="code" type="varchar2" value="FACT"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="Фактические"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
-			<column name="code" type="varchar2" value="FACT"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="Фактические"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
-			<column name="code" type="varchar2" value="ESTIMATE"/>
-			<column name="lang" type="varchar2" value="RU"/>
-			<column name="name" type="varchar2" value="оценочные"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_info_type_tl">
-			<column name="code" type="varchar2" value="ESTIMATE"/>
-			<column name="lang" type="varchar2" value="KZ"/>
-			<column name="name" type="varchar2" value="оценочные"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="res-rus-15" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_info_type_tl to res_daily_schedule_info_type</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_info_type_tl"
-				baseColumnNames="code"
-				constraintName="fk_res_daily_schedule_info_type_tl_1"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="CASCADE"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="res_daily_schedule_info_type"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-16" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: res_daily_schedule_values_headers</comment>
-		<createTable tableName="res_daily_schedule_values_headers" schemaName="apps" remarks="Суточный график:Заголовок Обьемов">
-			<column name="id" type="number" remarks="Идентификатор">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="schedule_id" type="number" remarks="идентификатор суточного графика">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="contract_id" type="number" remarks="Идентификатор договора">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="bp_id" type="number" remarks="Идентификатор Бизнес партнера">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="meter_type" type="varchar2(30)" remarks="Параметр измерения">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="energy_zone_id" type="number" remarks="Идентификатор энергозоны">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="energy_zone_settings" type="number" remarks="Идентификатор настройки энергозоны">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="info_type" type="varchar2(20)" remarks="Тип информации">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="volume_type" type="varchar2(20)" remarks="Типы объемов">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
-			</column>
-		</createTable>
-	</changeSet>
-
-	<changeSet id="res-rus-17" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: res_daily_schedule_values_headers</comment>
-		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_res_daily_schedule_values_headers"
-				schemaName="apps"
-				tableName="res_daily_schedule_values_headers"/>
-	</changeSet>
-
-	<changeSet id="res-rus-18" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: res_daily_schedule_values_headers</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="res_daily_schedule_values_headers_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="res-rus-19" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_headers to res_daily_schedule</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_headers"
-				baseColumnNames="schedule_id"
-				constraintName="fk_res_daily_schedule_values_headers_1"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="res_daily_schedule"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-20" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_1"
-					 schemaName="apps"
-					 tableName="res_daily_schedule_values_headers">
-			<column name="schedule_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-21" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_headers to cm_doc_keg_cte</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_headers"
-				baseColumnNames="contract_id"
-				constraintName="fk_res_daily_schedule_values_headers_2"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="cm_doc_keg_cte"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-22" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_2"
-					 schemaName="apps"
-					 tableName="res_daily_schedule_values_headers">
-			<column name="contract_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-23" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_headers to dict_business_partners</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_headers"
-				baseColumnNames="bp_id"
-				constraintName="fk_res_daily_schedule_values_headers_3"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_business_partners"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-24" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_3"
-					 schemaName="apps"
-					 tableName="res_daily_schedule_values_headers">
-			<column name="bp_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-27" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_headers to cm_doc_cptri_types</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_headers"
-				baseColumnNames="meter_type"
-				constraintName="fk_res_daily_schedule_values_headers_5"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="cm_doc_cptri_types"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-28" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_5"
-					 schemaName="apps"
-					 tableName="res_daily_schedule_values_headers">
-			<column name="meter_type" type="varchar2(30)"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-29" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_headers to dict_energy_zones</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_headers"
-				baseColumnNames="energy_zone_id"
-				constraintName="fk_res_daily_schedule_values_headers_6"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_energy_zones"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-30" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_6"
-					 schemaName="apps"
-					 tableName="res_daily_schedule_values_headers">
-			<column name="energy_zone_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-31" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_headers to res_distribution_ee_rule_settings</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_headers"
-				baseColumnNames="energy_zone_settings"
-				constraintName="fk_res_daily_schedule_values_headers_7"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="res_distribution_ee_rule_settings"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-32" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_7"
-					 schemaName="apps"
-					 tableName="res_daily_schedule_values_headers">
-			<column name="energy_zone_settings" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-33" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_headers to res_daily_schedule_info_types</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_headers"
-				baseColumnNames="info_type"
-				constraintName="fk_res_daily_schedule_values_headers_8"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="res_daily_schedule_info_type"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-34" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_8"
-					 schemaName="apps"
-					 tableName="res_daily_schedule_values_headers">
-			<column name="info_type" type="varchar2(20)"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-35" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_headers to res_daily_schedule_volume_type</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_headers"
-				baseColumnNames="volume_type"
-				constraintName="fk_res_daily_schedule_values_headers_9"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="res_daily_schedule_volume_types"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-36" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_9"
-					 schemaName="apps"
-					 tableName="res_daily_schedule_values_headers">
-			<column name="volume_type" type="varchar2(20)"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-37" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: res_daily_schedule_values_lines</comment>
-		<createTable tableName="res_daily_schedule_values_lines" schemaName="apps" remarks="Суточный график: Строки Обьемов">
-			<column name="id" type="number" remarks="Идентификатор">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="header_id" type="number" remarks="Идентификатор заголовка">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="val_date" type="TIMESTAMP" remarks="Время суточного графика">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="val" type="number" remarks="Объем">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
-			</column>
-		</createTable>
-	</changeSet>
-
-	<changeSet id="res-rus-38" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: res_daily_schedule_values_lines</comment>
-		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_res_daily_schedule_values_lines"
-				schemaName="apps"
-				tableName="res_daily_schedule_values_lines"/>
-	</changeSet>
-
-	<changeSet id="res-rus-39" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: res_daily_schedule_values_lines</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="res_daily_schedule_values_lines_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="res-rus-40" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_lines to res_daily_schedule_values_headers</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_lines"
-				baseColumnNames="header_id"
-				constraintName="fk_res_daily_schedule_values_lines_1"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="res_daily_schedule_values_headers"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-41" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule_values_lines</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_lines_1"
-					 schemaName="apps"
-					 tableName="res_daily_schedule_values_lines">
-			<column name="header_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-43" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into res_daily_schedule</comment>
-		<insert schemaName="apps" tableName="res_daily_schedule">
-			<column name="id" type="number" value="1"/>
-			<column name="schedule_date" type="date" value="24-ноя-15"/>
-			<column name="version" type="number" value="1"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="res-rus-44" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>drop not null constraint APPS.res_distribution_ee_rule_settings</comment>
-		<dropNotNullConstraint columnDataType="number"
-							   columnName="create_by"
-							   schemaName="apps"
-							   tableName="res_distribution_ee_rule_settings"/>
-
-		<dropNotNullConstraint columnDataType="number"
-							   columnName="create_date"
-							   schemaName="apps"
-							   tableName="res_distribution_ee_rule_settings"/>
-
-		<dropNotNullConstraint columnDataType="number"
-							   columnName="last_update_by"
-							   schemaName="apps"
-							   tableName="res_distribution_ee_rule_settings"/>
-
-		<dropNotNullConstraint columnDataType="number"
-							   columnName="last_update_date"
-							   schemaName="apps"
-							   tableName="res_distribution_ee_rule_settings"/>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="res-rus-45" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add not null constraint APPS.res_distribution_ee_rule_settings</comment>
-		<addNotNullConstraint columnDataType="date"
-							  columnName="start_date"
-							  schemaName="apps"
-							  tableName="res_distribution_ee_rule_settings"/>
-	</changeSet>
-
-	<changeSet id="res-rus-46" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into res_daily_schedule</comment>
-		<insert schemaName="apps" tableName="res_distribution_ee_rule_settings">
-			<column name="id" type="number" value="1"/>
-			<column name="start_date" type="date" value="24-ноя-15"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="res-rus-47" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into res_daily_schedule_values_headers</comment>
-		<insert schemaName="apps" tableName="res_daily_schedule_values_headers">
-			<column name="id" type="number" value="1"/>
-			<column name="schedule_id" type="number" value="1"/>
-			<column name="contract_id" type="number" value="506"/>
-			<column name="bp_id" type="number" value="68"/>
-			<column name="meter_type" type="varchar2(30)" value="CONSUMPTION"/>
-			<column name="energy_zone_id" type="number" value="1"/>
-			<column name="energy_zone_settings" type="number" value="1"/>
-			<column name="info_type" type="varchar2(20)" value="FACT"/>
-			<column name="volume_type" type="varchar2(20)" value="BUY"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="res-rus-48" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into res_daily_schedule_values_lines</comment>
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="1"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 00.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="2"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 1.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="3"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 2.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="4"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 3.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="5"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 4.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="6"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 5.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="7"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 6.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="8"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 7.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="9"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 8.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="10"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 9.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="11"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 10.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="12"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 11.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="13"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 12.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="14"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 13.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="res-rus-49" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>insert into res_daily_schedule_values_lines</comment>
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="15"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 14.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="16"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 15.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="17"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 16.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="18"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 17.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="19"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 18.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="20"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 19.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="21"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 20.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="22"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 21.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="23"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 22.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-
-		<insert schemaName="apps" tableName="res_daily_schedule_values_lines">
-			<column name="id" type="number" value="24"/>
-			<column name="header_id" type="number" value="1"/>
-			<column name="val_date" type="TIMESTAMP" value="24-ноя-15 23.00.00"/>
-			<column name="val" type="number" value="2000"/>
-		</insert>
-		<rollback/>
-	</changeSet>
-
-	<changeSet id="res-rus-50" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: res_month_schedule_headers</comment>
-		<createTable tableName="res_month_schedule_headers" schemaName="apps" remarks="прогнозные и фактические объемы покупки, продажи ЭЭ за месец: Заголовок">
-			<column name="id" type="number" remarks="Идентификатор">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="period_id" type="number" remarks="Ид периода">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="version" type="number" remarks="Версия" defaultValueNumeric="1">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="state" type="varchar2(20)" remarks="Статус">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="is_show" type="number" remarks="Отображать в ЛК">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
-			</column>
-		</createTable>
-	</changeSet>
-
-	<changeSet id="res-rus-51" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: res_month_schedule_headers</comment>
-		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_res_month_schedule_headers"
-				schemaName="apps"
-				tableName="res_month_schedule_headers"/>
-	</changeSet>
-
-	<changeSet id="res-rus-52" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: res_month_schedule_headers</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="res_month_schedule_headers_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="res-rus-53" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_month_schedule_headers to wf_states</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_month_schedule_headers"
-				baseColumnNames="state"
-				constraintName="fk_res_month_schedule_headers_1"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="wf_states"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-54" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_month_schedule_headers</comment>
-		<createIndex indexName="idx_res_month_schedule_headers_1"
-					 schemaName="apps"
-					 tableName="res_month_schedule_headers">
-			<column name="state" type="varchar2(20)"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-55" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating table: res_month_schedule_lines</comment>
-		<createTable tableName="res_month_schedule_lines" schemaName="apps" remarks="прогнозные и фактические объемы покупки, продажи ЭЭ за месец: Строки">
-			<column name="id" type="number" remarks="Идентификатор">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="header_id" type="number" remarks="идентификатор заголовка">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="contract_id" type="number" remarks="Идентификатор договора">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="bp_id" type="number" remarks="Идентификатор Бизнес партнера">
-				<constraints nullable="false"/>
-			</column>
-
-			<column name="energy_zone_id" type="number" remarks="Идентификатор энергозоны">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="energy_zone_settings" type="number" remarks="Идентификатор настройки энергозоны">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="info_type" type="varchar2(20)" remarks="Тип информации">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="quantity" type="number" remarks="количество">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_by" type="number" remarks="Автор">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_by" type="number" remarks="Автор обновления">
-				<constraints nullable="true"/>
-			</column>
-
-			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
-				<constraints nullable="true"/>
-			</column>
-		</createTable>
-	</changeSet>
-
-	<changeSet id="res-rus-56" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: res_month_schedule_lines</comment>
-		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_res_month_schedule_lines"
-				schemaName="apps"
-				tableName="res_month_schedule_lines"/>
-	</changeSet>
-
-	<changeSet id="res-rus-57" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating sequence for table: res_month_schedule_lines</comment>
-		<createSequence
-				incrementBy="1"
-				schemaName="apps"
-				sequenceName="res_month_schedule_lines_s"
-				startValue="1"/>
-	</changeSet>
-
-	<changeSet id="res-rus-58" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_month_schedule_lines to res_month_schedule_headers</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_month_schedule_lines"
-				baseColumnNames="header_id"
-				constraintName="fk_res_month_schedule_lines_1"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="res_month_schedule_headers"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-59" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_month_schedule_lines</comment>
-		<createIndex indexName="idx_res_month_schedule_lines_1"
-					 schemaName="apps"
-					 tableName="res_month_schedule_lines">
-			<column name="header_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-60" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_month_schedule_lines to cm_doc_keg_cte</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_month_schedule_lines"
-				baseColumnNames="contract_id"
-				constraintName="fk_res_month_schedule_lines_2"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="cm_doc_keg_cte"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-61" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_month_schedule_lines</comment>
-		<createIndex indexName="idx_res_month_schedule_lines_2"
-					 schemaName="apps"
-					 tableName="res_month_schedule_lines">
-			<column name="contract_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-62" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_month_schedule_lines to dict_business_partners</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_month_schedule_lines"
-				baseColumnNames="bp_id"
-				constraintName="fk_res_month_schedule_lines_3"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_business_partners"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-63" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_month_schedule_lines</comment>
-		<createIndex indexName="idx_res_month_schedule_lines_3"
-					 schemaName="apps"
-					 tableName="res_month_schedule_lines">
-			<column name="bp_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-64" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_month_schedule_lines to dict_energy_zones</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_month_schedule_lines"
-				baseColumnNames="energy_zone_id"
-				constraintName="fk_res_month_schedule_lines_4"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_energy_zones"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-65" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_month_schedule_lines</comment>
-		<createIndex indexName="idx_res_month_schedule_lines_4"
-					 schemaName="apps"
-					 tableName="res_month_schedule_lines">
-			<column name="energy_zone_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-66" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_month_schedule_lines to res_distribution_ee_rule_settings</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_month_schedule_lines"
-				baseColumnNames="energy_zone_settings"
-				constraintName="fk_res_month_schedule_lines_5"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="res_distribution_ee_rule_settings"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-67" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_month_schedule_lines</comment>
-		<createIndex indexName="idx_res_month_schedule_lines_5"
-					 schemaName="apps"
-					 tableName="res_month_schedule_lines">
-			<column name="energy_zone_settings" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-68" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_month_schedule_lines to res_daily_schedule_info_types</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_month_schedule_lines"
-				baseColumnNames="info_type"
-				constraintName="fk_res_month_schedule_lines_6"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="res_daily_schedule_info_type"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-69" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_month_schedule_lines</comment>
-		<createIndex indexName="idx_res_month_schedule_lines_6"
-					 schemaName="apps"
-					 tableName="res_month_schedule_lines">
-			<column name="info_type" type="varchar2(20)"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-70" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>modify data in column to cm_doc_keg_cte</comment>
-		<modifyDataType columnName="area_cadastral_number"
-						newDataType="varchar2(20)"
-						schemaName="apps"
-						tableName="cm_doc_keg_cte"/>
-	</changeSet>
-
-	<changeSet id="res-rus-71" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_month_schedule_headers to fin_periods</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_month_schedule_headers"
-				baseColumnNames="period_id"
-				constraintName="fk_res_month_schedule_headers_2"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="fin_periods"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-72" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_month_schedule_headers</comment>
-		<createIndex indexName="idx_res_month_schedule_headers_2"
-					 schemaName="apps"
-					 tableName="res_month_schedule_headers">
-			<column name="period_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-73" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to res_daily_schedule</comment>
+<changeSet id="plan-rus-1" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating table: plan_volume_ee_headers</comment>
+	<createTable tableName="plan_volume_ee_headers" schemaName="apps" remarks="Прогнозные объемы ЭЭ: заголовок">
+		<column name="id" type="number" remarks="Идентификатор">
+			<constraints nullable="false"/>
+		</column>
+
+		<column name="consumer_id" type="number" remarks="Потребитель">
+			<constraints nullable="false"/>
+		</column>
+
+		<column name="contract_id" type="number" remarks="Ид договора">
+			<constraints nullable="false"/>
+		</column>
+
+		<column name="gjs_id" type="number" remarks="Вид услуги">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="energy_sources_id" type="number" remarks="Ид электростанции">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="year" type="number" remarks="год прогноза">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="unit_id" type="number" remarks="еденица измерения">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="state" type="varchar2(20)" remarks="Статус">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="org_id" type="number" remarks="Филиал">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="contract_type" type="Varchar2(10)" remarks="Тип контракта">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="is_plan_using" type="number" remarks="Признак, определяющий использования данных в составлении Планов. По-умолчанию = 0">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="prediction_val_h_id" type="number" remarks="Идентификатор Заголовок прогнозных данных в ЛК">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="user_id" type="number" remarks="Исполнитель (id пользователя, может быть внешний или внутренний пользователь)">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="create_by" type="number" remarks="Автор">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="last_update_by" type="number" remarks="Автор обновления">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+			<constraints nullable="true"/>
+		</column>
+	</createTable>
+</changeSet>
+
+<changeSet id="plan-rus-2" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating primary key for table: plan_volume_ee_headers</comment>
+	<addPrimaryKey
+			columnNames="id"
+			constraintName="pk_plan_volume_ee_headers"
+			schemaName="apps"
+			tableName="plan_volume_ee_headers"/>
+</changeSet>
+
+<changeSet id="plan-rus-3" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating sequence for table: plan_volume_ee_headers</comment>
+	<createSequence
+			incrementBy="1"
+			schemaName="apps"
+			sequenceName="plan_volume_ee_headers_s"
+			startValue="1"/>
+</changeSet>
+
+<changeSet id="plan-rus-4" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating index for table: plan_volume_ee_headers</comment>
+	<createIndex indexName="idx_plan_volume_ee_headers_1"
+				 schemaName="apps"
+				 tableName="plan_volume_ee_headers">
+		<column name="consumer_id" type="number"/>
+	</createIndex>
+</changeSet>
+
+<changeSet id="plan-rus-5" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_volume_ee_headers to dict_business_partners</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_volume_ee_headers"
+			baseColumnNames="consumer_id"
+			constraintName="fk_plan_volume_ee_headers_1"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="dict_business_partners"
+			referencedColumnNames="id"
+	/>
+</changeSet>
+
+<changeSet id="plan-rus-6" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating index for table: plan_volume_ee_headers</comment>
+	<createIndex indexName="idx_plan_volume_ee_headers_2"
+				 schemaName="apps"
+				 tableName="plan_volume_ee_headers">
+		<column name="contract_id" type="number"/>
+	</createIndex>
+</changeSet>
+
+<changeSet id="plan-rus-7" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_volume_ee_headers to cm_doc_keg_cte</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_volume_ee_headers"
+			baseColumnNames="contract_id"
+			constraintName="fk_plan_volume_ee_headers_2"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="cm_doc_keg_cte"
+			referencedColumnNames="id"
+	/>
+</changeSet>
+
+<changeSet id="plan-rus-8" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating index for table: plan_volume_ee_headers</comment>
+	<createIndex indexName="idx_plan_volume_ee_headers_3"
+				 schemaName="apps"
+				 tableName="plan_volume_ee_headers">
+		<column name="gjs_id" type="number"/>
+	</createIndex>
+</changeSet>
+
+<changeSet id="plan-rus-9" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_volume_ee_headers to dict_gjs</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_volume_ee_headers"
+			baseColumnNames="gjs_id"
+			constraintName="fk_plan_volume_ee_headers_3"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="dict_gjs"
+			referencedColumnNames="id"
+	/>
+</changeSet>
+
+<changeSet id="plan-rus-10" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating index for table: plan_volume_ee_headers</comment>
+	<createIndex indexName="idx_plan_volume_ee_headers_4"
+				 schemaName="apps"
+				 tableName="plan_volume_ee_headers">
+		<column name="energy_sources_id" type="number"/>
+	</createIndex>
+</changeSet>
+
+<changeSet id="plan-rus-11" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_volume_ee_headers to dict_energy_sources</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_volume_ee_headers"
+			baseColumnNames="energy_sources_id"
+			constraintName="fk_plan_volume_ee_headers_4"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="dict_energy_sources"
+			referencedColumnNames="id"
+	/>
+</changeSet>
+
+<changeSet id="plan-rus-12" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating index for table: plan_volume_ee_headers</comment>
+	<createIndex indexName="idx_plan_volume_ee_headers_5"
+				 schemaName="apps"
+				 tableName="plan_volume_ee_headers">
+		<column name="unit_id" type="number"/>
+	</createIndex>
+</changeSet>
+
+<changeSet id="plan-rus-13" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_volume_ee_headers to dict_units</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_volume_ee_headers"
+			baseColumnNames="unit_id"
+			constraintName="fk_plan_volume_ee_headers_5"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="dict_units"
+			referencedColumnNames="id"
+	/>
+</changeSet>
+
+<changeSet id="plan-rus-14" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating index for table: plan_volume_ee_headers</comment>
+	<createIndex indexName="idx_plan_volume_ee_headers_6"
+				 schemaName="apps"
+				 tableName="plan_volume_ee_headers">
+		<column name="state" type="varchar2(20)"/>
+	</createIndex>
+</changeSet>
+
+<changeSet id="plan-rus-15" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_volume_ee_headers to wf_states</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_volume_ee_headers"
+			baseColumnNames="state"
+			constraintName="fk_plan_volume_ee_headers_6"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="wf_states"
+			referencedColumnNames="code"
+	/>
+</changeSet>
+
+<changeSet id="plan-rus-16" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating index for table: plan_volume_ee_headers</comment>
+	<createIndex indexName="idx_plan_volume_ee_headers_7"
+				 schemaName="apps"
+				 tableName="plan_volume_ee_headers">
+		<column name="org_id" type="number"/>
+	</createIndex>
+</changeSet>
+
+<changeSet id="plan-rus-17" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_volume_ee_headers to dict_organizations</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_volume_ee_headers"
+			baseColumnNames="org_id"
+			constraintName="fk_plan_volume_ee_headers_7"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="dict_organizations"
+			referencedColumnNames="id"
+	/>
+</changeSet>
+
+<changeSet id="plan-rus-18" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating index for table: plan_volume_ee_headers</comment>
+	<createIndex indexName="idx_plan_volume_ee_headers_8"
+				 schemaName="apps"
+				 tableName="plan_volume_ee_headers">
+		<column name="contract_type" type="varchar2(10)"/>
+	</createIndex>
+</changeSet>
+
+<changeSet id="plan-rus-19" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_volume_ee_headers to cm_contract_type</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_volume_ee_headers"
+			baseColumnNames="contract_type"
+			constraintName="fk_plan_volume_ee_headers_8"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="cm_contract_type"
+			referencedColumnNames="code"
+	/>
+</changeSet>
+
+<changeSet id="plan-rus-20" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating index for table: plan_volume_ee_headers</comment>
+	<createIndex indexName="idx_plan_volume_ee_headers_9"
+				 schemaName="apps"
+				 tableName="plan_volume_ee_headers">
+		<column name="prediction_val_h_id" type="number"/>
+	</createIndex>
+</changeSet>
+
+<changeSet id="plan-rus-21" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_volume_ee_headers to pa_req_prediction_val_h</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_volume_ee_headers"
+			baseColumnNames="prediction_val_h_id"
+			constraintName="fk_plan_volume_ee_headers_9"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="pa_req_prediction_val_h"
+			referencedColumnNames="id"
+	/>
+</changeSet>
+
+<changeSet id="plan-rus-22" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating table: plan_volume_ee_lines</comment>
+	<createTable tableName="plan_volume_ee_lines" schemaName="apps" remarks="Прогнозные объемы ЭЭ: строки">
+		<column name="id" type="number" remarks="Идентификатор">
+			<constraints nullable="false"/>
+		</column>
+
+		<column name="header_id" type="number" remarks="Ид заголовка">
+			<constraints nullable="false"/>
+		</column>
+
+		<column name="val_date" type="TIMESTAMP" remarks="Время прогнозного обьема">
+			<constraints nullable="false"/>
+		</column>
+
+		<column name="val" type="number" remarks="Обьем">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="create_by" type="number" remarks="Автор">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="last_update_by" type="number" remarks="Автор обновления">
+			<constraints nullable="true"/>
+		</column>
+
+		<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+			<constraints nullable="true"/>
+		</column>
+	</createTable>
+</changeSet>
+
+<changeSet id="plan-rus-23" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating primary key for table: plan_volume_ee_lines</comment>
+	<addPrimaryKey
+			columnNames="id"
+			constraintName="pk_plan_volume_ee_lines"
+			schemaName="apps"
+			tableName="plan_volume_ee_lines"/>
+</changeSet>
+
+<changeSet id="plan-rus-24" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating sequence for table: plan_volume_ee_lines</comment>
+	<createSequence
+			incrementBy="1"
+			schemaName="apps"
+			sequenceName="plan_volume_ee_lines_s"
+			startValue="1"/>
+</changeSet>
+
+<changeSet id="plan-rus-25" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<comment>Creating index for table: plan_volume_ee_lines</comment>
+	<createIndex indexName="idx_plan_volume_ee_lines_1"
+				 schemaName="apps"
+				 tableName="plan_volume_ee_lines">
+		<column name="header_id" type="number"/>
+	</createIndex>
+</changeSet>
+
+<changeSet id="plan-rus-26" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_volume_ee_lines to plan_volume_ee_headers</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_volume_ee_lines"
+			baseColumnNames="header_id"
+			constraintName="fk_plan_volume_ee_lines_1"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="plan_volume_ee_headers"
+			referencedColumnNames="id"
+	/>
+</changeSet>
+
+	<changeSet id="plan-rus-27" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to plan_volume_ee_headers</comment>
 		<addColumn schemaName="apps"
-				   tableName="res_daily_schedule">
-			<column name="status" type="varchar2(20)" remarks="Статус передачи в брэ"/>
+				   tableName="plan_volume_ee_headers">
+			<column name="plan_type" type="varchar2(20)" remarks="Тип периода на год/5 лет"/>
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="res-rus-74" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule to wf_states</comment>
+	<changeSet id="plan-rus-28" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_volume_ee_headers to pa_prediction_val_types</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule"
-				baseColumnNames="status"
-				constraintName="fk_res_daily_schedule_2"
+				baseTableName="plan_volume_ee_headers"
+				baseColumnNames="plan_type"
+				constraintName="fk_plan_volume_ee_headers_10"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="wf_states"
+				referencedTableName="pa_prediction_val_types"
 				referencedColumnNames="code"
 		/>
 	</changeSet>
 
-	<changeSet id="res-rus-75" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule</comment>
-		<createIndex indexName="idx_res_daily_schedule_2"
+	<changeSet id="plan-rus-29" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: plan_curator_settings_headers</comment>
+		<createTable tableName="plan_curator_settings_headers" schemaName="apps" remarks="Настройки филиал куратор заголовок">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="org_id" type="number" remarks="Ид филиала">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="user_id" type="number" remarks="Ид куратора">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="plan-rus-30" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: plan_curator_settings_headers</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_plan_curator_settings_headers"
+				schemaName="apps"
+				tableName="plan_curator_settings_headers"/>
+	</changeSet>
+
+	<changeSet id="plan-rus-31" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: plan_curator_settings_headers</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="plan_curator_settings_headers_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="plan-rus-32" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_curator_settings_headers</comment>
+		<createIndex indexName="idx_plan_curator_settings_headers_1"
 					 schemaName="apps"
-					 tableName="res_daily_schedule">
-			<column name="status" type="varchar2(20)"/>
+					 tableName="plan_curator_settings_headers">
+			<column name="org_id" type="number"/>
 		</createIndex>
 	</changeSet>
 
-	<changeSet id="res-rus-76" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to res_month_schedule_lines</comment>
-		<addColumn schemaName="apps"
-				   tableName="res_month_schedule_lines">
-			<column name="bp_energy_zone_id" type="number" remarks="Идентификатор энергозоны для условного потребителя"/>
-		</addColumn>
-	</changeSet>
-
-	<changeSet id="res-rus-77" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to res_daily_schedule</comment>
-		<addColumn schemaName="apps"
-				   tableName="res_daily_schedule">
-			<column name="org_id" type="number" remarks="Ид филиала"/>
-		</addColumn>
-	</changeSet>
-
-	<changeSet id="res-rus-78" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule to dict_organizations</comment>
+	<changeSet id="plan-rus-33" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_curator_settings_headers to dict_organizations</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule"
+				baseTableName="plan_curator_settings_headers"
 				baseColumnNames="org_id"
-				constraintName="fk_res_daily_schedule_3"
+				constraintName="fk_plan_curator_settings_headers_1"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
@@ -1317,171 +514,105 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		/>
 	</changeSet>
 
-	<changeSet id="res-rus-79" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule</comment>
-		<createIndex indexName="idx_res_daily_schedule_3"
+	<changeSet id="plan-rus-34" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: plan_curator_settings_lines</comment>
+		<createTable tableName="plan_curator_settings_lines" schemaName="apps" remarks="Настройки филиал куратор: строки">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Ид заголовка">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="bp_id" type="number" remarks="Идентификатор потребителя (бизнес партнера)">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="plan-rus-35" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: plan_curator_settings_lines</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_plan_curator_settings_lines"
+				schemaName="apps"
+				tableName="plan_curator_settings_lines"/>
+	</changeSet>
+
+	<changeSet id="plan-rus-36" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: plan_curator_settings_lines</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="plan_curator_settings_lines_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="plan-rus-37" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_curator_settings_lines</comment>
+		<createIndex indexName="idx_plan_curator_settings_lines_1"
 					 schemaName="apps"
-					 tableName="res_daily_schedule">
-			<column name="org_id" type="number"/>
+					 tableName="plan_curator_settings_lines">
+			<column name="header_id" type="number"/>
 		</createIndex>
 	</changeSet>
 
-
-	<changeSet id="res-rus-80" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>drop foreign key in table: res_daily_schedule</comment>
-		<dropForeignKeyConstraint baseTableName="res_daily_schedule" constraintName="fk_res_daily_schedule_2" baseTableSchemaName="apps"/>
-		<rollback/>
+	<changeSet id="plan-rus-38" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_curator_settings_lines to plan_curator_settings_headers</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_curator_settings_lines"
+			baseColumnNames="header_id"
+			constraintName="fk_plan_curator_settings_lines_1"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="plan_curator_settings_headers"
+			referencedColumnNames="id"
+	/>
 	</changeSet>
-
-	<changeSet id="res-rus-81" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule to media_batch_statuses</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule"
-				baseColumnNames="status"
-				constraintName="fk_res_daily_schedule_2"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="media_batch_statuses"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-82" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_month_schedule_lines to dict_energy_zones</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_month_schedule_lines"
-				baseColumnNames="bp_energy_zone_id"
-				constraintName="fk_res_month_schedule_lines_7"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_energy_zones"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-83" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_month_schedule_lines</comment>
-		<createIndex indexName="idx_res_month_schedule_lines_7"
+	<changeSet id="plan-rus-39" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_curator_settings_lines</comment>
+		<createIndex indexName="idx_plan_curator_settings_lines_2"
 					 schemaName="apps"
-					 tableName="res_month_schedule_lines">
-			<column name="bp_energy_zone_id" type="number"/>
+					 tableName="plan_curator_settings_lines">
+			<column name="bp_id" type="number"/>
 		</createIndex>
 	</changeSet>
 
-	<changeSet id="res-rus-84" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to res_daily_schedule_values_headers</comment>
-		<addColumn schemaName="apps"
-				   tableName="res_daily_schedule_values_headers">
-			<column name="bp_energy_zone_id" type="number" remarks="Идентификатор энергозоны для условного потребителя"/>
-		</addColumn>
-	</changeSet>
-
-	<changeSet id="res-rus-85" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_daily_schedule_values_headers to dict_energy_zones</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_daily_schedule_values_headers"
-				baseColumnNames="bp_energy_zone_id"
-				constraintName="fk_res_daily_schedule_values_headers_10"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_energy_zones"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-86" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_daily_schedule_values_headers</comment>
-		<createIndex indexName="idx_res_daily_schedule_values_headers_10"
-					 schemaName="apps"
-					 tableName="res_daily_schedule_values_headers">
-			<column name="bp_energy_zone_id" type="number"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-87" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>drop column value from res_month_schedule_lines</comment>
-		<dropColumn columnName="info_type"
-					schemaName="apps"
-					tableName="res_month_schedule_lines"/>
-	</changeSet>
-
-	<changeSet id="res-rus-88" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to res_month_schedule_lines</comment>
-		<addColumn schemaName="apps"
-				   tableName="res_month_schedule_lines">
-			<column name="volume_type" type="varchar2(20)" remarks="видов обьемов"/>
-		</addColumn>
-	</changeSet>
-
-	<changeSet id="res-rus-89" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_month_schedule_lines to res_daily_schedule_volume_types</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_month_schedule_lines"
-				baseColumnNames="volume_type"
-				constraintName="fk_res_month_schedule_lines_8"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="res_daily_schedule_volume_types"
-				referencedColumnNames="code"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-90" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_month_schedule_lines</comment>
-		<createIndex indexName="idx_res_month_schedule_lines_8"
-					 schemaName="apps"
-					 tableName="res_month_schedule_lines">
-			<column name="volume_type" type="varchar2(20)"/>
-		</createIndex>
-	</changeSet>
-
-	<changeSet id="res-rus-91" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>add column to res_month_schedule_lines</comment>
-		<addColumn schemaName="apps"
-				   tableName="res_month_schedule_lines">
-			<column name="org_id" type="number" remarks="Идентификатор филиала"/>
-		</addColumn>
-	</changeSet>
-
-	<changeSet id="res-rus-92" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: res_month_schedule_lines to dict_organizations</comment>
-		<addForeignKeyConstraint
-				baseTableSchemaName="apps"
-				baseTableName="res_month_schedule_lines"
-				baseColumnNames="org_id"
-				constraintName="fk_res_month_schedule_lines_9"
-				deferrable="true"
-				initiallyDeferred="true"
-				onDelete="RESTRICT"
-				onUpdate="RESTRICT"
-				referencedTableSchemaName="apps"
-				referencedTableName="dict_organizations"
-				referencedColumnNames="id"
-		/>
-	</changeSet>
-
-	<changeSet id="res-rus-93" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating index for table: res_month_schedule_lines</comment>
-		<createIndex indexName="idx_res_month_schedule_lines_9"
-					 schemaName="apps"
-					 tableName="res_month_schedule_lines">
-			<column name="org_id" type="number"/>
-		</createIndex>
+	<changeSet id="plan-rus-40" logicalFilePath="path-independent" author="ruslan">
+	<comment>Creating foreign constraint: plan_curator_settings_lines to dict_business_partners</comment>
+	<addForeignKeyConstraint
+			baseTableSchemaName="apps"
+			baseTableName="plan_curator_settings_lines"
+			baseColumnNames="bp_id"
+			constraintName="fk_plan_curator_settings_lines_2"
+			deferrable="true"
+			initiallyDeferred="true"
+			onDelete="RESTRICT"
+			onUpdate="RESTRICT"
+			referencedTableSchemaName="apps"
+			referencedTableName="dict_business_partners"
+			referencedColumnNames="id"
+	/>
 	</changeSet>
 </databaseChangeLog>
