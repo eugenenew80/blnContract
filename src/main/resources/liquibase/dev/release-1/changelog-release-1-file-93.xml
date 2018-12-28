@@ -4560,7 +4560,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-2356" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-2357" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_keg_cte_tl</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte_tl">
@@ -4568,11 +4568,256 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</addColumn>
 	</changeSet>
 
-	<changeSet id="cm-rus-2357" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="cm-rus-2358" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>add column to cm_doc_keg_cte_tl</comment>
 		<addColumn schemaName="apps"
 				   tableName="cm_doc_keg_cte_tl">
 			<column name="bp2_add_info" type="varchar2(1000)" remarks="Бизнес-партнер 1: Доп.контактная информация"/>
 		</addColumn>
 	</changeSet>
+
+	<changeSet id="cm-rus-2559" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: report_years</comment>
+		<createTable tableName="report_years" schemaName="apps" remarks="справочник годов">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2560" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: report_years</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_report_years"
+				schemaName="apps"
+				tableName="report_years"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2561" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: report_years</comment>
+		<createTable tableName="report_quarter" schemaName="apps" remarks="справочник квартал">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2562" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: report_quarter</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_report_quarter"
+				schemaName="apps"
+				tableName="report_quarter"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2563" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>insert into report_quarter</comment>
+		<insert schemaName="apps" tableName="report_quarter">
+			<column name="code" type="varchar2" value="1"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="report_quarter">
+			<column name="code" type="varchar2" value="2"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="report_quarter">
+			<column name="code" type="varchar2" value="3"/>
+		</insert>
+
+		<insert schemaName="apps" tableName="report_quarter">
+			<column name="code" type="varchar2" value="4"/>
+		</insert>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2564" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_h</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_h">
+			<column name="year" type="date" remarks="год составления прогноза"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2565" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to pa_req_prediction_val_h</comment>
+		<addColumn schemaName="apps"
+				   tableName="pa_req_prediction_val_h">
+			<column name="send_date" type="date" remarks="Дата отправки"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2566" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_business_partners</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_business_partners">
+			<column name="org_id" type="number" remarks="Структурное подразделение"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2567" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_business_partners to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_business_partners"
+				baseColumnNames="org_id"
+				constraintName="fk_dict_business_partners_7"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2569" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to dict_business_partners</comment>
+		<modifyDataType columnName="ERP_COMPANY_CODE"
+						newDataType="varchar2(30)"
+						schemaName="apps"
+						tableName="dict_business_partners"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2570" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to dict_business_partners</comment>
+		<modifyDataType columnName="ERP_COMPANY_CODE"
+						newDataType="varchar2(4)"
+						schemaName="apps"
+						tableName="dict_business_partners"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2571" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to dict_business_partners</comment>
+		<dropColumn columnName="erp_company_code"
+					schemaName="apps"
+					tableName="dict_business_partners"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2572" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to dict_business_partners</comment>
+		<dropColumn columnName="org_id"
+					schemaName="apps"
+					tableName="dict_business_partners"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2573" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop column to dict_organizations</comment>
+		<createIndex indexName="idx_dict_organizations_1"
+					 schemaName="apps"
+					 tableName="dict_organizations"
+					 unique="true">
+			<column name="bp_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="cm-rus-2574" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column on pa_req_prediction_val_h</comment>
+		<modifyDataType columnName="year"
+						newDataType="number"
+						schemaName="apps"
+						tableName="pa_req_prediction_val_h"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2575" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_prade_on_energy_sources</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_prade_on_energy_sources">
+			<column name="org_id" type="number" remarks="Структурное подразделение"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2576" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_prade_on_substations</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_prade_on_substations">
+			<column name="org_id" type="number" remarks="Структурное подразделение"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2577" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_prade_on_substations to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_prade_on_substations"
+				baseColumnNames="org_id"
+				constraintName="fk_dict_prade_on_substations_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2578" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_prade_on_energy_sources to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_prade_on_energy_sources"
+				baseColumnNames="org_id"
+				constraintName="fk_dict_prade_on_energy_sources_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2579" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to plan_curator_settings_lines</comment>
+		<addColumn schemaName="apps"
+				   tableName="plan_curator_settings_lines">
+			<column name="num" type="number" remarks="Порядок вывода"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2580" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_receipt_and_delivery_points</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_receipt_and_delivery_points">
+			<column name="org_id" type="number" remarks="Идентификатор Филиал"/>
+		</addColumn>
+	</changeSet>
+
 </databaseChangeLog>
