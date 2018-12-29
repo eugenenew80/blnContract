@@ -641,7 +641,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</createTable>
 	</changeSet>
 
-	<changeSet id="pa-rus-42" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="plan-rus-42" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: plan_periods_type</comment>
 		<addPrimaryKey
 				columnNames="code"
@@ -650,7 +650,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				tableName="plan_periods_type"/>
 	</changeSet>
 
-	<changeSet id="pa-rus-43" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="plan-rus-43" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: plan_periods_type_tl</comment>
 		<createTable tableName="plan_periods_type_tl" schemaName="apps" remarks="Переводы виды прогнозных периодов">
 			<column name="code" type="varchar2(20)" remarks="Код">
@@ -683,7 +683,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</createTable>
 	</changeSet>
 
-	<changeSet id="pa-rus-44" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="plan-rus-44" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: plan_periods_type_tl</comment>
 		<addPrimaryKey
 				columnNames="code, lang"
@@ -692,7 +692,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				tableName="plan_periods_type_tl"/>
 	</changeSet>
 
-	<changeSet id="pa-rus-45" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="plan-rus-45" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: plan_periods_type_tl to plan_periods_type</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
@@ -734,7 +734,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</createTable>
 	</changeSet>
 
-	<changeSet id="pa-rus-47" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="plan-rus-47" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: plan_data_type</comment>
 		<addPrimaryKey
 				columnNames="code"
@@ -743,7 +743,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				tableName="plan_data_type"/>
 	</changeSet>
 
-	<changeSet id="pa-rus-48" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="plan-rus-48" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating table: plan_data_type_tl</comment>
 		<createTable tableName="plan_data_type_tl" schemaName="apps" remarks="Переводы типы прогнозных данных">
 			<column name="code" type="varchar2(20)" remarks="Код">
@@ -776,7 +776,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</createTable>
 	</changeSet>
 
-	<changeSet id="pa-rus-49" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="plan-rus-49" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating primary key for table: plan_data_type_tl</comment>
 		<addPrimaryKey
 				columnNames="code, lang"
@@ -785,7 +785,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				tableName="plan_data_type_tl"/>
 	</changeSet>
 
-	<changeSet id="pa-rus-50" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="plan-rus-50" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating foreign constraint: plan_data_type_tl to plan_data_type</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
