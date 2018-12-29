@@ -1396,7 +1396,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				referencedColumnNames="id"
 		/>
 	</changeSet>
-	<changeSet id="plan-rus-83" logicalFilePath="path-independent" author="ruslan" context="dev">
+	<changeSet id="plan-rus-85" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating index for table: plan_production_plan_lines</comment>
 		<createIndex indexName="idx_plan_production_plan_lines_6"
 					 schemaName="apps"
@@ -1405,7 +1405,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		</createIndex>
 	</changeSet>
 
-	<changeSet id="plan-rus-84" logicalFilePath="path-independent" author="ruslan">
+	<changeSet id="plan-rus-86" logicalFilePath="path-independent" author="ruslan">
 		<comment>Creating foreign constraint: plan_production_plan_lines to calc_formula_sign</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
