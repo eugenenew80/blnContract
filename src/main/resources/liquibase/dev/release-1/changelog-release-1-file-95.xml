@@ -821,7 +821,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="units_id" type="number" remarks="Ед. изм">
+			<column name="units_id" type="number" remarks="Ед изм">
 				<constraints nullable="true"/>
 			</column>
 
@@ -841,7 +841,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				<constraints nullable="true"/>
 			</column>
 
-			<column name="sap_state" type="varchar2" remarks="Стутус в САП">
+			<column name="sap_state" type="varchar2(20)" remarks="Стутус в САП">
 				<constraints nullable="true"/>
 			</column>
 
