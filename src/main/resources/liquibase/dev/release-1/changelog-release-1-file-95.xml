@@ -615,4 +615,811 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 			referencedColumnNames="id"
 	/>
 	</changeSet>
+
+	<changeSet id="plan-rus-41" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: plan_periods_type</comment>
+		<createTable tableName="plan_periods_type" schemaName="apps" remarks="Справочник виды прогнозных периодов">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-42" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: plan_periods_type</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_plan_periods_type"
+				schemaName="apps"
+				tableName="plan_periods_type"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-43" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: plan_periods_type_tl</comment>
+		<createTable tableName="plan_periods_type_tl" schemaName="apps" remarks="Переводы виды прогнозных периодов">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(300)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-44" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: plan_periods_type_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_plan_periods_type_tl"
+				schemaName="apps"
+				tableName="plan_periods_type_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-45" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: plan_periods_type_tl to plan_periods_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_periods_type_tl"
+				baseColumnNames="code"
+				constraintName="fk_plan_periods_type_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="plan_periods_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+	
+	<changeSet id="plan-rus-46" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: plan_data_type</comment>
+		<createTable tableName="plan_data_type" schemaName="apps" remarks="Справочник тип прогнозных данных">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-47" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: plan_data_type</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_plan_data_type"
+				schemaName="apps"
+				tableName="plan_data_type"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-48" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: plan_data_type_tl</comment>
+		<createTable tableName="plan_data_type_tl" schemaName="apps" remarks="Переводы типы прогнозных данных">
+			<column name="code" type="varchar2(20)" remarks="Код">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(300)" remarks="Описание">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="pa-rus-49" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: plan_data_type_tl</comment>
+		<addPrimaryKey
+				columnNames="code, lang"
+				constraintName="pk_plan_data_type_tl"
+				schemaName="apps"
+				tableName="plan_data_type_tl"/>
+	</changeSet>
+
+	<changeSet id="pa-rus-50" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: plan_data_type_tl to plan_data_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_data_type_tl"
+				baseColumnNames="code"
+				constraintName="fk_plan_data_type_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="plan_data_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+	
+	<changeSet id="plan-rus-51" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: plan_production_plans</comment>
+		<createTable tableName="plan_production_plans" schemaName="apps" remarks="Производственные планы Прогнозы: заголовок">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="period_type" type="varchar2(20)" remarks="прогнозный период">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="year" type="number" remarks="прогнозный год">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="data_type" type="varchar2(20)" remarks="тип прогнозных данных">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="units_id" type="number" remarks="Ед. изм">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="version" type="number" remarks="Версия">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="state" type="varchar2(20)" remarks="Статус">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="is_approved_sd" type="number" remarks="утвержден СД">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_need_transfer_to_sap" type="number" remarks="требуется передача в САП">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="sap_state" type="varchar2" remarks="Стутус в САП">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="transfer_to_sap_date" type="date" remarks="Дата передачи в САП">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="plan-rus-52" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: plan_production_plans</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_plan_production_plans"
+				schemaName="apps"
+				tableName="plan_production_plans"/>
+	</changeSet>
+
+	<changeSet id="plan-rus-53" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: plan_production_plans</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="plan_production_plans_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="plan-rus-54" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plans</comment>
+		<createIndex indexName="idx_plan_production_plans_1"
+					 schemaName="apps"
+					 tableName="plan_production_plans">
+			<column name="period_type" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-55" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plans to plan_periods_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plans"
+				baseColumnNames="period_type"
+				constraintName="fk_plan_production_plans_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="plan_periods_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="plan-rus-56" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plans</comment>
+		<createIndex indexName="idx_plan_production_plans_2"
+					 schemaName="apps"
+					 tableName="plan_production_plans">
+			<column name="period_type" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-57" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plans to plan_data_type</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plans"
+				baseColumnNames="data_type"
+				constraintName="fk_plan_production_plans_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="plan_data_type"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="plan-rus-58" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plans</comment>
+		<createIndex indexName="idx_plan_production_plans_3"
+					 schemaName="apps"
+					 tableName="plan_production_plans">
+			<column name="units_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-59" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plans to dict_units</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plans"
+				baseColumnNames="units_id"
+				constraintName="fk_plan_production_plans_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_units"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="plan-rus-60" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plans</comment>
+		<createIndex indexName="idx_plan_production_plans_4"
+					 schemaName="apps"
+					 tableName="plan_production_plans">
+			<column name="state" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-61" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plans to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plans"
+				baseColumnNames="state"
+				constraintName="fk_plan_production_plans_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="plan-rus-62" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plans</comment>
+		<createIndex indexName="idx_plan_production_plans_5"
+					 schemaName="apps"
+					 tableName="plan_production_plans">
+			<column name="sap_state" type="varchar2(20)"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-63" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plans to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plans"
+				baseColumnNames="sap_state"
+				constraintName="fk_plan_production_plans_52"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="plan-rus-64" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: plan_production_plans_tl</comment>
+		<createTable tableName="plan_production_plans_tl" schemaName="apps" remarks="Перевод Производственные планы Прогнозы: заголовок">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="production_plan_id" type="number" remarks="Ссылка на родительскую запись">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(500)" remarks="Наименование">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+
+		</createTable>
+	</changeSet>
+
+	<changeSet id="plan-rus-65" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: plan_production_plans_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_plan_production_plans_tl"
+				schemaName="apps"
+				tableName="plan_production_plans_tl"/>
+	</changeSet>
+
+	<changeSet id="plan-rus-66" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: plan_production_plans_tl</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="plan_production_plans_tl_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="plan-rus-67" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating unique key for table: plan_production_plans_tl</comment>
+		<addUniqueConstraint
+				columnNames="production_plan_id,lang"
+				constraintName="uk_plan_production_plans_tl"
+				schemaName="apps"
+				tableName="plan_production_plans_tl"/>
+	</changeSet>
+
+	<changeSet id="plan-rus-68" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: plan_production_plans_tl</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_plan_production_plans_tl"
+				schemaName="apps"
+				tableName="plan_production_plans_tl"/>
+	</changeSet>
+
+
+	<changeSet id="plan-rus-69" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: plan_production_plans_tl to plan_production_plans</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plans_tl"
+				baseColumnNames="production_plan_id"
+				constraintName="fk_plan_production_plans_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="plan_production_plans"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="plan-rus-70" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: plan_production_plan_lines</comment>
+		<createTable tableName="plan_production_plan_lines" schemaName="apps" remarks="Производственные планы Прогнозы: заголовок: строки">
+			<column name="id" type="number" remarks="Идентификатор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="header_id" type="number" remarks="Ид заголовка">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="volume_ee_header_id" type="number" remarks="Ид заголовка прогнозного обьема">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="volume_ee_line_id" type="number" remarks="Ид строки прогнозного обьема">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="consumption_id" type="number" remarks="потребитель">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="contract_id" type="number" remarks="Идентификатор договора">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="gjs_id" type="number" remarks="вид услуги">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="org_id" type="number" remarks="филиал">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="is_coefficient" type="number" remarks="индивидуальный коэфициент">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="coefficient_sign" type="varchar2(1)" remarks="Знак коэфициента">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="coefficient" type="number" remarks="коэфициент">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="year" type="number" remarks="год">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m01" type="number" remarks="январь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m02" type="number" remarks="февраль">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m03" type="number" remarks="март">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m04" type="number" remarks="апрель">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m05" type="number" remarks="май">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m06" type="number" remarks="июнь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m07" type="number" remarks="июль">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m08" type="number" remarks="август">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m09" type="number" remarks="сентябрь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m10" type="number" remarks="октябрь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m11" type="number" remarks="ноябрь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="m12" type="number" remarks="декабрь">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="true"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="plan-rus-71" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: plan_production_plan_lines</comment>
+		<addPrimaryKey
+				columnNames="id"
+				constraintName="pk_plan_production_plan_lines"
+				schemaName="apps"
+				tableName="plan_production_plan_lines"/>
+	</changeSet>
+
+	<changeSet id="plan-rus-72" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating sequence for table: plan_production_plan_lines</comment>
+		<createSequence
+				incrementBy="1"
+				schemaName="apps"
+				sequenceName="plan_production_plan_lines_s"
+				startValue="1"/>
+	</changeSet>
+
+	<changeSet id="plan-rus-73" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plan_lines</comment>
+		<createIndex indexName="idx_plan_production_plan_lines_1"
+					 schemaName="apps"
+					 tableName="plan_production_plan_lines">
+			<column name="header_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-74" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plan_lines to plan_production_plan_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plan_lines"
+				baseColumnNames="header_id"
+				constraintName="fk_plan_production_plan_lines_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="plan_production_plan_headers"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="plan-rus-75" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plan_lines</comment>
+		<createIndex indexName="idx_plan_production_plan_lines_2"
+					 schemaName="apps"
+					 tableName="plan_production_plan_lines">
+			<column name="volume_ee_header_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-76" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plan_lines to plan_volume_ee_headers</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plan_lines"
+				baseColumnNames="volume_ee_header_id"
+				constraintName="fk_plan_production_plan_lines_2"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="plan_volume_ee_headers"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="plan-rus-77" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plan_lines</comment>
+		<createIndex indexName="idx_plan_production_plan_lines_3"
+					 schemaName="apps"
+					 tableName="plan_production_plan_lines">
+			<column name="volume_ee_line_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-78" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plan_lines to plan_volume_ee_lines</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plan_lines"
+				baseColumnNames="volume_ee_line_id"
+				constraintName="fk_plan_production_plan_lines_3"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="plan_volume_ee_headers"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+	<changeSet id="plan-rus-79" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plan_lines</comment>
+		<createIndex indexName="idx_plan_production_plan_lines_4"
+					 schemaName="apps"
+					 tableName="plan_production_plan_lines">
+			<column name="consumption_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-80" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plan_lines to dict_business_partners</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plan_lines"
+				baseColumnNames="consumption_id"
+				constraintName="fk_plan_production_plan_lines_4"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_business_partners"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="plan-rus-81" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plan_lines</comment>
+		<createIndex indexName="idx_plan_production_plan_lines_5"
+					 schemaName="apps"
+					 tableName="plan_production_plan_lines">
+			<column name="contract_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-82" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plan_lines to cm_doc_keg_cte</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plan_lines"
+				baseColumnNames="contract_id"
+				constraintName="fk_plan_production_plan_lines_5"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="cm_doc_keg_cte"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="plan-rus-83" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plan_lines</comment>
+		<createIndex indexName="idx_plan_production_plan_lines_6"
+					 schemaName="apps"
+					 tableName="plan_production_plan_lines">
+			<column name="org_id" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-84" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plan_lines to dict_organizations</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plan_lines"
+				baseColumnNames="org_id"
+				constraintName="fk_plan_production_plan_lines_6"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_organizations"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+	<changeSet id="plan-rus-83" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating index for table: plan_production_plan_lines</comment>
+		<createIndex indexName="idx_plan_production_plan_lines_6"
+					 schemaName="apps"
+					 tableName="plan_production_plan_lines">
+			<column name="sign" type="number"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="plan-rus-84" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: plan_production_plan_lines to calc_formula_sign</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="plan_production_plan_lines"
+				baseColumnNames="sign"
+				constraintName="fk_plan_production_plan_lines_6"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="calc_formula_sign"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
 </databaseChangeLog>
