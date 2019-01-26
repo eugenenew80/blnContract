@@ -916,7 +916,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		<createIndex indexName="idx_plan_production_plans_2"
 					 schemaName="apps"
 					 tableName="plan_production_plans">
-			<column name="period_type" type="varchar2(20)"/>
+			<column name="data_type" type="varchar2(20)"/>
 		</createIndex>
 	</changeSet>
 
@@ -959,7 +959,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
 				referencedTableName="dict_units"
-				referencedColumnNames="code"
+				referencedColumnNames="id"
 		/>
 	</changeSet>
 
@@ -1076,15 +1076,6 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		<addUniqueConstraint
 				columnNames="production_plan_id,lang"
 				constraintName="uk_plan_production_plans_tl"
-				schemaName="apps"
-				tableName="plan_production_plans_tl"/>
-	</changeSet>
-
-	<changeSet id="plan-rus-68" logicalFilePath="path-independent" author="ruslan" context="dev">
-		<comment>Creating primary key for table: plan_production_plans_tl</comment>
-		<addPrimaryKey
-				columnNames="id"
-				constraintName="pk_plan_production_plans_tl"
 				schemaName="apps"
 				tableName="plan_production_plans_tl"/>
 	</changeSet>
@@ -1252,7 +1243,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	</changeSet>
 
 	<changeSet id="plan-rus-74" logicalFilePath="path-independent" author="ruslan">
-		<comment>Creating foreign constraint: plan_production_plan_lines to plan_production_plan_headers</comment>
+		<comment>Creating foreign constraint: plan_production_plan_lines to plan_production_plans</comment>
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="plan_production_plan_lines"
@@ -1263,7 +1254,7 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="plan_production_plan_headers"
+				referencedTableName="plan_production_plans"
 				referencedColumnNames="id"
 		/>
 	</changeSet>
@@ -1398,10 +1389,10 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	</changeSet>
 	<changeSet id="plan-rus-85" logicalFilePath="path-independent" author="ruslan" context="dev">
 		<comment>Creating index for table: plan_production_plan_lines</comment>
-		<createIndex indexName="idx_plan_production_plan_lines_6"
+		<createIndex indexName="idx_plan_production_plan_lines_7"
 					 schemaName="apps"
 					 tableName="plan_production_plan_lines">
-			<column name="sign" type="number"/>
+			<column name="coefficient_sign" type="varchar2(1)"/>
 		</createIndex>
 	</changeSet>
 
@@ -1410,15 +1401,15 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		<addForeignKeyConstraint
 				baseTableSchemaName="apps"
 				baseTableName="plan_production_plan_lines"
-				baseColumnNames="sign"
-				constraintName="fk_plan_production_plan_lines_6"
+				baseColumnNames="coefficient_sign"
+				constraintName="fk_plan_production_plan_lines_7"
 				deferrable="true"
 				initiallyDeferred="true"
 				onDelete="RESTRICT"
 				onUpdate="RESTRICT"
 				referencedTableSchemaName="apps"
-				referencedTableName="calc_formula_sign"
-				referencedColumnNames="id"
+				referencedTableName="calc_formula_signs"
+				referencedColumnNames="code"
 		/>
 	</changeSet>
 
