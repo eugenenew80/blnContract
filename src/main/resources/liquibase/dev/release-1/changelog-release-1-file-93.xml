@@ -4828,4 +4828,20 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 						tableName="cm_doc_keg_cte"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-2582" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte_a4h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(400)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a4h_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2583" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte_a4h_tl</comment>
+		<modifyDataType columnName="header_name"
+						newDataType="varchar2(1000)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_a4h_tl"/>
+	</changeSet>
+
 </databaseChangeLog>
