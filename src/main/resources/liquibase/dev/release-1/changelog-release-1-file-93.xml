@@ -4844,4 +4844,210 @@ xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 						tableName="cm_doc_keg_cte_a4h_tl"/>
 	</changeSet>
 
+	<changeSet id="cm-rus-2584" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>modify data in column to cm_doc_keg_cte_tl</comment>
+		<modifyDataType columnName="conclusion_place"
+						newDataType="varchar2(200)"
+						schemaName="apps"
+						tableName="cm_doc_keg_cte_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2585" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>drop foreign key in table: mdfem_undercount_periods</comment>
+		<dropForeignKeyConstraint baseTableName="mdfem_undercount_periods" constraintName="FK_MDFEM_UNDERCOUNT_PERIODS_1" baseTableSchemaName="apps"/>
+		<rollback/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2586" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_undercount_periods to mdfem_undercount_header</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_undercount_periods"
+				baseColumnNames="header_id"
+				constraintName="fk_mdfem_undercount_periods_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="mdfem_undercount_header"
+				referencedColumnNames="id"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2587" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_rounding_rules</comment>
+		<createTable tableName="dict_rounding_rules" schemaName="apps" remarks="Справочник - Правила округления">
+			<column name="code" type="varchar2(30)" remarks="код Правила">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2588" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_rounding_rules</comment>
+		<addPrimaryKey
+				columnNames="code"
+				constraintName="pk_dict_rounding_rules"
+				schemaName="apps"
+				tableName="dict_rounding_rules"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2589" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating table: dict_rounding_rules_tl</comment>
+		<createTable tableName="dict_rounding_rules_tl" schemaName="apps" remarks="Перевод Справочник - Правила округления">
+			<column name="code" type="varchar2(30)" remarks="код Правила">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="lang" type="varchar2(10)" remarks="Язык">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="name" type="varchar2(500)" remarks="Наименование правила">
+				<constraints nullable="true"/>
+			</column>
+
+			<column name="create_by" type="number" remarks="Автор">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="create_date" type="TIMESTAMP" remarks="Дата создания">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_by" type="number" remarks="Автор обновления">
+				<constraints nullable="false"/>
+			</column>
+
+			<column name="last_update_date" type="TIMESTAMP" remarks="Дата обновления">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="cm-rus-2590" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating primary key for table: dict_rounding_rules_tl</comment>
+		<addPrimaryKey
+				columnNames="code,lang"
+				constraintName="pk_dict_rounding_rules_tl"
+				schemaName="apps"
+				tableName="dict_rounding_rules_tl"/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2591" logicalFilePath="path-independent" author="ruslan">
+		<comment>Creating foreign constraint: dict_rounding_rules_tl to dict_rounding_rules</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_rounding_rules_tl"
+				baseColumnNames="code"
+				constraintName="fk_dict_rounding_rules_tl_1"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_rounding_rules"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2592" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to dict_metering_points</comment>
+		<addColumn schemaName="apps"
+				   tableName="dict_metering_points">
+			<column name="rounding_rule_code" type="varchar2(30)" remarks="Правило округления дробной части объема электроэнергии"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2593" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: dict_metering_points to dict_rounding_rules</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="dict_metering_points"
+				baseColumnNames="rounding_rule_code"
+				constraintName="fk_dict_metering_points_7"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="dict_rounding_rules"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2594" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to mdfem_undercount_header</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_undercount_header">
+			<column name="state" type="varchar2(20)" remarks="Статус согласования"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2595" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_undercount_header to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_undercount_header"
+				baseColumnNames="state"
+				constraintName="fk_mdfem_undercount_header_6"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2596" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to mdfem_history</comment>
+		<addColumn schemaName="apps"
+				   tableName="mdfem_history">
+			<column name="state" type="varchar2(20)" remarks="Статус согласования"/>
+		</addColumn>
+	</changeSet>
+
+	<changeSet id="cm-rus-2597" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>Creating foreign constraint: mdfem_history to wf_states</comment>
+		<addForeignKeyConstraint
+				baseTableSchemaName="apps"
+				baseTableName="mdfem_history"
+				baseColumnNames="state"
+				constraintName="fk_mdfem_history_7"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="RESTRICT"
+				onUpdate="RESTRICT"
+				referencedTableSchemaName="apps"
+				referencedTableName="wf_states"
+				referencedColumnNames="code"
+		/>
+	</changeSet>
+
+	<changeSet id="cm-rus-2598" logicalFilePath="path-independent" author="ruslan" context="dev">
+		<comment>add column to wf_object_workflows</comment>
+		<addColumn schemaName="apps"
+				   tableName="wf_object_workflows">
+			<column name="signing_date" type="TIMESTAMP" remarks="дата и время подписания"/>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>
